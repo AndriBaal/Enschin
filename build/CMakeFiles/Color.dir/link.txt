@@ -1,0 +1,2 @@
+C:\MinGW\bin\ar.exe qc libColor.a CMakeFiles/Color.dir/src/engine/graphics/Color.cpp.obj
+C:\MinGW\bin\ranlib.exe libColor.a

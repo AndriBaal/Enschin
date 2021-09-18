@@ -84,6 +84,51 @@ rebuild_cache:
 rebuild_cache/fast: rebuild_cache
 .PHONY : rebuild_cache/fast
 
+# Special rule for the target list_install_components
+list_install_components:
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Available install components are: \"Unspecified\""
+.PHONY : list_install_components
+
+# Special rule for the target list_install_components
+list_install_components/fast: list_install_components
+.PHONY : list_install_components/fast
+
+# Special rule for the target install/local
+install/local: preinstall
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Installing only the local directory..."
+	"C:\Program Files\CMake\bin\cmake.exe" -DCMAKE_INSTALL_LOCAL_ONLY=1 -P cmake_install.cmake
+.PHONY : install/local
+
+# Special rule for the target install/local
+install/local/fast: preinstall/fast
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Installing only the local directory..."
+	"C:\Program Files\CMake\bin\cmake.exe" -DCMAKE_INSTALL_LOCAL_ONLY=1 -P cmake_install.cmake
+.PHONY : install/local/fast
+
+# Special rule for the target install
+install: preinstall
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Install the project..."
+	"C:\Program Files\CMake\bin\cmake.exe" -P cmake_install.cmake
+.PHONY : install
+
+# Special rule for the target install
+install/fast: preinstall/fast
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Install the project..."
+	"C:\Program Files\CMake\bin\cmake.exe" -P cmake_install.cmake
+.PHONY : install/fast
+
+# Special rule for the target install/strip
+install/strip: preinstall
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Installing the project stripped..."
+	"C:\Program Files\CMake\bin\cmake.exe" -DCMAKE_INSTALL_DO_STRIP=1 -P cmake_install.cmake
+.PHONY : install/strip
+
+# Special rule for the target install/strip
+install/strip/fast: preinstall/fast
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Installing the project stripped..."
+	"C:\Program Files\CMake\bin\cmake.exe" -DCMAKE_INSTALL_DO_STRIP=1 -P cmake_install.cmake
+.PHONY : install/strip/fast
+
 # The main all target
 all: cmake_check_build_system
 	$(CMAKE_COMMAND) -E cmake_progress_start "C:\Users\Andri Baal\Documents\GitHub\CMake-engine\build\CMakeFiles" "C:\Users\Andri Baal\Documents\GitHub\CMake-engine\build\\CMakeFiles\progress.marks"
@@ -116,41 +161,315 @@ depend:
 .PHONY : depend
 
 #=============================================================================
-# Target rules for targets named Tutorial
+# Target rules for targets named Color
 
 # Build rule for target.
-Tutorial: cmake_check_build_system
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\Makefile2 Tutorial
-.PHONY : Tutorial
+Color: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Makefile2 Color
+.PHONY : Color
 
 # fast build rule for target.
-Tutorial/fast:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\Tutorial.dir\build.make CMakeFiles/Tutorial.dir/build
-.PHONY : Tutorial/fast
+Color/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Color.dir\build.make CMakeFiles/Color.dir/build
+.PHONY : Color/fast
 
-src/main.obj: src/main.cpp.obj
-.PHONY : src/main.obj
+#=============================================================================
+# Target rules for targets named Engine
+
+# Build rule for target.
+Engine: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Makefile2 Engine
+.PHONY : Engine
+
+# fast build rule for target.
+Engine/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Engine.dir\build.make CMakeFiles/Engine.dir/build
+.PHONY : Engine/fast
+
+#=============================================================================
+# Target rules for targets named Vectors
+
+# Build rule for target.
+Vectors: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Makefile2 Vectors
+.PHONY : Vectors
+
+# fast build rule for target.
+Vectors/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Vectors.dir\build.make CMakeFiles/Vectors.dir/build
+.PHONY : Vectors/fast
+
+#=============================================================================
+# Target rules for targets named Dimension
+
+# Build rule for target.
+Dimension: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Makefile2 Dimension
+.PHONY : Dimension
+
+# fast build rule for target.
+Dimension/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Dimension.dir\build.make CMakeFiles/Dimension.dir/build
+.PHONY : Dimension/fast
+
+#=============================================================================
+# Target rules for targets named Keyboard
+
+# Build rule for target.
+Keyboard: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Makefile2 Keyboard
+.PHONY : Keyboard
+
+# fast build rule for target.
+Keyboard/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Keyboard.dir\build.make CMakeFiles/Keyboard.dir/build
+.PHONY : Keyboard/fast
+
+#=============================================================================
+# Target rules for targets named Mouse
+
+# Build rule for target.
+Mouse: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Makefile2 Mouse
+.PHONY : Mouse
+
+# fast build rule for target.
+Mouse/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Mouse.dir\build.make CMakeFiles/Mouse.dir/build
+.PHONY : Mouse/fast
+
+#=============================================================================
+# Target rules for targets named Window
+
+# Build rule for target.
+Window: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Makefile2 Window
+.PHONY : Window
+
+# fast build rule for target.
+Window/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Window.dir\build.make CMakeFiles/Window.dir/build
+.PHONY : Window/fast
+
+#=============================================================================
+# Target rules for targets named uninstall
+
+# Build rule for target.
+uninstall: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Makefile2 uninstall
+.PHONY : uninstall
+
+# fast build rule for target.
+uninstall/fast:
+	$(MAKE) $(MAKESILENT) -f lib\glfw\CMakeFiles\uninstall.dir\build.make lib/glfw/CMakeFiles/uninstall.dir/build
+.PHONY : uninstall/fast
+
+#=============================================================================
+# Target rules for targets named glfw
+
+# Build rule for target.
+glfw: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Makefile2 glfw
+.PHONY : glfw
+
+# fast build rule for target.
+glfw/fast:
+	$(MAKE) $(MAKESILENT) -f lib\glfw\src\CMakeFiles\glfw.dir\build.make lib/glfw/src/CMakeFiles/glfw.dir/build
+.PHONY : glfw/fast
+
+#=============================================================================
+# Target rules for targets named libglew_static
+
+# Build rule for target.
+libglew_static: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Makefile2 libglew_static
+.PHONY : libglew_static
+
+# fast build rule for target.
+libglew_static/fast:
+	$(MAKE) $(MAKESILENT) -f lib\glew\CMakeFiles\libglew_static.dir\build.make lib/glew/CMakeFiles/libglew_static.dir/build
+.PHONY : libglew_static/fast
+
+#=============================================================================
+# Target rules for targets named libglew_shared
+
+# Build rule for target.
+libglew_shared: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Makefile2 libglew_shared
+.PHONY : libglew_shared
+
+# fast build rule for target.
+libglew_shared/fast:
+	$(MAKE) $(MAKESILENT) -f lib\glew\CMakeFiles\libglew_shared.dir\build.make lib/glew/CMakeFiles/libglew_shared.dir/build
+.PHONY : libglew_shared/fast
+
+src/Main.obj: src/Main.cpp.obj
+.PHONY : src/Main.obj
 
 # target to build an object file
-src/main.cpp.obj:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\Tutorial.dir\build.make CMakeFiles/Tutorial.dir/src/main.cpp.obj
-.PHONY : src/main.cpp.obj
+src/Main.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Engine.dir\build.make CMakeFiles/Engine.dir/src/Main.cpp.obj
+.PHONY : src/Main.cpp.obj
 
-src/main.i: src/main.cpp.i
-.PHONY : src/main.i
+src/Main.i: src/Main.cpp.i
+.PHONY : src/Main.i
 
 # target to preprocess a source file
-src/main.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\Tutorial.dir\build.make CMakeFiles/Tutorial.dir/src/main.cpp.i
-.PHONY : src/main.cpp.i
+src/Main.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Engine.dir\build.make CMakeFiles/Engine.dir/src/Main.cpp.i
+.PHONY : src/Main.cpp.i
 
-src/main.s: src/main.cpp.s
-.PHONY : src/main.s
+src/Main.s: src/Main.cpp.s
+.PHONY : src/Main.s
 
 # target to generate assembly for a file
-src/main.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\Tutorial.dir\build.make CMakeFiles/Tutorial.dir/src/main.cpp.s
-.PHONY : src/main.cpp.s
+src/Main.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Engine.dir\build.make CMakeFiles/Engine.dir/src/Main.cpp.s
+.PHONY : src/Main.cpp.s
+
+src/engine/Window.obj: src/engine/Window.cpp.obj
+.PHONY : src/engine/Window.obj
+
+# target to build an object file
+src/engine/Window.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Window.dir\build.make CMakeFiles/Window.dir/src/engine/Window.cpp.obj
+.PHONY : src/engine/Window.cpp.obj
+
+src/engine/Window.i: src/engine/Window.cpp.i
+.PHONY : src/engine/Window.i
+
+# target to preprocess a source file
+src/engine/Window.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Window.dir\build.make CMakeFiles/Window.dir/src/engine/Window.cpp.i
+.PHONY : src/engine/Window.cpp.i
+
+src/engine/Window.s: src/engine/Window.cpp.s
+.PHONY : src/engine/Window.s
+
+# target to generate assembly for a file
+src/engine/Window.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Window.dir\build.make CMakeFiles/Window.dir/src/engine/Window.cpp.s
+.PHONY : src/engine/Window.cpp.s
+
+src/engine/graphics/Color.obj: src/engine/graphics/Color.cpp.obj
+.PHONY : src/engine/graphics/Color.obj
+
+# target to build an object file
+src/engine/graphics/Color.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Color.dir\build.make CMakeFiles/Color.dir/src/engine/graphics/Color.cpp.obj
+.PHONY : src/engine/graphics/Color.cpp.obj
+
+src/engine/graphics/Color.i: src/engine/graphics/Color.cpp.i
+.PHONY : src/engine/graphics/Color.i
+
+# target to preprocess a source file
+src/engine/graphics/Color.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Color.dir\build.make CMakeFiles/Color.dir/src/engine/graphics/Color.cpp.i
+.PHONY : src/engine/graphics/Color.cpp.i
+
+src/engine/graphics/Color.s: src/engine/graphics/Color.cpp.s
+.PHONY : src/engine/graphics/Color.s
+
+# target to generate assembly for a file
+src/engine/graphics/Color.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Color.dir\build.make CMakeFiles/Color.dir/src/engine/graphics/Color.cpp.s
+.PHONY : src/engine/graphics/Color.cpp.s
+
+src/engine/input/Keyboard.obj: src/engine/input/Keyboard.cpp.obj
+.PHONY : src/engine/input/Keyboard.obj
+
+# target to build an object file
+src/engine/input/Keyboard.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Keyboard.dir\build.make CMakeFiles/Keyboard.dir/src/engine/input/Keyboard.cpp.obj
+.PHONY : src/engine/input/Keyboard.cpp.obj
+
+src/engine/input/Keyboard.i: src/engine/input/Keyboard.cpp.i
+.PHONY : src/engine/input/Keyboard.i
+
+# target to preprocess a source file
+src/engine/input/Keyboard.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Keyboard.dir\build.make CMakeFiles/Keyboard.dir/src/engine/input/Keyboard.cpp.i
+.PHONY : src/engine/input/Keyboard.cpp.i
+
+src/engine/input/Keyboard.s: src/engine/input/Keyboard.cpp.s
+.PHONY : src/engine/input/Keyboard.s
+
+# target to generate assembly for a file
+src/engine/input/Keyboard.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Keyboard.dir\build.make CMakeFiles/Keyboard.dir/src/engine/input/Keyboard.cpp.s
+.PHONY : src/engine/input/Keyboard.cpp.s
+
+src/engine/input/Mouse.obj: src/engine/input/Mouse.cpp.obj
+.PHONY : src/engine/input/Mouse.obj
+
+# target to build an object file
+src/engine/input/Mouse.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Mouse.dir\build.make CMakeFiles/Mouse.dir/src/engine/input/Mouse.cpp.obj
+.PHONY : src/engine/input/Mouse.cpp.obj
+
+src/engine/input/Mouse.i: src/engine/input/Mouse.cpp.i
+.PHONY : src/engine/input/Mouse.i
+
+# target to preprocess a source file
+src/engine/input/Mouse.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Mouse.dir\build.make CMakeFiles/Mouse.dir/src/engine/input/Mouse.cpp.i
+.PHONY : src/engine/input/Mouse.cpp.i
+
+src/engine/input/Mouse.s: src/engine/input/Mouse.cpp.s
+.PHONY : src/engine/input/Mouse.s
+
+# target to generate assembly for a file
+src/engine/input/Mouse.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Mouse.dir\build.make CMakeFiles/Mouse.dir/src/engine/input/Mouse.cpp.s
+.PHONY : src/engine/input/Mouse.cpp.s
+
+src/engine/math/Dimension.obj: src/engine/math/Dimension.cpp.obj
+.PHONY : src/engine/math/Dimension.obj
+
+# target to build an object file
+src/engine/math/Dimension.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Dimension.dir\build.make CMakeFiles/Dimension.dir/src/engine/math/Dimension.cpp.obj
+.PHONY : src/engine/math/Dimension.cpp.obj
+
+src/engine/math/Dimension.i: src/engine/math/Dimension.cpp.i
+.PHONY : src/engine/math/Dimension.i
+
+# target to preprocess a source file
+src/engine/math/Dimension.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Dimension.dir\build.make CMakeFiles/Dimension.dir/src/engine/math/Dimension.cpp.i
+.PHONY : src/engine/math/Dimension.cpp.i
+
+src/engine/math/Dimension.s: src/engine/math/Dimension.cpp.s
+.PHONY : src/engine/math/Dimension.s
+
+# target to generate assembly for a file
+src/engine/math/Dimension.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Dimension.dir\build.make CMakeFiles/Dimension.dir/src/engine/math/Dimension.cpp.s
+.PHONY : src/engine/math/Dimension.cpp.s
+
+src/engine/math/Vectors.obj: src/engine/math/Vectors.cpp.obj
+.PHONY : src/engine/math/Vectors.obj
+
+# target to build an object file
+src/engine/math/Vectors.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Vectors.dir\build.make CMakeFiles/Vectors.dir/src/engine/math/Vectors.cpp.obj
+.PHONY : src/engine/math/Vectors.cpp.obj
+
+src/engine/math/Vectors.i: src/engine/math/Vectors.cpp.i
+.PHONY : src/engine/math/Vectors.i
+
+# target to preprocess a source file
+src/engine/math/Vectors.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Vectors.dir\build.make CMakeFiles/Vectors.dir/src/engine/math/Vectors.cpp.i
+.PHONY : src/engine/math/Vectors.cpp.i
+
+src/engine/math/Vectors.s: src/engine/math/Vectors.cpp.s
+.PHONY : src/engine/math/Vectors.s
+
+# target to generate assembly for a file
+src/engine/math/Vectors.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Vectors.dir\build.make CMakeFiles/Vectors.dir/src/engine/math/Vectors.cpp.s
+.PHONY : src/engine/math/Vectors.cpp.s
 
 # Help Target
 help:
@@ -159,11 +478,43 @@ help:
 	@echo ... clean
 	@echo ... depend
 	@echo ... edit_cache
+	@echo ... install
+	@echo ... install/local
+	@echo ... install/strip
+	@echo ... list_install_components
 	@echo ... rebuild_cache
-	@echo ... Tutorial
-	@echo ... src/main.obj
-	@echo ... src/main.i
-	@echo ... src/main.s
+	@echo ... uninstall
+	@echo ... Color
+	@echo ... Dimension
+	@echo ... Engine
+	@echo ... Keyboard
+	@echo ... Mouse
+	@echo ... Vectors
+	@echo ... Window
+	@echo ... glfw
+	@echo ... libglew_shared
+	@echo ... libglew_static
+	@echo ... src/Main.obj
+	@echo ... src/Main.i
+	@echo ... src/Main.s
+	@echo ... src/engine/Window.obj
+	@echo ... src/engine/Window.i
+	@echo ... src/engine/Window.s
+	@echo ... src/engine/graphics/Color.obj
+	@echo ... src/engine/graphics/Color.i
+	@echo ... src/engine/graphics/Color.s
+	@echo ... src/engine/input/Keyboard.obj
+	@echo ... src/engine/input/Keyboard.i
+	@echo ... src/engine/input/Keyboard.s
+	@echo ... src/engine/input/Mouse.obj
+	@echo ... src/engine/input/Mouse.i
+	@echo ... src/engine/input/Mouse.s
+	@echo ... src/engine/math/Dimension.obj
+	@echo ... src/engine/math/Dimension.i
+	@echo ... src/engine/math/Dimension.s
+	@echo ... src/engine/math/Vectors.obj
+	@echo ... src/engine/math/Vectors.i
+	@echo ... src/engine/math/Vectors.s
 .PHONY : help
 
 

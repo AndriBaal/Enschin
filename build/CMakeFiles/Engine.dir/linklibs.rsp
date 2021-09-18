@@ -1,0 +1,1 @@
+ lib/glfw/src/libglfw3.a lib/glew/lib/libglewd.a libColor.a libDimension.a libVectors.a libMouse.a lib/glfw/src/libglfw3.a libVectors.a libKeyboard.a lib/glfw/src/libglfw3.a libWindow.a lib/glfw/src/libglfw3.a libMouse.a libKeyboard.a libDimension.a libVectors.a -lopengl32 -lkernel32 -luser32 -lgdi32 -lwinspool -lshell32 -lole32 -loleaut32 -luuid -lcomdlg32 -ladvapi32 

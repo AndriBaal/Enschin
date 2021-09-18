@@ -1,0 +1,2 @@
+C:\MinGW\bin\ar.exe qc libDimension.a CMakeFiles/Dimension.dir/src/engine/math/Dimension.cpp.obj
+C:\MinGW\bin\ranlib.exe libDimension.a
