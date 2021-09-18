@@ -1,2 +1,0 @@
-C:\MinGW\bin\ar.exe qc libKeyboard.a CMakeFiles/Keyboard.dir/src/engine/input/Keyboard.cpp.obj
-C:\MinGW\bin\ranlib.exe libKeyboard.a

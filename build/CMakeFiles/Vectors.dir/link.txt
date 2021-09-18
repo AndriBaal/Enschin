@@ -1,2 +1,0 @@
-C:\MinGW\bin\ar.exe qc libVectors.a CMakeFiles/Vectors.dir/src/engine/math/Vectors.cpp.obj
-C:\MinGW\bin\ranlib.exe libVectors.a

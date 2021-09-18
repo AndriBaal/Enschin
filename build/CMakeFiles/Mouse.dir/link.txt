@@ -1,2 +1,0 @@
-C:\MinGW\bin\ar.exe qc libMouse.a CMakeFiles/Mouse.dir/src/engine/input/Mouse.cpp.obj
-C:\MinGW\bin\ranlib.exe libMouse.a
