@@ -1,6 +1,7 @@
 cmake_minimum_required(VERSION 3.10)
 project(Engine VERSION 1.0.0)
 
+
 #Adding GLFW
 set(GLFW_BUILD_DOCS OFF CACHE BOOL "" FORCE)
 set(GLFW_BUILD_TESTS OFF CACHE BOOL "" FORCE)
