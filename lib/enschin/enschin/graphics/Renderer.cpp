@@ -7,7 +7,6 @@ glm::mat4* Renderer::proj = NULL;
 glm::mat4* Renderer::view = NULL;
 glm::mat4* Renderer::mvp = NULL;
 
-
 void Renderer::init(Window* window)
 {
 	colorProgram = new ShaderProgram("vertex.vert", "color.frag");

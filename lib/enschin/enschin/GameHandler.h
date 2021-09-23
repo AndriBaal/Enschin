@@ -4,7 +4,7 @@
 #include "graphics/Scene.hpp"
 #include <chrono>
 
-
+class Window;
 class GameHandler
 {
 private:
@@ -16,6 +16,9 @@ public:
 	Scene* currentScene;
 	Window* window;
 	int* io;
-	virtual void start(Window* window, Scene& startScene);
+	virtual void start(Window* window, Scene* startScene);
 	virtual void updateCurrentScene();
+	~GameHandler() {
+
+	}
 };

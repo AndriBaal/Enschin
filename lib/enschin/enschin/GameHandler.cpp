@@ -1,24 +1,25 @@
 #include "GameHandler.h"
 
-Scene* GameHandler::currentScene = NULL;
-Window* GameHandler::window = NULL;
-long long GameHandler::firstTime = 0;
-long long GameHandler::secondTime = 0;
-long long GameHandler::lastTime = 0;
-float GameHandler::deltaTime = 0;
-float GameHandler::fps = 0;
 
-void GameHandler::start(Window* window, Scene& currentScene)
+
+void GameHandler::start(Window* window, Scene* currentScene)
 {
 	//SceneHandler::window = window;
+	this->currentScene = NULL;
+	this->window = NULL;
+	firstTime = 0;
+	secondTime = 0;
+	lastTime = 0;
+	deltaTime = 0;
+	fps = 0;
 	this->window = window;
 	Renderer::init(window);
-	currentScene = new GameScene();
+	this->currentScene = currentScene;
 }
 
 void GameHandler::updateCurrentScene()
 {
-	while (!glfwWindowShouldClose(window))
+	while (!glfwWindowShouldClose(window->getGlfw()))
     {
         glClear(GL_COLOR_BUFFER_BIT);
     
@@ -39,7 +40,7 @@ void GameHandler::updateCurrentScene()
 			fps = 0;
 		}
 
-        glfwSwapBuffers(window);
+        glfwSwapBuffers(window->getGlfw());
         glfwPollEvents();
     }
     glfwTerminate();

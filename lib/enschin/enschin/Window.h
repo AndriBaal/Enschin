@@ -28,5 +28,5 @@ public:
 	void setTitle(std::string title);
 	void setClearColor(Color newColor);
 	void setVSync(bool vSync);
-
+	GLFWwindow* getGlfw();
 };

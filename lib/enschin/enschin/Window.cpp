@@ -103,3 +103,8 @@ void Window::setVSync(bool vSync)
 
     this->vSync = vSync;
 }
+
+GLFWwindow* Window::getGlfw()
+{
+    return this->window;
+}
