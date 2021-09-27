@@ -1,0 +1,2 @@
+C:/MinGW/bin/ar.exe qc libgame.a CMakeFiles/game.dir/Main.cpp.obj CMakeFiles/game.dir/MyGame.cpp.obj CMakeFiles/game.dir/MyRenderer.cpp.obj CMakeFiles/game.dir/scenes/GameScene.cpp.obj
+C:/MinGW/bin/ranlib.exe libgame.a
