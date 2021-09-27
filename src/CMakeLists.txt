@@ -2,19 +2,10 @@ cmake_minimum_required(VERSION 3.10)
 
 include_directories(lib/enschin)
 
-
-set(game_HEADERS ${common_HEADERS} 
-    scenes/GameScene.h
-    MyGame.h
-)
-
-set(game_SOURCES ${common_SOURCES} 
-    scenes/GameScene.cpp
-    MyGame.cpp
-)
+FILE(GLOB_RECURSE game_SRC ./*.cpp)
 
 # enschin libraries
-add_library(game ${game_SOURCES} ${game_HEADERS})
+add_library(game ${game_SRC})
 
 
 target_link_libraries(game

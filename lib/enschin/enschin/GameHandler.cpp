@@ -2,24 +2,16 @@
 
 
 
-void GameHandler::start(Window* window, Scene* currentScene)
+void GameHandler::start(Scene* currentScene, Renderer* renderer)
 {
-	//SceneHandler::window = window;
-	this->currentScene = NULL;
-	this->window = NULL;
-	firstTime = 0;
-	secondTime = 0;
-	lastTime = 0;
-	deltaTime = 0;
-	fps = 0;
-	this->window = window;
-	Renderer::init(window);
+	Window* window = new Window("sddgffk", { 480, 480 }, false);
 	this->currentScene = currentScene;
-}
+	this->renderer = renderer;
+	this->renderer->init(window);
 
-void GameHandler::updateCurrentScene()
-{
-	while (!glfwWindowShouldClose(window->getGlfw()))
+	GLFWwindow* glfw = window->getGlfw();
+
+	while (!glfwWindowShouldClose(glfw))
     {
         glClear(GL_COLOR_BUFFER_BIT);
     
@@ -28,9 +20,7 @@ void GameHandler::updateCurrentScene()
 		deltaTime /= 1000000000.0f;
 		firstTime = getNanos();
 
-		currentScene->update();
-		currentScene->render();
-
+		update();
 		
 		fps++;
 		if (getNanos() > lastTime + 1000000000) 
@@ -46,6 +36,7 @@ void GameHandler::updateCurrentScene()
     glfwTerminate();
 	exit(0);
 }
+
 
 long long GameHandler::getNanos()
 {

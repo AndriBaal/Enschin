@@ -1,8 +1,7 @@
 #include "MyGame.h"
 
-void MyGame::start(Window* window, Scene* startScene){
-
-}
-void MyGame::updateCurrentScene(){
-
+void MyGame::update()
+{
+		currentScene->update();
+		currentScene->render();
 }

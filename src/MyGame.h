@@ -1,11 +1,11 @@
 #include <enschin/Window.h>
 #include <enschin/GameHandler.h>
-
+#include "MyRenderer.h"
 class MyGame : public GameHandler
 {
-
+private:
+	MyRenderer* myRenderer;
 public:
-    
-	virtual void start(Window* window, Scene* startScene) override;
-	virtual void updateCurrentScene() override;
+	MyGame(MyRenderer* myRenderer);
+    virtual void update() override;
 };

@@ -1,8 +1,8 @@
 #pragma once
 
+#include <GL/glew.h>
 #include "../math/Dimension.h"
 #include <string>
-#include <GL/glew.h>
 #include "../../../lib/stb/stb_image.h"
 
 class Texture

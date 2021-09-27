@@ -32,6 +32,7 @@ Window::Window(std::string windowTitle, const Dimension& windowSize, bool fullSc
     }
     glfwMakeContextCurrent(window);
     glfwSwapInterval(1);
+    if (glewInit() != GLEW_OK) exit(0);
 
     glEnable(GL_TEXTURE_2D);
     glEnable(GL_BLEND);

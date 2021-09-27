@@ -1,4 +1,4 @@
-#include "../../../headers/Entity.h"
+#include "Entity.h"
 
 Entity::Entity(std::string tag, Vector2 pos, Dimension dim, Vector2 dir)
 	: tag(tag), pos(pos), dim(dim), dir(dir) {}
@@ -12,4 +12,6 @@ void Entity::onDamage(float damage) {
 }
 
 void Entity::onEntityCollision()
-{}
+{
+	
+}

@@ -5,9 +5,10 @@ add_subdirectory(lib/enschin)
 add_subdirectory(src)
 
 # Add the executable
+
 add_executable(Game src/Main.cpp) 
 
 target_link_libraries(Game
-    enschin 
+    enschin
     game enschin
 )

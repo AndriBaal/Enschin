@@ -1,15 +1,8 @@
 #include "Renderer.h"
 
 
-ShaderProgram* Renderer::colorProgram = NULL;
-
-glm::mat4* Renderer::proj = NULL;
-glm::mat4* Renderer::view = NULL;
-glm::mat4* Renderer::mvp = NULL;
-
-void Renderer::init(Window* window)
+Renderer::init(Window* window)
 {
-	colorProgram = new ShaderProgram("vertex.vert", "color.frag");
     Dimension windowSize = window->getSize();
     Renderer::proj = new glm::mat4(glm::ortho(-windowSize.w / windowSize.h, windowSize.w / windowSize.h, -1.0f, 1.0f, -1.0f, 1.0f));
     glm::mat4 ident = glm::mat4(1.0f);
@@ -17,6 +10,10 @@ void Renderer::init(Window* window)
     Renderer::view = new glm::mat4(glm::translate(ident, trvec));
     glm::mat4 model = glm::translate(glm::mat4(1.0f), glm::vec3(0, 0, 0));
     Renderer::mvp = new glm::mat4((*proj * *view * model));
+}
+
+Renderer::Renderer(){
+	colorProgram = new ShaderProgram("vertex.vert", "color.frag");
 }
 
 void Renderer::renderTest(Model& m, Texture& t)
@@ -56,6 +53,6 @@ void Renderer::apply()
 
 void Renderer::resetProjection(Window* window)
 {
-    Dimension windowSize = window->getSize();
-    Renderer::proj = new glm::mat4(glm::ortho(-windowSize.h / windowSize.w, windowSize.h / windowSize.w, -1.0f, 1.0f, -1.0f, 1.0f));
+    //Dimension windowSize = window->getSize();
+    //Renderer::proj = new glm::mat4(glm::ortho(-windowSize.h / windowSize.w, windowSize.h / windowSize.w, -1.0f, 1.0f, -1.0f, 1.0f));
 }

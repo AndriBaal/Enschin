@@ -1,7 +1,7 @@
 #pragma once
 #include <string>
-#include "Dimension.h"
-#include "vectors.h"
+#include "../math/Dimension.h"
+#include "../math/vectors.h"
 #include <iostream>
 
 class Entity

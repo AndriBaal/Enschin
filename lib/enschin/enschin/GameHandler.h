@@ -1,8 +1,8 @@
 #pragma once
-#include <GLFW/glfw3.h>
 #include "Window.h"
 #include "graphics/Scene.hpp"
 #include <chrono>
+#include "graphics/Renderer.h"
 
 class Window;
 class GameHandler
@@ -10,15 +10,13 @@ class GameHandler
 private:
 	long long firstTime, secondTime, lastTime;
 	long long getNanos();
+	Window* window;
+	Renderer* renderer;
 
 public:
 	float deltaTime, fps;
 	Scene* currentScene;
-	Window* window;
 	int* io;
-	virtual void start(Window* window, Scene* startScene);
-	virtual void updateCurrentScene();
-	~GameHandler() {
-
-	}
+	virtual void start(Scene* startScene, Renderer* renderer);
+	virtual void update() = 0;
 };

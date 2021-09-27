@@ -18,4 +18,6 @@ Model::Model(float vertices[], int amountOfVertices)
 
     va = new VertexArray();
     va->addBuffer(*vb, layout);
+
+    
 }
