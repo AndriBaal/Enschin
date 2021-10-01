@@ -4,8 +4,7 @@
 class MyGame : public GameHandler
 {
 private:
-	MyRenderer* myRenderer;
 public:
-	MyGame(MyRenderer* myRenderer);
-    virtual void update() override;
+	MyGame();
+    virtual void process() override;
 };

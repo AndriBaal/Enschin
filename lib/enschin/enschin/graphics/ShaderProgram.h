@@ -14,7 +14,6 @@ class ShaderProgram
 {
 private:
     unsigned int shaderProgramId;
-    const static std::string folderPath;
     std::unordered_map<std::string, int> uniformLocationCache;
 
 public:

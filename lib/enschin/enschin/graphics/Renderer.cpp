@@ -1,7 +1,7 @@
 #include "Renderer.h"
 
 
-Renderer::init(Window* window)
+void Renderer::init(Window* window)
 {
     Dimension windowSize = window->getSize();
     Renderer::proj = new glm::mat4(glm::ortho(-windowSize.w / windowSize.h, windowSize.w / windowSize.h, -1.0f, 1.0f, -1.0f, 1.0f));
@@ -13,7 +13,7 @@ Renderer::init(Window* window)
 }
 
 Renderer::Renderer(){
-	colorProgram = new ShaderProgram("vertex.vert", "color.frag");
+	colorProgram = new ShaderProgram("./res/enschin/shader/vertex.vert", "./res/enschin/shader/color.frag");
 }
 
 void Renderer::renderTest(Model& m, Texture& t)

@@ -4,8 +4,11 @@ project(Game VERSION 1.0.0)
 add_subdirectory(lib/enschin)
 add_subdirectory(src)
 
-# Add the executable
+set (CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/${CMAKE_SYSTEM_NAME})
+file (COPY res/ DESTINATION ${CMAKE_BINARY_DIR}/${CMAKE_SYSTEM_NAME}/res/)
+file (COPY lib/enschin/res/ DESTINATION ${CMAKE_BINARY_DIR}/${CMAKE_SYSTEM_NAME}/res/enschin/)
 
+# Add the executable
 add_executable(Game src/Main.cpp) 
 
 target_link_libraries(Game

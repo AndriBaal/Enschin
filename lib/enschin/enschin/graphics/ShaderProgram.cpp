@@ -1,16 +1,12 @@
 #include "ShaderProgram.h"
 #include <string>
 
-const std::string ShaderProgram::folderPath = "./ressources/shader/";
 
 ShaderProgram::ShaderProgram(const std::string& vertexPath, const std::string& fragmentPath)
     : shaderProgramId(0)
 {
-    std::cout << folderPath;
     std::string vertexCode = getShaderCode(vertexPath);
-    std::cout << vertexCode << std::endl;
     std::string fragmentCode = getShaderCode(fragmentPath);
-    std::cout << fragmentCode << std::endl;
     shaderProgramId = createShaderProgram(vertexCode, fragmentCode);
 
     glUseProgram(shaderProgramId);
@@ -52,7 +48,7 @@ enum ShaderType
 
 std::string ShaderProgram::getShaderCode(const std::string& shaderPath)
 {
-    std::ifstream stream(folderPath + shaderPath);
+    std::ifstream stream(shaderPath);
     std::string line;
     std::stringstream ss;
 

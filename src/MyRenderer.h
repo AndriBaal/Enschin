@@ -3,5 +3,6 @@
 
 class MyRenderer:public Renderer
 {
-    MyRenderer():Renderer();
-}
+public:
+    MyRenderer();
+};

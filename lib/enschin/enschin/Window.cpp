@@ -58,7 +58,7 @@ void Window::setSize(Dimension& newDim)
 {
     windowSize = newDim;
     glfwSetWindowSize(window, newDim.w, newDim.h);
-    Renderer::resetProjection(this);
+    //Renderer::resetProjection(this);
 }
 
 void Window::setTitle(std::string title)

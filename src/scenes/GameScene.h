@@ -17,5 +17,5 @@ private:
 public:
 	GameScene();
 	virtual void update() override;
-	virtual void render() override;
+	virtual void render(Renderer* renderer) override;
 };

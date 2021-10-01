@@ -15,10 +15,9 @@ GameScene::GameScene()
 void GameScene::update()
 {
 	//std::cout << "Hello Game" << std::endl;
-    Renderer::renderTest(*m, *texi);
 }
 
-void GameScene::render()
+void GameScene::render(Renderer* renderer)
 {
-
+    renderer->renderTest(*m, *texi);
 }

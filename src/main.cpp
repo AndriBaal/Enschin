@@ -4,10 +4,13 @@
 #include <MyGame.h>
 
 
-int main(void)
+int main()
 {
     MyGame* myGame = new MyGame();
+    Window* window = new Window("Enschin", { 1920, 1080 }, 0);
     GameScene* myScene = new GameScene();
-    MyRenderer* myRenderer = new Renderer();
-    myGame->start(myScene);
+    MyRenderer* myRenderer = new MyRenderer();
+    myGame->start(window, myScene, myRenderer);
+
+    return 0;
 }

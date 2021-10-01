@@ -2,10 +2,10 @@
 
 
 
-void GameHandler::start(Scene* currentScene, Renderer* renderer)
+void GameHandler::start(Window* window, Scene* currentScene, Renderer* renderer)
 {
-	Window* window = new Window("sddgffk", { 480, 480 }, false);
 	this->currentScene = currentScene;
+	this->window = window;
 	this->renderer = renderer;
 	this->renderer->init(window);
 
@@ -20,7 +20,7 @@ void GameHandler::start(Scene* currentScene, Renderer* renderer)
 		deltaTime /= 1000000000.0f;
 		firstTime = getNanos();
 
-		update();
+		process();
 		
 		fps++;
 		if (getNanos() > lastTime + 1000000000) 

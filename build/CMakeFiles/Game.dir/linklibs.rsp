@@ -1,1 +1,0 @@
- lib/enschin/libenschin.a src/libgame.a lib/enschin/libenschin.a lib/enschin/lib/glew/lib/libglewd.a -lopengl32 lib/enschin/lib/glfw/src/libglfw3.a -lkernel32 -luser32 -lgdi32 -lwinspool -lshell32 -lole32 -loleaut32 -luuid -lcomdlg32 -ladvapi32 
