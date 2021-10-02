@@ -1,6 +1,7 @@
 #pragma once
 #include <gtc/matrix_transform.hpp>
 #include <glm.hpp>
+#include <enschin/graphics/Color.hpp>
 #include "../GameHandler.h"
 #include "../Window.h"
 #include "Texture.h"
@@ -29,6 +30,8 @@ public:
 	/*void applyMatrixChange();
 	void resetMatrix();*/
 
-	void renderTest(Model& m, Texture& t);
+	void renderColor(Model& model, const Color& color);
+	void renderTexture(Model& model, Texture& texture);
+	void renderColoredTexture(Model& model, Texture& texture, Color& color);
 };
 

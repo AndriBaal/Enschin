@@ -2,14 +2,13 @@
 
 GameScene::GameScene()
 {
-	//Renderer::init();
     GameScene::m = new Model(new float[16] {
         -0.5f, -0.5f, 0.0f, 0.0f, // 0
             0.5f, -0.5f, 1.0f, 0.0f, // 1
             0.5f, 0.5f, 1.0f, 1.0f, // 2
-        -0.5f, 0.5f, 0.0f, 1.0f  // 3
+        -0.75f, 0.75f, 0.0f, 1.0f  // 3
     });
-    texi = new Texture("ressources/textures/shiat.png");
+    texi = new Texture("./res/textures/giordano.jpg");
 }
 
 void GameScene::update()
@@ -19,5 +18,5 @@ void GameScene::update()
 
 void GameScene::render(Renderer* renderer)
 {
-    renderer->renderTest(*m, *texi);
+    renderer->renderColor(*m, {1, 1, 1, 0});
 }

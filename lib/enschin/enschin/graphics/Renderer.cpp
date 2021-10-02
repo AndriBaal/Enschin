@@ -12,24 +12,39 @@ void Renderer::init(Window* window)
     Renderer::mvp = new glm::mat4((*proj * *view * model));
 }
 
-Renderer::Renderer(){
+Renderer::Renderer()
+{
 	colorProgram = new ShaderProgram("./res/enschin/shader/vertex.vert", "./res/enschin/shader/color.frag");
 }
 
-void Renderer::renderTest(Model& m, Texture& t)
+void Renderer::renderColor(Model& model, const Color& color)
 {
-    m.getVa()->bind();
-    m.getIb()->bind();
-
-    t.bind();
-    colorProgram->setUniform1i("u_Texture", 0);
+    model.getVa()->bind();
+    model.getIb()->bind();
 
     colorProgram->bind();
+    
     colorProgram->setUniformMat4f("u_MVP", *mvp);
 
     glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, nullptr);
 
 }
+
+void Renderer::renderTexture(Model& model, Texture& texture)
+{
+    model.getVa()->bind();
+    model.getIb()->bind();
+
+    texture.bind();
+
+    glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, nullptr);
+}
+
+void Renderer::renderColoredTexture(Model& model, Texture& texture, Color& color)
+{
+
+}
+
 
 void Renderer::translate(Vector2 pos)
 {
