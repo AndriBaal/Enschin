@@ -18,6 +18,8 @@ private:
 	glm::mat4* mvp;
 
 	ShaderProgram* colorProgram;
+	ShaderProgram* textureProgram;
+	ShaderProgram* coloredTextureProgram;
 
 	void apply();
 public:
@@ -32,6 +34,6 @@ public:
 
 	void renderColor(Model& model, const Color& color);
 	void renderTexture(Model& model, Texture& texture);
-	void renderColoredTexture(Model& model, Texture& texture, Color& color);
+	void renderColoredTexture(Model& model, Texture& texture, const Color& color);
 };
 

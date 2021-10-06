@@ -8,6 +8,8 @@ class Entity
 {
 private:
 	std::string tag;
+	float health;
+	float maxHealth;
 public:
 	Vector2 pos;
 	Vector2 dir;
