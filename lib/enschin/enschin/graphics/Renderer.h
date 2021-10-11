@@ -22,18 +22,22 @@ private:
 	ShaderProgram* coloredTextureProgram;
 
 	void apply();
+	float ratio;
+	float units;
 public:
 	Renderer();
 	void init(Window* window);
 	void resetProjection(Window* window);
+	void absoluteTranslate(Vector2 pos);
 	void translate(Vector2 pos);
 	void rotate(float angle);
 	void scale(Vector2 scaling);
 	/*void applyMatrixChange();
 	void resetMatrix();*/
-
 	void renderColor(Model& model, const Color& color);
 	void renderTexture(Model& model, Texture& texture);
 	void renderColoredTexture(Model& model, Texture& texture, const Color& color);
+
+	float getRatio(){ return ratio; }
 };
 

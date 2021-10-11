@@ -8,3 +8,13 @@ Dimension Dimension::operator=(const Dimension& newVector)
 	h = newVector.h;
 	return *this;
 }
+
+float Dimension::getRatioWH()
+{
+	return w / h;
+}
+
+float Dimension::getRatioHW()
+{
+	return h / w;
+}

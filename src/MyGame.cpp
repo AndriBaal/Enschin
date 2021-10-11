@@ -7,5 +7,5 @@ MyGame::MyGame():GameHandler(){
 void MyGame::process()
 {
 	currentScene->update();
-	currentScene->render(renderer);
+	currentScene->render(*renderer);
 }

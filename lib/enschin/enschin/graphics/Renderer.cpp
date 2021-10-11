@@ -1,15 +1,18 @@
 #include "Renderer.h"
+#include <iostream>
 
 
 void Renderer::init(Window* window)
 {
-    Dimension windowSize = window->getSize();
-    Renderer::proj = new glm::mat4(glm::ortho(-windowSize.w / windowSize.h, windowSize.w / windowSize.h, -1.0f, 1.0f, -1.0f, 1.0f));
+
+    ratio = window->getSize().getRatioWH();
+    units = 100;
+    Mouse::setUnits(units);
+    Renderer::proj = new glm::mat4(glm::ortho(-ratio * units, ratio * units, -units, units, -units, units));
     glm::mat4 ident = glm::mat4(1.0f);
     glm::vec3 trvec = glm::vec3(0, 0, 0);
     Renderer::view = new glm::mat4(glm::translate(ident, trvec));
-    glm::mat4 model = glm::translate(glm::mat4(1.0f), glm::vec3(0, 0, 0));
-    Renderer::mvp = new glm::mat4((*proj * *view * model));
+    Renderer::mvp = new glm::mat4((*proj * *view * glm::translate(glm::mat4(1.0f), glm::vec3(0, 0, 0))));
 }
 
 Renderer::Renderer()
@@ -55,10 +58,17 @@ void Renderer::renderColoredTexture(Model& model, Texture& texture, const Color&
     glDrawElements(GL_TRIANGLES, model.getAmountOfIndicies(), GL_UNSIGNED_INT, nullptr);
 }
 
+// void Renderer::translateAndRender(){
+
+// }
+
+void Renderer::absoluteTranslate(Vector2 pos){
+    Renderer::mvp = new glm::mat4((*proj * *view * glm::translate(glm::mat4(1.0f), glm::vec3(pos.x, pos.y, 0))));
+}
 
 void Renderer::translate(Vector2 pos)
 {
-
+    Renderer::mvp = new glm::mat4((*mvp * glm::translate(glm::mat4(1.0f), glm::vec3(pos.x, pos.y, 0))));
 }
 
 void Renderer::rotate(float angle)
@@ -78,6 +88,8 @@ void Renderer::apply()
 
 void Renderer::resetProjection(Window* window)
 {
-    //Dimension windowSize = window->getSize();
-    //Renderer::proj = new glm::mat4(glm::ortho(-windowSize.h / windowSize.w, windowSize.h / windowSize.w, -1.0f, 1.0f, -1.0f, 1.0f));
+    ratio = window->getSize().getRatioWH();
+    Mouse::setUnits(units);
+    Renderer::proj = new glm::mat4(glm::ortho(-ratio * units, ratio * units, -units, units, -10.0f, 10.0f));
+    Renderer::mvp = new glm::mat4((*proj * *view * glm::translate(glm::mat4(1.0f), glm::vec3(0, 0, 0))));
 }

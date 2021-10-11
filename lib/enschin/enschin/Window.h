@@ -12,6 +12,7 @@
 #include "input/Keyboard.h"
 #include "input/Mouse.h"
 
+class Renderer;
 class Window
 {
 private:
@@ -23,7 +24,7 @@ private:
 public:
 	Window(std::string title, const Dimension& size, bool fullscreen);
 	Dimension getSize();
-	void setSize(Dimension& v);
+	void setSize(Dimension& v, Renderer& renderer);
 	void setFullScreen(bool fullscreen);
 	void setTitle(std::string title);
 	void setClearColor(Color newColor);
