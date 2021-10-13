@@ -61,5 +61,6 @@
         "iomanip": "cpp",
         "sstream": "cpp",
         "cinttypes": "cpp"
-    }
+    },
+    "C_Cpp.errorSquiggles": "Disabled"
 }
