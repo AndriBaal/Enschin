@@ -2,7 +2,7 @@
 
 
 
-void GameHandler::start(Window* window, Scene* currentScene, Renderer* renderer)
+void GameHandler::start(Window* window, Scene* currentScene)
 {
 	this->currentScene = currentScene;
 	this->window = window;

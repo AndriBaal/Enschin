@@ -8,36 +8,40 @@
 #include "ShaderProgram.h"
 #include "../math/Vectors.h"
 #include "Model.h"
+#include "Light.h"
+#include "../objects/GameObject.h"
 
 class Window;
 class Renderer
 {
 private:
-	glm::mat4* proj;
-	glm::mat4* view;
-	glm::mat4* mvp;
+	static glm::mat4* proj;
+	static glm::mat4* view;
+	static glm::mat4* mvp;
 
-	ShaderProgram* colorProgram;
-	ShaderProgram* textureProgram;
-	ShaderProgram* coloredTextureProgram;
+	static ShaderProgram* colorProgram;
+	static ShaderProgram* textureProgram;
+	static ShaderProgram* coloredTextureProgram;
 
-	void apply();
-	float ratio;
-	float units;
+	static void apply();
+	static void initShaderPrograms();
+	static float ratio;
+	static float units;
 public:
-	Renderer();
-	void init(Window* window);
-	void resetProjection(Window* window);
-	void absoluteTranslate(Vector2 pos);
-	void translate(Vector2 pos);
-	void rotate(float angle);
-	void scale(Vector2 scaling);
+	static void init(Window* window, float units=100);
+	static void resetProjection(Window* window);
+	static void absoluteTranslate(Vector2 pos);
+	static void translate(Vector2 pos);
+	static void rotate(float angle);
+	static void scale(Vector2 scaling);
 	/*void applyMatrixChange();
 	void resetMatrix();*/
-	void renderColor(Model& model, const Color& color);
-	void renderTexture(Model& model, Texture& texture);
-	void renderColoredTexture(Model& model, Texture& texture, const Color& color);
+	static void renderColor(Model& model, Color& color);
+	static void renderTexture(Model& model, Texture& texture);
+	static void renderColoredTexture(Model& model, Texture& texture, Color& color);
+	static void renderRaytracing(Model& model, Light& light, std::vector<GameObject> objects);
 
-	float getRatio(){ return ratio; }
+	static float getRatio(){ return ratio; }
+	static float getUnits(){ return units; }
 };
 

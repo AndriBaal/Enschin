@@ -10,7 +10,7 @@ void Mouse::updateCursor(GLFWwindow* window, double xpos, double ypos)
 	double x, y = 0;
 	glfwGetCursorPos(window, &x, &y);
 	int windowX, windowY = 0;
-	glfwGetWindowPos(window, &windowX, &windowY); 
+	glfwGetWindowSize(window, &windowX, &windowY); 
 	Mouse::mousePos = translateMousePosition(x, y, windowX, windowY);
 }
 
@@ -26,8 +26,8 @@ bool Mouse::isButtonPressed(int button)
 
 Vector2 Mouse::translateMousePosition(double x, double y, int windowX, int windowY)
 {
-	float ratio = windowX / windowY;
-	float newX = 25.0f;
-	float newY = -float(y)/windowY*2*units/4.0f+units;
+	float ratio = windowX / float(windowY);
+	float newX = (float(x)/windowX*2.0f*units-units)*ratio;
+	float newY = -float(y)/windowY*2.0f*units+units;
 	return Vector2(newX, newY);
 }

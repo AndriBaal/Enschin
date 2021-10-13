@@ -43,7 +43,7 @@ void GameScene::update()
 	//std::cout << "Hello Game" << std::endl;
 }
 
-void GameScene::render(Renderer& renderer)
+void GameScene::render()
 {
     // renderer.absoluteTranslate({0, 0.5f});
     // renderer.renderColor(*m, {1, 0, 1, 1});
@@ -51,7 +51,8 @@ void GameScene::render(Renderer& renderer)
     // renderer.absoluteTranslate({1, 0});
     // renderer.renderColor(*m, {0, 1, 1, 1});
 
-    renderer.translate({Mouse::getMousePos().x, Mouse::getMousePos().y});
-    renderer.renderColor(*m1, {0, 1, 0, 1});
-    renderer.translate({Mouse::getMousePos().x*-1, Mouse::getMousePos().y*-1});
+    Renderer::translate({Mouse::getMousePos().x, Mouse::getMousePos().y});
+    Color c = Color(0, 1, 0, 1);
+    Renderer::renderColor(*m1, c);
+    Renderer::translate({Mouse::getMousePos().x*-1, Mouse::getMousePos().y*-1});
 }

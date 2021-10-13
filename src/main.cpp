@@ -7,10 +7,10 @@
 int main()
 {
     MyGame* myGame = new MyGame();
-    Window* window = new Window("Enschin", { 600, 600 }, 0);
+    Window* window = new Window("Enschin", Dimension(800.0f, 600.0f), 0);
+    window->setVSync(false);
     GameScene* myScene = new GameScene();
-    MyRenderer* myRenderer = new MyRenderer();
-    myGame->start(window, myScene, myRenderer);
+    myGame->start(window, myScene);
 
     return 0;
 }

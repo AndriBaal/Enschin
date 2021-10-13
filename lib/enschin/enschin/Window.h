@@ -22,7 +22,7 @@ private:
 	std::string windowTitle;
 	GLFWwindow* window;
 public:
-	Window(std::string title, const Dimension& size, bool fullscreen);
+	Window(std::string title, Dimension size, bool fullscreen);
 	Dimension getSize();
 	void setSize(Dimension& v, Renderer& renderer);
 	void setFullScreen(bool fullscreen);

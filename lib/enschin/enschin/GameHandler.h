@@ -21,7 +21,7 @@ public:
 	GameHandler() = default;
 	Scene* currentScene;
 	int* io;
-	virtual void start(Window* window, Scene* startScene, Renderer* renderer);
+	virtual void start(Window* window, Scene* startScene);
 	virtual void process() = 0;
 	float getDeltaTime(){ return deltaTime; }
 	float getFps(){ return fps; }

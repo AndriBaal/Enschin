@@ -1,9 +1,20 @@
 #include "Renderer.h"
 #include <iostream>
 
+ShaderProgram* Renderer::colorProgram = NULL;
+ShaderProgram* Renderer::textureProgram = NULL;
+ShaderProgram* Renderer::coloredTextureProgram = NULL;
 
-void Renderer::init(Window* window)
+glm::mat4* Renderer::proj = NULL;
+glm::mat4* Renderer::view = NULL;
+glm::mat4* Renderer::mvp = NULL;
+
+float Renderer::ratio = 0;
+float Renderer::units = 0;
+
+void Renderer::init(Window* window, float units)
 {
+    initShaderPrograms();
 
     ratio = window->getSize().getRatioWH();
     units = 100;
@@ -15,14 +26,15 @@ void Renderer::init(Window* window)
     Renderer::mvp = new glm::mat4((*proj * *view * glm::translate(glm::mat4(1.0f), glm::vec3(0, 0, 0))));
 }
 
-Renderer::Renderer()
+void Renderer::initShaderPrograms()
 {
 	colorProgram = new ShaderProgram("./res/enschin/shader/vertex.vert", "./res/enschin/shader/color.frag");
     textureProgram = new ShaderProgram("./res/enschin/shader/vertex.vert", "./res/enschin/shader/texture.frag");
     coloredTextureProgram = new ShaderProgram("./res/enschin/shader/vertex.vert", "./res/enschin/shader/colored_texture.frag");
 }
 
-void Renderer::renderColor(Model& model, const Color& color)
+
+void Renderer::renderColor(Model& model, Color& color)
 {
     model.getVa()->bind();
     model.getIb()->bind();
@@ -46,7 +58,7 @@ void Renderer::renderTexture(Model& model, Texture& texture)
     glDrawElements(GL_TRIANGLES, model.getAmountOfIndicies(), GL_UNSIGNED_INT, nullptr);
 }
 
-void Renderer::renderColoredTexture(Model& model, Texture& texture, const Color& color)
+void Renderer::renderColoredTexture(Model& model, Texture& texture, Color& color)
 {
     model.getVa()->bind();
     model.getIb()->bind();
@@ -56,6 +68,11 @@ void Renderer::renderColoredTexture(Model& model, Texture& texture, const Color&
     coloredTextureProgram->setUniformMat4f("u_MVP", *mvp);
     coloredTextureProgram->setColor("u_Color", color);
     glDrawElements(GL_TRIANGLES, model.getAmountOfIndicies(), GL_UNSIGNED_INT, nullptr);
+}
+
+void Renderer::renderRaytracing(Model& model, Light& light, std::vector<GameObject> objects)
+{
+    
 }
 
 // void Renderer::translateAndRender(){

@@ -14,7 +14,7 @@ public:
 	Vector2 pos;
 	Vector2 dir;
 	Dimension dim;
-	Entity(std::string tag, Vector2 pos, Dimension dim, Vector2 dir = {});
+	Entity(std::string tag, Vector2 pos = {}, Dimension dim = {}, Vector2 dir = {});
 	~Entity();
 	virtual void update() = 0;
 	virtual void render() = 0;

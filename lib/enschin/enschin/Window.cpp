@@ -1,6 +1,6 @@
 #include "Window.h"
 
-Window::Window(std::string windowTitle, const Dimension& windowSize, bool fullScreen)
+Window::Window(std::string windowTitle, Dimension windowSize, bool fullScreen)
 {
     if (!glfwInit()) exit(0);
     const GLFWvidmode* mode = glfwGetVideoMode(glfwGetPrimaryMonitor());
