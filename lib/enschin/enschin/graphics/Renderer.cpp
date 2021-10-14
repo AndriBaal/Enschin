@@ -12,11 +12,11 @@ glm::mat4* Renderer::mvp = NULL;
 float Renderer::ratio = 0;
 float Renderer::units = 0;
 
-void Renderer::init(Window* window, float units)
+void Renderer::init(Dimension windowSize, float units)
 {
     initShaderPrograms();
 
-    ratio = window->getSize().getRatioWH();
+    ratio = windowSize.getRatioWH();
     units = 100;
     Mouse::setUnits(units);
     Renderer::proj = new glm::mat4(glm::ortho(-ratio * units, ratio * units, -units, units, -units, units));
@@ -103,9 +103,9 @@ void Renderer::apply()
 
 }
 
-void Renderer::resetProjection(Window* window)
+void Renderer::resetProjection(Dimension& windowSize)
 {
-    ratio = window->getSize().getRatioWH();
+    ratio = windowSize.getRatioWH();
     Mouse::setUnits(units);
     Renderer::proj = new glm::mat4(glm::ortho(-ratio * units, ratio * units, -units, units, -10.0f, 10.0f));
     Renderer::mvp = new glm::mat4((*proj * *view * glm::translate(glm::mat4(1.0f), glm::vec3(0, 0, 0))));

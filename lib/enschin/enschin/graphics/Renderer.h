@@ -2,16 +2,15 @@
 #include <gtc/matrix_transform.hpp>
 #include <glm.hpp>
 #include <enschin/graphics/Color.hpp>
-#include "../GameHandler.h"
-#include "../Window.h"
 #include "Texture.h"
+#include "../input/Mouse.h"
 #include "ShaderProgram.h"
 #include "../math/Vectors.h"
+#include "../math/Dimension.h"
 #include "Model.h"
 #include "Light.h"
 #include "../objects/GameObject.h"
 
-class Window;
 class Renderer
 {
 private:
@@ -28,8 +27,8 @@ private:
 	static float ratio;
 	static float units;
 public:
-	static void init(Window* window, float units=100);
-	static void resetProjection(Window* window);
+	static void init(Dimension windowSize, float units=100);
+	static void resetProjection(Dimension& windowSize);
 	static void absoluteTranslate(Vector2 pos);
 	static void translate(Vector2 pos);
 	static void rotate(float angle);

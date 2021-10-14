@@ -8,7 +8,6 @@ int main()
 {
     MyGame* myGame = new MyGame();
     Window* window = new Window("Enschin", Dimension(800.0f, 600.0f), 0);
-    window->setVSync(false);
     GameScene* myScene = new GameScene();
     myGame->start(window, myScene);
 

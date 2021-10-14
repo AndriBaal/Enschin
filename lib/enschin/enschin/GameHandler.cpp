@@ -6,8 +6,7 @@ void GameHandler::start(Window* window, Scene* currentScene)
 {
 	this->currentScene = currentScene;
 	this->window = window;
-	this->renderer = renderer;
-	this->renderer->init(window);
+	Renderer::init(window->getSize());
 
 	GLFWwindow* glfw = window->getGlfw();
 

@@ -10,7 +10,6 @@ class GameHandler
 {
 protected:
 	Window* window;
-	Renderer* renderer;
 
 private:
 	long long firstTime, secondTime, lastTime;

@@ -39,7 +39,7 @@ Window::Window(std::string windowTitle, Dimension windowSize, bool fullScreen)
     glEnable(GL_TRIANGLES);
     glBlendFunc(GL_ONE, GL_ONE_MINUS_SRC_ALPHA);
     //glfwSetInputMode(window, GLFW_CURSOR, GLFW_CURSOR_HIDDEN);
-    //glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
+    glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
 
     this->windowSize = windowSize;
     this->fullScreen = fullScreen;
@@ -48,6 +48,12 @@ Window::Window(std::string windowTitle, Dimension windowSize, bool fullScreen)
     glfwSetCursorPosCallback(window, Mouse::updateCursor);
     glfwSetMouseButtonCallback(window, Mouse::updateButtons);
     glfwSetKeyCallback(window, Keyboard::update);
+    // glfwSetWindowSizeCallback(window, Window::windowSizeCallback);
+}
+
+GLFWwindowsizefun Window::windowSizeCallback(GLFWwindow* window, int width, int height)
+{
+
 }
 
 Dimension Window::getSize()
@@ -55,11 +61,11 @@ Dimension Window::getSize()
     return windowSize;
 }
 
-void Window::setSize(Dimension& newDim, Renderer& renderer)
+void Window::setSize(Dimension& newDim)
 {
     windowSize = newDim;
     glfwSetWindowSize(window, newDim.w, newDim.h);
-    renderer.resetProjection(this);
+    Renderer::resetProjection(windowSize);
 }
 
 void Window::setTitle(std::string title)
@@ -110,3 +116,4 @@ GLFWwindow* Window::getGlfw()
 {
     return this->window;
 }
+
