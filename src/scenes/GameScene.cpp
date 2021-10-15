@@ -2,25 +2,25 @@
 
 GameScene::GameScene()
 {
-    m = new Model(new float[24] {
-        -5.0f, -5.0f, 0.0f, 0.0f, // 0
-        5.0f, -5.0f, 0.0f, 0.0f, // 1
-        7.5f, 0.0f, 0.0f, 0.0f, // 2
-        5.0f, 5.0f, 0.0f, 0.0f, // 2
-        -5.0f, 5.0f, 0.0f, 0.0f,  // 3
-        -7.5f, 0.0f, 0.0f, 0.0f  // 3
-    }, 6, new unsigned int[12]{
-        1, 2, 3,
-        0, 4, 5,
-        0, 1, 3,
-        0, 4, 3
-    }, 12);
+    // m = new Model(new float[24] {
+    //     -5.0f, -5.0f, 0.0f, 0.0f, // 0
+    //     5.0f, -5.0f, 0.0f, 0.0f, // 1
+    //     7.5f, 0.0f, 0.0f, 0.0f, // 2
+    //     5.0f, 5.0f, 0.0f, 0.0f, // 2
+    //     -5.0f, 5.0f, 0.0f, 0.0f,  // 3
+    //     -7.5f, 0.0f, 0.0f, 0.0f  // 3
+    // }, 6, new unsigned int[12]{
+    //     1, 2, 3,
+    //     0, 4, 5,
+    //     0, 1, 3,
+    //     0, 4, 3
+    // }, 12);
 
     m1 = new Model(new float[24]{
-       -6.0f, -5.0f, 0.0f, 0.0f, // 0
-        5.0f, -5.0f, 1.0f, 0.0f, // 1
-        6.0f, 5.0f, 1.0f, 1.0f, // 2
-        -5.0f, 5.0f, 0.0f, 1.0f  // 3
+       -60.0f, -50.0f, // 0
+        50.0f, -50.0f,// 1
+        60.0f, 50.0f, // 2
+        -50.0f, 50.0f,// 3
     });
     // m = new Model(new float[20] {
     //     -5.0f, -0.5f, 0.0f, 0.0f, // 0
@@ -53,6 +53,6 @@ void GameScene::render()
 
     Renderer::translate({Mouse::getMousePos().x, Mouse::getMousePos().y});
     Color c = Color(0, 1, 0, 1);
-    Renderer::renderColor(*m1, c);
+    Renderer::renderTexture(*m1, *texi);
     Renderer::translate({Mouse::getMousePos().x*-1, Mouse::getMousePos().y*-1});
 }

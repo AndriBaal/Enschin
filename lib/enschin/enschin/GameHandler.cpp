@@ -19,18 +19,18 @@ void GameHandler::start(Window* window, Scene* currentScene)
 		deltaTime /= 1000000000.0f;
 		firstTime = getNanos();
 
+        glfwPollEvents();
 		process();
 		
 		fps++;
 		if (getNanos() > lastTime + 1000000000) 
 		{
-			std::cout << fps << std::endl;
+			//std::cout << fps << std::endl;
 			lastTime = getNanos();
 			fps = 0;
 		}
 
         glfwSwapBuffers(window->getGlfw());
-        glfwPollEvents();
     }
     glfwTerminate();
 	exit(0);

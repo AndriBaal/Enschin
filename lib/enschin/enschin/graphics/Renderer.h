@@ -2,14 +2,16 @@
 #include <gtc/matrix_transform.hpp>
 #include <glm.hpp>
 #include <enschin/graphics/Color.hpp>
-#include "Texture.h"
-#include "../input/Mouse.h"
-#include "ShaderProgram.h"
-#include "../math/Vectors.h"
+#include "../math/Vector2.h"
 #include "../math/Dimension.h"
-#include "Model.h"
-#include "Light.h"
+#include "../math/Physics.h"
+#include "../math/Ray.hpp"
+#include "../input/Mouse.h"
 #include "../objects/GameObject.h"
+#include "ShaderProgram.h"
+#include "Model.h"
+#include "Light.hpp"
+#include "Texture.h"
 
 class Renderer
 {
@@ -38,7 +40,7 @@ public:
 	static void renderColor(Model& model, Color& color);
 	static void renderTexture(Model& model, Texture& texture);
 	static void renderColoredTexture(Model& model, Texture& texture, Color& color);
-	static void renderRaytracing(Model& model, Light& light, std::vector<GameObject> objects);
+	static void renderRaytracing(Model& model, float vertices[], int amountOfVertices, Light& light, std::vector<GameObject> objects);
 
 	static float getRatio(){ return ratio; }
 	static float getUnits(){ return units; }

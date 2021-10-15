@@ -5,7 +5,7 @@
 #include <string>
 #include <iostream>
 #include "math/Dimension.h"
-#include "math/Vectors.h"
+#include "math/Vector2.h"
 #include "graphics/Color.hpp"
 #include "graphics/Renderer.h"
 #include "GameHandler.h"

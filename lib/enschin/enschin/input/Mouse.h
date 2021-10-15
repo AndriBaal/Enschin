@@ -1,5 +1,5 @@
 #pragma once
-#include "../math/Vectors.h"
+#include "../math/Vector2.h"
 #include "../Window.h"
 #include <iostream>
 #include <GLFW/glfw3.h>

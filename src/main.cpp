@@ -6,6 +6,7 @@
 
 int main()
 {
+
     MyGame* myGame = new MyGame();
     Window* window = new Window("Enschin", Dimension(800.0f, 600.0f), 0);
     GameScene* myScene = new GameScene();

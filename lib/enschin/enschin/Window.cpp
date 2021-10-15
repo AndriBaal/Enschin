@@ -39,7 +39,7 @@ Window::Window(std::string windowTitle, Dimension windowSize, bool fullScreen)
     glEnable(GL_TRIANGLES);
     glBlendFunc(GL_ONE, GL_ONE_MINUS_SRC_ALPHA);
     //glfwSetInputMode(window, GLFW_CURSOR, GLFW_CURSOR_HIDDEN);
-    glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
+    //glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
 
     this->windowSize = windowSize;
     this->fullScreen = fullScreen;

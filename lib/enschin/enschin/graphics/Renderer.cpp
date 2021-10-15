@@ -1,5 +1,4 @@
 #include "Renderer.h"
-#include <iostream>
 
 ShaderProgram* Renderer::colorProgram = NULL;
 ShaderProgram* Renderer::textureProgram = NULL;
@@ -43,7 +42,7 @@ void Renderer::renderColor(Model& model, Color& color)
     colorProgram->setUniformMat4f("u_MVP", *mvp);
     colorProgram->setColor("u_Color", color);
 
-    glDrawElements(GL_TRIANGLES, model.getAmountOfIndicies(), GL_UNSIGNED_INT, nullptr);
+    glDrawElements(GL_TRIANGLES, model.getAmountOfIndices(), GL_UNSIGNED_INT, nullptr);
 }
 
 void Renderer::renderTexture(Model& model, Texture& texture)
@@ -55,7 +54,7 @@ void Renderer::renderTexture(Model& model, Texture& texture)
     textureProgram->setUniform1i("u_Texture", 0);
     textureProgram->setUniformMat4f("u_MVP", *mvp);
 
-    glDrawElements(GL_TRIANGLES, model.getAmountOfIndicies(), GL_UNSIGNED_INT, nullptr);
+    glDrawElements(GL_TRIANGLES, model.getAmountOfIndices(), GL_UNSIGNED_INT, nullptr);
 }
 
 void Renderer::renderColoredTexture(Model& model, Texture& texture, Color& color)
@@ -67,12 +66,22 @@ void Renderer::renderColoredTexture(Model& model, Texture& texture, Color& color
     coloredTextureProgram->setUniform1i("u_Texture", 0);
     coloredTextureProgram->setUniformMat4f("u_MVP", *mvp);
     coloredTextureProgram->setColor("u_Color", color);
-    glDrawElements(GL_TRIANGLES, model.getAmountOfIndicies(), GL_UNSIGNED_INT, nullptr);
+    glDrawElements(GL_TRIANGLES, model.getAmountOfIndices(), GL_UNSIGNED_INT, nullptr);
 }
 
-void Renderer::renderRaytracing(Model& model, Light& light, std::vector<GameObject> objects)
+void Renderer::renderRaytracing(Model& model, float vertices[], int amountOfVertices, Light& light, std::vector<GameObject> objects)
 {
-    
+    std::vector<Ray> intersectingLines = std::vector<Ray>();
+    for(std::vector<GameObject>::iterator it = objects.begin(); it != objects.end(); it++) 
+    {
+        for(int i = 0; i < amountOfVertices; i++) 
+        {
+            // if (Physics::isLineIntersecting(it., )
+            // {
+            // }
+        }
+    }
+
 }
 
 // void Renderer::translateAndRender(){
