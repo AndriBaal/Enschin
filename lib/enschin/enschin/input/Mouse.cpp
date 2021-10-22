@@ -1,6 +1,6 @@
 #include "Mouse.h"
 
-Vector2 Mouse::mousePos = Vector2();
+Vec2 Mouse::mousePos = Vec2();
 
 bool Mouse::buttons[] = {};
 float Mouse::units = 0;
@@ -24,10 +24,10 @@ bool Mouse::isButtonPressed(int button)
 	return buttons[button];
 }
 
-Vector2 Mouse::translateMousePosition(double x, double y, int windowX, int windowY)
+Vec2 Mouse::translateMousePosition(double x, double y, int windowX, int windowY)
 {
 	float ratio = windowX / float(windowY);
 	float newX = (float(x)/windowX*2.0f*units-units)*ratio;
 	float newY = -float(y)/windowY*2.0f*units+units;
-	return Vector2(newX, newY);
+	return Vec2(newX, newY);
 }

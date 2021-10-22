@@ -1,5 +1,5 @@
 #include "player.h"
 
-Player::Player(std::string tag, Vector2 pos, Dimension dim, Vector2 dir):Entity(tag, pos, dim, dir){
+Player::Player(std::string tag, Vec2 pos, Dim dim, Vec2 dir):Entity(tag, pos, dim, dir){
 
 }

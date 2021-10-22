@@ -52,7 +52,9 @@ void GameScene::render()
     // renderer.renderColor(*m, {0, 1, 1, 1});
 
     Renderer::translate({Mouse::getMousePos().x, Mouse::getMousePos().y});
+    //Renderer::rotate(45.0f);
     Color c = Color(0, 1, 0, 1);
     Renderer::renderTexture(*m1, *texi);
+    //Renderer::rotate(45.0f);
     Renderer::translate({Mouse::getMousePos().x*-1, Mouse::getMousePos().y*-1});
 }

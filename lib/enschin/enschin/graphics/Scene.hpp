@@ -1,6 +1,5 @@
 #pragma once
 
-class Renderer;
 class Scene
 {
 private:

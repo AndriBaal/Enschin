@@ -1,13 +1,13 @@
 #pragma once
-#include "../math/Vector2.h"
-#include "../math/Dimension.h"
+#include "../math/Vec2.h"
+#include "../math/Dim.h"
 
 class GameObject{
 private:
 
 public:
-	Vector2 pos;
-	Vector2 dir;
-    Dimension dim;
-    GameObject(Vector2 pos = {}, Dimension dim = {}, Vector2 dir = {}): pos(pos), dim(dim), dir(dir) {}
+	Vec2 pos;
+	Vec2 dir;
+    Dim dim;
+    GameObject(Vec2 pos = {}, Dim dim = {}, Vec2 dir = {}): pos(pos), dim(dim), dir(dir) {}
 };

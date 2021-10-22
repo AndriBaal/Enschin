@@ -5,7 +5,6 @@
 #include "graphics/Renderer.h"
 
 class Window;
-class Renderer;
 class GameHandler
 {
 protected:

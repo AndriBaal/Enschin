@@ -1,8 +1,8 @@
 #pragma once
-#include "Vector2.h"
-#include "Dimension.h"
+#include "Vec2.h"
+#include "Dim.h"
 
 namespace Physics
 {
-    bool isLineIntersecting(Vector2 a, Vector2 b, Vector2 c, Vector2 d);
+    bool isLineIntersecting(Vec2 a, Vec2 b, Vec2 c, Vec2 d);
 }

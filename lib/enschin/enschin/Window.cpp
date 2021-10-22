@@ -1,6 +1,6 @@
 #include "Window.h"
 
-Window::Window(std::string windowTitle, Dimension windowSize, bool fullScreen)
+Window::Window(std::string windowTitle, Dim windowSize, bool fullScreen)
 {
     if (!glfwInit()) exit(0);
     const GLFWvidmode* mode = glfwGetVideoMode(glfwGetPrimaryMonitor());
@@ -14,7 +14,7 @@ Window::Window(std::string windowTitle, Dimension windowSize, bool fullScreen)
     glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 3);
     glfwWindowHint(GLFW_OPENGL_FORWARD_COMPAT, GL_TRUE); // To make MacOS happy; should not be needed
     glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);*/
-    glfwWindowHint(GLFW_RESIZABLE, GL_FALSE);
+    //glfwWindowHint(GLFW_RESIZABLE, GL_FALSE);
 
     if (fullScreen) 
     {
@@ -48,24 +48,24 @@ Window::Window(std::string windowTitle, Dimension windowSize, bool fullScreen)
     glfwSetCursorPosCallback(window, Mouse::updateCursor);
     glfwSetMouseButtonCallback(window, Mouse::updateButtons);
     glfwSetKeyCallback(window, Keyboard::update);
-    // glfwSetWindowSizeCallback(window, Window::windowSizeCallback);
+    glfwSetWindowSizeCallback(window, windowSizeCallback);
 }
 
-GLFWwindowsizefun Window::windowSizeCallback(GLFWwindow* window, int width, int height)
+void Window::windowSizeCallback(GLFWwindow* window, int width, int height)
 {
-
+    glViewport(0, 0, width, height);
+    Renderer::resetProjection(Dim(width, height));
 }
 
-Dimension Window::getSize()
+Dim Window::getSize()
 {
     return windowSize;
 }
 
-void Window::setSize(Dimension& newDim)
+void Window::setSize(Dim& newDim)
 {
     windowSize = newDim;
     glfwSetWindowSize(window, newDim.w, newDim.h);
-    Renderer::resetProjection(windowSize);
 }
 
 void Window::setTitle(std::string title)

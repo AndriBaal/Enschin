@@ -20,7 +20,7 @@ private:
 	Texture* texi;
 	std::vector<Entity> entities;
 
-	Vector2* mousePos = new Vector2();
+	Vec2* mousePos = new Vec2();
 public:
 	GameScene();
 	virtual void update() override;

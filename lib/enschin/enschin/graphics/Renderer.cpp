@@ -11,18 +11,13 @@ glm::mat4* Renderer::mvp = NULL;
 float Renderer::ratio = 0;
 float Renderer::units = 0;
 
-void Renderer::init(Dimension windowSize, float units)
+void Renderer::init(Dim windowSize, float units)
 {
     initShaderPrograms();
 
-    ratio = windowSize.getRatioWH();
-    units = 100;
+    Renderer::units = 100;
     Mouse::setUnits(units);
-    Renderer::proj = new glm::mat4(glm::ortho(-ratio * units, ratio * units, -units, units, -units, units));
-    glm::mat4 ident = glm::mat4(1.0f);
-    glm::vec3 trvec = glm::vec3(0, 0, 0);
-    Renderer::view = new glm::mat4(glm::translate(ident, trvec));
-    Renderer::mvp = new glm::mat4((*proj * *view * glm::translate(glm::mat4(1.0f), glm::vec3(0, 0, 0))));
+    resetProjection(windowSize);
 }
 
 void Renderer::initShaderPrograms()
@@ -88,34 +83,33 @@ void Renderer::renderRaytracing(Model& model, float vertices[], int amountOfVert
 
 // }
 
-void Renderer::absoluteTranslate(Vector2 pos){
-    Renderer::mvp = new glm::mat4((*proj * *view * glm::translate(glm::mat4(1.0f), glm::vec3(pos.x, pos.y, 0))));
+void Renderer::absoluteTranslate(Vec2 pos){
+    //Renderer::mvp = new glm::mat4((*proj * *view * glm::translate(glm::mat4(1.0f), glm::vec3(pos.x, pos.y, 0))));
 }
 
-void Renderer::translate(Vector2 pos)
+void Renderer::translate(Vec2 pos)
 {
-    Renderer::mvp = new glm::mat4((*mvp * glm::translate(glm::mat4(1.0f), glm::vec3(pos.x, pos.y, 0))));
+    Renderer::mvp = new glm::mat4(glm::translate(*mvp, glm::vec3(pos.x, pos.y, 0)));
 }
 
 void Renderer::rotate(float angle)
 {
-
+    Renderer::mvp = new glm::mat4(glm::rotate(*mvp, glm::radians(angle), glm::vec3(0.0f, 0.0f, 0.0f)));
 }
 
-void Renderer::scale(Vector2 scaling)
+void Renderer::scale(Vec2 scaling)
 {
 
 }
 
-void Renderer::apply()
-{
-
-}
-
-void Renderer::resetProjection(Dimension& windowSize)
+void Renderer::resetProjection(Dim windowSize)
 {
     ratio = windowSize.getRatioWH();
-    Mouse::setUnits(units);
-    Renderer::proj = new glm::mat4(glm::ortho(-ratio * units, ratio * units, -units, units, -10.0f, 10.0f));
-    Renderer::mvp = new glm::mat4((*proj * *view * glm::translate(glm::mat4(1.0f), glm::vec3(0, 0, 0))));
+    proj = new glm::mat4(glm::ortho(-ratio * units, ratio * units, -units, units, -units, units));
+    glm::mat4 ident = glm::mat4(1.0f);
+    glm::vec3 trvec = glm::vec3(0, 0, 0);
+    view = new glm::mat4(glm::translate(ident, trvec));
+    mvp = new glm::mat4((*proj * *view * glm::translate(glm::mat4(1.0f), glm::vec3(0, 0, 0))));
+
+
 }

@@ -1,7 +1,7 @@
 #include "Physics.h"
 
 
-bool Physics::isLineIntersecting(Vector2 a, Vector2 b, Vector2 c, Vector2 d)
+bool Physics::isLineIntersecting(Vec2 a, Vec2 b, Vec2 c, Vec2 d)
 {
     float denominator = ((b.x - a.x) * (d.y - c.y)) - ((b.y - a.y) * (d.x - c.x));
     float numerator1 = ((a.y - c.y) * (d.x - c.x)) - ((a.x - c.x) * (d.y - c.y));

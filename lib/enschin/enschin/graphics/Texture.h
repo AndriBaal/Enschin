@@ -1,7 +1,7 @@
 #pragma once
 
 #include <GL/glew.h>
-#include "../math/Dimension.h"
+#include "../math/Dim.h"
 #include <string>
 #include "../../../dep/stb/stb_image.h"
 
@@ -11,7 +11,7 @@ private:
     unsigned int textureId;
     std::string filePath;
     unsigned char* localBuffer;
-    Dimension size;
+    Dim size;
     int BPP; //Bits per Pixel1
 
 public:

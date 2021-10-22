@@ -1,7 +1,7 @@
 #pragma once
 #include <string>
-#include "../math/Dimension.h"
-#include "../math/Vector2.h"
+#include "../math/Dim.h"
+#include "../math/Vec2.h"
 #include <iostream>
 
 class Entity
@@ -11,10 +11,10 @@ private:
 	float health;
 	float maxHealth;
 public:
-	Vector2 pos;
-	Vector2 dir;
-	Dimension dim;
-	Entity(std::string tag, Vector2 pos = {}, Dimension dim = {}, Vector2 dir = {});
+	Vec2 pos;
+	Vec2 dir;
+	Dim dim;
+	Entity(std::string tag, Vec2 pos = {}, Dim dim = {}, Vec2 dir = {});
 	~Entity();
 	virtual void update() = 0;
 	virtual void render() = 0;
