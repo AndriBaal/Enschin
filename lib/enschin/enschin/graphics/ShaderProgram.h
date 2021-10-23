@@ -8,7 +8,6 @@
 #include <sstream>
 #include <malloc.h>
 #include <GL/glew.h>
-#include <glm.hpp>
 #include <enschin/graphics/Color.hpp>
 
 class ShaderProgram
@@ -29,7 +28,7 @@ public:
     void setUniform1f(const std::string& name, float value);
     void setUniform4f(const std::string& name, float f0, float f1, float f2, float f3);
     void setColor(const std::string& name, const Color& color);
-    void setUniformMat4f(const std::string& name, const glm::mat4& matrix);
+    void setUniformMat4f(const std::string& name, const float matrix[]);
 
 private:
     int getUniformLocation(const std::string& name);

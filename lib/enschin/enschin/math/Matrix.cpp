@@ -1,27 +1,35 @@
 #include "Matrix.h"
 
-void multiply(float result[], int resultOffset, float lhs[], int lhsOffset, float rhs[], int rhsOffset)
+void Matrix::multiply(float result[], float lhs[],  float rhs[])
 {
-
+    for (int i = 0; i < 15; i+= 4)
+    {
+        for(int j = 0; j < 4; j++)
+        {
+            result[i+j] = lhs[i] * rhs[j] +
+                        lhs[i+1] * rhs[4+j] +
+                        lhs[i+2] * rhs[8+j] +
+                        lhs[i+3] * rhs[12+j];
+        }
+    }
 }
 
 void Matrix::rotate(float m[], int mOffset, float a, float x, float y, float z)
 {
-    setRotateM(sTemp, 0, a, x, y, z);
-    multiplyMM(sTemp, 16, m, mOffset, sTemp, 0);
-    
-    const int arr_size = 16;
+    float sTemp[16] = {0};
+    setRotate(sTemp, 0, a, x, y, z);
+    multiply(sTemp, m, sTemp);
 
-    some_type dest[arr_size];
-    std::copy(std::begin(sTemp), std::end(sTemp), std::begin(m));
+    std::copy(sTemp,sTemp + 4, m);
 }
 
-void Matrix::setRotateM(float rm[], int rmOffset, float a, float x, float y, float z)
+void Matrix::setRotate(float rm[], int rmOffset, float a, float x, float y, float z)
 {
     rm[rmOffset + 3] = 0;
     rm[rmOffset + 7] = 0;
     rm[rmOffset + 11]= 0;
     rm[rmOffset + 12]= 0;
+
     rm[rmOffset + 13]= 0;
     rm[rmOffset + 14]= 0;
     rm[rmOffset + 15]= 1;
@@ -126,7 +134,36 @@ void Matrix::frustum(float m[], int offset, float left, float right, float botto
     m[offset + 15] = 0.0f;
 }
 
-void Matrix::setLookAtM(float rm[], int rmOffset,
+void Matrix::ortho(float m[], int mOffset, float left, float right, float bottom, float top, float near, float far)
+{
+    const float r_width  = 1.0f / (right - left);
+    const float r_height = 1.0f / (top - bottom);
+    const float r_depth  = 1.0f / (far - near);
+    const float x =  2.0f * (r_width);
+    const float y =  2.0f * (r_height);
+    const float z = -2.0f * (r_depth);
+    const float tx = -(right + left) * r_width;
+    const float ty = -(top + bottom) * r_height;
+    const float tz = -(far + near) * r_depth;
+    m[mOffset + 0] = x;
+    m[mOffset + 5] = y;
+    m[mOffset +10] = z;
+    m[mOffset +12] = tx;
+    m[mOffset +13] = ty;
+    m[mOffset +14] = tz;
+    m[mOffset +15] = 1.0f;
+    m[mOffset + 1] = 0.0f;
+    m[mOffset + 2] = 0.0f;
+    m[mOffset + 3] = 0.0f;
+    m[mOffset + 4] = 0.0f;
+    m[mOffset + 6] = 0.0f;
+    m[mOffset + 7] = 0.0f;
+    m[mOffset + 8] = 0.0f;
+    m[mOffset + 9] = 0.0f;
+    m[mOffset + 11] = 0.0f;
+}
+
+void Matrix::setLookAt(float rm[], int rmOffset,
     float eyeX, float eyeY, float eyeZ, 
     float centerX, float centerY, float centerZ, 
     float upX, float upY, float upZ)

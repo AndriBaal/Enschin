@@ -142,7 +142,7 @@ void ShaderProgram::setColor(const std::string& name, const Color& color)
     glUniform4f(getUniformLocation(name), color.r, color.g, color.b, color.a);
 }
 
-void ShaderProgram::setUniformMat4f(const std::string& name, const glm::mat4& matrix)
+void ShaderProgram::setUniformMat4f(const std::string& name, const float matrix[])
 {
-    glUniformMatrix4fv(getUniformLocation(name), 1, GL_FALSE, &matrix[0][0]);
+    glUniformMatrix4fv(getUniformLocation(name), 1, GL_FALSE, &matrix[0]);
 }

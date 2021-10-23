@@ -1,5 +1,0 @@
-C:/Users/Andri Baal/source/repos/Shuray04/DungeonGame/DungeonGame/headers/glm/out/build/x64-Debug/CMakeFiles/install/local.dir
-C:/Users/Andri Baal/source/repos/Shuray04/DungeonGame/DungeonGame/headers/glm/out/build/x64-Debug/CMakeFiles/install.dir
-C:/Users/Andri Baal/source/repos/Shuray04/DungeonGame/DungeonGame/headers/glm/out/build/x64-Debug/CMakeFiles/edit_cache.dir
-C:/Users/Andri Baal/source/repos/Shuray04/DungeonGame/DungeonGame/headers/glm/out/build/x64-Debug/CMakeFiles/rebuild_cache.dir
-C:/Users/Andri Baal/source/repos/Shuray04/DungeonGame/DungeonGame/headers/glm/out/build/x64-Debug/CMakeFiles/list_install_components.dir

@@ -17,9 +17,9 @@ GameScene::GameScene()
     // }, 12);
 
     m1 = new Model(new float[24]{
-       -60.0f, -50.0f, // 0
+       -50.0f, -50.0f, // 0
         50.0f, -50.0f,// 1
-        60.0f, 50.0f, // 2
+        50.0f, 50.0f, // 2
         -50.0f, 50.0f,// 3
     });
     // m = new Model(new float[20] {
@@ -51,10 +51,11 @@ void GameScene::render()
     // renderer.absoluteTranslate({1, 0});
     // renderer.renderColor(*m, {0, 1, 1, 1});
 
-    Renderer::translate({Mouse::getMousePos().x, Mouse::getMousePos().y});
+    Renderer::translate({.500f, .500f});
     //Renderer::rotate(45.0f);
+    //std::cout << "MouseX: " << Mouse::getMousePos().x << "Mouse y: " << Mouse::getMousePos().y << std::endl;
     Color c = Color(0, 1, 0, 1);
     Renderer::renderTexture(*m1, *texi);
-    //Renderer::rotate(45.0f);
-    Renderer::translate({Mouse::getMousePos().x*-1, Mouse::getMousePos().y*-1});
+    //Renderer::rotate(-45.0f);
+    Renderer::translate({-.500f, -.500f});
 }
