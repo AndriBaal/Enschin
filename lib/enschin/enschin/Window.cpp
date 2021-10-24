@@ -5,6 +5,10 @@ Window::Window(std::string windowTitle, Dim windowSize, bool fullScreen)
     if (!glfwInit()) exit(0);
     const GLFWvidmode* mode = glfwGetVideoMode(glfwGetPrimaryMonitor());
 
+    glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 3);
+    glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 3);
+    glfwWindowHint(GLFW_OPENGL_FORWARD_COMPAT, GL_TRUE);
+    
     /*glfwWindowHint(GLFW_RED_BITS, mode->redBits);
     glfwWindowHint(GLFW_GREEN_BITS, mode->greenBits);
     glfwWindowHint(GLFW_BLUE_BITS, mode->blueBits);
