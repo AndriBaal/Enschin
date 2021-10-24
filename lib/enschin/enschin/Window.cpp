@@ -57,7 +57,7 @@ Window::Window(std::string windowTitle, Dim windowSize, bool fullScreen)
 
 void Window::windowSizeCallback(GLFWwindow* window, int width, int height)
 {
-    //glViewport(0, 0, width, height);
+    glViewport(0, 0, width, height);
     Renderer::resetProjection(Dim(width, height));
 }
 
