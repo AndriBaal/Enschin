@@ -12,7 +12,7 @@ private:
 public:
     /** Temporary memory for operations that need temporary matrix data. */
     static void multiply(float result[], float lhs[], float rhs[]);
-    
+    static void copyMatrix(float dest[], float src[], int size);
     static void translate(float m[], int mOffset, float x, float y, float z);
     static void rotate(float m[], int mOffset, float a, float x, float y, float z);
     static void setRotate(float rm[], int rmOffset, float a, float x, float y, float z);

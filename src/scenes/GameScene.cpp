@@ -50,7 +50,7 @@ void GameScene::render()
 
     // renderer.absoluteTranslate({1, 0});
     // renderer.renderColor(*m, {0, 1, 1, 1});
-    Renderer::resetMatrix();
+    //Renderer::resetMatrix();
 
     Renderer::translate(Mouse::getMousePos());
     Renderer::rotate(45.0f);
@@ -60,7 +60,7 @@ void GameScene::render()
     Renderer::rotate(-45.0f);
     Renderer::translate({-Mouse::getMousePos().x, -Mouse::getMousePos().y});
 
-    Renderer::resetMatrix();
+    //Renderer::resetMatrix();
 
     Renderer::translate({-0.5f, -0.5f});
     Renderer::rotate(45.0f);

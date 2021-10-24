@@ -95,20 +95,7 @@ void Renderer::translate(Vec2 pos)
 
 void Renderer::rotate(float angle)
 {
-    // Matrix::rotate(view, 0, angle, 0.0f, 0.0f, 1.0f);
-    // Matrix::multiply(mvp, view, proj);
-    static bool test = true;
-
-    float sTemp[16] = {0.0f};
-    Matrix::setRotate(sTemp, 0, angle, 0.0f, 0.0f, -1.0f);
-    Matrix::multiply(sTemp, sTemp, view);
-    
-    test=!test;
-    for (int i = 0; i < 16; i++)
-    {
-        view[i] = sTemp[i];
-    }
-
+    Matrix::rotate(view, 0, angle, 0.0f, 0.0f, -1.0f);
     Matrix::multiply(mvp, view, proj);
 }
 

@@ -1,7 +1,7 @@
 Enschin:
 	- animations
 	- timers
-	- Make window static
+	- Renderer not static
 	- functiion parameters:
 		- no x / y only vec2
 		- dim for model creation

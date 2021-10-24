@@ -2,31 +2,32 @@
 
 void Matrix::multiply(float result[], float lhs[],  float rhs[])
 {
+    float lhsc[16], rhsc[16] = {};
+    copyMatrix(lhsc, lhs, 16);
+    copyMatrix(rhsc, rhs, 16);
     for (int i = 0; i < 16; i+= 4)
     {
         for(int j = 0; j < 4; j++)
         {
-            result[i+j] = lhs[i] * rhs[j] +
-                        lhs[i+1] * rhs[4+j] +
-                        lhs[i+2] * rhs[8+j] +
-                        lhs[i+3] * rhs[12+j];
+            result[i+j] = lhsc[i] * rhsc[j] +
+                        lhsc[i+1] * rhsc[4+j] +
+                        lhsc[i+2] * rhsc[8+j] +
+                        lhsc[i+3] * rhsc[12+j];
         }
+    }
+}
+
+void Matrix::copyMatrix(float dest[], float src[], int size) {
+    for (int i = 0; i < size; i++)
+    {
+        dest[i] = src[i];
     }
 }
 void Matrix::rotate(float m[], int mOffset, float a, float x, float y, float z)
 {
-    // float sTemp[16] = {0};
-    // setRotate(sTemp, 0, a, x, y, z);
-    // multiply(sTemp, sTemp, m);
-    // printMatrixAsWurst(sTemp);
-    // for (int i = 0; i < 16; i++)
-    // {
-    //     m[i] = sTemp[i];
-    // }
-    
-    float sTemp[16] = {};
-    setRotate(sTemp, 0, a, x, y, z);
-    multiply(sTemp, sTemp, m);
+    float sTemp[16] = {0.0f};
+    Matrix::setRotate(sTemp, 0, a, x, y, z);
+    Matrix::multiply(sTemp, sTemp, m);
     for (int i = 0; i < 16; i++)
     {
         m[i] = sTemp[i];
