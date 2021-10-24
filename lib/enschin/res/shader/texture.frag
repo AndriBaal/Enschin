@@ -1,6 +1,6 @@
 #version 330 core
-precision mediump float;
 in vec2 v_TexCoord;
+layout(location = 0) out vec4 color;
 uniform sampler2D u_Texture;
 
 void main()
