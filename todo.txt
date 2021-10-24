@@ -1,0 +1,15 @@
+Enschin:
+	- animations
+	- timers
+	- Make window static
+	- functiion parameters:
+		- no x / y only vec2
+		- dim for model creation
+	- Code revision:
+		- Stack heap allocation
+		- Documentation
+		- unnecassary includes
+		- Curly braclets like java
+	- Git
+		- Readme
+		- License

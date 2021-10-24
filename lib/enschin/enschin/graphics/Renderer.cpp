@@ -83,21 +83,33 @@ void Renderer::renderRaytracing(Model& model, float vertices[], int amountOfVert
 
 // }
 
-void Renderer::absoluteTranslate(Vec2 pos){
-    //Renderer::mvp = new glm::mat4((*proj * *view * glm::translate(glm::mat4(1.0f), glm::vec3(pos.x, pos.y, 0))));
+void Renderer::absoluteTranslate(Vec2 pos){ 
+
 }
 
 void Renderer::translate(Vec2 pos)
 {
     Matrix::translate(view, 0, pos.x, pos.y, 0);
-    Matrix::multiply(mvp, proj, view);
+    Matrix::multiply(mvp, view, proj);
 }
 
 void Renderer::rotate(float angle)
 {
-    Matrix::rotate(view, 0.0f, angle, 1.0f, 0.0f, 0.0f);
-    Matrix::multiply(mvp, proj, view);
-    //Renderer::mvp = new glm::mat4(glm::rotate(*mvp, glm::radians(angle), glm::vec3(0.0f, 0.0f, 0.0f)));
+    // Matrix::rotate(view, 0, angle, 0.0f, 0.0f, 1.0f);
+    // Matrix::multiply(mvp, view, proj);
+    static bool test = true;
+
+    float sTemp[16] = {0.0f};
+    Matrix::setRotate(sTemp, 0, angle, 0.0f, 0.0f, -1.0f);
+    Matrix::multiply(sTemp, sTemp, view);
+    
+    test=!test;
+    for (int i = 0; i < 16; i++)
+    {
+        view[i] = sTemp[i];
+    }
+
+    Matrix::multiply(mvp, view, proj);
 }
 
 void Renderer::scale(Vec2 scaling)
@@ -108,47 +120,14 @@ void Renderer::scale(Vec2 scaling)
 void Renderer::resetProjection(Dim windowSize)
 {
     ratio = windowSize.getRatioWH();
-
-    // Matrix::frustum(proj, 0, -ratio * units, ratio * units, -units, units, -units, units);
-    // Matrix::setLookAt(view, 0, 0, 0, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f);
-    // apply();
-
-
-    // for (int i = 0; i < 16; i++){
-    //     mvp[i] = 0;
-    // }
-    // mvp[0] = 0.01f;
-    // mvp[5] = 0.01f;
-    // mvp[10] = -0.01f;
-    // mvp[15] = 1.00f;
-
-    // proj = new glm::mat4(glm::ortho(-ratio * units, ratio * units, -units, units, -units, units));
-    // glm::mat4 ident = glm::mat4(1.0f);
-    // glm::vec3 trvec = glm::vec3(0, 0, 0);
-    // view = new glm::mat4(glm::translate(ident, trvec));
-    // mvp = new glm::mat4((*proj * *view * glm::translate(glm::mat4(1.0f), glm::vec3(0, 0, 0))));
-
-    std::cout << units << std::endl;
-
-    Matrix::ortho(proj, 0, -ratio * units, ratio * units, -units, units, -units, units);
-    float test[16] = {1.0f};
-    Matrix::translate(test, 0, 0, 0, 0);
-    printMatrix(test);
-    //Matrix::translate(view, 0, 0, 0, 0);
-    for (int i = 0; i < 16; i+=5){ view[i] = 1.0f; }
-    Matrix::multiply(mvp, proj, test);
-    //Matrix::multiply(mvp, test, view);
+    Matrix::frustum(proj, 0, ratio, -ratio, -1.0f, 1.0f, 3.0f, 7.0f);
+    resetMatrix();
 }
 
-void Renderer::printMatrix(float matrix[])
+void Renderer::resetMatrix()
 {
-    for (int i = 0; i < 4; i++)
-    {
-        std::cout
-        << matrix[i*4] << "\t"
-        << matrix[i*4+1] << "\t"
-        << matrix[i*4+2] << "\t"
-        << matrix[i*4+3] << "\t"
-        << std::endl;
-    }
+    Matrix::setLookAt(view, 0.0f, 0.0f, 0.0f, -3.0f, 0.0f, 0.0f, 0.0f, 0.0f, 1.0f, 0.0f);
+    Matrix::multiply(mvp, view, proj);
+
 }
+

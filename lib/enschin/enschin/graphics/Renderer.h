@@ -28,12 +28,12 @@ private:
 	static ShaderProgram* coloredTextureProgram;
 
 	static void initShaderPrograms();
-	static void printMatrix(float matrix[]);
 	static float ratio;
 	static float units;
 public:
 	static void init(Dim windowSize, float units=1);
 	static void resetProjection(Dim windowDim);
+	static void resetMatrix();
 	static void absoluteTranslate(Vec2 pos);
 	static void translate(Vec2 pos);
 	static void rotate(float angle);

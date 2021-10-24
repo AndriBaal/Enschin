@@ -26,8 +26,8 @@ bool Mouse::isButtonPressed(int button)
 
 Vec2 Mouse::translateMousePosition(double x, double y, int windowX, int windowY)
 {
-	float ratio = windowX / float(windowY);
-	float newX = (float(x)/windowX*2.0f*units-units);
-	float newY = -float(y)/windowY*2.0f*units+units;
-	return Vec2(newX, newY);
+	return Vec2(
+		(float(x)/windowX*2.0f*units-units) * (windowX / float(windowY)),
+		-float(y)/windowY*2.0f*units+units
+	);
 }

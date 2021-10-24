@@ -2,7 +2,7 @@
 
 void Matrix::multiply(float result[], float lhs[],  float rhs[])
 {
-    for (int i = 0; i < 15; i+= 4)
+    for (int i = 0; i < 16; i+= 4)
     {
         for(int j = 0; j < 4; j++)
         {
@@ -13,14 +13,24 @@ void Matrix::multiply(float result[], float lhs[],  float rhs[])
         }
     }
 }
-
 void Matrix::rotate(float m[], int mOffset, float a, float x, float y, float z)
 {
-    float sTemp[16] = {0};
+    // float sTemp[16] = {0};
+    // setRotate(sTemp, 0, a, x, y, z);
+    // multiply(sTemp, sTemp, m);
+    // printMatrixAsWurst(sTemp);
+    // for (int i = 0; i < 16; i++)
+    // {
+    //     m[i] = sTemp[i];
+    // }
+    
+    float sTemp[16] = {};
     setRotate(sTemp, 0, a, x, y, z);
-    multiply(sTemp, m, sTemp);
-
-    std::copy(sTemp,sTemp + 4, m);
+    multiply(sTemp, sTemp, m);
+    for (int i = 0; i < 16; i++)
+    {
+        m[i] = sTemp[i];
+    }
 }
 
 void Matrix::setRotate(float rm[], int rmOffset, float a, float x, float y, float z)
@@ -29,7 +39,6 @@ void Matrix::setRotate(float rm[], int rmOffset, float a, float x, float y, floa
     rm[rmOffset + 7] = 0;
     rm[rmOffset + 11]= 0;
     rm[rmOffset + 12]= 0;
-
     rm[rmOffset + 13]= 0;
     rm[rmOffset + 14]= 0;
     rm[rmOffset + 15]= 1;
@@ -107,15 +116,15 @@ void Matrix::scale(float m[], int mOffset, float x, float y, float z)
 
 void Matrix::frustum(float m[], int offset, float left, float right, float bottom, float top, float near, float far)
 {
-    const float r_width  = 1.0f / (right - left);
-    const float r_height = 1.0f / (top - bottom);
-    const float r_depth  = 1.0f / (near - far);
-    const float x = 2.0f * (near * r_width);
-    const float y = 2.0f * (near * r_height);
-    const float A = (right + left) * r_width;
-    const float B = (top + bottom) * r_height;
-    const float C = (far + near) * r_depth;
-    const float D = 2.0f * (far * near * r_depth);
+    float r_width  = 1.0f / (right - left);
+    float r_height = 1.0f / (top - bottom);
+    float r_depth  = 1.0f / (near - far);
+    float x = 2.0f * (near * r_width);
+    float y = 2.0f * (near * r_height);
+    float A = (right + left) * r_width;
+    float B = (top + bottom) * r_height;
+    float C = (far + near) * r_depth;
+    float D = 2.0f * (far * near * r_depth);
     m[offset + 0] = x;
     m[offset + 5] = y;
     m[offset + 8] = A;
@@ -208,4 +217,28 @@ void Matrix::setLookAt(float rm[], int rmOffset,
     rm[rmOffset + 14] = 0.0f;
     rm[rmOffset + 15] = 1.0f;
     translate(rm, rmOffset, -eyeX, -eyeY, -eyeZ);
+}
+
+void Matrix::printMatrix(float matrix[])
+{
+    std::cout << "Matrix: " << std::endl;
+    for (int i = 0; i < 4; i++)
+    {
+        std::cout
+        << matrix[i*4] << "\t"
+        << matrix[i*4+1] << "\t"
+        << matrix[i*4+2] << "\t"
+        << matrix[i*4+3] << "\t"
+        << std::endl;
+    }
+}
+
+void Matrix::printMatrixAsWurst(float matrix[])
+{
+    std::cout << "Matrix as Wurst: " << std::endl;
+    for (int i = 0; i < 16; i++)
+    {
+        std::cout << " " << matrix[i];
+    }
+    std::cout << std::endl;
 }

@@ -41,6 +41,10 @@ Window::Window(std::string windowTitle, Dim windowSize, bool fullScreen)
     //glfwSetInputMode(window, GLFW_CURSOR, GLFW_CURSOR_HIDDEN);
     //glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
 
+    int w, h = 0;
+    glfwGetWindowSize(window, &w, &h);
+    windowSize.w = w;
+    windowSize.h = h;
     this->windowSize = windowSize;
     this->fullScreen = fullScreen;
     this->windowTitle = windowTitle;
@@ -53,7 +57,7 @@ Window::Window(std::string windowTitle, Dim windowSize, bool fullScreen)
 
 void Window::windowSizeCallback(GLFWwindow* window, int width, int height)
 {
-    glViewport(0, 0, width, height);
+    //glViewport(0, 0, width, height);
     Renderer::resetProjection(Dim(width, height));
 }
 

@@ -1,12 +1,10 @@
 #include "GameHandler.h"
 
-
-
 void GameHandler::start(Window* window, Scene* currentScene)
 {
 	this->currentScene = currentScene;
 	this->window = window;
-	Renderer::init(window->getSize(), 100.0f);
+	Renderer::init(window->getSize(), 1.0f);
 
 	GLFWwindow* glfw = window->getGlfw();
 
@@ -30,7 +28,7 @@ void GameHandler::start(Window* window, Scene* currentScene)
 			fps = 0;
 		}
 
-        glfwSwapBuffers(window->getGlfw());
+        glfwSwapBuffers(glfw);
     }
     glfwTerminate();
 	exit(0);
