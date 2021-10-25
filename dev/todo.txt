@@ -1,0 +1,56 @@
+- TODO
+/ FINISHED
+? IDEA
+$ FAR FUTURE
+! IMPORTANT
+
+
+Enschin:
+	? Renderer not static
+	? Everything passed by one big refrence to update / render
+	- Refactor GameHandler to Game
+		- Refactor proccess to loop
+		? add start function
+	- bring units back
+	- new game structure
+	- Scenes memory load & deload functions
+	/ Linux compile errors fix
+	- Model create by dimension
+!	- Vec2 & Vec3 operators
+	- C++ call super method
+	- Colored texture shader fix
+	- Draw part of a Model shader
+	- Texture not a refrence because the low memory size
+	$ Settings system
+	$ Cross plattform, android, apple, etc...
+	? size mulitplier for entities ()
+	? Load everything from json (models, textures, etc...)
+	? Shaderprogram class for 3rd party shaders evtl. json file
+	- math
+		- matrix parameters:
+			- no x / y only vec2
+			- dim for model creation
+	- Code revision:
+		/1
+			/ unnecassary includes
+			/ Curly braclets like java
+		-2
+			- Stack heap allocation	
+			- const / refrence in functions
+			- Documentation
+				- See Videos of TheCherno for Documentation
+					- VertexArray
+					- VertexBufferLayout
+					- VertexBuffer
+	- util or effects folder
+		/ Light (effect)
+		/ Color (effect)
+		/ Scene (util)
+		/ Window (util)
+		- timers (util)
+		- camera (util)
+		- animations (effect)
+		
+	- Git
+		- Readme
+		- License

@@ -1,29 +1,26 @@
 #include <math.h>
-#include "Vec2.h"
 #include <algorithm>
 #include <iterator>
 #include <iostream>
+#include "Vec2.h"
+#include "Vec3.h"
 
-
-class Matrix
-{
-private:
-    static float length(float x, float y, float z);
-public:
-    /** Temporary memory for operations that need temporary matrix data. */
-    static void multiply(float result[], float lhs[], float rhs[]);
-    static void copyMatrix(float dest[], float src[], int size);
-    static void translate(float m[], int mOffset, float x, float y, float z);
-    static void rotate(float m[], int mOffset, float a, float x, float y, float z);
-    static void setRotate(float rm[], int rmOffset, float a, float x, float y, float z);
-    static void scale(float m[], int mOffset, float x, float y, float z);
-    static void frustum(float m[], int offset, float left, float right, float bottom, float top, float near, float far);
-    static void ortho(float m[], int offset, float left, float right, float bottom, float top, float near, float far);
-    static void setLookAt(float rm[], int rmOffset,
+namespace Matrix {
+    float length(float x, float y, float z);
+    void multiply(float result[], float lhs[], float rhs[]);
+    void copyMatrix(float dest[], float src[], int size);
+    void translate(float m[], Vec3 loc);
+    void translate(float m[], Vec2 loc, float z = 0.0f);
+    void rotate(float m[], float a, float x, float y, float z);
+    void setRotate(float rm[], float a, float x, float y, float z);
+    void scale(float m[], float x, float y, float z);
+    void frustum(float m[], float left, float right, float bottom, float top, float near, float far);
+    void ortho(float m[], float left, float right, float bottom, float top, float near, float far);
+    void setLookAt(float rm[],
         float eyeX, float eyeY, float eyeZ, 
         float centerX, float centerY, float centerZ, 
         float upX, float upY, float upZ);
 
-    static void printMatrix(float matrix[]);
-    static void printMatrixAsWurst(float matrix[]);
+    void printMatrix(float matrix[]);
+    void printMatrixAsWurst(float matrix[]);
 };

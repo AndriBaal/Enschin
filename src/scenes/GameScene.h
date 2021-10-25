@@ -1,6 +1,6 @@
 #pragma once
-#include <enschin/Window.h>
-#include <enschin/graphics/Scene.hpp>
+#include <enschin/screen/Window.h>
+#include <enschin/screen/Scene.hpp>
 #include <enschin/graphics/Renderer.h>
 #include <enschin/graphics/Model.h>
 #include <enschin/graphics/Renderer.h>
@@ -10,17 +10,13 @@
 #include <iostream>
 #include <vector>
 
-class Texture;
-
-class GameScene : public Scene
-{
+class GameScene : public Scene {
 private:
 	Model* m;
 	Model* m1;
 	Texture* texi;
 	std::vector<Entity> entities;
-
-	Vec2* mousePos = new Vec2();
+	Vec2 mousePos = Vec2();
 public:
 	GameScene();
 	virtual void update() override;

@@ -1,10 +1,8 @@
 #pragma once
 
 #include <GLFW/glfw3.h>
-#include <iostream>
 
-class Keyboard
-{
+class Keyboard {
 private:
 	static bool keys[255];
 

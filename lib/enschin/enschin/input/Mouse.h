@@ -1,11 +1,9 @@
 #pragma once
-#include "../math/Vec2.h"
-#include "../Window.h"
+#include "enschin/math/Vec2.h"
 #include <iostream>
 #include <GLFW/glfw3.h>
 
-class Mouse
-{
+class Mouse {
 private:
 	static bool buttons[8];
 	static Vec2 mousePos;

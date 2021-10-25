@@ -3,8 +3,6 @@
 #include "../math/Dim.h"
 
 class GameObject{
-private:
-
 public:
 	Vec2 pos;
 	Vec2 dir;

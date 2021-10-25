@@ -4,8 +4,7 @@
 #include "../math/Vec2.h"
 #include <iostream>
 
-class Entity
-{
+class Entity {
 private:
 	std::string tag;
 	float health;
@@ -14,7 +13,8 @@ public:
 	Vec2 pos;
 	Vec2 dir;
 	Dim dim;
-	Entity(std::string tag, Vec2 pos = {}, Dim dim = {}, Vec2 dir = {});
+	Entity(std::string tag, Vec2 pos = {}, Dim dim = {}, Vec2 dir = {})
+		: tag(tag), pos(pos), dim(dim), dir(dir) {};
 	~Entity();
 	virtual void update() = 0;
 	virtual void render() = 0;

@@ -2,12 +2,12 @@
 #include "VertexBuffer.h"
 #include "VertexBufferLayout.hpp"
 
-class VertexArray
-{
+class VertexArray {
 private:
     unsigned int vertexArrayId;
 
 public:
+    VertexArray(bool e) {}
     VertexArray();
     ~VertexArray();
 

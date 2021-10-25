@@ -8,10 +8,10 @@
 #include <sstream>
 #include <malloc.h>
 #include <GL/glew.h>
-#include <enschin/graphics/Color.hpp>
+#include <string>
+#include "enschin/graphics/effects/Color.hpp"
 
-class ShaderProgram
-{
+class ShaderProgram {
 private:
     unsigned int shaderProgramId;
     std::unordered_map<std::string, int> uniformLocationCache;
@@ -19,7 +19,6 @@ private:
 public:
     ShaderProgram(const std::string& vertexPath, const std::string& fragmentPath);
     ~ShaderProgram();
-
     void bind() const;
     void unbind() const;
 

@@ -2,8 +2,7 @@
 
 
 Texture::Texture(const std::string& path)
-    : textureId(0), localBuffer(nullptr), BPP(0), size{}
-{
+    : textureId(0), localBuffer(nullptr), BPP(0), size{} {
     stbi_set_flip_vertically_on_load(1);
     int width;
     int height;
@@ -19,22 +18,18 @@ Texture::Texture(const std::string& path)
     glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA8, width, height, 0, GL_RGBA, GL_UNSIGNED_BYTE, localBuffer);
     unbind();
 
-    if (localBuffer)
-        stbi_image_free(localBuffer);
+    if (localBuffer) stbi_image_free(localBuffer);
 };
 
-Texture::~Texture()
-{
+Texture::~Texture() {
     glDeleteTextures(1, &textureId);
 }
 
-void Texture::bind(unsigned int slot) const
-{
+void Texture::bind(unsigned int slot) const {
     glActiveTexture(GL_TEXTURE0 + slot);
     glBindTexture(GL_TEXTURE_2D, textureId);
 }
 
-void Texture::unbind() const
-{
+void Texture::unbind() const {
     glBindTexture(GL_TEXTURE_2D, 0);
 }

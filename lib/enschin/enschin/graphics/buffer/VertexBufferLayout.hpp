@@ -5,26 +5,22 @@
 
 #define INT2VOIDP(i) (void*)(uintptr_t)(i)
 
-struct VertexBufferElement
-{
+struct VertexBufferElement {
     unsigned int type;
     unsigned int count;
     unsigned char normalized;
 
-    static unsigned int getSizeOfType(unsigned int type)
-    {
-        switch (type)
-        {
-        case GL_FLOAT: return sizeof(GLfloat);
-        case GL_UNSIGNED_INT: return sizeof(GLuint);
-        case GL_UNSIGNED_BYTE: return sizeof(GLbyte);
+    static unsigned int getSizeOfType(unsigned int type) {
+        switch (type) {
+            case GL_FLOAT: return sizeof(GLfloat);
+            case GL_UNSIGNED_INT: return sizeof(GLuint);
+            case GL_UNSIGNED_BYTE: return sizeof(GLbyte);
         }
         return 0;
     }
 };
 
-class VertexBufferLayout
-{
+class VertexBufferLayout {
 private:
     unsigned int stride;
     std::vector<VertexBufferElement> elements;
@@ -41,8 +37,7 @@ public:
     inline unsigned int getStride() const { return stride; };
 
 private:
-    void push(unsigned int type, unsigned int count, unsigned char normalized)
-    {
+    void push(unsigned int type, unsigned int count, unsigned char normalized) {
         VertexBufferElement vbe = { type, count, normalized };
         elements.push_back(vbe);
         stride += count * VertexBufferElement::getSizeOfType(type);

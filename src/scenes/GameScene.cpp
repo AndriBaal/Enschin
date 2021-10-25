@@ -1,7 +1,6 @@
 #include "GameScene.h"
 
-GameScene::GameScene()
-{
+GameScene::GameScene() {
     // m = new Model(new float[24] {
     //     -5.0f, -5.0f, 0.0f, 0.0f, // 0
     //     5.0f, -5.0f, 0.0f, 0.0f, // 1
@@ -15,6 +14,7 @@ GameScene::GameScene()
     //     0, 1, 3,
     //     0, 4, 3
     // }, 12);
+
 
     m1 = new Model(new float[24]{
        -.500f, -.500f, // 0
@@ -35,16 +35,14 @@ GameScene::GameScene()
     //     0.6f, 0.5f, 1.0f, 1.0f, // 2
     //     -0.5f, 0.5f, 0.0f, 1.0f  // 3
     // });
-    texi = new Texture("./res/textures/giordano.jpg");
+    texi = new Texture("./res/textures/bird.jpg");
 }
 
-void GameScene::update()
-{
+void GameScene::update() {
 	//std::cout << "Hello Game" << std::endl;
 }
 
-void GameScene::render()
-{
+void GameScene::render() {
     // renderer.absoluteTranslate({0, 0.5f});
     // renderer.renderColor(*m, {1, 0, 1, 1});
 

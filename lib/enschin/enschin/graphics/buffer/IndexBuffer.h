@@ -4,13 +4,17 @@
 #define ASSERT(x) if (!(x)) assert(false)
 #define INT2VOIDP(i) (void*)(uintptr_t)(i)
 
-class IndexBuffer
-{
+/**
+ * @brief IndeBuffer for storing indices (triangle draw order)
+ * 
+ */
+class IndexBuffer {
 private:
     unsigned int indexBufferId;
     unsigned int count;
 
 public:
+    IndexBuffer() = default;
     IndexBuffer(const unsigned int* indices, unsigned int count);
     ~IndexBuffer();
 

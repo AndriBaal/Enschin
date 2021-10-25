@@ -1,24 +1,23 @@
 #pragma once
-#include <enschin/graphics/Color.hpp>
-#include "../math/Vec2.h"
-#include "../math/Dim.h"
-#include "../math/Physics.h"
-#include "../math/Matrix.h"
-#include "../math/Ray.hpp"
-#include "../objects/GameObject.h"
-#include "../input/Mouse.h"
-#include "ShaderProgram.h"
-#include "Model.h"
-#include "Light.hpp"
-#include "Texture.h"
+#include "enschin/graphics/effects/Color.hpp"
+#include "enschin/graphics/ShaderProgram.h"
+#include "enschin/graphics/Model.h"
+#include "enschin/graphics/effects/Light.hpp"
+#include "enschin/graphics/Texture.h"
+#include "enschin/math/Vec2.h"
+#include "enschin/math/Dim.h"
+#include "enschin/math/Physics.h"
+#include "enschin/math/Matrix.h"
+#include "enschin/math/Ray.hpp"
+#include "enschin/objects/GameObject.h"
+#include "enschin/input/Mouse.h"
 
-class Renderer
-{
+/**
+ * @brief Renderer for rendering out to the Screen. Holds projection
+ * Matrices, Shaderprograms and functions to transform and render.
+ */
+class Renderer {
 private:
-	// static glm::mat4* proj;
-	// static glm::mat4* view;
-	// static glm::mat4* mvp;
-
 	static float proj[16];
 	static float view[16];
 	static float mvp[16];
@@ -39,12 +38,13 @@ public:
 	static void rotate(float angle);
 	static void scale(Vec2 scaling);
 
+	static void translateAndRenderTexture(Model& model, Texture& tex, Vec2 pos);
 	static void renderColor(Model& model, Color& color);
 	static void renderTexture(Model& model, Texture& texture);
 	static void renderColoredTexture(Model& model, Texture& texture, Color& color);
 	static void renderRaytracing(Model& model, float vertices[], int amountOfVertices, Light& light, std::vector<GameObject> objects);
 
-	static float getRatio(){ return ratio; }
-	static float getUnits(){ return units; }
+	static float getRatio() { return ratio; }
+	static float getUnits() { return units; }
 };
 

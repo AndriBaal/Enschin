@@ -1,7 +1,6 @@
-#include <enschin/Window.h>
-#include <enschin/GameHandler.h>
-class MyGame : public GameHandler
-{
+#include <enschin/screen/Window.h>
+#include <enschin/Game.h>
+class MyGame : public Game {
 private:
 public:
 	MyGame();

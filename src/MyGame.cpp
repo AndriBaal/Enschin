@@ -1,11 +1,10 @@
 #include "MyGame.h"
 
-MyGame::MyGame():GameHandler(){
+MyGame::MyGame():Game() {
 
 }
 
-void MyGame::process()
-{
+void MyGame::process() {
 	currentScene->update();
 	currentScene->render();
 }

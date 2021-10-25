@@ -1,8 +1,7 @@
 #pragma once
 #include <GL/glew.h>
 
-class VertexBuffer
-{
+class VertexBuffer {
 private:
     unsigned int vertexBufferId;
 

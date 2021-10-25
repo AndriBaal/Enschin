@@ -1,12 +1,11 @@
 #pragma once
 
-#include <GL/glew.h>
-#include "../math/Dim.h"
 #include <string>
-#include "../../../dep/stb/stb_image.h"
+#include <GL/glew.h>
+#include "enschin/math/Dim.h"
+#include "../../dep/stb/stb_image.h"
 
-class Texture
-{
+class Texture {
 private:
     unsigned int textureId;
     std::string filePath;
