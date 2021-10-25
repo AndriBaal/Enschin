@@ -43,15 +43,15 @@ Model::Model(float vertices[], unsigned short amountOfVertices, unsigned int ind
             verticesTexCoord[i+3] = texCoords[0];
         }
     }
-    VertexBuffer vb = VertexBuffer(verticesTexCoord, 4 * amountOfVertices * sizeof(float));
-    ib = IndexBuffer(indices, amountOfIndices);
+    VertexBuffer* vb = new VertexBuffer(verticesTexCoord, 4 * amountOfVertices * sizeof(float));
+    ib = new IndexBuffer(indices, amountOfIndices);
 
     VertexBufferLayout layout;
     layout.addFloat(2);
     layout.addFloat(2);
 
-    va = VertexArray();
-    va.addBuffer(vb, layout);   
+    va = new VertexArray();
+    va->addBuffer(*vb, layout);
 }
 
 /**

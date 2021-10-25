@@ -50,6 +50,7 @@ void GameScene::render() {
     // renderer.renderColor(*m, {0, 1, 1, 1});
     //Renderer::resetMatrix();
 
+
     Renderer::translate(Mouse::getMousePos());
     Renderer::rotate(45.0f);
     //std::cout << "MouseX: " << Mouse::getMousePos().x << "Mouse y: " << Mouse::getMousePos().y << std::endl;

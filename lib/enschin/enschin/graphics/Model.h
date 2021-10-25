@@ -38,8 +38,8 @@ private:
 	const static float texCoords[8];
 	unsigned short amountOfVertices;
 	unsigned short amountOfIndices;
-	VertexArray va = VertexArray(1);
-	IndexBuffer ib;
+	VertexArray* va;
+	IndexBuffer* ib;
 
 public:
 	Model(Dim size);
@@ -49,8 +49,8 @@ public:
 		unsigned short amountOfIndices = 6);
 	
 	static void generateVertices(float source[], Dim size);
-	VertexArray getVa() { return va; }
-	IndexBuffer getIb() { return ib; }
+	VertexArray* getVa() { return va; }
+	IndexBuffer* getIb() { return ib; }
 	int getAmountOfVertices() { return amountOfVertices; }
 	unsigned int getAmountOfIndices() { return amountOfIndices; }
 };

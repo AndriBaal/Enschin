@@ -26,6 +26,7 @@ void Game::start(Window* window, Scene* currentScene) {
 			fps = 0;
 		}
 
+
         glfwSwapBuffers(glfw);
     }
     glfwTerminate();

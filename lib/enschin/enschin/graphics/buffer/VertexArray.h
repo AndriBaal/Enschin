@@ -7,7 +7,6 @@ private:
     unsigned int vertexArrayId;
 
 public:
-    VertexArray(bool e) {}
     VertexArray();
     ~VertexArray();
 
