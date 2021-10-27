@@ -1,6 +1,13 @@
 #include "Window.h"
 
-Window::Window(std::string windowTitle, Dim windowSize, bool fullScreen) {
+/**
+ * @brief Create and initialize the window,
+ * 
+ * @param windowTitle Title of the window
+ * @param windowSize Size of the window
+ * @param fullScreen Set fullscreen
+ */
+Window::Window(std::string windowTitle, Dim2 windowSize, bool fullScreen) {
     if (!glfwInit()) exit(0);
     const GLFWvidmode* mode = glfwGetVideoMode(glfwGetPrimaryMonitor());
 
@@ -54,20 +61,43 @@ Window::Window(std::string windowTitle, Dim windowSize, bool fullScreen) {
     glfwSetWindowSizeCallback(window, windowSizeCallback);
 }
 
+/**
+ * @brief Event that gets called everytime the window size changers.
+ * The Event automatically calls the matrix reset.
+ * 
+ * @param window GLFWwindow
+ * @param width Window width
+ * @param height Window height
+ */
 void Window::windowSizeCallback(GLFWwindow* window, int width, int height) {
     glViewport(0, 0, width, height);
-    Renderer::resetProjection(Dim(width, height));
+    Renderer::resetProjection(Dim2(width, height));
 }
 
-void Window::setSize(Dim& newDim) {
+/**
+ * @brief Set size of the window.
+ * 
+ * @param newDim New size
+ */
+void Window::setSize(Dim2& newDim) {
     windowSize = newDim;
     glfwSetWindowSize(window, newDim.w, newDim.h);
 }
 
+/**
+ * @brief Set the title of the window.
+ * 
+ * @param title New title
+ */
 void Window::setTitle(std::string title) {
     glfwSetWindowTitle(window, &title[0]);
 }
 
+/**
+ * @brief Set the fullscrenn mode
+ * 
+ * @param fullScreen state
+ */
 void Window::setFullScreen(bool fullScreen) {
     if (this->fullScreen == fullScreen) return;
 
@@ -88,6 +118,11 @@ void Window::setClearColor(Color newColor) {
     glClearColor(newColor.r, newColor.g, newColor.b, newColor.a);
 }
 
+/**
+ * @brief Set VSync
+ * 
+ * @param vSync State
+ */
 void Window::setVSync(bool vSync) {
     if (vSync) {
         glfwSwapInterval(1);

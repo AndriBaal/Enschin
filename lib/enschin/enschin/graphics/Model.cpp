@@ -61,7 +61,7 @@ Model::Model(float vertices[], unsigned short amountOfVertices, unsigned int ind
  * 
  * @param size Dimension of the Model
  */
-Model::Model(Dim size) {
+Model::Model(Dim2 size) {
 
 }
 
@@ -72,6 +72,6 @@ Model::Model(Dim size) {
  * @param size Dimension of Model
  * @return float[] 
  */
-void Model::generateVertices(float dest[], Dim size) {
+void Model::generateVertices(float dest[], Dim2 size) {
 
 }

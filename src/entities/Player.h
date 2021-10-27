@@ -3,7 +3,7 @@
 
 class Player : public Entity{
 public:
-    Player(std::string tag, Vec2 pos, Dim dim, Vec2 dir);
+    Player(std::string tag, Vec2 pos, Dim2 dim, Vec2 dir);
 	virtual void update() override;
 	virtual void render() override;
 	virtual void onEntityCollision() override;

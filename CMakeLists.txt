@@ -9,7 +9,7 @@ file (COPY res/ DESTINATION ${CMAKE_BINARY_DIR}/${CMAKE_SYSTEM_NAME}/res/)
 file (COPY lib/enschin/res/ DESTINATION ${CMAKE_BINARY_DIR}/${CMAKE_SYSTEM_NAME}/res/enschin/)
 
 # Add the executable
-add_executable(Game src/Main.cpp) 
+add_executable(Game src/main.cpp) 
 
 target_link_libraries(Game
     enschin

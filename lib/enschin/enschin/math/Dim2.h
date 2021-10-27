@@ -1,9 +1,11 @@
 #pragma once
 
-struct Dim {
+/**
+ * @brief 2Point Dimension (Width / Height)
+ */
+struct Dim2 {
 	float w, h;
-	Dim(float w = 0, float h = 0);
+	Dim2(float w = 0, float h = 0);
 	float getRatioWH() { return w / h; }
 	float getRatioHW() { return h / w; }
-	Dim operator=(const Dim& newVector);
 };

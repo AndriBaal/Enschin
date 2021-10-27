@@ -18,7 +18,7 @@ float Renderer::units = 0;
  * @param windowSize WindowSize for the matrices
  * @param units Units from the Center to the Top/Bottom of the Screen
  */
-void Renderer::init(Dim windowSize, float units){
+void Renderer::init(Dim2 windowSize, float units){
     initShaderPrograms();
 
     Renderer::units = units;
@@ -91,7 +91,7 @@ void Renderer::renderColoredTexture(Model& model, Texture& texture, Color& color
 
 // DO Documentation
 void Renderer::renderRaytracing(Model& model, float vertices[], int amountOfVertices, Light& light, std::vector<GameObject> objects) {
-    std::vector<Ray> intersectingLines = std::vector<Ray>();
+    std::vector<Ray2> intersectingLines = std::vector<Ray2>();
     for(std::vector<GameObject>::iterator it = objects.begin(); it != objects.end(); it++) {
         for(int i = 0; i < amountOfVertices; i++) {
             // if (Physics::isLineIntersecting(it., )
@@ -137,7 +137,7 @@ void Renderer::translate(Vec2 pos) {
  * @param angle Rotation angle in degree
  */
 void Renderer::rotate(float angle) {
-    Matrix::rotate(view, angle, 0.0f, 0.0f, -1.0f);
+    Matrix::rotate(view, angle);
     Matrix::multiply(mvp, view, proj);
 }
 
@@ -157,7 +157,7 @@ void Renderer::scale(Vec2 scaling) {
  * 
  * @param windowSize New Size of the window
  */
-void Renderer::resetProjection(Dim windowSize) {
+void Renderer::resetProjection(Dim2 windowSize) {
     ratio = windowSize.getRatioWH();
     Matrix::frustum(proj, ratio, -ratio, -1.0f, 1.0f, 3.0f, 7.0f);
     resetMatrix();
@@ -168,7 +168,7 @@ void Renderer::resetProjection(Dim windowSize) {
  * Everything in the matrix get restored (0 rotation, 0 translation, 0 scaling).
  */
 void Renderer::resetMatrix() {
-    Matrix::setLookAt(view, 0.0f, 0.0f, -3.0f, 0.0f, 0.0f, 0.0f, 0.0f, 1.0f, 0.0f);
+    Matrix::setLookAt(view, {0.0f, 0.0f, -3.0f}, {}, {0.0f, 1.0f, 0.0f});
     Matrix::multiply(mvp, view, proj);
 }
 

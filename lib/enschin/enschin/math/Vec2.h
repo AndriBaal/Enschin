@@ -1,15 +1,48 @@
 #pragma once
+#include <ostream>
 
+/**
+ * @brief Data structure that holds 2 floats.
+ */
 struct Vec2 {
-	float x;
-	float y;
-	void set(float x, float y);
-	void set(Vec2 v);
-	float getRatioXY();
-	float getRatioYX();
-	Vec2(float x = 0, float y = 0);
-	Vec2 operator=(const Vec2& newVector);
-	Vec2 operator+(const Vec2& otherVector);
-	Vec2 operator-(const Vec2& otherVector);
+	float x, y;
+	Vec2(float x = 0, float y = 0) : x(x), y(y){};
+	//Arithmetic 
+	Vec2 operator+(const Vec2& v);
+	Vec2 operator-(const Vec2& v);
+	Vec2 operator*(const Vec2& v);
+	Vec2 operator/(const Vec2& v);
+	Vec2 operator%(const Vec2& v);
+
+	Vec2 operator+(float f);
+	Vec2 operator-(float f);
+	Vec2 operator*(float f);
+	Vec2 operator/(float f);
+	Vec2 operator%(int i);
+	
+	//Assignment
+	Vec2& operator+=(const Vec2& v);
+	Vec2& operator-=(const Vec2& v);
+	Vec2& operator*=(const Vec2& v);
+	Vec2& operator/=(const Vec2& v);
+	Vec2& operator%=(const Vec2& v);
+
+	Vec2& operator+=(float f);
+	Vec2& operator-=(float f);
+	Vec2& operator*=(float f);
+	Vec2& operator/=(float f);
+	Vec2& operator%=(int i);
+
+	Vec2& operator++(int i);
+	Vec2& operator--(int i);
+
+	//other
+	bool operator==(const Vec2& v);
+	bool operator!=(const Vec2& v);
+	bool operator>=(const Vec2& v);
+	bool operator<=(const Vec2& v);
+	bool operator<(const Vec2& v);
+	bool operator>(const Vec2& v);
+
 	Vec2 operator-();
 };

@@ -4,26 +4,29 @@
 #include <stdlib.h>
 #include <string>
 #include <iostream>
-#include "enschin/math/Dim.h"
+#include "enschin/math/Dim2.h"
 #include "enschin/math/Vec2.h"
 #include "enschin/graphics/effects/Color.hpp"
 #include "enschin/graphics/Renderer.h"
 #include "enschin/input/Keyboard.h"
 #include "enschin/input/Mouse.h"
 
+/**
+ * @brief GLFWWindow wrapper
+ */
 class Window {
 private:
-	Dim windowSize;
+	Dim2 windowSize;
 	bool fullScreen;
 	bool vSync = true;
 	std::string windowTitle;
 	GLFWwindow* window;
 public:
-	Window(std::string title, Dim size, bool fullscreen);
+	Window(std::string title, Dim2 size, bool fullscreen);
 	static void windowSizeCallback(GLFWwindow* window, int width, int height);
-	Dim getSize() { return windowSize; }
+	Dim2 getSize() { return windowSize; }
 	GLFWwindow* getGlfw() { return window; }
-	void setSize(Dim& v);
+	void setSize(Dim2& v);
 	void setFullScreen(bool fullscreen);
 	void setTitle(std::string title);
 	void setClearColor(Color newColor);

@@ -4,7 +4,7 @@
 #include "enschin/graphics/buffer/VertexBufferLayout.hpp"
 #include "enschin/graphics/buffer/VertexArray.h"
 #include "enschin/graphics/buffer/IndexBuffer.h"
-#include "enschin/math/Dim.h"
+#include "enschin/math/Dim2.h"
 
 // struct Model {
 // private:
@@ -15,7 +15,7 @@
 // 	IndexBuffer* ib;
 
 // public:
-// 	Model(Dim size);
+// 	Model(Dim2 size);
 // 	Model(float vertices[], 
 // 		unsigned short amountOfVertices = 4, 
 // 		unsigned int indicies[6] = new unsigned int[6] {0, 1, 2, 2, 3, 0}, 
@@ -31,7 +31,6 @@
 
 /**
  * @brief Model that holds all Buffers for rendering
- * 
  */
 struct Model {
 private:
@@ -42,13 +41,13 @@ private:
 	IndexBuffer* ib;
 
 public:
-	Model(Dim size);
+	Model(Dim2 size);
 	Model(float vertices[], 
 		unsigned short amountOfVertices = 4, 
 		unsigned int indicies[6] = new unsigned int[6] {0, 1, 2, 2, 3, 0}, 
 		unsigned short amountOfIndices = 6);
 	
-	static void generateVertices(float source[], Dim size);
+	static void generateVertices(float source[], Dim2 size);
 	VertexArray* getVa() { return va; }
 	IndexBuffer* getIb() { return ib; }
 	int getAmountOfVertices() { return amountOfVertices; }

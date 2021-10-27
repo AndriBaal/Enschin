@@ -5,22 +5,24 @@
 #include "Vec2.h"
 #include "Vec3.h"
 
+/**
+ * @brief Matrix namespace that can handle matrices. No matrix
+ * object required all float[] parameters should be float[16]
+ * 
+ */
 namespace Matrix {
     float length(float x, float y, float z);
-    void multiply(float result[], float lhs[], float rhs[]);
-    void copyMatrix(float dest[], float src[], int size);
-    void translate(float m[], Vec3 loc);
-    void translate(float m[], Vec2 loc, float z = 0.0f);
-    void rotate(float m[], float a, float x, float y, float z);
-    void setRotate(float rm[], float a, float x, float y, float z);
-    void scale(float m[], float x, float y, float z);
-    void frustum(float m[], float left, float right, float bottom, float top, float near, float far);
-    void ortho(float m[], float left, float right, float bottom, float top, float near, float far);
-    void setLookAt(float rm[],
-        float eyeX, float eyeY, float eyeZ, 
-        float centerX, float centerY, float centerZ, 
-        float upX, float upY, float upZ);
+    void multiply(float result[16], float lhs[16], float rhs[16]);
+    void copyMatrix(float dest[16], float src[16], int size);
+    void translate(float m[16], Vec3 pos);
+    void translate(float m[16], Vec2 pos, float z = 0.0f);
+    void rotate(float m[16], float a = 0.0f, Vec3 axis = {0.0f, 0.0f, -1.0f});
+    void setRotate(float rm[16], float a, Vec3 axis);
+    void scale(float m[16], Vec3 scaling);
+    void frustum(float m[16], float left, float right, float bottom, float top, float near, float far);
+    void ortho(float m[16], float left, float right, float bottom, float top, float near, float far);
+    void setLookAt(float rm[16], Vec3 eye, Vec3 center, Vec3 up);
 
-    void printMatrix(float matrix[]);
-    void printMatrixAsWurst(float matrix[]);
+    void printMatrix(float matrix[16]);
+    void printMatrixAsWurst(float matrix[16]);
 };

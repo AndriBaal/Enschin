@@ -11,6 +11,10 @@
 #include <string>
 #include "enschin/graphics/effects/Color.hpp"
 
+/**
+ * @brief With a shaderprogram you can load your
+ *  shaders and pass the required Information to the Shader.
+ */
 class ShaderProgram {
 private:
     unsigned int shaderProgramId;

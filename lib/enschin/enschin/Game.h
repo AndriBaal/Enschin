@@ -5,6 +5,11 @@
 #include "enschin/graphics/Renderer.h"
 
 class Window;
+/**
+ * @brief Main class of Enschin. Innherit from this class to start
+ * a new game.
+ * 
+ */
 class Game {
 protected:
 	Window* window;
@@ -18,7 +23,7 @@ public:
 	Game() = default;
 	Scene* currentScene;
 	virtual void start(Window* window, Scene* startScene);
-	virtual void process() = 0;
+	virtual void loop() = 0;
 	float getDeltaTime(){ return deltaTime; }
 	float getFps(){ return fps; }
 };

@@ -1,6 +1,6 @@
 #pragma once
 #include <string>
-#include "../math/Dim.h"
+#include "../math/Dim2.h"
 #include "../math/Vec2.h"
 #include <iostream>
 
@@ -12,8 +12,8 @@ private:
 public:
 	Vec2 pos;
 	Vec2 dir;
-	Dim dim;
-	Entity(std::string tag, Vec2 pos = {}, Dim dim = {}, Vec2 dir = {})
+	Dim2 dim;
+	Entity(std::string tag, Vec2 pos = {}, Dim2 dim = {}, Vec2 dir = {})
 		: tag(tag), pos(pos), dim(dim), dir(dir) {};
 	~Entity();
 	virtual void update() = 0;

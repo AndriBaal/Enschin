@@ -2,18 +2,20 @@
 
 #include <string>
 #include <GL/glew.h>
-#include "enschin/math/Dim.h"
+#include "enschin/math/Dim2.h"
 #include "../../dep/stb/stb_image.h"
 
+/**
+ * @brief Texture that can be drawn on a model
+ */
 class Texture {
 private:
     unsigned int textureId;
-    std::string filePath;
     unsigned char* localBuffer;
-    Dim size;
     int BPP; //Bits per Pixel1
 
 public:
+    Texture(): textureId(0), localBuffer(nullptr), BPP(0) {}
     Texture(const std::string& path);
     ~Texture();
 

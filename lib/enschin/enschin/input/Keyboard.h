@@ -2,6 +2,9 @@
 
 #include <GLFW/glfw3.h>
 
+/**
+ * @brief Keyboard class that handles keyboard inputs
+ */
 class Keyboard {
 private:
 	static bool keys[255];

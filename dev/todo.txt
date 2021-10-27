@@ -6,21 +6,27 @@ $ FAR FUTURE
 
 
 Enschin:
-	? Renderer not static
+	? Renderer, mouse, keyboard not static
 	? Everything passed by one big refrence to update / render
-	- Refactor GameHandler to Game
-		- Refactor proccess to loop
-		? add start function
+	/ Refactor GameHandler to Game
+		/ Refactor proccess to loop
+		/ add start function
 	- bring units back
 	- new game structure
-	- Scenes memory load & deload functions
+	? Remove variable names in header
 	/ Linux compile errors fix
 	- Model create by dimension
-!	- Vec2 & Vec3 operators
+	- Math library vector optimization
+	- icon for .exe
+	!- Vec2 & Vec3 operators
 	- C++ call super method
 	- Colored texture shader fix
 	- Draw part of a Model shader
+	? Renderer2 and Renderer3 for 2 and 3 Dimensions
+	- isKeyPressed shouldnt require GLFW keycode -> General keycode or string
 	- Texture not a refrence because the low memory size
+	- add vertices as variable in model
+	- Allgemeine Input Class
 	$ Settings system
 	$ Cross plattform, android, apple, etc...
 	? size mulitplier for entities ()
@@ -35,8 +41,8 @@ Enschin:
 			/ unnecassary includes
 			/ Curly braclets like java
 		-2
-			- Stack heap allocation	
-			- const / refrence in functions
+			!- Stack heap allocation (for Model and for GameScene)	
+			- const / refrence in functions (Fisch fragen)
 			- Documentation
 				- See Videos of TheCherno for Documentation
 					- VertexArray

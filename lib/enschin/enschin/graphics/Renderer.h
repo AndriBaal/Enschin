@@ -5,10 +5,10 @@
 #include "enschin/graphics/effects/Light.hpp"
 #include "enschin/graphics/Texture.h"
 #include "enschin/math/Vec2.h"
-#include "enschin/math/Dim.h"
+#include "enschin/math/Dim2.h"
 #include "enschin/math/Physics.h"
 #include "enschin/math/Matrix.h"
-#include "enschin/math/Ray.hpp"
+#include "enschin/math/Ray2.hpp"
 #include "enschin/objects/GameObject.h"
 #include "enschin/input/Mouse.h"
 
@@ -30,8 +30,8 @@ private:
 	static float ratio;
 	static float units;
 public:
-	static void init(Dim windowSize, float units=1);
-	static void resetProjection(Dim windowDim);
+	static void init(Dim2 windowSize, float units=1);
+	static void resetProjection(Dim2 windowDim);
 	static void resetMatrix();
 	static void absoluteTranslate(Vec2 pos);
 	static void translate(Vec2 pos);

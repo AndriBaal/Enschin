@@ -4,7 +4,7 @@ MyGame::MyGame():Game() {
 
 }
 
-void MyGame::process() {
+void MyGame::loop() {
 	currentScene->update();
 	currentScene->render();
 }

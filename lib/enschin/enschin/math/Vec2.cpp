@@ -1,39 +1,151 @@
 #include "Vec2.h"
 
-Vec2::Vec2(float x, float y) : x(x), y(y){}
+//Arithmetic 
+Vec2 Vec2::operator+(const Vec2& v) {
+	return Vec2(x + v.x, y + v.y);
+}
 
-Vec2 Vec2::operator=(const Vec2& newVector) {
-	x = newVector.x;
-	y = newVector.y;
+Vec2 Vec2::operator-(const Vec2& v) {
+	return Vec2(x - v.x, y - v.y);
+}
+
+Vec2 Vec2::operator*(const Vec2& v) {
+	return Vec2(x * v.x, y * v.y);
+}
+
+Vec2 Vec2::operator/(const Vec2& v) {
+	return Vec2(x / v.x, y / v.y);
+}
+
+Vec2 Vec2::operator%(const Vec2& v) {
+	return Vec2(int(x) % int(v.x), int(y) % int(v.y));
+}
+
+
+Vec2 Vec2::operator+(float f) {
+	return Vec2(x + f, y + f);
+}
+
+Vec2 Vec2::operator-(float f) {
+	return Vec2(x - f, y - f);
+}
+
+Vec2 Vec2::operator*(float f) {
+	return Vec2(x * f, y * f);
+}
+
+Vec2 Vec2::operator/(float f) {
+	return Vec2(x / f, y / f);
+}
+
+Vec2 Vec2::operator%(int i) {
+	return Vec2(int(x) % i, int(y) % i);
+}
+
+//Assignment
+Vec2& Vec2::operator+=(const Vec2& v) {
+	x += v.x;
+	y += v.y;
 	return *this;
 }
 
-Vec2 Vec2::operator+(const Vec2& otherVector) {
-	return Vec2(x + otherVector.x, y + otherVector.y);
+Vec2& Vec2::operator-=(const Vec2& v) {
+	x -= v.x;
+	y -= v.y;
+	return *this;
 }
 
-Vec2 Vec2::operator-(const Vec2& otherVector) {
-	return Vec2(x - otherVector.x, y - otherVector.y);
+Vec2& Vec2::operator*=(const Vec2& v) {
+	x *= v.x;
+	y *= v.y;
+	return *this;
 }
 
+Vec2& Vec2::operator/=(const Vec2& v) {
+	x /= v.x;
+	y /= v.y;
+}
+
+Vec2& Vec2::operator%=(const Vec2& v) {
+	x = int(x) % int(v.x);
+	y = int(y) % int(v.y);
+	return *this;
+}
+
+
+Vec2& Vec2::operator+=(float f) {
+	x += f;
+	y += f;
+	return *this;
+}
+
+Vec2& Vec2::operator-=(float f) {
+	x -= f;
+	y -= f;
+	return *this;
+}
+
+Vec2& Vec2::operator*=(float f) {
+	x *= f;
+	y *= f;
+	return *this;
+}
+
+Vec2& Vec2::operator/=(float f) {
+	x /= f;
+	y /= f;
+}
+
+Vec2& Vec2::operator%=(int i) {
+	x = int(x) % i;
+	y = int(y) % i;
+	return *this;
+}
+
+Vec2& Vec2::operator++(int i) {
+	x+=1.0f;
+	y+=1.0f;
+	return *this;
+}
+
+Vec2& Vec2::operator--(int i) {
+	x-=1.0f;
+	y-=1.0f;
+	return *this;
+}
+
+//Relational
+bool Vec2::operator==(const Vec2& v) {
+	return x == v.x && y == v.y;
+}
+
+bool Vec2::operator!=(const Vec2& v) {
+	return !(x == v.x && y == v.y);
+}
+
+bool Vec2::operator>=(const Vec2& v) {
+	return x >= v.x && y >= v.y;
+}
+
+bool Vec2::operator<=(const Vec2& v) {
+	return x <= v.x && y <= v.y;
+}
+
+bool Vec2::operator>(const Vec2& v) {
+	return x > v.x && y > v.y;
+}
+
+bool Vec2::operator<(const Vec2& v) {
+	return x < v.x && y < v.y;
+}
+
+
+//Other
 Vec2 Vec2::operator-() {
 	return Vec2(-x, -y);
 }
 
-void Vec2::set(float x, float y) {
-	this->x = x;
-	this->y = y;
-}
-
-void Vec2::set(Vec2 v) {
-	this->x = v.x;
-	this->y = v.y;
-}
-
-float Vec2::getRatioXY() {
-	return y / x;
-}
-
-float Vec2::getRatioYX(){
-	return x / y;
+std::ostream& operator<<(std::ostream& os, const Vec2& v) {
+	os << "{" << v.x << ", " << v.y << "}";
+	return os;
 }

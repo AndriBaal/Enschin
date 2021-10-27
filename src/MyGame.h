@@ -4,5 +4,5 @@ class MyGame : public Game {
 private:
 public:
 	MyGame();
-    virtual void process() override;
+    virtual void loop() override;
 };

@@ -1,10 +1,18 @@
 #include "Physics.h"
 
 
-bool Physics::isLineIntersecting(Vec2 a, Vec2 b, Vec2 c, Vec2 d) {
-    float denominator = ((b.x - a.x) * (d.y - c.y)) - ((b.y - a.y) * (d.x - c.x));
-    float numerator1 = ((a.y - c.y) * (d.x - c.x)) - ((a.x - c.x) * (d.y - c.y));
-    float numerator2 = ((a.y - c.y) * (b.x - a.x)) - ((a.x - c.x) * (b.y - a.y));
+/**
+ * @brief Check if 2 rays(lines) are intersecting
+ * 
+ * @param a Ray a
+ * @param b Ray b
+ * @return true Lines are intersecting
+ * @return false Lines aren't intersecting
+ */
+bool Physics::isLineIntersecting(Ray2 a, Ray2 b) {
+    float denominator = ((a.v2.x - a.v1.x) * (b.v2.y - b.v1.y)) - ((a.v2.y - a.v1.y) * (b.v2.x - b.v1.x));
+    float numerator1 = ((a.v1.y - b.v1.y) * (b.v2.x - b.v1.x)) - ((a.v1.x - b.v1.x) * (b.v2.y - b.v1.y));
+    float numerator2 = ((a.v1.y - b.v1.y) * (a.v2.x - a.v1.x)) - ((a.v1.x - b.v1.x) * (a.v2.y - a.v1.y));
 
     // Detect coincident lines (has a problem, read below)
     if (denominator == 0) return numerator1 == 0 && numerator2 == 0;
