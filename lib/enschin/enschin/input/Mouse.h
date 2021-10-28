@@ -1,5 +1,5 @@
 #pragma once
-#include "enschin/math/Vec2.h"
+#include "enschin/math/vec2.h"
 #include <iostream>
 #include <GLFW/glfw3.h>
 

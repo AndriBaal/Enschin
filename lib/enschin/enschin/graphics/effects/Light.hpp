@@ -1,6 +1,6 @@
 #pragma once
-#include "enschin/math/Vec2.h"
-#include "enschin/graphics/effects/Color.hpp"
+#include "enschin/math/vec2.h"
+#include "enschin/graphics/effects/color.hpp"
 
 /**
  * @brief Light with a Color, Radius (strength) and Position

@@ -1,4 +1,4 @@
-#include "Window.h"
+#include "window.h"
 
 /**
  * @brief Create and initialize the window,

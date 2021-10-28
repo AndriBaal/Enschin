@@ -2,7 +2,7 @@
 
 #include <string>
 #include <GL/glew.h>
-#include "enschin/math/Dim2.h"
+#include "enschin/math/dim2.h"
 #include "../../dep/stb/stb_image.h"
 
 /**

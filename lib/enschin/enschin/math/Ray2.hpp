@@ -1,6 +1,6 @@
 #pragma once
 
-#include "Vec2.h"
+#include "vec2.h"
 
 /**
  * @brief 2D ray structure with a begin and an end vector.

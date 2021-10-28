@@ -1,5 +1,5 @@
 #pragma once
-#include <enschin/objects/Entity.h>
+#include <enschin/objects/entity.h>
 
 class Player : public Entity{
 public:

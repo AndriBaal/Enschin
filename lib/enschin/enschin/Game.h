@@ -1,8 +1,8 @@
 #pragma once
 #include <chrono>
-#include "enschin/screen/Window.h"
-#include "enschin/screen/Scene.h"
-#include "enschin/graphics/Renderer.h"
+#include "enschin/screen/window.h"
+#include "enschin/screen/scene.h"
+#include "enschin/graphics/renderer.h"
 
 class Scene;
 class Window;

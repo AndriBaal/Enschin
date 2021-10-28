@@ -1,7 +1,7 @@
-#include <enschin/screen/Window.h>
 #include <iostream>
-#include "scenes/GameScene.h"
-#include <MyGame.h>
+#include "enschin/screen/window.h"
+#include "scenes/game_scene.h"
+#include "my_game.h"
 
 
 int main()

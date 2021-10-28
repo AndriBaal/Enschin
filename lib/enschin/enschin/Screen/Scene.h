@@ -1,7 +1,7 @@
 #pragma once
 
-#include "enschin/Game.h"
-#include "enschin/graphics/Renderer.h"
+#include "enschin/game.h"
+#include "enschin/graphics/renderer.h"
 
 /**
  * @brief Scenes that are meant to be used for different envirnments

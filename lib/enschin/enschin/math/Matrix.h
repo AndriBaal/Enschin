@@ -2,8 +2,8 @@
 #include <algorithm>
 #include <iterator>
 #include <iostream>
-#include "Vec2.h"
-#include "Vec3.h"
+#include "vec2.h"
+#include "vec3.h"
 
 /**
  * @brief Matrix namespace that can handle matrices. No matrix

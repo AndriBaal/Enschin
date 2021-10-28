@@ -1,4 +1,4 @@
-#include "Mouse.h"
+#include "mouse.h"
 
 Vec2 Mouse::mousePos = Vec2();
 

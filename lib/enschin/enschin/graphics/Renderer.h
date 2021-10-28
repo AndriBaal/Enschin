@@ -1,16 +1,16 @@
 #pragma once
-#include "enschin/graphics/effects/Color.hpp"
-#include "enschin/graphics/ShaderProgram.h"
-#include "enschin/graphics/Model.h"
-#include "enschin/graphics/effects/Light.hpp"
-#include "enschin/graphics/Texture.h"
-#include "enschin/math/Vec2.h"
-#include "enschin/math/Dim2.h"
-#include "enschin/math/Physics.h"
-#include "enschin/math/Matrix.h"
-#include "enschin/math/Ray2.hpp"
-#include "enschin/objects/GameObject.h"
-#include "enschin/input/Mouse.h"
+#include "enschin/graphics/effects/light.hpp"
+#include "enschin/graphics/effects/color.hpp"
+#include "enschin/graphics/shaderProgram.h"
+#include "enschin/graphics/model.h"
+#include "enschin/graphics/texture.h"
+#include "enschin/math/vec2.h"
+#include "enschin/math/dim2.h"
+#include "enschin/math/physics.h"
+#include "enschin/math/matrix.h"
+#include "enschin/math/ray2.hpp"
+#include "enschin/objects/game_object.h"
+#include "enschin/input/mouse.h"
 
 /**
  * @brief Renderer for rendering out to the Screen. Holds projection

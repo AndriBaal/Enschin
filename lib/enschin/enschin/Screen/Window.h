@@ -4,12 +4,12 @@
 #include <stdlib.h>
 #include <string>
 #include <iostream>
-#include "enschin/math/Dim2.h"
-#include "enschin/math/Vec2.h"
-#include "enschin/graphics/effects/Color.hpp"
-#include "enschin/graphics/Renderer.h"
-#include "enschin/input/Keyboard.h"
-#include "enschin/input/Mouse.h"
+#include "enschin/math/dim2.h"
+#include "enschin/math/vec2.h"
+#include "enschin/graphics/effects/color.hpp"
+#include "enschin/graphics/renderer.h"
+#include "enschin/input/keyboard.h"
+#include "enschin/input/mouse.h"
 
 /**
  * @brief GLFWWindow wrapper

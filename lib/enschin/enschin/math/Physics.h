@@ -1,7 +1,7 @@
 #pragma once
-#include "Vec2.h"
-#include "Dim2.h"
-#include "Ray2.hpp"
+#include "vec2.h"
+#include "dim2.h"
+#include "ray2.hpp"
 
 /**
  * @brief Physics namespace mostly used for collision detection.

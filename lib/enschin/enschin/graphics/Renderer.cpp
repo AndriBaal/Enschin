@@ -1,4 +1,4 @@
-#include "Renderer.h"
+#include "renderer.h"
 
 ShaderProgram* Renderer::colorProgram = NULL;
 ShaderProgram* Renderer::textureProgram = NULL;

@@ -1,4 +1,4 @@
-#include "Model.h"
+#include "model.h"
 #include <iostream>
 // 0, 1, 2,
 // 2, 3, 0 Indicies for 4 corners

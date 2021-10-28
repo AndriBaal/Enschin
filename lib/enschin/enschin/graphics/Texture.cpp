@@ -1,4 +1,4 @@
-#include "Texture.h"
+#include "texture.h"
 
 /**
  * @brief Construct a new Texture object and create an id on the GPU

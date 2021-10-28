@@ -1,4 +1,4 @@
-#include "Game.h"
+#include "game.h"
 
 
 Game::Game(std::string gameName, Dim2 windowSize, bool fullscreen) {
