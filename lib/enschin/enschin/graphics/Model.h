@@ -18,6 +18,7 @@ private:
 	IndexBuffer* ib;
 
 public:
+	Model() = default;
 	Model(Dim2 size);
 	Model(float vertices[], 
 		unsigned short amountOfVertices = 4, 

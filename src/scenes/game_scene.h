@@ -14,7 +14,7 @@
 class GameScene : public Scene {
 private:
 	Model* m;
-	Model* m1;
+	Model m1;
 	Texture* texi;
 	std::vector<Entity> entities;
 	Vec2 mousePos = Vec2();

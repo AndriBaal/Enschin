@@ -16,7 +16,7 @@ GameScene::GameScene(Game& game) : Scene(game) {
     // }, 12);
 
 
-    m1 = new Model({0.5f, 0.5f});
+    m1 = Model({0.5f, 0.5f});
     // m = new Model(new float[20] {
     //     -5.0f, -0.5f, 0.0f, 0.0f, // 0
     //     0.5f, -0.5f, 0.0f, 0.0f, // 1
@@ -50,7 +50,7 @@ void GameScene::render() {
     renderer.rotate(45.0f);
     //std::cout << "MouseX: " << Mouse::getMousePos().x << "Mouse y: " << Mouse::getMousePos().y << std::endl;
     Color c = Color(0, 1, 0, 1);
-    renderer.renderColor(*m1, c);
+    renderer.renderColor(m1, c);
     renderer.rotate(-45.0f);
     renderer.translate({-Mouse::getMousePos()});
 
@@ -59,7 +59,7 @@ void GameScene::render() {
     renderer.translate({-0.5f, -0.5f});
     renderer.rotate(45.0f);
     //std::cout << "MouseX: " << Mouse::getMousePos().x << "Mouse y: " << Mouse::getMousePos().y << std::endl;
-    renderer.renderTexture(*m1, *texi);
+    renderer.renderTexture(m1, *texi);
     renderer.rotate(-45.0f);
     renderer.translate({0.5f, 0.5f});
 }
