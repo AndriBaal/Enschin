@@ -1,10 +1,9 @@
 #include "MyGame.h"
 
-MyGame::MyGame():Game() {
+MyGame::MyGame(std::string gameName, Dim2 windowSize, bool fullscreen):Game(gameName, windowSize, fullscreen) {
 
 }
 
 void MyGame::loop() {
-	currentScene->update();
-	currentScene->render();
+	//set the current Scene here
 }

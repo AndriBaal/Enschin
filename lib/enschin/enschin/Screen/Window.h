@@ -23,7 +23,7 @@ private:
 	GLFWwindow* window;
 public:
 	Window(std::string title, Dim2 size, bool fullscreen);
-	static void windowSizeCallback(GLFWwindow* window, int width, int height);
+	bool update();
 	Dim2 getSize() { return windowSize; }
 	GLFWwindow* getGlfw() { return window; }
 	void setSize(Dim2& v);

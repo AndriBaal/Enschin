@@ -44,10 +44,11 @@ public:
 	Model(Dim2 size);
 	Model(float vertices[], 
 		unsigned short amountOfVertices = 4, 
-		unsigned int indicies[6] = new unsigned int[6] {0, 1, 2, 2, 3, 0}, 
+		unsigned int indices[6] = new unsigned int[6]{0, 1, 2, 2, 3, 0}, 
 		unsigned short amountOfIndices = 6);
 	
-	static void generateVertices(float source[], Dim2 size);
+	static void generateVertices(Dim2 size, float dest[16]);
+	static void generateVerticesTex(Dim2 size, float dest[]);
 	VertexArray* getVa() { return va; }
 	IndexBuffer* getIb() { return ib; }
 	int getAmountOfVertices() { return amountOfVertices; }

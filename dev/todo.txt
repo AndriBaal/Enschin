@@ -15,10 +15,11 @@ Enschin:
 	- new game structure
 	? Remove variable names in header
 	/ Linux compile errors fix
-	- Model create by dimension
-	- Math library vector optimization
+	/ Model create by dimension
+	/ Math library vector optimization
+	/ New folder structure
 	- icon for .exe
-	!- Vec2 & Vec3 operators
+	/ Vec2 & Vec3 operators
 	- C++ call super method
 	- Colored texture shader fix
 	- Draw part of a Model shader
@@ -32,17 +33,17 @@ Enschin:
 	? size mulitplier for entities ()
 	? Load everything from json (models, textures, etc...)
 	? Shaderprogram class for 3rd party shaders evtl. json file
-	- math
-		- matrix parameters:
-			- no x / y only vec2
-			- dim for model creation
+	/ math
+		/ matrix parameters:
+			/ no x / y only vec2
+			/ dim for model creation
 	- Code revision:
 		/1
 			/ unnecassary includes
 			/ Curly braclets like java
 		-2
-			!- Stack heap allocation (for Model and for GameScene)	
-			- const / refrence in functions (Fisch fragen)
+			!- Stack heap allocation (for Model and for GameScene)	-> Fisch
+			/ const / refrence in functions
 			- Documentation
 				- See Videos of TheCherno for Documentation
 					- VertexArray

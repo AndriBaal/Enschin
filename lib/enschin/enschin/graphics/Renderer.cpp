@@ -4,35 +4,35 @@ ShaderProgram* Renderer::colorProgram = NULL;
 ShaderProgram* Renderer::textureProgram = NULL;
 ShaderProgram* Renderer::coloredTextureProgram = NULL;
 
-float Renderer::view[16] = {0};
-float Renderer::proj[16] = {0};
-float Renderer::mvp[16] = {0};
+// float Renderer::view[16] = {0};
+// float Renderer::proj[16] = {0};
+// float Renderer::mvp[16] = {0};
 
-float Renderer::ratio = 0;
-float Renderer::units = 0;
+// float Renderer::ratio = 0;
+// float Renderer::units = 0;
+
+
 
 /**
- * @brief Initialize the Shaderprograms and configure
- * the projection matrices.
+ * @brief Create a new Renderer with its own projection matrices.
  * 
  * @param windowSize WindowSize for the matrices
  * @param units Units from the Center to the Top/Bottom of the Screen
  */
-void Renderer::init(Dim2 windowSize, float units){
-    initShaderPrograms();
-
-    Renderer::units = units;
+Renderer::Renderer(Dim2 windowSize, float units) {
+    this->units = units;
     Mouse::setUnits(units);
     resetProjection(windowSize);
+    resetMatrix();
 }
 
 /**
- * @brief Initialize all Shaders here
+ * @brief Initialize the shaderPrograms
  */
 void Renderer::initShaderPrograms() {
-	colorProgram = new ShaderProgram("./res/enschin/shader/vertex.vert", "./res/enschin/shader/color.frag");
-    textureProgram = new ShaderProgram("./res/enschin/shader/vertex.vert", "./res/enschin/shader/texture.frag");
-    coloredTextureProgram = new ShaderProgram("./res/enschin/shader/vertex.vert", "./res/enschin/shader/colored_texture.frag");
+    colorProgram = new ShaderProgram("./enschin/shader/vertex.vert", "./enschin/shader/color.frag");
+    textureProgram = new ShaderProgram("./enschin/shader/vertex.vert", "./enschin/shader/texture.frag");
+    coloredTextureProgram = new ShaderProgram("./enschin/shader/vertex.vert", "./enschin/shader/colored_texture.frag");
 }
 
 /**
@@ -159,8 +159,7 @@ void Renderer::scale(Vec2 scaling) {
  */
 void Renderer::resetProjection(Dim2 windowSize) {
     ratio = windowSize.getRatioWH();
-    Matrix::frustum(proj, ratio, -ratio, -1.0f, 1.0f, 3.0f, 7.0f);
-    resetMatrix();
+    Matrix::frustum(proj, ratio*units, -ratio*ratio, -ratio, ratio, 3.0f*ratio, 7.0f*ratio);
 }
 
 /**

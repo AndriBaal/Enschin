@@ -1,0 +1,81 @@
+Determining if the include file pthread.h exists failed with the following output:
+Change Dir: C:/Users/Andri Baal/Documents/GitHub/CMake-engine/build/CMakeFiles/CMakeTmp
+
+Run Build Command(s):C:/MinGW/bin/mingw32-make.exe -f Makefile cmTC_f99dd/fast && C:/MinGW/bin/mingw32-make.exe  -f CMakeFiles\cmTC_f99dd.dir\build.make CMakeFiles/cmTC_f99dd.dir/build
+mingw32-make.exe[1]: Entering directory 'C:/Users/Andri Baal/Documents/GitHub/CMake-engine/build/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_f99dd.dir/CheckIncludeFile.c.obj
+C:\MinGW\bin\mingw32-gcc.exe    -o CMakeFiles\cmTC_f99dd.dir\CheckIncludeFile.c.obj -c "C:\Users\Andri Baal\Documents\GitHub\CMake-engine\build\CMakeFiles\CMakeTmp\CheckIncludeFile.c"
+C:\Users\Andri Baal\Documents\GitHub\CMake-engine\build\CMakeFiles\CMakeTmp\CheckIncludeFile.c:1:21: fatal error: pthread.h: No such file or directory
+ #include <pthread.h>
+                     ^
+compilation terminated.
+CMakeFiles\cmTC_f99dd.dir\build.make:76: recipe for target 'CMakeFiles/cmTC_f99dd.dir/CheckIncludeFile.c.obj' failed
+mingw32-make.exe[1]: *** [CMakeFiles/cmTC_f99dd.dir/CheckIncludeFile.c.obj] Error 1
+mingw32-make.exe[1]: Leaving directory 'C:/Users/Andri Baal/Documents/GitHub/CMake-engine/build/CMakeFiles/CMakeTmp'
+Makefile:126: recipe for target 'cmTC_f99dd/fast' failed
+mingw32-make.exe: *** [cmTC_f99dd/fast] Error 2
+
+
+
+Determining if the include file dinput.h exists failed with the following output:
+Change Dir: C:/Users/Andri Baal/Documents/GitHub/CMake-engine/build/CMakeFiles/CMakeTmp
+
+Run Build Command(s):C:/MinGW/bin/mingw32-make.exe -f Makefile cmTC_3c096/fast && C:/MinGW/bin/mingw32-make.exe  -f CMakeFiles\cmTC_3c096.dir\build.make CMakeFiles/cmTC_3c096.dir/build
+mingw32-make.exe[1]: Entering directory 'C:/Users/Andri Baal/Documents/GitHub/CMake-engine/build/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_3c096.dir/CheckIncludeFile.c.obj
+C:\MinGW\bin\mingw32-gcc.exe    -o CMakeFiles\cmTC_3c096.dir\CheckIncludeFile.c.obj -c "C:\Users\Andri Baal\Documents\GitHub\CMake-engine\build\CMakeFiles\CMakeTmp\CheckIncludeFile.c"
+C:\Users\Andri Baal\Documents\GitHub\CMake-engine\build\CMakeFiles\CMakeTmp\CheckIncludeFile.c:1:20: fatal error: dinput.h: No such file or directory
+ #include <dinput.h>
+                    ^
+compilation terminated.
+CMakeFiles\cmTC_3c096.dir\build.make:76: recipe for target 'CMakeFiles/cmTC_3c096.dir/CheckIncludeFile.c.obj' failed
+mingw32-make.exe[1]: *** [CMakeFiles/cmTC_3c096.dir/CheckIncludeFile.c.obj] Error 1
+mingw32-make.exe[1]: Leaving directory 'C:/Users/Andri Baal/Documents/GitHub/CMake-engine/build/CMakeFiles/CMakeTmp'
+Makefile:126: recipe for target 'cmTC_3c096/fast' failed
+mingw32-make.exe: *** [cmTC_3c096/fast] Error 2
+
+
+
+Determining if the include file xinput.h exists failed with the following output:
+Change Dir: C:/Users/Andri Baal/Documents/GitHub/CMake-engine/build/CMakeFiles/CMakeTmp
+
+Run Build Command(s):C:/MinGW/bin/mingw32-make.exe -f Makefile cmTC_8f8aa/fast && C:/MinGW/bin/mingw32-make.exe  -f CMakeFiles\cmTC_8f8aa.dir\build.make CMakeFiles/cmTC_8f8aa.dir/build
+mingw32-make.exe[1]: Entering directory 'C:/Users/Andri Baal/Documents/GitHub/CMake-engine/build/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_8f8aa.dir/CheckIncludeFile.c.obj
+C:\MinGW\bin\mingw32-gcc.exe    -o CMakeFiles\cmTC_8f8aa.dir\CheckIncludeFile.c.obj -c "C:\Users\Andri Baal\Documents\GitHub\CMake-engine\build\CMakeFiles\CMakeTmp\CheckIncludeFile.c"
+C:\Users\Andri Baal\Documents\GitHub\CMake-engine\build\CMakeFiles\CMakeTmp\CheckIncludeFile.c:1:20: fatal error: xinput.h: No such file or directory
+ #include <xinput.h>
+                    ^
+compilation terminated.
+CMakeFiles\cmTC_8f8aa.dir\build.make:76: recipe for target 'CMakeFiles/cmTC_8f8aa.dir/CheckIncludeFile.c.obj' failed
+mingw32-make.exe[1]: *** [CMakeFiles/cmTC_8f8aa.dir/CheckIncludeFile.c.obj] Error 1
+mingw32-make.exe[1]: Leaving directory 'C:/Users/Andri Baal/Documents/GitHub/CMake-engine/build/CMakeFiles/CMakeTmp'
+Makefile:126: recipe for target 'cmTC_8f8aa/fast' failed
+mingw32-make.exe: *** [cmTC_8f8aa/fast] Error 2
+
+
+
+Performing C SOURCE FILE Test _GLFW_HAS_64ASLR failed with the following output:
+Change Dir: C:/Users/Andri Baal/Documents/GitHub/CMake-engine/build/CMakeFiles/CMakeTmp
+
+Run Build Command(s):C:/MinGW/bin/mingw32-make.exe -f Makefile cmTC_90c0f/fast && C:/MinGW/bin/mingw32-make.exe  -f CMakeFiles\cmTC_90c0f.dir\build.make CMakeFiles/cmTC_90c0f.dir/build
+mingw32-make.exe[1]: Entering directory 'C:/Users/Andri Baal/Documents/GitHub/CMake-engine/build/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_90c0f.dir/src.c.obj
+C:\MinGW\bin\mingw32-gcc.exe -D_GLFW_HAS_64ASLR  -Wl,--high-entropy-va -o CMakeFiles\cmTC_90c0f.dir\src.c.obj -c "C:\Users\Andri Baal\Documents\GitHub\CMake-engine\build\CMakeFiles\CMakeTmp\src.c"
+Linking C executable cmTC_90c0f.exe
+"C:\Program Files\CMake\bin\cmake.exe" -E cmake_link_script CMakeFiles\cmTC_90c0f.dir\link.txt --verbose=1
+"C:\Program Files\CMake\bin\cmake.exe" -E rm -f CMakeFiles\cmTC_90c0f.dir/objects.a
+C:\MinGW\bin\ar.exe qc CMakeFiles\cmTC_90c0f.dir/objects.a @CMakeFiles\cmTC_90c0f.dir\objects1.rsp
+C:\MinGW\bin\mingw32-gcc.exe  -Wl,--high-entropy-va -Wl,--whole-archive CMakeFiles\cmTC_90c0f.dir/objects.a -Wl,--no-whole-archive -o cmTC_90c0f.exe -Wl,--out-implib,libcmTC_90c0f.dll.a -Wl,--major-image-version,0,--minor-image-version,0 @CMakeFiles\cmTC_90c0f.dir\linklibs.rsp
+c:/mingw/bin/../lib/gcc/mingw32/6.3.0/../../../../mingw32/bin/ld.exe: unrecognized option '--high-entropy-va'
+c:/mingw/bin/../lib/gcc/mingw32/6.3.0/../../../../mingw32/bin/ld.exe: use the --help option for usage information
+collect2.exe: error: ld returned 1 exit status
+CMakeFiles\cmTC_90c0f.dir\build.make:99: recipe for target 'cmTC_90c0f.exe' failed
+mingw32-make.exe[1]: *** [cmTC_90c0f.exe] Error 1
+mingw32-make.exe[1]: Leaving directory 'C:/Users/Andri Baal/Documents/GitHub/CMake-engine/build/CMakeFiles/CMakeTmp'
+Makefile:126: recipe for target 'cmTC_90c0f/fast' failed
+mingw32-make.exe: *** [cmTC_90c0f/fast] Error 2
+
+
+Source file was:
+int main(void) { return 0; }

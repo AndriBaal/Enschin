@@ -58,20 +58,22 @@ Window::Window(std::string windowTitle, Dim2 windowSize, bool fullScreen) {
     glfwSetCursorPosCallback(window, Mouse::updateCursor);
     glfwSetMouseButtonCallback(window, Mouse::updateButtons);
     glfwSetKeyCallback(window, Keyboard::update);
-    glfwSetWindowSizeCallback(window, windowSizeCallback);
 }
 
 /**
- * @brief Event that gets called everytime the window size changers.
- * The Event automatically calls the matrix reset.
+ * @brief Updates the window and checks if the size has changed
  * 
- * @param window GLFWwindow
- * @param width Window width
- * @param height Window height
+ * @return true Size has changed
+ * @return false Size hasn't changed
  */
-void Window::windowSizeCallback(GLFWwindow* window, int width, int height) {
-    glViewport(0, 0, width, height);
-    Renderer::resetProjection(Dim2(width, height));
+bool Window::update() {
+    int w, h;
+    glfwGetWindowSize(window, &w, &h);
+    if (w != windowSize.w || h != windowSize.h) {
+        windowSize = {float(w), float(h)};
+        return true;
+    }
+    return false;
 }
 
 /**

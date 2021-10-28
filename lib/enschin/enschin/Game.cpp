@@ -1,29 +1,39 @@
 #include "Game.h"
 
+
+Game::Game(std::string gameName, Dim2 windowSize, bool fullscreen) {
+	window = new Window(gameName, windowSize, fullscreen);
+}
+
+
 /**
  * @brief Start the game
  * 
  * @param window Window*
  * @param currentScene First appearing scene
  */
-void Game::start(Window* window, Scene* currentScene) {
-	this->currentScene = currentScene;
-	this->window = window;
-	Renderer::init(window->getSize(), 1.0f);
+void Game::start(Scene& currentScene) {
+	this->currentScene = &currentScene;
+	Renderer::initShaderPrograms();
 
 	GLFWwindow* glfw = window->getGlfw();
 
 	while (!glfwWindowShouldClose(glfw)) {
         glClear(GL_COLOR_BUFFER_BIT);
+
+		if (window->update()) {
+			currentScene.getRenderer().resetProjection(window->getSize());
+		}
     
 		secondTime = getNanos();
 		deltaTime = (float)secondTime - firstTime;
 		deltaTime /= 1000000000.0f;
 		firstTime = getNanos();
 
-		Renderer::resetMatrix();
         glfwPollEvents();
 		loop();
+		//currentScene.update(this, *window);
+		currentScene.render();
 		
 		fps++;
 		if (getNanos() > lastTime + 1000000000) {

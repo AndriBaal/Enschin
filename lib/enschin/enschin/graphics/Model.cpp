@@ -60,18 +60,67 @@ Model::Model(float vertices[], unsigned short amountOfVertices, unsigned int ind
  * Dimension.
  * 
  * @param size Dimension of the Model
+ * @param indicies Indices (draw order of triangles) of the model (default=[0, 1, 2, 2, 3, 0])
+ * @param amountOfIndices Amount of Indices of the model (default=6)
  */
-Model::Model(Dim2 size) {
 
+Model::Model(Dim2 size)
+    : amountOfIndices(amountOfIndices){
+    float verticesTexCoord[16] = {};
+    unsigned int indices[6] = {0, 1, 2, 2, 3, 0};
+    amountOfIndices = 6;
+    amountOfVertices = 4;
+    generateVerticesTex(size, verticesTexCoord);
+
+    VertexBuffer* vb = new VertexBuffer(verticesTexCoord, 4 * amountOfVertices * sizeof(float));
+    ib = new IndexBuffer(indices, amountOfIndices);
+
+    VertexBufferLayout layout;
+    layout.addFloat(2);
+    layout.addFloat(2);
+
+    va = new VertexArray();
+    va->addBuffer(*vb, layout);
 }
 
 /**
  * @brief Writes 4 vertices into the given array based on the wished dimension.
  * 
+ * @param dim Dimension of Verticces
  * @param dest Destination array
- * @param size Dimension of Model
- * @return float[] 
  */
-void Model::generateVertices(float dest[], Dim2 size) {
+void Model::generateVertices(Dim2 dim, float dest[]) {
+    dest[2] = dim.w/2.0f;
+    dest[4] = dim.w/2.0f;
+    dest[0] = -dim.w/2.0f;
+    dest[6] = -dim.w/2.0f;
+    dest[5] = dim.h/2.0f;
+    dest[7] = dim.h/2.0f;
+    dest[1] = -dim.h/2.0f;
+    dest[3] = -dim.h/2.0f;
+}
 
+/**
+ * @brief Writes 4 vertices and the texture coordinates into the given array.
+ * 
+ * @param dim Dimension of the vertices
+ * @param dest Destination array
+ */
+void Model::generateVerticesTex(Dim2 dim, float dest[16]) {
+    dest[4] = dim.w/2.0f;
+    dest[8] = dim.w/2.0f;
+    dest[0] = -dim.w/2.0f;
+    dest[12] = -dim.w/2.0f;
+    dest[9] = dim.h/2.0f;
+    dest[13] = dim.h/2.0f;
+    dest[1] = -dim.h/2.0f;
+    dest[5] = -dim.h/2.0f;
+    dest[2] = 0.0f;
+    dest[3] = 0.0f;
+    dest[7] = 0.0f;
+    dest[14] = 0.0f;
+    dest[6] = 1.0f;
+    dest[15] = 1.0f;
+    dest[10] = 1.0f;
+    dest[11] = 1.0f;
 }

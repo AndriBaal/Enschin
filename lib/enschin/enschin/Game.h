@@ -1,9 +1,10 @@
 #pragma once
 #include <chrono>
 #include "enschin/screen/Window.h"
-#include "enschin/screen/Scene.hpp"
+#include "enschin/screen/Scene.h"
 #include "enschin/graphics/Renderer.h"
 
+class Scene;
 class Window;
 /**
  * @brief Main class of Enschin. Innherit from this class to start
@@ -12,18 +13,19 @@ class Window;
  */
 class Game {
 protected:
-	Window* window;
 
 private:
 	long long firstTime, secondTime, lastTime;
 	long long getNanos();
 	float deltaTime, fps;
+	Window* window;
 
 public:
-	Game() = default;
+	Game(std::string gameName, Dim2 windowSize, bool fullscreen);
 	Scene* currentScene;
-	virtual void start(Window* window, Scene* startScene);
+	virtual void start(Scene& startScene);
 	virtual void loop() = 0;
 	float getDeltaTime(){ return deltaTime; }
 	float getFps(){ return fps; }
+	Window& getWindow(){ return *window; }
 };

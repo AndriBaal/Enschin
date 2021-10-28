@@ -1,12 +1,13 @@
 #pragma once
-#include <enschin/screen/Window.h>
-#include <enschin/screen/Scene.hpp>
-#include <enschin/graphics/Renderer.h>
-#include <enschin/graphics/Model.h>
-#include <enschin/graphics/Renderer.h>
-#include <enschin/graphics/Texture.h>
-#include <enschin/objects/Entity.h>
-#include <enschin/input/Mouse.h>
+#include "enschin/Game.h"
+#include "enschin/screen/Window.h"
+#include "enschin/screen/Scene.h"
+#include "enschin/graphics/Renderer.h"
+#include "enschin/graphics/Model.h"
+#include "enschin/graphics/Renderer.h"
+#include "enschin/graphics/Texture.h"
+#include "enschin/objects/Entity.h"
+#include "enschin/input/Mouse.h"
 #include <iostream>
 #include <vector>
 
@@ -18,7 +19,7 @@ private:
 	std::vector<Entity> entities;
 	Vec2 mousePos = Vec2();
 public:
-	GameScene();
-	virtual void update() override;
+	GameScene(Game& game);
+	virtual void update(Game& game, Window& window) override;
 	virtual void render() override;
 };
