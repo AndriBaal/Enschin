@@ -1,5 +1,5 @@
 lib/enschin/CMakeFiles/enschin.dir/enschin/graphics/renderer.cpp.obj: \
- C:\Users\Andri\ Baal\Documents\GitHub\CMake-engine\lib\enschin\enschin\graphics\renderer.cpp \
+ C:\Users\Andri\ Baal\Documents\GitHub\CMake-engine\lib\enschin\enschin\graphics\Renderer.cpp \
  C:\Users\Andri\ Baal\Documents\GitHub\CMake-engine\lib\enschin\enschin\graphics\renderer.h \
  C:/Users/ANDRIB~1/DOCUME~1/GitHub/CMAKE-~1/lib/enschin/enschin/graphics/effects/light.hpp \
  C:/Users/ANDRIB~1/DOCUME~1/GitHub/CMAKE-~1/lib/enschin/enschin/math/vec2.h \
