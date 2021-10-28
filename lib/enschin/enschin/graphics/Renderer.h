@@ -1,7 +1,7 @@
 #pragma once
 #include "enschin/graphics/effects/light.hpp"
 #include "enschin/graphics/effects/color.hpp"
-#include "enschin/graphics/shaderProgram.h"
+#include "enschin/graphics/shader_program.h"
 #include "enschin/graphics/model.h"
 #include "enschin/graphics/texture.h"
 #include "enschin/math/vec2.h"
