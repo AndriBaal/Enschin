@@ -1,0 +1,217 @@
+[
+{
+  "directory": "C:/Users/Andri Baal/Documents/GitHub/CMake-engine/build",
+  "command": "C:\\MinGW\\bin\\mingw32-g++.exe -DGLEW_NO_GLU -DGLEW_STATIC -DVC_EXTRALEAN -DWIN32_MEAN_AND_LEAN -D_CRT_SECURE_NO_WARNINGS @CMakeFiles/Game.dir/includes_CXX.rsp -g -o CMakeFiles\\Game.dir\\src\\main.cpp.obj -c \"C:\\Users\\Andri Baal\\Documents\\GitHub\\CMake-engine\\src\\main.cpp\"",
+  "file": "C:/Users/Andri Baal/Documents/GitHub/CMake-engine/src/main.cpp"
+},
+{
+  "directory": "C:/Users/Andri Baal/Documents/GitHub/CMake-engine/build/lib/enschin",
+  "command": "C:\\MinGW\\bin\\mingw32-g++.exe -DGLEW_NO_GLU -DGLEW_STATIC -DVC_EXTRALEAN -DWIN32_MEAN_AND_LEAN -D_CRT_SECURE_NO_WARNINGS @CMakeFiles/enschin.dir/includes_CXX.rsp -g -o CMakeFiles\\enschin.dir\\dep\\stb\\stb_image.cpp.obj -c \"C:\\Users\\Andri Baal\\Documents\\GitHub\\CMake-engine\\lib\\enschin\\dep\\stb\\stb_image.cpp\"",
+  "file": "C:/Users/Andri Baal/Documents/GitHub/CMake-engine/lib/enschin/dep/stb/stb_image.cpp"
+},
+{
+  "directory": "C:/Users/Andri Baal/Documents/GitHub/CMake-engine/build/lib/enschin",
+  "command": "C:\\MinGW\\bin\\mingw32-g++.exe -DGLEW_NO_GLU -DGLEW_STATIC -DVC_EXTRALEAN -DWIN32_MEAN_AND_LEAN -D_CRT_SECURE_NO_WARNINGS @CMakeFiles/enschin.dir/includes_CXX.rsp -g -o CMakeFiles\\enschin.dir\\enschin\\Screen\\scene.cpp.obj -c \"C:\\Users\\Andri Baal\\Documents\\GitHub\\CMake-engine\\lib\\enschin\\enschin\\Screen\\scene.cpp\"",
+  "file": "C:/Users/Andri Baal/Documents/GitHub/CMake-engine/lib/enschin/enschin/Screen/scene.cpp"
+},
+{
+  "directory": "C:/Users/Andri Baal/Documents/GitHub/CMake-engine/build/lib/enschin",
+  "command": "C:\\MinGW\\bin\\mingw32-g++.exe -DGLEW_NO_GLU -DGLEW_STATIC -DVC_EXTRALEAN -DWIN32_MEAN_AND_LEAN -D_CRT_SECURE_NO_WARNINGS @CMakeFiles/enschin.dir/includes_CXX.rsp -g -o CMakeFiles\\enschin.dir\\enschin\\Screen\\window.cpp.obj -c \"C:\\Users\\Andri Baal\\Documents\\GitHub\\CMake-engine\\lib\\enschin\\enschin\\Screen\\window.cpp\"",
+  "file": "C:/Users/Andri Baal/Documents/GitHub/CMake-engine/lib/enschin/enschin/Screen/window.cpp"
+},
+{
+  "directory": "C:/Users/Andri Baal/Documents/GitHub/CMake-engine/build/lib/enschin",
+  "command": "C:\\MinGW\\bin\\mingw32-g++.exe -DGLEW_NO_GLU -DGLEW_STATIC -DVC_EXTRALEAN -DWIN32_MEAN_AND_LEAN -D_CRT_SECURE_NO_WARNINGS @CMakeFiles/enschin.dir/includes_CXX.rsp -g -o CMakeFiles\\enschin.dir\\enschin\\game.cpp.obj -c \"C:\\Users\\Andri Baal\\Documents\\GitHub\\CMake-engine\\lib\\enschin\\enschin\\game.cpp\"",
+  "file": "C:/Users/Andri Baal/Documents/GitHub/CMake-engine/lib/enschin/enschin/game.cpp"
+},
+{
+  "directory": "C:/Users/Andri Baal/Documents/GitHub/CMake-engine/build/lib/enschin",
+  "command": "C:\\MinGW\\bin\\mingw32-g++.exe -DGLEW_NO_GLU -DGLEW_STATIC -DVC_EXTRALEAN -DWIN32_MEAN_AND_LEAN -D_CRT_SECURE_NO_WARNINGS @CMakeFiles/enschin.dir/includes_CXX.rsp -g -o CMakeFiles\\enschin.dir\\enschin\\graphics\\Renderer.cpp.obj -c \"C:\\Users\\Andri Baal\\Documents\\GitHub\\CMake-engine\\lib\\enschin\\enschin\\graphics\\Renderer.cpp\"",
+  "file": "C:/Users/Andri Baal/Documents/GitHub/CMake-engine/lib/enschin/enschin/graphics/Renderer.cpp"
+},
+{
+  "directory": "C:/Users/Andri Baal/Documents/GitHub/CMake-engine/build/lib/enschin",
+  "command": "C:\\MinGW\\bin\\mingw32-g++.exe -DGLEW_NO_GLU -DGLEW_STATIC -DVC_EXTRALEAN -DWIN32_MEAN_AND_LEAN -D_CRT_SECURE_NO_WARNINGS @CMakeFiles/enschin.dir/includes_CXX.rsp -g -o CMakeFiles\\enschin.dir\\enschin\\graphics\\buffer\\index_buffer.cpp.obj -c \"C:\\Users\\Andri Baal\\Documents\\GitHub\\CMake-engine\\lib\\enschin\\enschin\\graphics\\buffer\\index_buffer.cpp\"",
+  "file": "C:/Users/Andri Baal/Documents/GitHub/CMake-engine/lib/enschin/enschin/graphics/buffer/index_buffer.cpp"
+},
+{
+  "directory": "C:/Users/Andri Baal/Documents/GitHub/CMake-engine/build/lib/enschin",
+  "command": "C:\\MinGW\\bin\\mingw32-g++.exe -DGLEW_NO_GLU -DGLEW_STATIC -DVC_EXTRALEAN -DWIN32_MEAN_AND_LEAN -D_CRT_SECURE_NO_WARNINGS @CMakeFiles/enschin.dir/includes_CXX.rsp -g -o CMakeFiles\\enschin.dir\\enschin\\graphics\\buffer\\vertex_array.cpp.obj -c \"C:\\Users\\Andri Baal\\Documents\\GitHub\\CMake-engine\\lib\\enschin\\enschin\\graphics\\buffer\\vertex_array.cpp\"",
+  "file": "C:/Users/Andri Baal/Documents/GitHub/CMake-engine/lib/enschin/enschin/graphics/buffer/vertex_array.cpp"
+},
+{
+  "directory": "C:/Users/Andri Baal/Documents/GitHub/CMake-engine/build/lib/enschin",
+  "command": "C:\\MinGW\\bin\\mingw32-g++.exe -DGLEW_NO_GLU -DGLEW_STATIC -DVC_EXTRALEAN -DWIN32_MEAN_AND_LEAN -D_CRT_SECURE_NO_WARNINGS @CMakeFiles/enschin.dir/includes_CXX.rsp -g -o CMakeFiles\\enschin.dir\\enschin\\graphics\\buffer\\vertex_buffer.cpp.obj -c \"C:\\Users\\Andri Baal\\Documents\\GitHub\\CMake-engine\\lib\\enschin\\enschin\\graphics\\buffer\\vertex_buffer.cpp\"",
+  "file": "C:/Users/Andri Baal/Documents/GitHub/CMake-engine/lib/enschin/enschin/graphics/buffer/vertex_buffer.cpp"
+},
+{
+  "directory": "C:/Users/Andri Baal/Documents/GitHub/CMake-engine/build/lib/enschin",
+  "command": "C:\\MinGW\\bin\\mingw32-g++.exe -DGLEW_NO_GLU -DGLEW_STATIC -DVC_EXTRALEAN -DWIN32_MEAN_AND_LEAN -D_CRT_SECURE_NO_WARNINGS @CMakeFiles/enschin.dir/includes_CXX.rsp -g -o CMakeFiles\\enschin.dir\\enschin\\graphics\\model.cpp.obj -c \"C:\\Users\\Andri Baal\\Documents\\GitHub\\CMake-engine\\lib\\enschin\\enschin\\graphics\\model.cpp\"",
+  "file": "C:/Users/Andri Baal/Documents/GitHub/CMake-engine/lib/enschin/enschin/graphics/model.cpp"
+},
+{
+  "directory": "C:/Users/Andri Baal/Documents/GitHub/CMake-engine/build/lib/enschin",
+  "command": "C:\\MinGW\\bin\\mingw32-g++.exe -DGLEW_NO_GLU -DGLEW_STATIC -DVC_EXTRALEAN -DWIN32_MEAN_AND_LEAN -D_CRT_SECURE_NO_WARNINGS @CMakeFiles/enschin.dir/includes_CXX.rsp -g -o CMakeFiles\\enschin.dir\\enschin\\graphics\\shader_program.cpp.obj -c \"C:\\Users\\Andri Baal\\Documents\\GitHub\\CMake-engine\\lib\\enschin\\enschin\\graphics\\shader_program.cpp\"",
+  "file": "C:/Users/Andri Baal/Documents/GitHub/CMake-engine/lib/enschin/enschin/graphics/shader_program.cpp"
+},
+{
+  "directory": "C:/Users/Andri Baal/Documents/GitHub/CMake-engine/build/lib/enschin",
+  "command": "C:\\MinGW\\bin\\mingw32-g++.exe -DGLEW_NO_GLU -DGLEW_STATIC -DVC_EXTRALEAN -DWIN32_MEAN_AND_LEAN -D_CRT_SECURE_NO_WARNINGS @CMakeFiles/enschin.dir/includes_CXX.rsp -g -o CMakeFiles\\enschin.dir\\enschin\\graphics\\texture.cpp.obj -c \"C:\\Users\\Andri Baal\\Documents\\GitHub\\CMake-engine\\lib\\enschin\\enschin\\graphics\\texture.cpp\"",
+  "file": "C:/Users/Andri Baal/Documents/GitHub/CMake-engine/lib/enschin/enschin/graphics/texture.cpp"
+},
+{
+  "directory": "C:/Users/Andri Baal/Documents/GitHub/CMake-engine/build/lib/enschin",
+  "command": "C:\\MinGW\\bin\\mingw32-g++.exe -DGLEW_NO_GLU -DGLEW_STATIC -DVC_EXTRALEAN -DWIN32_MEAN_AND_LEAN -D_CRT_SECURE_NO_WARNINGS @CMakeFiles/enschin.dir/includes_CXX.rsp -g -o CMakeFiles\\enschin.dir\\enschin\\input\\keyboard.cpp.obj -c \"C:\\Users\\Andri Baal\\Documents\\GitHub\\CMake-engine\\lib\\enschin\\enschin\\input\\keyboard.cpp\"",
+  "file": "C:/Users/Andri Baal/Documents/GitHub/CMake-engine/lib/enschin/enschin/input/keyboard.cpp"
+},
+{
+  "directory": "C:/Users/Andri Baal/Documents/GitHub/CMake-engine/build/lib/enschin",
+  "command": "C:\\MinGW\\bin\\mingw32-g++.exe -DGLEW_NO_GLU -DGLEW_STATIC -DVC_EXTRALEAN -DWIN32_MEAN_AND_LEAN -D_CRT_SECURE_NO_WARNINGS @CMakeFiles/enschin.dir/includes_CXX.rsp -g -o CMakeFiles\\enschin.dir\\enschin\\input\\mouse.cpp.obj -c \"C:\\Users\\Andri Baal\\Documents\\GitHub\\CMake-engine\\lib\\enschin\\enschin\\input\\mouse.cpp\"",
+  "file": "C:/Users/Andri Baal/Documents/GitHub/CMake-engine/lib/enschin/enschin/input/mouse.cpp"
+},
+{
+  "directory": "C:/Users/Andri Baal/Documents/GitHub/CMake-engine/build/lib/enschin",
+  "command": "C:\\MinGW\\bin\\mingw32-g++.exe -DGLEW_NO_GLU -DGLEW_STATIC -DVC_EXTRALEAN -DWIN32_MEAN_AND_LEAN -D_CRT_SECURE_NO_WARNINGS @CMakeFiles/enschin.dir/includes_CXX.rsp -g -o CMakeFiles\\enschin.dir\\enschin\\math\\dim2.cpp.obj -c \"C:\\Users\\Andri Baal\\Documents\\GitHub\\CMake-engine\\lib\\enschin\\enschin\\math\\dim2.cpp\"",
+  "file": "C:/Users/Andri Baal/Documents/GitHub/CMake-engine/lib/enschin/enschin/math/dim2.cpp"
+},
+{
+  "directory": "C:/Users/Andri Baal/Documents/GitHub/CMake-engine/build/lib/enschin",
+  "command": "C:\\MinGW\\bin\\mingw32-g++.exe -DGLEW_NO_GLU -DGLEW_STATIC -DVC_EXTRALEAN -DWIN32_MEAN_AND_LEAN -D_CRT_SECURE_NO_WARNINGS @CMakeFiles/enschin.dir/includes_CXX.rsp -g -o CMakeFiles\\enschin.dir\\enschin\\math\\matrix.cpp.obj -c \"C:\\Users\\Andri Baal\\Documents\\GitHub\\CMake-engine\\lib\\enschin\\enschin\\math\\matrix.cpp\"",
+  "file": "C:/Users/Andri Baal/Documents/GitHub/CMake-engine/lib/enschin/enschin/math/matrix.cpp"
+},
+{
+  "directory": "C:/Users/Andri Baal/Documents/GitHub/CMake-engine/build/lib/enschin",
+  "command": "C:\\MinGW\\bin\\mingw32-g++.exe -DGLEW_NO_GLU -DGLEW_STATIC -DVC_EXTRALEAN -DWIN32_MEAN_AND_LEAN -D_CRT_SECURE_NO_WARNINGS @CMakeFiles/enschin.dir/includes_CXX.rsp -g -o CMakeFiles\\enschin.dir\\enschin\\math\\physics.cpp.obj -c \"C:\\Users\\Andri Baal\\Documents\\GitHub\\CMake-engine\\lib\\enschin\\enschin\\math\\physics.cpp\"",
+  "file": "C:/Users/Andri Baal/Documents/GitHub/CMake-engine/lib/enschin/enschin/math/physics.cpp"
+},
+{
+  "directory": "C:/Users/Andri Baal/Documents/GitHub/CMake-engine/build/lib/enschin",
+  "command": "C:\\MinGW\\bin\\mingw32-g++.exe -DGLEW_NO_GLU -DGLEW_STATIC -DVC_EXTRALEAN -DWIN32_MEAN_AND_LEAN -D_CRT_SECURE_NO_WARNINGS @CMakeFiles/enschin.dir/includes_CXX.rsp -g -o CMakeFiles\\enschin.dir\\enschin\\math\\vec2.cpp.obj -c \"C:\\Users\\Andri Baal\\Documents\\GitHub\\CMake-engine\\lib\\enschin\\enschin\\math\\vec2.cpp\"",
+  "file": "C:/Users/Andri Baal/Documents/GitHub/CMake-engine/lib/enschin/enschin/math/vec2.cpp"
+},
+{
+  "directory": "C:/Users/Andri Baal/Documents/GitHub/CMake-engine/build/lib/enschin",
+  "command": "C:\\MinGW\\bin\\mingw32-g++.exe -DGLEW_NO_GLU -DGLEW_STATIC -DVC_EXTRALEAN -DWIN32_MEAN_AND_LEAN -D_CRT_SECURE_NO_WARNINGS @CMakeFiles/enschin.dir/includes_CXX.rsp -g -o CMakeFiles\\enschin.dir\\enschin\\math\\vec3.cpp.obj -c \"C:\\Users\\Andri Baal\\Documents\\GitHub\\CMake-engine\\lib\\enschin\\enschin\\math\\vec3.cpp\"",
+  "file": "C:/Users/Andri Baal/Documents/GitHub/CMake-engine/lib/enschin/enschin/math/vec3.cpp"
+},
+{
+  "directory": "C:/Users/Andri Baal/Documents/GitHub/CMake-engine/build/lib/enschin",
+  "command": "C:\\MinGW\\bin\\mingw32-g++.exe -DGLEW_NO_GLU -DGLEW_STATIC -DVC_EXTRALEAN -DWIN32_MEAN_AND_LEAN -D_CRT_SECURE_NO_WARNINGS @CMakeFiles/enschin.dir/includes_CXX.rsp -g -o CMakeFiles\\enschin.dir\\enschin\\objects\\entity.cpp.obj -c \"C:\\Users\\Andri Baal\\Documents\\GitHub\\CMake-engine\\lib\\enschin\\enschin\\objects\\entity.cpp\"",
+  "file": "C:/Users/Andri Baal/Documents/GitHub/CMake-engine/lib/enschin/enschin/objects/entity.cpp"
+},
+{
+  "directory": "C:/Users/Andri Baal/Documents/GitHub/CMake-engine/build/lib/enschin",
+  "command": "C:\\MinGW\\bin\\mingw32-g++.exe -DGLEW_NO_GLU -DGLEW_STATIC -DVC_EXTRALEAN -DWIN32_MEAN_AND_LEAN -D_CRT_SECURE_NO_WARNINGS @CMakeFiles/enschin.dir/includes_CXX.rsp -g -o CMakeFiles\\enschin.dir\\enschin\\settings.cpp.obj -c \"C:\\Users\\Andri Baal\\Documents\\GitHub\\CMake-engine\\lib\\enschin\\enschin\\settings.cpp\"",
+  "file": "C:/Users/Andri Baal/Documents/GitHub/CMake-engine/lib/enschin/enschin/settings.cpp"
+},
+{
+  "directory": "C:/Users/Andri Baal/Documents/GitHub/CMake-engine/build/lib/enschin",
+  "command": "C:\\MinGW\\bin\\mingw32-g++.exe -DGLEW_NO_GLU -DGLEW_STATIC -DVC_EXTRALEAN -DWIN32_MEAN_AND_LEAN -D_CRT_SECURE_NO_WARNINGS @CMakeFiles/enschin.dir/includes_CXX.rsp -g -o CMakeFiles\\enschin.dir\\enschin\\util\\timer.cpp.obj -c \"C:\\Users\\Andri Baal\\Documents\\GitHub\\CMake-engine\\lib\\enschin\\enschin\\util\\timer.cpp\"",
+  "file": "C:/Users/Andri Baal/Documents/GitHub/CMake-engine/lib/enschin/enschin/util/timer.cpp"
+},
+{
+  "directory": "C:/Users/Andri Baal/Documents/GitHub/CMake-engine/build/lib/enschin/dep/glfw/src",
+  "command": "C:\\MinGW\\bin\\mingw32-gcc.exe -DUNICODE -DWINVER=0x0501 -D_GLFW_USE_CONFIG_H -D_UNICODE @CMakeFiles/glfw.dir/includes_C.rsp -g -Wall -std=gnu99 -Wdeclaration-after-statement -o CMakeFiles\\glfw.dir\\context.c.obj -c \"C:\\Users\\Andri Baal\\Documents\\GitHub\\CMake-engine\\lib\\enschin\\dep\\glfw\\src\\context.c\"",
+  "file": "C:/Users/Andri Baal/Documents/GitHub/CMake-engine/lib/enschin/dep/glfw/src/context.c"
+},
+{
+  "directory": "C:/Users/Andri Baal/Documents/GitHub/CMake-engine/build/lib/enschin/dep/glfw/src",
+  "command": "C:\\MinGW\\bin\\mingw32-gcc.exe -DUNICODE -DWINVER=0x0501 -D_GLFW_USE_CONFIG_H -D_UNICODE @CMakeFiles/glfw.dir/includes_C.rsp -g -Wall -std=gnu99 -Wdeclaration-after-statement -o CMakeFiles\\glfw.dir\\init.c.obj -c \"C:\\Users\\Andri Baal\\Documents\\GitHub\\CMake-engine\\lib\\enschin\\dep\\glfw\\src\\init.c\"",
+  "file": "C:/Users/Andri Baal/Documents/GitHub/CMake-engine/lib/enschin/dep/glfw/src/init.c"
+},
+{
+  "directory": "C:/Users/Andri Baal/Documents/GitHub/CMake-engine/build/lib/enschin/dep/glfw/src",
+  "command": "C:\\MinGW\\bin\\mingw32-gcc.exe -DUNICODE -DWINVER=0x0501 -D_GLFW_USE_CONFIG_H -D_UNICODE @CMakeFiles/glfw.dir/includes_C.rsp -g -Wall -std=gnu99 -Wdeclaration-after-statement -o CMakeFiles\\glfw.dir\\input.c.obj -c \"C:\\Users\\Andri Baal\\Documents\\GitHub\\CMake-engine\\lib\\enschin\\dep\\glfw\\src\\input.c\"",
+  "file": "C:/Users/Andri Baal/Documents/GitHub/CMake-engine/lib/enschin/dep/glfw/src/input.c"
+},
+{
+  "directory": "C:/Users/Andri Baal/Documents/GitHub/CMake-engine/build/lib/enschin/dep/glfw/src",
+  "command": "C:\\MinGW\\bin\\mingw32-gcc.exe -DUNICODE -DWINVER=0x0501 -D_GLFW_USE_CONFIG_H -D_UNICODE @CMakeFiles/glfw.dir/includes_C.rsp -g -Wall -std=gnu99 -Wdeclaration-after-statement -o CMakeFiles\\glfw.dir\\monitor.c.obj -c \"C:\\Users\\Andri Baal\\Documents\\GitHub\\CMake-engine\\lib\\enschin\\dep\\glfw\\src\\monitor.c\"",
+  "file": "C:/Users/Andri Baal/Documents/GitHub/CMake-engine/lib/enschin/dep/glfw/src/monitor.c"
+},
+{
+  "directory": "C:/Users/Andri Baal/Documents/GitHub/CMake-engine/build/lib/enschin/dep/glfw/src",
+  "command": "C:\\MinGW\\bin\\mingw32-gcc.exe -DUNICODE -DWINVER=0x0501 -D_GLFW_USE_CONFIG_H -D_UNICODE @CMakeFiles/glfw.dir/includes_C.rsp -g -Wall -std=gnu99 -Wdeclaration-after-statement -o CMakeFiles\\glfw.dir\\vulkan.c.obj -c \"C:\\Users\\Andri Baal\\Documents\\GitHub\\CMake-engine\\lib\\enschin\\dep\\glfw\\src\\vulkan.c\"",
+  "file": "C:/Users/Andri Baal/Documents/GitHub/CMake-engine/lib/enschin/dep/glfw/src/vulkan.c"
+},
+{
+  "directory": "C:/Users/Andri Baal/Documents/GitHub/CMake-engine/build/lib/enschin/dep/glfw/src",
+  "command": "C:\\MinGW\\bin\\mingw32-gcc.exe -DUNICODE -DWINVER=0x0501 -D_GLFW_USE_CONFIG_H -D_UNICODE @CMakeFiles/glfw.dir/includes_C.rsp -g -Wall -std=gnu99 -Wdeclaration-after-statement -o CMakeFiles\\glfw.dir\\window.c.obj -c \"C:\\Users\\Andri Baal\\Documents\\GitHub\\CMake-engine\\lib\\enschin\\dep\\glfw\\src\\window.c\"",
+  "file": "C:/Users/Andri Baal/Documents/GitHub/CMake-engine/lib/enschin/dep/glfw/src/window.c"
+},
+{
+  "directory": "C:/Users/Andri Baal/Documents/GitHub/CMake-engine/build/lib/enschin/dep/glfw/src",
+  "command": "C:\\MinGW\\bin\\mingw32-gcc.exe -DUNICODE -DWINVER=0x0501 -D_GLFW_USE_CONFIG_H -D_UNICODE @CMakeFiles/glfw.dir/includes_C.rsp -g -Wall -std=gnu99 -Wdeclaration-after-statement -o CMakeFiles\\glfw.dir\\win32_init.c.obj -c \"C:\\Users\\Andri Baal\\Documents\\GitHub\\CMake-engine\\lib\\enschin\\dep\\glfw\\src\\win32_init.c\"",
+  "file": "C:/Users/Andri Baal/Documents/GitHub/CMake-engine/lib/enschin/dep/glfw/src/win32_init.c"
+},
+{
+  "directory": "C:/Users/Andri Baal/Documents/GitHub/CMake-engine/build/lib/enschin/dep/glfw/src",
+  "command": "C:\\MinGW\\bin\\mingw32-gcc.exe -DUNICODE -DWINVER=0x0501 -D_GLFW_USE_CONFIG_H -D_UNICODE @CMakeFiles/glfw.dir/includes_C.rsp -g -Wall -std=gnu99 -Wdeclaration-after-statement -o CMakeFiles\\glfw.dir\\win32_joystick.c.obj -c \"C:\\Users\\Andri Baal\\Documents\\GitHub\\CMake-engine\\lib\\enschin\\dep\\glfw\\src\\win32_joystick.c\"",
+  "file": "C:/Users/Andri Baal/Documents/GitHub/CMake-engine/lib/enschin/dep/glfw/src/win32_joystick.c"
+},
+{
+  "directory": "C:/Users/Andri Baal/Documents/GitHub/CMake-engine/build/lib/enschin/dep/glfw/src",
+  "command": "C:\\MinGW\\bin\\mingw32-gcc.exe -DUNICODE -DWINVER=0x0501 -D_GLFW_USE_CONFIG_H -D_UNICODE @CMakeFiles/glfw.dir/includes_C.rsp -g -Wall -std=gnu99 -Wdeclaration-after-statement -o CMakeFiles\\glfw.dir\\win32_monitor.c.obj -c \"C:\\Users\\Andri Baal\\Documents\\GitHub\\CMake-engine\\lib\\enschin\\dep\\glfw\\src\\win32_monitor.c\"",
+  "file": "C:/Users/Andri Baal/Documents/GitHub/CMake-engine/lib/enschin/dep/glfw/src/win32_monitor.c"
+},
+{
+  "directory": "C:/Users/Andri Baal/Documents/GitHub/CMake-engine/build/lib/enschin/dep/glfw/src",
+  "command": "C:\\MinGW\\bin\\mingw32-gcc.exe -DUNICODE -DWINVER=0x0501 -D_GLFW_USE_CONFIG_H -D_UNICODE @CMakeFiles/glfw.dir/includes_C.rsp -g -Wall -std=gnu99 -Wdeclaration-after-statement -o CMakeFiles\\glfw.dir\\win32_time.c.obj -c \"C:\\Users\\Andri Baal\\Documents\\GitHub\\CMake-engine\\lib\\enschin\\dep\\glfw\\src\\win32_time.c\"",
+  "file": "C:/Users/Andri Baal/Documents/GitHub/CMake-engine/lib/enschin/dep/glfw/src/win32_time.c"
+},
+{
+  "directory": "C:/Users/Andri Baal/Documents/GitHub/CMake-engine/build/lib/enschin/dep/glfw/src",
+  "command": "C:\\MinGW\\bin\\mingw32-gcc.exe -DUNICODE -DWINVER=0x0501 -D_GLFW_USE_CONFIG_H -D_UNICODE @CMakeFiles/glfw.dir/includes_C.rsp -g -Wall -std=gnu99 -Wdeclaration-after-statement -o CMakeFiles\\glfw.dir\\win32_thread.c.obj -c \"C:\\Users\\Andri Baal\\Documents\\GitHub\\CMake-engine\\lib\\enschin\\dep\\glfw\\src\\win32_thread.c\"",
+  "file": "C:/Users/Andri Baal/Documents/GitHub/CMake-engine/lib/enschin/dep/glfw/src/win32_thread.c"
+},
+{
+  "directory": "C:/Users/Andri Baal/Documents/GitHub/CMake-engine/build/lib/enschin/dep/glfw/src",
+  "command": "C:\\MinGW\\bin\\mingw32-gcc.exe -DUNICODE -DWINVER=0x0501 -D_GLFW_USE_CONFIG_H -D_UNICODE @CMakeFiles/glfw.dir/includes_C.rsp -g -Wall -std=gnu99 -Wdeclaration-after-statement -o CMakeFiles\\glfw.dir\\win32_window.c.obj -c \"C:\\Users\\Andri Baal\\Documents\\GitHub\\CMake-engine\\lib\\enschin\\dep\\glfw\\src\\win32_window.c\"",
+  "file": "C:/Users/Andri Baal/Documents/GitHub/CMake-engine/lib/enschin/dep/glfw/src/win32_window.c"
+},
+{
+  "directory": "C:/Users/Andri Baal/Documents/GitHub/CMake-engine/build/lib/enschin/dep/glfw/src",
+  "command": "C:\\MinGW\\bin\\mingw32-gcc.exe -DUNICODE -DWINVER=0x0501 -D_GLFW_USE_CONFIG_H -D_UNICODE @CMakeFiles/glfw.dir/includes_C.rsp -g -Wall -std=gnu99 -Wdeclaration-after-statement -o CMakeFiles\\glfw.dir\\wgl_context.c.obj -c \"C:\\Users\\Andri Baal\\Documents\\GitHub\\CMake-engine\\lib\\enschin\\dep\\glfw\\src\\wgl_context.c\"",
+  "file": "C:/Users/Andri Baal/Documents/GitHub/CMake-engine/lib/enschin/dep/glfw/src/wgl_context.c"
+},
+{
+  "directory": "C:/Users/Andri Baal/Documents/GitHub/CMake-engine/build/lib/enschin/dep/glfw/src",
+  "command": "C:\\MinGW\\bin\\mingw32-gcc.exe -DUNICODE -DWINVER=0x0501 -D_GLFW_USE_CONFIG_H -D_UNICODE @CMakeFiles/glfw.dir/includes_C.rsp -g -Wall -std=gnu99 -Wdeclaration-after-statement -o CMakeFiles\\glfw.dir\\egl_context.c.obj -c \"C:\\Users\\Andri Baal\\Documents\\GitHub\\CMake-engine\\lib\\enschin\\dep\\glfw\\src\\egl_context.c\"",
+  "file": "C:/Users/Andri Baal/Documents/GitHub/CMake-engine/lib/enschin/dep/glfw/src/egl_context.c"
+},
+{
+  "directory": "C:/Users/Andri Baal/Documents/GitHub/CMake-engine/build/lib/enschin/dep/glfw/src",
+  "command": "C:\\MinGW\\bin\\mingw32-gcc.exe -DUNICODE -DWINVER=0x0501 -D_GLFW_USE_CONFIG_H -D_UNICODE @CMakeFiles/glfw.dir/includes_C.rsp -g -Wall -std=gnu99 -Wdeclaration-after-statement -o CMakeFiles\\glfw.dir\\osmesa_context.c.obj -c \"C:\\Users\\Andri Baal\\Documents\\GitHub\\CMake-engine\\lib\\enschin\\dep\\glfw\\src\\osmesa_context.c\"",
+  "file": "C:/Users/Andri Baal/Documents/GitHub/CMake-engine/lib/enschin/dep/glfw/src/osmesa_context.c"
+},
+{
+  "directory": "C:/Users/Andri Baal/Documents/GitHub/CMake-engine/build/lib/enschin/dep/glew",
+  "command": "C:\\MinGW\\bin\\mingw32-gcc.exe -DGLEW_NO_GLU -DGLEW_STATIC -DVC_EXTRALEAN -DWIN32_MEAN_AND_LEAN -D_CRT_SECURE_NO_WARNINGS @CMakeFiles/libglew_static.dir/includes_C.rsp -g -o CMakeFiles\\libglew_static.dir\\src\\glew.c.obj -c \"C:\\Users\\Andri Baal\\Documents\\GitHub\\CMake-engine\\lib\\enschin\\dep\\glew\\src\\glew.c\"",
+  "file": "C:/Users/Andri Baal/Documents/GitHub/CMake-engine/lib/enschin/dep/glew/src/glew.c"
+},
+{
+  "directory": "C:/Users/Andri Baal/Documents/GitHub/CMake-engine/build/lib/enschin/dep/glew",
+  "command": "C:\\MinGW\\bin\\mingw32-gcc.exe -DGLEW_BUILD -DGLEW_NO_GLU -DVC_EXTRALEAN -DWIN32_MEAN_AND_LEAN -D_CRT_SECURE_NO_WARNINGS -Dlibglew_shared_EXPORTS @CMakeFiles/libglew_shared.dir/includes_C.rsp -g -o CMakeFiles\\libglew_shared.dir\\src\\glew.c.obj -c \"C:\\Users\\Andri Baal\\Documents\\GitHub\\CMake-engine\\lib\\enschin\\dep\\glew\\src\\glew.c\"",
+  "file": "C:/Users/Andri Baal/Documents/GitHub/CMake-engine/lib/enschin/dep/glew/src/glew.c"
+},
+{
+  "directory": "C:/Users/Andri Baal/Documents/GitHub/CMake-engine/build/src",
+  "command": "C:\\MinGW\\bin\\mingw32-g++.exe -DGLEW_NO_GLU -DGLEW_STATIC -DVC_EXTRALEAN -DWIN32_MEAN_AND_LEAN -D_CRT_SECURE_NO_WARNINGS @CMakeFiles/game.dir/includes_CXX.rsp -g -o CMakeFiles\\game.dir\\entities\\player.cpp.obj -c \"C:\\Users\\Andri Baal\\Documents\\GitHub\\CMake-engine\\src\\entities\\player.cpp\"",
+  "file": "C:/Users/Andri Baal/Documents/GitHub/CMake-engine/src/entities/player.cpp"
+},
+{
+  "directory": "C:/Users/Andri Baal/Documents/GitHub/CMake-engine/build/src",
+  "command": "C:\\MinGW\\bin\\mingw32-g++.exe -DGLEW_NO_GLU -DGLEW_STATIC -DVC_EXTRALEAN -DWIN32_MEAN_AND_LEAN -D_CRT_SECURE_NO_WARNINGS @CMakeFiles/game.dir/includes_CXX.rsp -g -o CMakeFiles\\game.dir\\main.cpp.obj -c \"C:\\Users\\Andri Baal\\Documents\\GitHub\\CMake-engine\\src\\main.cpp\"",
+  "file": "C:/Users/Andri Baal/Documents/GitHub/CMake-engine/src/main.cpp"
+},
+{
+  "directory": "C:/Users/Andri Baal/Documents/GitHub/CMake-engine/build/src",
+  "command": "C:\\MinGW\\bin\\mingw32-g++.exe -DGLEW_NO_GLU -DGLEW_STATIC -DVC_EXTRALEAN -DWIN32_MEAN_AND_LEAN -D_CRT_SECURE_NO_WARNINGS @CMakeFiles/game.dir/includes_CXX.rsp -g -o CMakeFiles\\game.dir\\my_game.cpp.obj -c \"C:\\Users\\Andri Baal\\Documents\\GitHub\\CMake-engine\\src\\my_game.cpp\"",
+  "file": "C:/Users/Andri Baal/Documents/GitHub/CMake-engine/src/my_game.cpp"
+},
+{
+  "directory": "C:/Users/Andri Baal/Documents/GitHub/CMake-engine/build/src",
+  "command": "C:\\MinGW\\bin\\mingw32-g++.exe -DGLEW_NO_GLU -DGLEW_STATIC -DVC_EXTRALEAN -DWIN32_MEAN_AND_LEAN -D_CRT_SECURE_NO_WARNINGS @CMakeFiles/game.dir/includes_CXX.rsp -g -o CMakeFiles\\game.dir\\scenes\\game_scene.cpp.obj -c \"C:\\Users\\Andri Baal\\Documents\\GitHub\\CMake-engine\\src\\scenes\\game_scene.cpp\"",
+  "file": "C:/Users/Andri Baal/Documents/GitHub/CMake-engine/src/scenes/game_scene.cpp"
+}
+]
