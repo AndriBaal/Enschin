@@ -69,6 +69,7 @@ Vec3& Vec3::operator/=(const Vec3& v) {
 	x /= v.x;
 	y /= v.y;
 	z /= v.z;
+	return *this;
 }
 
 Vec3& Vec3::operator%=(const Vec3& v) {
@@ -104,6 +105,7 @@ Vec3& Vec3::operator/=(float f) {
 	x /= f;
 	y /= f;
 	z /= f;
+	return *this;
 }
 
 Vec3& Vec3::operator%=(int i) {
