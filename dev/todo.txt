@@ -18,6 +18,7 @@ Enschin:
 	/ Model create by dimension
 	/ Math library vector optimization
 	/ New folder structure
+	! Don't bind textures / models twice
 	- icon for .exe
 	/ Vec2 & Vec3 operators
 	- C++ call super method

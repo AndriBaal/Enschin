@@ -42,9 +42,7 @@ void Renderer::initShaderPrograms() {
  * @param color Color & opacity of the paint
  */
 void Renderer::renderColor(Model& model, Color& color) {
-    model.getVa()->bind();
-    model.getIb()->bind();
-
+    model.bind();
     colorProgram->bind();
     colorProgram->setUniformMat4f("u_MVP", mvp);
     colorProgram->setColor("u_Color", color);
@@ -59,10 +57,9 @@ void Renderer::renderColor(Model& model, Color& color) {
  * @param texture Texture to render
  */
 void Renderer::renderTexture(Model& model, Texture& texture) {
-    model.getVa()->bind();
-    model.getIb()->bind();
+    model.bind();
     texture.bind(); 
-    textureProgram->bind();   
+    textureProgram->bind();
     textureProgram->setUniform1i("u_Texture", 0);
     textureProgram->setUniformMat4f("u_MVP", mvp);
 
@@ -79,8 +76,7 @@ void Renderer::renderTexture(Model& model, Texture& texture) {
  * @param color Color to paint the texture with
  */
 void Renderer::renderColoredTexture(Model& model, Texture& texture, Color& color) {
-    model.getVa()->bind();
-    model.getIb()->bind();
+    model.bind();
     texture.bind(); 
     coloredTextureProgram->bind();   
     coloredTextureProgram->setUniform1i("u_Texture", 0);

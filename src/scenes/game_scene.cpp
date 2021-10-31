@@ -15,8 +15,6 @@ GameScene::GameScene(Game& game) : Scene(game) {
     //     0, 4, 3
     // }, 12);
 
-
-    m1 = Model({0.5f, 0.5f});
     // m = new Model(new float[20] {
     //     -5.0f, -0.5f, 0.0f, 0.0f, // 0
     //     0.5f, -0.5f, 0.0f, 0.0f, // 1
@@ -30,14 +28,13 @@ GameScene::GameScene(Game& game) : Scene(game) {
     //     0.6f, 0.5f, 1.0f, 1.0f, // 2
     //     -0.5f, 0.5f, 0.0f, 1.0f  // 3
     // });
-    texi = new Texture("./textures/bird.jpg");
 }
 
-void GameScene::update(Game& game, Window& window) {
+void GameScene::update(Game& game, Ressources& ressources) {
 	//std::cout << "Hello Game" << std::endl;
 }
 
-void GameScene::render() {
+void GameScene::render(Ressources& ressources) {
     // renderer.absoluteTranslate({0, 0.5f});
     // renderer.renderColor(*m, {1, 0, 1, 1});
 
@@ -49,8 +46,7 @@ void GameScene::render() {
     renderer.translate(Mouse::getMousePos());
     renderer.rotate(45.0f);
     //std::cout << "MouseX: " << Mouse::getMousePos().x << "Mouse y: " << Mouse::getMousePos().y << std::endl;
-    Color c = Color(0, 1, 0, 1);
-    renderer.renderColor(m1, c);
+    renderer.renderColor(ressources.models.find("test_color"), ressources.colors.find("test_color"));
     renderer.rotate(-45.0f);
     renderer.translate({-Mouse::getMousePos()});
 
@@ -59,7 +55,7 @@ void GameScene::render() {
     renderer.translate({-0.5f, -0.5f});
     renderer.rotate(45.0f);
     //std::cout << "MouseX: " << Mouse::getMousePos().x << "Mouse y: " << Mouse::getMousePos().y << std::endl;
-    renderer.renderTexture(m1, *texi);
+    renderer.renderTexture(ressources.models.find("test_color"), ressources.textures.find("test_texture"));
     renderer.rotate(-45.0f);
     renderer.translate({0.5f, 0.5f});
 }

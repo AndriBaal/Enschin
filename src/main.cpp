@@ -6,10 +6,6 @@
 
 int main()
 {
-
-    MyGame* myGame = new MyGame("Enschin", {600.0f, 600.0f}, 0);
-    GameScene* myScene = new GameScene(*myGame);
-    myGame->start(*myScene);
-
+    MyGame myGame = MyGame("Enschin", {600.0f, 600.0f}, 0);
     return 0;
 }

@@ -13,13 +13,10 @@
 
 class GameScene : public Scene {
 private:
-	Model* m;
-	Model m1;
-	Texture* texi;
 	std::vector<Entity> entities;
 	Vec2 mousePos = Vec2();
 public:
 	GameScene(Game& game);
-	virtual void update(Game& game, Window& window) override;
-	virtual void render() override;
+	virtual void update(Game& game, Ressources& ressources) override;
+	virtual void render(Ressources& ressources) override;
 };

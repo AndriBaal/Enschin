@@ -14,6 +14,7 @@ private:
 	const static float texCoords[8];
 	unsigned short amountOfVertices;
 	unsigned short amountOfIndices;
+	float* vertices;
 	VertexArray* va;
 	IndexBuffer* ib;
 
@@ -27,8 +28,7 @@ public:
 	
 	static void generateVertices(Dim2 size, float dest[16]);
 	static void generateVerticesTex(Dim2 size, float dest[]);
-	VertexArray* getVa() { return va; }
-	IndexBuffer* getIb() { return ib; }
+	void bind();
 	int getAmountOfVertices() { return amountOfVertices; }
 	unsigned int getAmountOfIndices() { return amountOfIndices; }
 };

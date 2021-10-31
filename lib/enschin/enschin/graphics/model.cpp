@@ -83,6 +83,11 @@ Model::Model(Dim2 size)
     va->addBuffer(*vb, layout);
 }
 
+void Model::bind() {
+    va->bind();
+    ib->bind();
+}
+
 /**
  * @brief Writes 4 vertices into the given array based on the wished dimension.
  * 

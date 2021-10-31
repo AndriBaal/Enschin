@@ -7,8 +7,7 @@
  * @param indices Indices for the Buffer
  * @param count Count of Indices
  */
-IndexBuffer::IndexBuffer(const unsigned int* indices, unsigned int count)
-    : count(count) {
+IndexBuffer::IndexBuffer(const unsigned int* indices, unsigned int count) {
     ASSERT(sizeof(unsigned int) == sizeof(GLuint));
 
     glGenBuffers(1, &indexBufferId);

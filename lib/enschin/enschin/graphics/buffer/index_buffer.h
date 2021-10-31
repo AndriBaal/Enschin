@@ -11,7 +11,6 @@
 class IndexBuffer {
 private:
     unsigned int indexBufferId;
-    unsigned int count;
 
 public:
     IndexBuffer() = default;
@@ -20,6 +19,4 @@ public:
 
     void bind() const;
     void unbind() const;
-
-    inline unsigned int getCount() const { return count; }
 };

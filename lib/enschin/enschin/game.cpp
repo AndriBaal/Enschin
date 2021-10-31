@@ -5,15 +5,16 @@ Game::Game(std::string gameName, Dim2 windowSize, bool fullscreen) {
 	window = new Window(gameName, windowSize, fullscreen);
 }
 
-
 /**
  * @brief Start the game
  * 
  * @param window Window*
- * @param currentScene First appearing scene
+ * @param startScene First appearing scene
+ * @param currentRessources First used ressources for the scene
  */
-void Game::start(Scene& currentScene) {
-	this->currentScene = &currentScene;
+void Game::start(Scene& startScene, Ressources& startRessources) {
+	this->currentScene = currentScene;
+	this->currentRessource = currentRessource;
 	Renderer::initShaderPrograms();
 
 	GLFWwindow* glfw = window->getGlfw();
@@ -22,7 +23,7 @@ void Game::start(Scene& currentScene) {
         glClear(GL_COLOR_BUFFER_BIT);
 
 		if (window->update()) {
-			currentScene.getRenderer().resetProjection(window->getSize());
+			currentScene->getRenderer().resetProjection(window->getSize());
 		}
     
 		secondTime = getNanos();
@@ -32,8 +33,6 @@ void Game::start(Scene& currentScene) {
 
         glfwPollEvents();
 		loop();
-		//currentScene.update(this, *window);
-		currentScene.render();
 		
 		fps++;
 		if (getNanos() > lastTime + 1000000000) {
@@ -41,12 +40,11 @@ void Game::start(Scene& currentScene) {
 			lastTime = getNanos();
 			fps = 0;
 		}
-
-
+		running = true;
         glfwSwapBuffers(glfw);
     }
+	running = false;
     glfwTerminate();
-	exit(0);
 }
 
 /**

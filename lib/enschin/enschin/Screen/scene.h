@@ -2,6 +2,7 @@
 
 #include "enschin/game.h"
 #include "enschin/graphics/renderer.h"
+#include "enschin/util/ressources.hpp"
 
 /**
  * @brief Scenes that are meant to be used for different envirnments
@@ -15,7 +16,7 @@ private:
 	//lists for objets & entities
 public:
 	Scene(Game& game);
-	virtual void update(Game& game, Window& window) = 0;
-	virtual void render() = 0;
+	virtual void update(Game& game, Ressources& ressources) = 0;
+	virtual void render(Ressources& ressources) = 0;
 	Renderer& getRenderer(){ return renderer; }
-};
+}; 
