@@ -9,5 +9,6 @@ MyGame::MyGame(std::string gameName, Dim2 windowSize, bool fullscreen):Game(game
 
 void MyGame::loop() {
 	//set the current Scene here
-
+    currentScene->update(*this, *currentRessources);
+    currentScene->render(*currentRessources);
 }

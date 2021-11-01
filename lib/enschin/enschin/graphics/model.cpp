@@ -19,6 +19,7 @@ const float Model::texCoords[8] = {
     0.0f, 1.0f //Top left
 };
 
+unsigned int Model::indices[6] = {0, 1, 2, 2, 3, 0};
 
 /**
  * @brief Construct a new Model object. Mostly used
@@ -67,7 +68,6 @@ Model::Model(float vertices[], unsigned short amountOfVertices, unsigned int ind
 Model::Model(Dim2 size)
     : amountOfIndices(amountOfIndices){
     float verticesTexCoord[16] = {};
-    unsigned int indices[6] = {0, 1, 2, 2, 3, 0};
     amountOfIndices = 6;
     amountOfVertices = 4;
     generateVerticesTex(size, verticesTexCoord);

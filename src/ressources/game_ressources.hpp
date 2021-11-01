@@ -1,7 +1,7 @@
 #include "enschin/util/ressources.hpp"
 
 struct GameRessources : public Ressources {
-    virtual void load() {
+    virtual void load() override{
         models = {
             {
                 "test_model", Model({0.5f, 0.5f}),

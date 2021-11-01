@@ -33,8 +33,7 @@ void Game::start(Scene& startScene, Ressources& startRessources) {
 
         glfwPollEvents();
 		loop();
-		//currentScene->update(*this, *currentRessources);
-    	currentScene->render(*currentRessources);
+
 		
 		fps++;
 		if (getNanos() > lastTime + 1000000000) {
