@@ -1,7 +1,7 @@
 #include "enschin/util/ressources.hpp"
 
 struct GameRessources : public Ressources {
-    GameRessources() {
+    virtual void load() {
         models = {
             {
                 "test_model", Model({0.5f, 0.5f}),

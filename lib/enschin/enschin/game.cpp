@@ -13,10 +13,10 @@ Game::Game(std::string gameName, Dim2 windowSize, bool fullscreen) {
  * @param currentRessources First used ressources for the scene
  */
 void Game::start(Scene& startScene, Ressources& startRessources) {
-	this->currentScene = currentScene;
-	this->currentRessource = currentRessource;
+	this->currentScene = &startScene;
+	this->currentRessources = &startRessources;
 	Renderer::initShaderPrograms();
-
+	
 	GLFWwindow* glfw = window->getGlfw();
 
 	while (!glfwWindowShouldClose(glfw)) {
@@ -33,6 +33,8 @@ void Game::start(Scene& startScene, Ressources& startRessources) {
 
         glfwPollEvents();
 		loop();
+		//currentScene->update(*this, *currentRessources);
+    	currentScene->render(*currentRessources);
 		
 		fps++;
 		if (getNanos() > lastTime + 1000000000) {

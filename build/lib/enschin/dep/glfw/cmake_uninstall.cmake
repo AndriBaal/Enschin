@@ -1,9 +1,9 @@
 
-if (NOT EXISTS "C:/Users/andri/Documents/GitHub/CMake-Engine/build/lib/enschin/dep/glfw/install_manifest.txt")
-  message(FATAL_ERROR "Cannot find install manifest: \"C:/Users/andri/Documents/GitHub/CMake-Engine/build/lib/enschin/dep/glfw/install_manifest.txt\"")
+if (NOT EXISTS "C:/Users/Andri Baal/Documents/GitHub/CMake-Engine/build/lib/enschin/dep/glfw/install_manifest.txt")
+  message(FATAL_ERROR "Cannot find install manifest: \"C:/Users/Andri Baal/Documents/GitHub/CMake-Engine/build/lib/enschin/dep/glfw/install_manifest.txt\"")
 endif()
 
-file(READ "C:/Users/andri/Documents/GitHub/CMake-Engine/build/lib/enschin/dep/glfw/install_manifest.txt" files)
+file(READ "C:/Users/Andri Baal/Documents/GitHub/CMake-Engine/build/lib/enschin/dep/glfw/install_manifest.txt" files)
 string(REGEX REPLACE "\n" ";" files "${files}")
 
 foreach (file ${files})

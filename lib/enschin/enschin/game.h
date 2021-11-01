@@ -13,16 +13,14 @@ class Window;
  */
 class Game {
 protected:
-
+	Scene* currentScene;
+	Ressources* currentRessources;
 private:
 	long long firstTime, secondTime, lastTime;
 	long long getNanos();
 	float deltaTime, fps;
 	bool running = false;
 	Window* window;
-	Scene* currentScene;
-	Ressources* currentRessource;
-
 public:
 	Game(std::string gameName, Dim2 windowSize, bool fullscreen);
 	virtual void start(Scene& startScene, Ressources& startRessources);

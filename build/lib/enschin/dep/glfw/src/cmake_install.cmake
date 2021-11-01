@@ -1,4 +1,4 @@
-# Install script for directory: C:/Users/andri/Documents/GitHub/CMake-Engine/lib/enschin/dep/glfw/src
+# Install script for directory: C:/Users/Andri Baal/Documents/GitHub/CMake-Engine/lib/enschin/dep/glfw/src
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
@@ -38,6 +38,6 @@ if(NOT DEFINED CMAKE_OBJDUMP)
 endif()
 
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib" TYPE STATIC_LIBRARY FILES "C:/Users/andri/Documents/GitHub/CMake-Engine/build/lib/enschin/dep/glfw/src/libglfw3.a")
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib" TYPE STATIC_LIBRARY FILES "C:/Users/Andri Baal/Documents/GitHub/CMake-Engine/build/lib/enschin/dep/glfw/src/libglfw3.a")
 endif()
 

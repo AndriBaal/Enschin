@@ -1,4 +1,4 @@
-# Install script for directory: C:/Users/andri/Documents/GitHub/CMake-Engine/lib/enschin
+# Install script for directory: C:/Users/Andri Baal/Documents/GitHub/CMake-Engine/lib/enschin
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
@@ -39,8 +39,8 @@ endif()
 
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for each subdirectory.
-  include("C:/Users/andri/Documents/GitHub/CMake-Engine/build/lib/enschin/dep/glfw/cmake_install.cmake")
-  include("C:/Users/andri/Documents/GitHub/CMake-Engine/build/lib/enschin/dep/glew/cmake_install.cmake")
+  include("C:/Users/Andri Baal/Documents/GitHub/CMake-Engine/build/lib/enschin/dep/glfw/cmake_install.cmake")
+  include("C:/Users/Andri Baal/Documents/GitHub/CMake-Engine/build/lib/enschin/dep/glew/cmake_install.cmake")
 
 endif()
 

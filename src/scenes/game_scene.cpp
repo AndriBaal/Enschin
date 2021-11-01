@@ -42,20 +42,16 @@ void GameScene::render(Ressources& ressources) {
     // renderer.renderColor(*m, {0, 1, 1, 1});
     //renderer.resetMatrix();
 
-
     renderer.translate(Mouse::getMousePos());
     renderer.rotate(45.0f);
-    //std::cout << "MouseX: " << Mouse::getMousePos().x << "Mouse y: " << Mouse::getMousePos().y << std::endl;
-    renderer.renderColor(ressources.models.find("test_color"), ressources.colors.find("test_color"));
+    renderer.renderColor(ressources.models.at("test_model"), ressources.colors.at("test_color"));
     renderer.rotate(-45.0f);
     renderer.translate({-Mouse::getMousePos()});
 
-    //renderer.resetMatrix();
 
     renderer.translate({-0.5f, -0.5f});
     renderer.rotate(45.0f);
-    //std::cout << "MouseX: " << Mouse::getMousePos().x << "Mouse y: " << Mouse::getMousePos().y << std::endl;
-    renderer.renderTexture(ressources.models.find("test_color"), ressources.textures.find("test_texture"));
+    renderer.renderTexture(ressources.models.at("test_model"), ressources.textures.at("test_texture"));
     renderer.rotate(-45.0f);
     renderer.translate({0.5f, 0.5f});
 }
