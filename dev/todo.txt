@@ -12,23 +12,24 @@ Enschin:
 		/ Refactor proccess to loop
 		/ add start function
 	- bring units back
-	- new game structure
+	/ new game structure
 	? Remove variable names in header
 	/ Linux compile errors fix
 	/ Model create by dimension
 	/ Math library vector optimization
 	/ New folder structure
-	! Don't bind textures / models twice
+	/ Don't bind textures / models twice
 	- icon for .exe
 	/ Vec2 & Vec3 operators
 	- C++ call super method
 	- Colored texture shader fix
 	- Draw part of a Model shader
-	? Renderer2 and Renderer3 for 2 and 3 Dimensions
+	/ Renderer2 and Renderer3 for 2 and 3 Dimensions
 	- isKeyPressed shouldnt require GLFW keycode -> General keycode or string
 	- Texture not a refrence because the low memory size
 	- add vertices as variable in model
 	- Allgemeine Input Class
+	- Shaderprogram no pointer
 	$ Settings system
 	$ Cross plattform, android, apple, etc...
 	? size mulitplier for entities ()

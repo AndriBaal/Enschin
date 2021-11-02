@@ -15,6 +15,7 @@ class GameScene : public Scene {
 private:
 	std::vector<Entity> entities;
 	Vec2 mousePos = Vec2();
+	Texture* texi;
 public:
 	GameScene(Game& game);
 	virtual void update(Game& game, Ressources& ressources) override;

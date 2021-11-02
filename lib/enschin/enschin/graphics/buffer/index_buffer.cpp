@@ -1,5 +1,7 @@
 #include "index_buffer.h"
 
+unsigned int IndexBuffer::boundIndexBuffer = 0;
+
 /**
  * @brief Construct a new Index Buffer by the given Indices.
  * Creates Buffer on the GPU memory.
@@ -27,7 +29,10 @@ IndexBuffer::~IndexBuffer() {
  * @brief Bind Buffer for drawing
  */
 void IndexBuffer::bind() const {
-    glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, indexBufferId);
+    if (boundIndexBuffer != indexBufferId) {
+        boundIndexBuffer = indexBufferId;
+        glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, indexBufferId);
+    }
 }
 
 /**

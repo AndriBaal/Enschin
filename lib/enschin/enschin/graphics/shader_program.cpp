@@ -1,5 +1,6 @@
 #include "shader_program.h"
 
+unsigned int ShaderProgram::boundProgram = 0;
 
 /**
  * @brief Read and compile the Shader from a vertex and fragment 
@@ -29,7 +30,10 @@ ShaderProgram::~ShaderProgram() {
  * @brief Bind and use the shaderprogram.
  */
 void ShaderProgram::bind() const {
-    glUseProgram(shaderProgramId);
+    if (shaderProgramId != boundProgram){
+        boundProgram = shaderProgramId;
+        glUseProgram(shaderProgramId);
+    } 
 }
 
 /**

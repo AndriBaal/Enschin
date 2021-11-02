@@ -1,5 +1,7 @@
 #include "vertex_buffer.h"
 
+unsigned int VertexBuffer::boundVertexBuffer = 1231132;
+
 VertexBuffer::VertexBuffer(const void* data, unsigned int size) {
     glGenBuffers(1, &vertexBufferId);
     glBindBuffer(GL_ARRAY_BUFFER, vertexBufferId);
@@ -10,10 +12,13 @@ VertexBuffer::~VertexBuffer() {
     glDeleteBuffers(1, &vertexBufferId);
 }
 
-void VertexBuffer::Bind() const {
-    glBindBuffer(GL_ARRAY_BUFFER, vertexBufferId);
+void VertexBuffer::bind() const {
+    if (boundVertexBuffer != vertexBufferId) {
+        boundVertexBuffer = vertexBufferId;
+        glBindBuffer(GL_ARRAY_BUFFER, vertexBufferId);
+    }
 }
 
-void VertexBuffer::Unbind() const {
+void VertexBuffer::unbind() const {
     glBindBuffer(GL_ARRAY_BUFFER, 0);
 }

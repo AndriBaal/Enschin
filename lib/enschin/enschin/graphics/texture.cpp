@@ -1,14 +1,17 @@
 #include "texture.h"
 
+unsigned int Texture::boundTexture = 0;
+
 /**
  * @brief Construct a new Texture object and create an id on the GPU
  * 
  * @param path Image path
  */
 Texture::Texture(const std::string& path)
-    : textureId(0), localBuffer(nullptr), BPP(0) {
+    : textureId(0) {
     stbi_set_flip_vertically_on_load(1);
-    int width, height;
+    int width, height, BPP;
+    unsigned char* localBuffer = nullptr;
     localBuffer = stbi_load(path.c_str(), &width, &height, &BPP, 4);
     glGenTextures(1, &textureId);
     glBindTexture(GL_TEXTURE_2D, textureId); // Bind without slot selection
@@ -37,8 +40,11 @@ Texture::~Texture() {
  * @param slot Slot for the texture
  */
 void Texture::bind(unsigned int slot) const {
-    glActiveTexture(GL_TEXTURE0 + slot);
-    glBindTexture(GL_TEXTURE_2D, textureId);
+    if (boundTexture != textureId) {
+        boundTexture = textureId;
+        glActiveTexture(GL_TEXTURE0 + slot);
+        glBindTexture(GL_TEXTURE_2D, textureId);
+    }
 }
 
 /**

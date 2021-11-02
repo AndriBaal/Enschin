@@ -10,11 +10,9 @@
  */
 class Texture {
 private:
-    unsigned char* localBuffer;
-    int BPP; //Bits per Pixel1
-
-public:
     unsigned int textureId;
+public:
+    static unsigned int boundTexture;
     Texture(): textureId(0), localBuffer(nullptr), BPP(0) {}
     Texture(const std::string& path);
     ~Texture();
