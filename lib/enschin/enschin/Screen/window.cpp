@@ -54,10 +54,6 @@ Window::Window(std::string windowTitle, Dim2 windowSize, bool fullScreen) {
     this->windowSize = windowSize;
     this->fullScreen = fullScreen;
     this->windowTitle = windowTitle;
-    
-    glfwSetCursorPosCallback(window, Mouse::updateCursor);
-    glfwSetMouseButtonCallback(window, Mouse::updateButtons);
-    glfwSetKeyCallback(window, Keyboard::update);
 }
 
 /**

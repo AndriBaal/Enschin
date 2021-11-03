@@ -45,3 +45,5 @@ struct Vec3 {
 
 	Vec3 operator-();
 };
+
+std::ostream& operator<<(std::ostream& os, const Vec3& v);

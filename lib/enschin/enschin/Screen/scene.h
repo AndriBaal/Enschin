@@ -5,7 +5,7 @@
 #include "enschin/util/ressources.hpp"
 
 /**
- * @brief Scenes that are meant to be used for different envirnments
+ * @brief Scenes that are meant to be used for different environments
  * For example between loading & game screen or for different rooms.
  */
 class Game;

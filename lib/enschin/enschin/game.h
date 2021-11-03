@@ -4,6 +4,7 @@
 #include "enschin/screen/scene.h"
 #include "enschin/graphics/renderer.h"
 #include "enschin/util/ressources.hpp"
+#include "enschin/input/input.h"
 
 class Scene;
 class Window;
@@ -21,11 +22,13 @@ private:
 	float deltaTime, fps;
 	bool running = false;
 	Window* window;
+    Input input;
 public:
 	Game(std::string gameName, Dim2 windowSize, bool fullscreen);
 	virtual void start(Scene& startScene, Ressources& startRessources);
 	virtual void loop() = 0;
-	float getDeltaTime(){ return deltaTime; }
+	float getDeltaTime() const{ return deltaTime; }
 	float getFps(){ return fps; }
 	Window& getWindow(){ return *window; }
+    Input& getInput() { return input; }
 };

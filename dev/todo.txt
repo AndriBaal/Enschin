@@ -3,7 +3,7 @@
 ? IDEA
 $ FAR FUTURE
 ! IMPORTANT
-
+# scrapped
 
 Enschin:
 	? Renderer, mouse, keyboard not static
@@ -12,6 +12,7 @@ Enschin:
 		/ Refactor proccess to loop
 		/ add start function
 	- bring units back
+	! test keyboard input
 	/ new game structure
 	? Remove variable names in header
 	/ Linux compile errors fix
@@ -28,17 +29,13 @@ Enschin:
 	- isKeyPressed shouldnt require GLFW keycode -> General keycode or string
 	- Texture not a refrence because the low memory size
 	- add vertices as variable in model
-	- Allgemeine Input Class
+	/ Allgemeine Input Class
 	- Shaderprogram no pointer
 	$ Settings system
 	$ Cross plattform, android, apple, etc...
-	? size mulitplier for entities ()
-	? Load everything from json (models, textures, etc...)
+	/ size mulitplier for entities ()
+	# Load everything from json (models, textures, etc...)
 	? Shaderprogram class for 3rd party shaders evtl. json file
-	/ math
-		/ matrix parameters:
-			/ no x / y only vec2
-			/ dim for model creation
 	- Code revision:
 		/1
 			/ unnecassary includes
@@ -60,6 +57,6 @@ Enschin:
 		- camera (util)
 		- animations (effect)
 		
-	- Git
-		- Readme
-		- License
+	/ Git
+		/ Readme
+		? License

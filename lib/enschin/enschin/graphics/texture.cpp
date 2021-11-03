@@ -31,7 +31,11 @@ Texture::Texture(const std::string& path)
  * @brief Destroy the Texture object and delete the Texture from the GPU
  */
 Texture::~Texture() {
-    glDeleteTextures(1, &textureId);
+    if (created) {
+        glDeleteTextures(1, &textureId);
+    }else{
+        created = true;
+    }
 }
 
 /**

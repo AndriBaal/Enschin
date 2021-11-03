@@ -8,8 +8,6 @@
 #include "enschin/math/vec2.h"
 #include "enschin/graphics/effects/color.hpp"
 #include "enschin/graphics/renderer.h"
-#include "enschin/input/keyboard.h"
-#include "enschin/input/mouse.h"
 
 /**
  * @brief GLFWWindow wrapper

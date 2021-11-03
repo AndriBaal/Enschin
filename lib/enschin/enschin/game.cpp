@@ -13,11 +13,13 @@ Game::Game(std::string gameName, Dim2 windowSize, bool fullscreen) {
  * @param currentRessources First used ressources for the scene
  */
 void Game::start(Scene& startScene, Ressources& startRessources) {
-	this->currentScene = &startScene;
+    this->currentScene = &startScene;
 	this->currentRessources = &startRessources;
-	Renderer::initShaderPrograms();
-	
-	GLFWwindow* glfw = window->getGlfw();
+
+    Renderer::initShaderPrograms();
+
+    GLFWwindow* glfw = window->getGlfw();
+    input = Input(glfw);
 
 	while (!glfwWindowShouldClose(glfw)) {
         glClear(GL_COLOR_BUFFER_BIT);
@@ -33,6 +35,9 @@ void Game::start(Scene& startScene, Ressources& startRessources) {
 
         glfwPollEvents();
 		loop();
+        input.update(currentScene->getRenderer().getUnits());
+        currentScene->update(*this, *currentRessources);
+        currentScene->render(*currentRessources);
 
 		
 		fps++;

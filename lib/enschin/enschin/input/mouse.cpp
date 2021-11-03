@@ -6,11 +6,12 @@
  * @param cursorPos Vec2 to write into
  */
 void Mouse::updateCursor(float units, Vec2& cursorPos) {
-	double x, y;
-	int width, height;
-	glfwGetWindowSize(window, &width, &height);
-	glfwGetCursorPos(window, &x, &y);
-	cursorPos = translateMousePosition(units, x, y, width, height);
+    double x, y;
+    int width, height;
+    glfwGetWindowSize(window, &width, &height);
+    glfwGetCursorPos(window, &x, &y);
+    cursorPos = translateMousePosition(units, x, y, width, height);
+
 }
 
 /**

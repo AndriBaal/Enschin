@@ -1,7 +1,7 @@
 #include "enschin/screen/window.h"
 #include "enschin/game.h"
 #include "scenes/game_scene.h"
-#include "ressources/game_ressources.hpp"
+#include "ressources/ressource_loader.h"
 
 class MyGame : public Game {
 private:

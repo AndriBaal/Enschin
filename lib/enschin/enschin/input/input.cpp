@@ -1,8 +1,11 @@
 #include "input.h"
 
-Input
+Input::Input(GLFWwindow* window) {
+    mouse = Mouse(window);
+    keyboard = Keyboard(window);
+}
 
-void Input::update(GLFWwindow* window, float units) {
+void Input::update(float units) {
     switch (inputType) {
     case KEYMOUSE:
         keyboard.update(keyboardMapping);

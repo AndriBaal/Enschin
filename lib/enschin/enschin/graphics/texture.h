@@ -11,6 +11,7 @@
 class Texture {
 private:
     unsigned int textureId;
+    bool created = false;
 public:
     static unsigned int boundTexture;
     Texture(const std::string& path);

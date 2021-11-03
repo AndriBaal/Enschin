@@ -27,7 +27,9 @@ private:
     // std::map<int, int> ControllerMapping; //TriggerId, Controllercode
     // std::map<int, GuiObject> TouchMapping; //TriggerId, Reactive touch component
 public:
+    Input() = default;
     Input(GLFWwindow*);
-    void update(GLFWwindow* window, float units);
+    void update(float units);
     bool isInput(int);
+    Vec2 getCursorPos(){ return cursorPos; };
 };

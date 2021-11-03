@@ -13,6 +13,7 @@ public:
 	Vec2 pos;
 	Vec2 dir;
 	Dim2 dim;
+    float scale;
 	Entity(std::string tag, Vec2 pos = {}, Dim2 dim = {}, Vec2 dir = {})
 		: tag(tag), pos(pos), dim(dim), dir(dir) {};
 	~Entity();

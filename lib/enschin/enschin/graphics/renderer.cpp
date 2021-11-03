@@ -21,7 +21,6 @@ ShaderProgram* Renderer::coloredTextureProgram = NULL;
  */
 Renderer::Renderer(Dim2 windowSize, float units) {
     this->units = units;
-    Mouse::setUnits(units);
     resetProjection(windowSize);
     resetMatrix();
 }

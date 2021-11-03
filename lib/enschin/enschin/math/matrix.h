@@ -1,3 +1,5 @@
+#pragma once
+
 #include <math.h>
 #include <algorithm>
 #include <iterator>
@@ -25,4 +27,4 @@ namespace Matrix {
 
     void printMatrix(float matrix[16]);
     void printMatrixAsWurst(float matrix[16]);
-};
+}
