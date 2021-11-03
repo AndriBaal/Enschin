@@ -63,9 +63,6 @@ int ShaderProgram::getUniformLocation(const std::string& name) {
     return location;
 }
 
-enum ShaderType {
-    NONE = -1, VERTEX = 0, FRAGMENT = 1
-};
 
 /**
  * @brief Get the shader code from a filee

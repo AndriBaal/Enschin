@@ -1,15 +1,16 @@
 #pragma once
 
 #include <GLFW/glfw3.h>
+#include <unordered_map>
 
 /**
  * @brief Keyboard class that handles keyboard inputs
  */
 class Keyboard {
 private:
-	static bool keys[255];
-
+    GLFWwindow* window;
 public:
-	static void update(GLFWwindow* window, int key, int scancode, int action, int mods);
-	static bool isKeyPressed(int key);
+    Keyboard() = default;
+    Keyboard(GLFWwindow* window) : window(window){}
+    void update(std::unordered_map<int, std::pair<int, bool>>keys);
 };

@@ -12,7 +12,7 @@ namespace Matrix {
     }
 
     /**
-     * @brief Multiply 2 4x4 Matrices.
+     * @brief Multiply two 4x4 Matrices.
      * 
      * @param result Array that the result gets written in to
      * @param lhs Lefthand array

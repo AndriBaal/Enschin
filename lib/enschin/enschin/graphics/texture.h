@@ -13,7 +13,6 @@ private:
     unsigned int textureId;
 public:
     static unsigned int boundTexture;
-    Texture(): textureId(0), localBuffer(nullptr), BPP(0) {}
     Texture(const std::string& path);
     ~Texture();
 
