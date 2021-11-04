@@ -9,7 +9,11 @@ VertexBuffer::VertexBuffer(const void* data, unsigned int size) {
 }
 
 VertexBuffer::~VertexBuffer() {
-    glDeleteBuffers(1, &vertexBufferId);
+    if (created) {
+        glDeleteBuffers(1, &vertexBufferId);
+    }else{
+        created = true;
+    }
 }
 
 void VertexBuffer::bind() const {

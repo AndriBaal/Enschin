@@ -12,10 +12,7 @@ Game::Game(std::string gameName, Dim2 windowSize, bool fullscreen) {
  * @param startScene First appearing scene
  * @param currentRessources First used ressources for the scene
  */
-void Game::start(Scene& startScene, Ressources& startRessources) {
-    this->currentScene = &startScene;
-	this->currentRessources = &startRessources;
-
+void Game::start() {
     Renderer::initShaderPrograms();
 
     GLFWwindow* glfw = window->getGlfw();
@@ -38,11 +35,10 @@ void Game::start(Scene& startScene, Ressources& startRessources) {
         input.update(currentScene->getRenderer().getUnits());
         currentScene->update(*this, *currentRessources);
         currentScene->render(*currentRessources);
-
 		
 		fps++;
 		if (getNanos() > lastTime + 1000000000) {
-			//std::cout << fps << std::endl;
+			std::cout << fps << std::endl;
 			lastTime = getNanos();
 			fps = 0;
 		}

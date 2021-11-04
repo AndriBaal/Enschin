@@ -36,18 +36,8 @@ void GameScene::update(Game& game, Ressources& ressources) {
 }
 
 void GameScene::render(Ressources& ressources) {
-    // renderer.absoluteTranslate({0, 0.5f});
-    // renderer.renderColor(*m, {1, 0, 1, 1});
 
-    // renderer.absoluteTranslate({1, 0});
-    // renderer.renderColor(*m, {0, 1, 1, 1});
-    //renderer.resetMatrix();
-
-    renderer.translate(mousePos);
-    renderer.rotate(45.0f);
-    renderer.renderColor(ressources.models.at(TEST+MODEL), ressources.colors.at(TEST+COLOR));
-    renderer.rotate(-45.0f);
-    renderer.translate(-mousePos);
+    renderer.translateAndRenderTexture(ressources.models.at(TEST+MODEL), ressources.textures.at(TEST+TEXTURE), mousePos, 45.0f);
 
 
     renderer.translate({-0.5f, -0.5f});

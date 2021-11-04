@@ -17,6 +17,7 @@
  */
 class ShaderProgram {
 private:
+    bool created = false;
     unsigned int shaderProgramId;
     static unsigned int boundProgram;
     std::unordered_map<std::string, int> uniformLocationCache;

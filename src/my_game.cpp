@@ -1,10 +1,13 @@
 #include "my_game.h"
 
-MyGame::MyGame(std::string gameName, Dim2 windowSize, bool fullscreen):Game(gameName, windowSize, fullscreen) {
+
+void MyGame::start() {
     GameScene myScene = GameScene(*this);
-	Ressources r = Ressources();
+    Ressources r = Ressources();
     RessourceLoader::loadGameRessources(r);
-    start(myScene, r);
+    currentScene = &myScene;
+    currentRessources = &r;
+    Game::start();
 }
 
 void MyGame::loop() {

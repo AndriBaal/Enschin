@@ -7,7 +7,11 @@ VertexArray::VertexArray() {
 }
 
 VertexArray::~VertexArray() {
-    glDeleteVertexArrays(1, &vertexArrayId);
+    if (created) {
+        glDeleteVertexArrays(1, &vertexArrayId);
+    }else{
+        created=true;
+    }
 }
 
 void VertexArray::addBuffer(const VertexBuffer& vb, const VertexBufferLayout& layout) {

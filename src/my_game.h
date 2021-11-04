@@ -6,6 +6,8 @@
 class MyGame : public Game {
 private:
 public:
-	MyGame(std::string gameName, Dim2 windowSize, bool fullscreen);
+    MyGame(std::string gameName, Dim2 windowSize, bool fullscreen)
+    : Game(gameName, windowSize, fullscreen){}
     virtual void loop() override;
+    virtual void start() override;
 };

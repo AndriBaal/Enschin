@@ -4,9 +4,11 @@
 
 class VertexArray {
 private:
+    bool created = false;
     unsigned int vertexArrayId;
     static unsigned int boundVertexArray;
 public:
+    VertexArray(bool b){}
     VertexArray();
     ~VertexArray();
 

@@ -1,17 +1,8 @@
 #include "renderer.h"
 
-ShaderProgram* Renderer::colorProgram = NULL;
-ShaderProgram* Renderer::textureProgram = NULL;
-ShaderProgram* Renderer::coloredTextureProgram = NULL;
-
-// float Renderer::view[16] = {0};
-// float Renderer::proj[16] = {0};
-// float Renderer::mvp[16] = {0};
-
-// float Renderer::ratio = 0;
-// float Renderer::units = 0;
-
-
+ShaderProgram Renderer::colorProgram;
+ShaderProgram Renderer::textureProgram;
+ShaderProgram Renderer::coloredTextureProgram;
 
 /**
  * @brief Create a new Renderer with its own projection matrices.
@@ -19,8 +10,7 @@ ShaderProgram* Renderer::coloredTextureProgram = NULL;
  * @param windowSize WindowSize for the matrices
  * @param units Units from the Center to the Top/Bottom of the Screen
  */
-Renderer::Renderer(Dim2 windowSize, float units) {
-    this->units = units;
+Renderer::Renderer(Dim2 windowSize, float units) : units(units) {
     resetProjection(windowSize);
     resetMatrix();
 }
@@ -29,9 +19,9 @@ Renderer::Renderer(Dim2 windowSize, float units) {
  * @brief Initialize the shaderPrograms
  */
 void Renderer::initShaderPrograms() {
-    colorProgram = new ShaderProgram("./enschin/shader/vertex.vert", "./enschin/shader/color.frag");
-    textureProgram = new ShaderProgram("./enschin/shader/vertex.vert", "./enschin/shader/texture.frag");
-    coloredTextureProgram = new ShaderProgram("./enschin/shader/vertex.vert", "./enschin/shader/colored_texture.frag");
+    colorProgram = ShaderProgram("./enschin/shader/vertex.vert", "./enschin/shader/color.frag");
+    textureProgram = ShaderProgram("./enschin/shader/vertex.vert", "./enschin/shader/texture.frag");
+    coloredTextureProgram = ShaderProgram("./enschin/shader/vertex.vert", "./enschin/shader/colored_texture.frag");
 }
 
 /**
@@ -42,9 +32,9 @@ void Renderer::initShaderPrograms() {
  */
 void Renderer::renderColor(Model& model, Color& color) {
     model.bind();
-    colorProgram->bind();
-    colorProgram->setUniformMat4f("u_MVP", mvp);
-    colorProgram->setColor("u_Color", color);
+    colorProgram.bind();
+    colorProgram.setUniformMat4f("u_MVP", mvp);
+    colorProgram.setColor("u_Color", color);
 
     glDrawElements(GL_TRIANGLES, model.getAmountOfIndices(), GL_UNSIGNED_INT, nullptr);
 }
@@ -58,9 +48,9 @@ void Renderer::renderColor(Model& model, Color& color) {
 void Renderer::renderTexture(Model& model, Texture& texture) {
     model.bind();
     texture.bind(); 
-    textureProgram->bind();
-    textureProgram->setUniform1i("u_Texture", 0);
-    textureProgram->setUniformMat4f("u_MVP", mvp);
+    textureProgram.bind();
+    textureProgram.setUniform1i("u_Texture", 0);
+    textureProgram.setUniformMat4f("u_MVP", mvp);
 
     glDrawElements(GL_TRIANGLES, model.getAmountOfIndices(), GL_UNSIGNED_INT, nullptr);
 }
@@ -77,10 +67,10 @@ void Renderer::renderTexture(Model& model, Texture& texture) {
 void Renderer::renderColoredTexture(Model& model, Texture& texture, Color& color) {
     model.bind();
     texture.bind(); 
-    coloredTextureProgram->bind();   
-    coloredTextureProgram->setUniform1i("u_Texture", 0);
-    coloredTextureProgram->setUniformMat4f("u_MVP", mvp);
-    coloredTextureProgram->setColor("u_Color", color);
+    coloredTextureProgram.bind();
+    coloredTextureProgram.setUniform1i("u_Texture", 0);
+    coloredTextureProgram.setUniformMat4f("u_MVP", mvp);
+    coloredTextureProgram.setColor("u_Color", color);
     glDrawElements(GL_TRIANGLES, model.getAmountOfIndices(), GL_UNSIGNED_INT, nullptr);
 }
 
@@ -106,10 +96,12 @@ void Renderer::renderRaytracing(Model& model, float vertices[], int amountOfVert
  * @param tex Texture to render
  * @param pos Position to translate to
  */
-void Renderer::translateAndRenderTexture(Model& model, Texture& tex, Vec2 pos){
+void Renderer::translateAndRenderTexture(Model& model, Texture& tex, Vec2 pos, float rotation){
     translate(pos);
+    rotate(rotation);
     renderTexture(model, tex);
-    //translate(view, -pos);
+    rotate(-rotation);
+    translate(-pos);
 }
 
 /**

@@ -44,15 +44,15 @@ Model::Model(float vertices[], unsigned short amountOfVertices, unsigned int ind
             verticesTexCoord[i+3] = texCoords[0];
         }
     }
-    VertexBuffer* vb = new VertexBuffer(verticesTexCoord, 4 * amountOfVertices * sizeof(float));
-    ib = new IndexBuffer(indices, amountOfIndices);
+    VertexBuffer vb = VertexBuffer(verticesTexCoord, 4 * amountOfVertices * sizeof(float));
+    ib = IndexBuffer(indices, amountOfIndices);
 
     VertexBufferLayout layout;
     layout.addFloat(2);
     layout.addFloat(2);
 
-    va = new VertexArray();
-    va->addBuffer(*vb, layout);
+    va = VertexArray();
+    va.addBuffer(vb, layout);
 }
 
 /**
@@ -65,27 +65,26 @@ Model::Model(float vertices[], unsigned short amountOfVertices, unsigned int ind
  * @param amountOfIndices Amount of Indices of the model (default=6)
  */
 
-Model::Model(Dim2 size)
-    : amountOfIndices(amountOfIndices){
+Model::Model(Dim2 size) {
     float verticesTexCoord[16] = {};
     amountOfIndices = 6;
     amountOfVertices = 4;
     generateVerticesTex(size, verticesTexCoord);
 
-    VertexBuffer* vb = new VertexBuffer(verticesTexCoord, 4 * amountOfVertices * sizeof(float));
-    ib = new IndexBuffer(indices, amountOfIndices);
+    VertexBuffer vb = VertexBuffer(verticesTexCoord, 4 * amountOfVertices * sizeof(float));
+    ib = IndexBuffer(indices, amountOfIndices);
 
     VertexBufferLayout layout;
     layout.addFloat(2);
     layout.addFloat(2);
 
-    va = new VertexArray();
-    va->addBuffer(*vb, layout);
+    va = VertexArray();
+    va.addBuffer(vb, layout);
 }
 
 void Model::bind() {
-    va->bind();
-    ib->bind();
+    va.bind();
+    ib.bind();
 }
 
 /**

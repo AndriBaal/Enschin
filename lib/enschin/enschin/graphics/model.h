@@ -16,17 +16,17 @@ private:
 	unsigned short amountOfVertices;
 	unsigned short amountOfIndices;
 	float* vertices;
-	VertexArray* va;
-	IndexBuffer* ib;
+	VertexArray va = VertexArray(1);
+	IndexBuffer ib;
 
 public:
 	Model() = default;
 	Model(Dim2 size);
-	Model(float vertices[], 
-		unsigned short amountOfVertices = 4, 
-		unsigned int indices[6] = indices, 
+	Model(float vertices[],
+		unsigned short amountOfVertices = 4,
+		unsigned int indices[6] = indices,
 		unsigned short amountOfIndices = 6);
-	
+
 	static void generateVertices(Dim2 size, float dest[16]);
 	static void generateVerticesTex(Dim2 size, float dest[]);
 	void bind();

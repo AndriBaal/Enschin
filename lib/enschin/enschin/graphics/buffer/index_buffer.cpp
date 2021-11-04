@@ -22,7 +22,11 @@ IndexBuffer::IndexBuffer(const unsigned int* indices, unsigned int count) {
  * delete the Buffer on the GPU.
  */
 IndexBuffer::~IndexBuffer() {
-    glDeleteBuffers(1, &indexBufferId);
+    if (created) {
+        glDeleteBuffers(1, &indexBufferId);
+    }else{
+        created = true;
+    }
 }
 
 /**

@@ -10,9 +10,11 @@
  */
 class IndexBuffer {
 private:
+    bool created = false;
     unsigned int indexBufferId;
     static unsigned boundIndexBuffer;
 public:
+    IndexBuffer() = default;
     IndexBuffer(const unsigned int* indices, unsigned int count);
     ~IndexBuffer();
 

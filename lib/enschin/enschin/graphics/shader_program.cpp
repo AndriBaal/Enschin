@@ -2,6 +2,7 @@
 
 unsigned int ShaderProgram::boundProgram = 0;
 
+
 /**
  * @brief Read and compile the Shader from a vertex and fragment 
  * shader source. Load the shader in the memory.
@@ -23,7 +24,11 @@ ShaderProgram::ShaderProgram(const std::string& vertexPath, const std::string& f
  * Program from the GPU memory.
  */
 ShaderProgram::~ShaderProgram() {
-    glDeleteProgram(shaderProgramId);
+    if (created) {
+        glDeleteProgram(shaderProgramId);
+    }else{
+        created = true;
+    }
 }
 
 /**

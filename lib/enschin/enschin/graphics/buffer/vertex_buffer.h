@@ -3,6 +3,7 @@
 
 class VertexBuffer {
 private:
+    bool created = false;
     unsigned int vertexBufferId;
     static unsigned int boundVertexBuffer;
 public:
