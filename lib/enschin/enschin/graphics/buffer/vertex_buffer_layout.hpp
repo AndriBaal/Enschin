@@ -1,5 +1,5 @@
 #pragma once
-#include <assert.h>
+#include <cassert>
 #include <vector>
 #include <GL/glew.h>
 
@@ -33,7 +33,7 @@ public:
     void addUnsignedInt(unsigned int count) { push(GL_UNSIGNED_INT, count, GL_FALSE); }
     void addUnsignedByte(unsigned int count) { push(GL_UNSIGNED_BYTE, count, GL_TRUE); }
 
-    inline const std::vector<VertexBufferElement> getElements() const { return elements; };
+    inline std::vector<VertexBufferElement> getElements() const { return elements; };
     inline unsigned int getStride() const { return stride; };
 
 private:

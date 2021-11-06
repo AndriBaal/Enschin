@@ -12,11 +12,12 @@ Game::Game(std::string gameName, Dim2 windowSize, bool fullscreen) {
  * @param startScene First appearing scene
  * @param currentRessources First used ressources for the scene
  */
-void Game::start() {
+void Game::init() {
     Renderer::initShaderPrograms();
-
     GLFWwindow* glfw = window->getGlfw();
     input = Input(glfw);
+
+    start();
 
 	while (!glfwWindowShouldClose(glfw)) {
         glClear(GL_COLOR_BUFFER_BIT);

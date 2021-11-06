@@ -15,6 +15,6 @@ public:
     Mouse() = default;
     Mouse(GLFWwindow* window) : window(window){}
 	void updateCursor(float units, Vec2& cursorPos);
-	void updateButtons(std::unordered_map<int, std::pair<int, bool>>);
+	void updateButtons(std::unordered_map<int, std::pair<int, bool>>&);
 };
 

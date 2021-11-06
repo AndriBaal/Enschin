@@ -12,14 +12,15 @@
 // 2, 4, 0,
 // 0, 1, 2, Pentagon
 
-const float Model::texCoords[8] = {
+
+float Model::defaultTexCoords[8] = {
     0.0f, 0.0f, //Bottom left
     1.0f, 0.0f, //Bottom right
     1.0f, 1.0f, //Top right
     0.0f, 1.0f //Top left
 };
 
-unsigned int Model::indices[6] = {0, 1, 2, 2, 3, 0};
+unsigned int Model::defaultIndices[6] = {0, 1, 2, 2, 3, 0};
 
 /**
  * @brief Construct a new Model object. Mostly used
@@ -30,7 +31,7 @@ unsigned int Model::indices[6] = {0, 1, 2, 2, 3, 0};
  * @param indicies Indices (draw order of triangles) of the model (default=[0, 1, 2, 2, 3, 0])
  * @param amountOfIndices Amount of Indices of the model (default=6)
  */
-Model::Model(float vertices[], unsigned short amountOfVertices, unsigned int indices[], unsigned short amountOfIndices)
+Model::Model(float vertices[], unsigned short amountOfVertices, unsigned int indices[], unsigned short amountOfIndices, float texCoords[])
     : amountOfIndices(amountOfIndices), amountOfVertices(amountOfVertices) {
     float verticesTexCoord[amountOfVertices*4];
     for (int i = 0; i < amountOfVertices*4; i+=4) {
@@ -72,7 +73,7 @@ Model::Model(Dim2 size) {
     generateVerticesTex(size, verticesTexCoord);
 
     VertexBuffer vb = VertexBuffer(verticesTexCoord, 4 * amountOfVertices * sizeof(float));
-    ib = IndexBuffer(indices, amountOfIndices);
+    ib = IndexBuffer(defaultIndices, amountOfIndices);
 
     VertexBufferLayout layout;
     layout.addFloat(2);

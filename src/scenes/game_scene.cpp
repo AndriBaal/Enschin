@@ -33,6 +33,9 @@ GameScene::GameScene(Game& game) : Scene(game) {
 void GameScene::update(Game& game, Ressources& ressources) {
 	//std::cout << "Hello Game" << std::endl;
     mousePos = game.getInput().getCursorPos();
+    if (game.getInput().isInput(TEST_EVENT)){
+        std::cout << "hello wärld" << std::endl;
+    }
 }
 
 void GameScene::render(Ressources& ressources) {

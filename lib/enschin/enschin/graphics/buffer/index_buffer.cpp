@@ -42,6 +42,6 @@ void IndexBuffer::bind() const {
 /**
  * @brief Unbind Buffer
  */
-void IndexBuffer::unbind() const {
+void IndexBuffer::unbind() {
     glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, 0);
 }

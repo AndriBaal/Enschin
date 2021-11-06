@@ -11,8 +11,8 @@
  */
 struct Model {
 private:
-	const static float texCoords[8];
-	static unsigned int indices[6];
+    static float defaultTexCoords[8];
+	static unsigned int defaultIndices[6];
 	unsigned short amountOfVertices;
 	unsigned short amountOfIndices;
 	float* vertices;
@@ -24,8 +24,9 @@ public:
 	Model(Dim2 size);
 	Model(float vertices[],
 		unsigned short amountOfVertices = 4,
-		unsigned int indices[6] = indices,
-		unsigned short amountOfIndices = 6);
+		unsigned int indices[6] = defaultIndices,
+		unsigned short amountOfIndices = 6,
+        float texCoords[8] = defaultTexCoords);
 
 	static void generateVertices(Dim2 size, float dest[16]);
 	static void generateVerticesTex(Dim2 size, float dest[]);

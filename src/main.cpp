@@ -3,6 +3,6 @@
 
 int main() {
     MyGame myGame = MyGame("Enschin", {600.0f, 600.0f}, 0);
-    myGame.start();
+    myGame.init();
     return 0;
 }

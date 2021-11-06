@@ -21,12 +21,12 @@ private:
     unsigned char inputType = 0;
     unsigned short directionSpeeds[4]; //Direction speeds from 0 to 100% for each direction
     Vec2 cursorPos;
-    std::unordered_map<int, bool> inputEvents; //TriggerId, triggered
-    std::unordered_map<int, std::pair<int, bool>> keyboardMapping; //TriggerId, Keycode
-    std::unordered_map<int, std::pair<int, bool>> mouseButtonsMapping; //TriggerId, Buttoncode
     // std::map<int, int> ControllerMapping; //TriggerId, Controllercode
     // std::map<int, GuiObject> TouchMapping; //TriggerId, Reactive touch component
 public:
+    std::unordered_map<int, bool> inputEvents; //TriggerId, triggered
+    std::unordered_map<int, std::pair<int, bool>> keyboardMapping; //TriggerId, Keycode
+    std::unordered_map<int, std::pair<int, bool>> mouseButtonsMapping; //TriggerId, Buttoncode
     Input() = default;
     Input(GLFWwindow*);
     void update(float units);

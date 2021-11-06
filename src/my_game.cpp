@@ -2,12 +2,12 @@
 
 
 void MyGame::start() {
-    GameScene myScene = GameScene(*this);
-    Ressources r = Ressources();
-    RessourceLoader::loadGameRessources(r);
-    currentScene = &myScene;
-    currentRessources = &r;
-    Game::start();
+    Ressources* r = new Ressources();
+    RessourceLoader::loadGameRessources(*r);
+    RessourceLoader::loadGameInput(getInput());
+    GameScene* myScene = new GameScene(*this);
+    currentScene = myScene;
+    currentRessources = r;
 }
 
 void MyGame::loop() {

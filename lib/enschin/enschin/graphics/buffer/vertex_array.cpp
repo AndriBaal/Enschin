@@ -14,7 +14,7 @@ VertexArray::~VertexArray() {
     }
 }
 
-void VertexArray::addBuffer(const VertexBuffer& vb, const VertexBufferLayout& layout) {
+void VertexArray::addBuffer(const VertexBuffer& vb, const VertexBufferLayout& layout) const {
     bind();
     vb.bind();
     const std::vector<VertexBufferElement> elements = layout.getElements();
@@ -34,6 +34,6 @@ void VertexArray::bind() const {
     }
 }
 
-void VertexArray::unbind() const {
+void VertexArray::unbind() {
     glBindVertexArray(0);
-};
+}

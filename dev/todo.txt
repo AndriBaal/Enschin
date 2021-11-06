@@ -43,7 +43,7 @@ Enschin:
 			/ unnecassary includes
 			/ Curly braclets like java
 		-2
-			!- Stack heap allocation (for Model and for GameScene)	-> Fisch
+			/- Stack heap allocation (for Model and for GameScene)	-> Fisch
 			/ const / refrence in functions
 			- Documentation
 				- See Videos of TheCherno for Documentation

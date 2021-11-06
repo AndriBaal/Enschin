@@ -25,7 +25,8 @@ private:
     Input input;
 public:
 	Game(std::string gameName, Dim2 windowSize, bool fullscreen);
-	virtual void start();
+    void init();
+	virtual void start() = 0;
 	virtual void loop() = 0;
 	float getDeltaTime() const{ return deltaTime; }
 	float getFps(){ return fps; }

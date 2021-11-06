@@ -1,5 +1,5 @@
 #pragma once
-#include <assert.h>
+#include <cassert>
 #include <GL/glew.h>
 #define ASSERT(x) if (!(x)) assert(false)
 #define INT2VOIDP(i) (void*)(uintptr_t)(i)
@@ -19,5 +19,5 @@ public:
     ~IndexBuffer();
 
     void bind() const;
-    void unbind() const;
+    static void unbind() ;
 };

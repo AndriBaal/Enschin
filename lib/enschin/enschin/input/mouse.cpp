@@ -18,7 +18,7 @@ void Mouse::updateCursor(float units, Vec2& cursorPos) {
  * @brief Updates the mouse buttons and writes the result into the map
  * @param mouseButtons MouseButtons to get checked
  */
-void Mouse::updateButtons(std::unordered_map<int, std::pair<int, bool>> mouseButtons) {
+void Mouse::updateButtons(std::unordered_map<int, std::pair<int, bool>> &mouseButtons) {
 	for (auto button = mouseButtons.begin(); button != mouseButtons.end(); button++) {
         button->second.second = glfwGetMouseButton(window, button->second.first);
     }

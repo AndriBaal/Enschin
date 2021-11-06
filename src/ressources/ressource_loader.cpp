@@ -12,4 +12,13 @@ namespace RessourceLoader {
                 {TEST+COLOR, Color(0, 1, 0, 1)},
                 };
     }
+
+    void loadGameInput(Input& input) {
+        input.inputEvents = {
+                {TEST_EVENT, false}
+        };
+        input.keyboardMapping = {
+                {TEST_EVENT, {83, false}}
+        };
+    }
 }

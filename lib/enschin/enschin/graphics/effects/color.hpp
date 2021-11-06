@@ -15,7 +15,7 @@ public:
 	 * @param b Blue amount
 	 * @param a Alpha amount
 	 */
-	Color(float r = 0.0f, float g = 0.0f, float b = 0.0f, float a = 0.0f)
+	explicit Color(float r = 0.0f, float g = 0.0f, float b = 0.0f, float a = 0.0f)
 		: r(r), g(g), b(b), a(a) {}
 	float r;
 	float g;

@@ -5,6 +5,10 @@ Input::Input(GLFWwindow* window) {
     keyboard = Keyboard(window);
 }
 
+bool Input::isInput(int e) {
+    return inputEvents.at(e);
+}
+
 void Input::update(float units) {
     switch (inputType) {
     case KEYMOUSE:
@@ -16,7 +20,7 @@ void Input::update(float units) {
             for (auto button = mouseButtonsMapping.begin(); button != mouseButtonsMapping.end(); button++)
                 if (event->first == button->first && button->second.second) event->second = true;
             for (auto key = keyboardMapping.begin(); key != keyboardMapping.end(); key++)
-                if (event->first == event-> second && key->second.second) event->second = true;
+                if (event->first == key->first && key->second.second) event->second = true;
         }
         break;
     case CONTROLLER:

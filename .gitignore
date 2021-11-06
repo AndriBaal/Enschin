@@ -1,0 +1,12 @@
+*
+
+!README.md
+!.gitignore
+!.idea
+!.vscode
+
+!CMakeLists.txt
+!dev
+!lib
+!res
+!src
