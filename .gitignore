@@ -1,12 +1,2 @@
-*
-
-!README.md
-!.gitignore
-!.idea
-!.vscode
-
-!CMakeLists.txt
-!dev
-!lib
-!res
-!src
+build
+cmake-build-debug
