@@ -39,7 +39,7 @@ public:
 	void rotate(float angle);
 	void scale(Vec2 scaling);
 
-	void translateAndRenderTexture(Model& model, Texture& tex, Vec2 pos, float rotation);
+	void translateAndRenderTexture(Model& model, Texture& tex, Vec2 pos, float rotation=.0f);
 	void renderColor(Model& model, Color& color);
 	void renderTexture(Model& model, Texture& texture);
 	void renderColoredTexture(Model& model, Texture& texture, Color& color);

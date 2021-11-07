@@ -2,6 +2,7 @@
 
 
 void MyGame::start() {
+    window.setIcon("./textures/bird.jpg");
     Ressources* r = new Ressources();
     RessourceLoader::loadGameRessources(*r);
     RessourceLoader::loadGameInput(getInput());
@@ -12,5 +13,8 @@ void MyGame::start() {
 
 void MyGame::loop() {
 	//set the current Scene here
+}
 
+void MyGame::free() {
+    //Cleanup when closing
 }

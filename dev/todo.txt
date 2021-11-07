@@ -12,20 +12,22 @@ Enschin:
 		/ Refactor proccess to loop
 		/ add start function
 	- bring units back
-	! test keyboard input
+	/ test keyboard input
 	! Check if input is faster via callbacks
-	! Model vb and va not refrences
+	/ Model vb and va not refrences
 	! Optimisations with CLion
+	- Controller input
 	/ new game structure
 	/ Linux compile errors fix
 	/ Model create by dimension
 	/ Math library vector optimization
 	/ New folder structure
 	/ Don't bind textures / models twice
-	- icon for .exe
+	/ icon for .exe
 	/ Vec2 & Vec3 operators
 	/ C++ call super method
 	- Colored texture shader fix
+	/ icon for exe
 	- Draw part of a Model shader
 	/ Renderer2 and Renderer3 for 2 and 3 Dimensions
 	/ isKeyPressed shouldnt require GLFW keycode -> General keycode or string
@@ -36,14 +38,13 @@ Enschin:
 	$ Settings system
 	$ Cross plattform, android, apple, etc...
 	/ size mulitplier for entities ()
-	# Load everything from json (models, textures, etc...)
 	? Shaderprogram class for 3rd party shaders evtl. json file
 	- Code revision:
 		/1
 			/ unnecassary includes
 			/ Curly braclets like java
 		-2
-			/- Stack heap allocation (for Model and for GameScene)	-> Fisch
+			/ Stack heap allocation (for Model and for GameScene)	-> Fisch
 			/ const / refrence in functions
 			- Documentation
 				- See Videos of TheCherno for Documentation

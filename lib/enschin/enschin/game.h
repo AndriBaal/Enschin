@@ -16,20 +16,21 @@ class Game {
 protected:
 	Scene* currentScene;
 	Ressources* currentRessources;
+	Window window;
+	Input input;
 private:
 	long long firstTime, secondTime, lastTime;
 	long long getNanos();
 	float deltaTime, fps;
 	bool running = false;
-	Window* window;
-    Input input;
 public:
 	Game(std::string gameName, Dim2 windowSize, bool fullscreen);
     void init();
 	virtual void start() = 0;
 	virtual void loop() = 0;
+    virtual void free() = 0;
 	float getDeltaTime() const{ return deltaTime; }
 	float getFps(){ return fps; }
-	Window& getWindow(){ return *window; }
+	Window& getWindow(){ return window; }
     Input& getInput() { return input; }
 };

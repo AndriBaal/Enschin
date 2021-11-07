@@ -28,10 +28,10 @@ GameScene::GameScene(Game& game) : Scene(game) {
     //     0.6f, 0.5f, 1.0f, 1.0f, // 2
     //     -0.5f, 0.5f, 0.0f, 1.0f  // 3
     // });
+    cam = Camera(renderer, mousePos);
 }
 
 void GameScene::update(Game& game, Ressources& ressources) {
-	//std::cout << "Hello Game" << std::endl;
     mousePos = game.getInput().getCursorPos();
     if (game.getInput().isInput(TEST_EVENT)){
         std::cout << "hello wärld" << std::endl;
@@ -39,10 +39,7 @@ void GameScene::update(Game& game, Ressources& ressources) {
 }
 
 void GameScene::render(Ressources& ressources) {
-
-    renderer.translateAndRenderTexture(ressources.models.at(TEST+MODEL), ressources.textures.at(TEST+TEXTURE), mousePos, 45.0f);
-
-
+    renderer.translateAndRenderTexture(ressources.models.at(TEST+MODEL), ressources.textures.at(TEST+TEXTURE), mousePos);
     renderer.translate({-0.5f, -0.5f});
     renderer.rotate(45.0f);
     renderer.renderTexture(ressources.models.at(TEST+MODEL), ressources.textures.at(TEST+TEXTURE));

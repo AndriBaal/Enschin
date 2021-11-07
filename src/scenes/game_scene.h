@@ -8,6 +8,7 @@
 #include <enschin/graphics/texture.h>
 #include <enschin/objects/entity.h>
 #include <enschin/input/mouse.h>
+#include <enschin/util/camera.hpp>
 #include <iostream>
 #include <vector>
 #include "ressources/ressource_loader.h"
@@ -16,7 +17,7 @@ class GameScene : public Scene {
 private:
 	std::vector<Entity> entities;
 	Vec2 mousePos = Vec2();
-	Texture* texi;
+    Camera cam;
 public:
 	GameScene(Game& game);
 	virtual void update(Game& game, Ressources& ressources) override;

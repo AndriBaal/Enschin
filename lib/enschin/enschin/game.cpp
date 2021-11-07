@@ -2,7 +2,7 @@
 
 
 Game::Game(std::string gameName, Dim2 windowSize, bool fullscreen) {
-	window = new Window(gameName, windowSize, fullscreen);
+	window = Window(gameName, windowSize, fullscreen);
 }
 
 /**
@@ -14,7 +14,7 @@ Game::Game(std::string gameName, Dim2 windowSize, bool fullscreen) {
  */
 void Game::init() {
     Renderer::initShaderPrograms();
-    GLFWwindow* glfw = window->getGlfw();
+    GLFWwindow* glfw = window.getGlfw();
     input = Input(glfw);
 
     start();
@@ -22,8 +22,8 @@ void Game::init() {
 	while (!glfwWindowShouldClose(glfw)) {
         glClear(GL_COLOR_BUFFER_BIT);
 
-		if (window->update()) {
-			currentScene->getRenderer().resetProjection(window->getSize());
+		if (window.update()) {
+			currentScene->getRenderer().resetProjection(window.getSize());
 		}
     
 		secondTime = getNanos();

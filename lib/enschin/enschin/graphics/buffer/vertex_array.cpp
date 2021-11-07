@@ -6,12 +6,8 @@ VertexArray::VertexArray() {
     glGenVertexArrays(1, &vertexArrayId);
 }
 
-VertexArray::~VertexArray() {
-    if (created) {
-        glDeleteVertexArrays(1, &vertexArrayId);
-    }else{
-        created=true;
-    }
+void VertexArray::free() {
+    glDeleteVertexArrays(1, &vertexArrayId);
 }
 
 void VertexArray::addBuffer(const VertexBuffer& vb, const VertexBufferLayout& layout) const {

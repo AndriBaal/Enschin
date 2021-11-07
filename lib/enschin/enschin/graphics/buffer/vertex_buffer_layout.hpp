@@ -26,8 +26,7 @@ private:
     std::vector<VertexBufferElement> elements;
 
 public:
-    VertexBufferLayout() :
-        stride(0) { }
+    VertexBufferLayout() : stride(0) { }
 
     void addFloat(unsigned int count) { push(GL_FLOAT, count, GL_FALSE); }
     void addUnsignedInt(unsigned int count) { push(GL_UNSIGNED_INT, count, GL_FALSE); }

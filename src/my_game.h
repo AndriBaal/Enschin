@@ -10,4 +10,5 @@ public:
     : Game(gameName, windowSize, fullscreen){}
     virtual void start() override;
     virtual void loop() override;
+    virtual void free() override;
 };

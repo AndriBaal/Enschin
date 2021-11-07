@@ -4,6 +4,7 @@
 #include <stdlib.h>
 #include <string>
 #include <iostream>
+#include "../../dep/stb/stb_image.h"
 #include "enschin/math/dim2.h"
 #include "enschin/math/vec2.h"
 #include "enschin/graphics/effects/color.hpp"
@@ -20,6 +21,7 @@ private:
 	std::string windowTitle;
 	GLFWwindow* window;
 public:
+    Window() = default;
 	Window(std::string title, Dim2 size, bool fullscreen);
 	bool update();
 	Dim2 getSize() { return windowSize; }
@@ -29,4 +31,5 @@ public:
 	void setTitle(std::string title);
 	void setClearColor(Color newColor);
 	void setVSync(bool vSync);
+    void setIcon(const char *filePath);
 };

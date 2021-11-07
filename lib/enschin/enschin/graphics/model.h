@@ -16,8 +16,9 @@ private:
 	unsigned short amountOfVertices;
 	unsigned short amountOfIndices;
 	float* vertices;
-	VertexArray va = VertexArray(1);
+	VertexArray va = (1);
 	IndexBuffer ib;
+    VertexBuffer vb;
 
 public:
 	Model() = default;
@@ -27,6 +28,7 @@ public:
 		unsigned int indices[6] = defaultIndices,
 		unsigned short amountOfIndices = 6,
         float texCoords[8] = defaultTexCoords);
+    void free();
 
 	static void generateVertices(Dim2 size, float dest[16]);
 	static void generateVerticesTex(Dim2 size, float dest[]);

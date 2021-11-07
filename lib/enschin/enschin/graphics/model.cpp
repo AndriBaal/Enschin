@@ -40,12 +40,12 @@ Model::Model(float vertices[], unsigned short amountOfVertices, unsigned int ind
         if (i/2+1 < 8) {
             verticesTexCoord[i+2] = texCoords[i/2];
             verticesTexCoord[i+3] = texCoords[i/2+1];
-        } else {
+        }else{
             verticesTexCoord[i+2] = texCoords[0];
             verticesTexCoord[i+3] = texCoords[0];
         }
     }
-    VertexBuffer vb = VertexBuffer(verticesTexCoord, 4 * amountOfVertices * sizeof(float));
+    vb = VertexBuffer(verticesTexCoord, 4 * amountOfVertices * sizeof(float));
     ib = IndexBuffer(indices, amountOfIndices);
 
     VertexBufferLayout layout;
@@ -72,7 +72,7 @@ Model::Model(Dim2 size) {
     amountOfVertices = 4;
     generateVerticesTex(size, verticesTexCoord);
 
-    VertexBuffer vb = VertexBuffer(verticesTexCoord, 4 * amountOfVertices * sizeof(float));
+    vb = VertexBuffer(verticesTexCoord, 4 * amountOfVertices * sizeof(float));
     ib = IndexBuffer(defaultIndices, amountOfIndices);
 
     VertexBufferLayout layout;
@@ -83,6 +83,18 @@ Model::Model(Dim2 size) {
     va.addBuffer(vb, layout);
 }
 
+/**
+ * Delete all the buffers of the model.
+ */
+void Model::free() {
+    va.free();
+    vb.free();
+    ib.free();
+}
+
+/**
+ * @brief Bind the model for rendering.
+ */
 void Model::bind() {
     va.bind();
     ib.bind();

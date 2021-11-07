@@ -1,3 +1,4 @@
+#include <iostream>
 #include "texture.h"
 
 unsigned int Texture::boundTexture = 0;
@@ -30,12 +31,8 @@ Texture::Texture(const std::string& path)
 /**
  * @brief Destroy the Texture object and delete the Texture from the GPU
  */
-Texture::~Texture() {
-    if (created) {
-        glDeleteTextures(1, &textureId);
-    }else{
-        created = true;
-    }
+void Texture::free() {
+    glDeleteTextures(1, &textureId);
 }
 
 /**

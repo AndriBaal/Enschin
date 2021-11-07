@@ -11,11 +11,10 @@
 class Texture {
 private:
     unsigned int textureId;
-    bool created = false;
-public:
     static unsigned int boundTexture;
+public:
     Texture(const std::string& path);
-    ~Texture();
+    void free();
 
     void bind(unsigned int slot = 0) const;
     void unbind() const;

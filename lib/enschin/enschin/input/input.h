@@ -31,5 +31,5 @@ public:
     Input(GLFWwindow*);
     void update(float units);
     bool isInput(int);
-    Vec2 getCursorPos(){ return cursorPos; };
+    Vec2& getCursorPos(){ return cursorPos; };
 };
