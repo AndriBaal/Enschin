@@ -2,10 +2,6 @@
 #include <enschin/util/ressources.hpp>
 #include <enschin/input/input.h>
 
-//Textures
-#define TEST 10
-
-
 //Input events
 #define TEST_EVENT 2
 

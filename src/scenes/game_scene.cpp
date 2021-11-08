@@ -33,16 +33,15 @@ GameScene::GameScene(Game& game) : Scene(game) {
 
 void GameScene::update(Game& game, Ressources& ressources) {
     mousePos = game.getInput().getCursorPos();
-    if (game.getInput().isInput(TEST_EVENT)){
+    if (game.getInput().isInput(TEST_EVENT))
         std::cout << "hello wärld" << std::endl;
-    }
 }
 
 void GameScene::render(Ressources& ressources) {
-    renderer.translateAndRenderTexture(ressources.models.at(TEST+MODEL), ressources.textures.at(TEST+TEXTURE), mousePos);
+    renderer.translateAndRenderTexture(ressources.models.at("test_model"), ressources.textures.at("test_texture"), mousePos);
     renderer.translate({-0.5f, -0.5f});
     renderer.rotate(45.0f);
-    renderer.renderTexture(ressources.models.at(TEST+MODEL), ressources.textures.at(TEST+TEXTURE));
+    renderer.renderTexture(ressources.models.at("test_model"), ressources.textures.at("test_texture"));
     renderer.rotate(-45.0f);
     renderer.translate({0.5f, 0.5f});
 }

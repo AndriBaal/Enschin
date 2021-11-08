@@ -18,7 +18,6 @@ private:
 	Dim2 windowSize;
 	bool fullScreen;
 	bool vSync = true;
-	std::string windowTitle;
 	GLFWwindow* window;
 public:
     Window() = default;

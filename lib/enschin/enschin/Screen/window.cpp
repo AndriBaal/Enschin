@@ -53,7 +53,6 @@ Window::Window(std::string windowTitle, Dim2 windowSize, bool fullScreen) {
     windowSize.h = h;
     this->windowSize = windowSize;
     this->fullScreen = fullScreen;
-    this->windowTitle = windowTitle;
 }
 
 /**

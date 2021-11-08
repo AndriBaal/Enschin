@@ -7,7 +7,6 @@
 #include "enschin/input/input.h"
 
 class Scene;
-class Window;
 /**
  * @brief Main class of Enschin. Innherit from this class to start
  * a new game.

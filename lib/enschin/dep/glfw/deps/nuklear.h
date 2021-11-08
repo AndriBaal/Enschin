@@ -25313,7 +25313,7 @@ nk_tooltipfv(struct nk_context *ctx, const char *fmt, va_list args)
 /// - 2017/03/04 (1.34.1) - Fixed group closable flag
 /// - 2017/02/25 (1.34.0) - Added custom draw command for better language binding support
 /// - 2017/01/24 (1.33.0) - Added programatic way of remove edit focus
-/// - 2017/01/24 (1.32.3) - Fixed wrong define for basic type definitions for windows
+/// - 2017/01/24 (1.32.3) - Fixed wrong define for basic type ressource_bundles for windows
 /// - 2017/01/21 (1.32.2) - Fixed input capture from hidden or closed windows
 /// - 2017/01/21 (1.32.1) - Fixed slider behavior and drawing
 /// - 2017/01/13 (1.32.0) - Added flag to put scaler into the bottom left corner

@@ -10,7 +10,7 @@ Game::Game(std::string gameName, Dim2 windowSize, bool fullscreen) {
  * 
  * @param window Window*
  * @param startScene First appearing scene
- * @param currentRessources First used ressources for the scene
+ * @param currentRessources First used ressource_bundles for the scene
  */
 void Game::init() {
     Renderer::initShaderPrograms();

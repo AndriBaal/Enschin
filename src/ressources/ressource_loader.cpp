@@ -3,13 +3,13 @@
 namespace RessourceLoader {
     void loadGameRessources(Ressources& res) {
         res.models = {
-                {TEST+MODEL, Model({0.5f, 0.5f})}
+                {"test_model", Model({0.5f, 0.5f})}
         };
         res.textures = {
-                {TEST+TEXTURE, Texture("./textures/bird.jpg")},
+                {"test_texture", Texture("./textures/bird.jpg")},
                 };
         res.colors = {
-                {TEST+COLOR, Color(0, 1, 0, 1)},
+                {"test_color", Color(0, 1, 0, 1)},
                 };
     }
 

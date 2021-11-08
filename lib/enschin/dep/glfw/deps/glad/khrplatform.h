@@ -24,7 +24,7 @@
 ** MATERIALS OR THE USE OR OTHER DEALINGS IN THE MATERIALS.
 */
 
-/* Khronos platform-specific types and definitions.
+/* Khronos platform-specific types and ressource_bundles.
  *
  * The master copy of khrplatform.h is maintained in the Khronos EGL
  * Registry repository at https://github.com/KhronosGroup/EGL-Registry
@@ -130,7 +130,7 @@
 #endif
 
 /*-------------------------------------------------------------------------
- * basic type definitions
+ * basic type ressource_bundles
  *-----------------------------------------------------------------------*/
 #if (defined(__STDC_VERSION__) && __STDC_VERSION__ >= 199901L) || defined(__GNUC__) || defined(__SCO__) || defined(__USLC__)
 

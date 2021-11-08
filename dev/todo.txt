@@ -15,8 +15,19 @@ Enschin:
 	/ test keyboard input
 	! Check if input is faster via callbacks
 	/ Model vb and va not refrences
+	! Spritesheets
+    ! background threats for timers
+    $ Multithreading
 	! Optimisations with CLion
 	- Controller input
+	- Texturepacks
+	- Exponential timer
+	? no .hpp's
+	- invert function for color
+	! Input as a Scene member
+	! Make camera working
+	! File names
+	- encrypt json models & paths
 	/ new game structure
 	/ Linux compile errors fix
 	/ Model create by dimension
