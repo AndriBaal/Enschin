@@ -5,21 +5,22 @@ class Scene;
 class Timer {
 private:
     static bool activeAll;
+    bool triggered;
     bool active;
-    float delay;
     float minValue;
     float maxValue;
-    float increment;
+    float incrementPerSecond;
     float* value;
     Scene* scene;
 public:
-    Timer(Scene* scene, float delay, float minValue, float maxValue, float increment, float* value, bool active=false)
-     : scene(scene), delay(delay), minValue(minValue), maxValue(maxValue), increment(increment), value(value), active(active){}
+    Timer() = default;
+    Timer(Scene* scene, float minValue, float maxValue, float incrementPerSecond, float* value, bool active=false);
     void update(float deltaTime);
     static void startAll();
     static void stopAll();
-    void start(){ active=1; };
-    void stop(){ active=0; };
+    void start(){ active=true; }
+    void stop(){ active=false; }
+    bool isTriggered(){ return triggered; }
     static bool isActiveAll();
-    bool isActive() const { return active; }
+    bool isActive() { return active; }
 };

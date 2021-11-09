@@ -24,11 +24,11 @@ private:
     // std::map<int, int> ControllerMapping; //TriggerId, Controllercode
     // std::map<int, GuiObject> TouchMapping; //TriggerId, Reactive touch component
 public:
+    Input() = default;
+    Input(GLFWwindow*);
     std::unordered_map<int, bool> inputEvents; //TriggerId, triggered
     std::unordered_map<int, std::pair<int, bool>> keyboardMapping; //TriggerId, Keycode
     std::unordered_map<int, std::pair<int, bool>> mouseButtonsMapping; //TriggerId, Buttoncode
-    Input() = default;
-    Input(GLFWwindow*);
     void update(float units);
     bool isInput(int);
     Vec2& getCursorPos(){ return cursorPos; };

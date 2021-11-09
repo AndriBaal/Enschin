@@ -17,9 +17,12 @@ class GameScene : public Scene {
 private:
 	std::vector<Entity> entities;
 	Vec2 mousePos = Vec2();
+    Timer t = Timer(this, 0.0f, 2.0f, 1.0f, &value);;
     Camera cam;
+    float value;
 public:
 	GameScene(Game& game);
+    void init(Game& game);
 	virtual void update(Game& game, Ressources& ressources) override;
 	virtual void render(Ressources& ressources) override;
 };

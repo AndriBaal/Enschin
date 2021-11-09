@@ -5,7 +5,6 @@ void MyGame::start() {
     window.setIcon("./textures/bird.jpg");
     Ressources* r = new Ressources();
     RessourceLoader::loadGameRessources(*r);
-    RessourceLoader::loadGameInput(getInput());
     GameScene* myScene = new GameScene(*this);
     currentScene = myScene;
     currentRessources = r;

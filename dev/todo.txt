@@ -11,12 +11,12 @@ Enschin:
 	/ Refactor GameHandler to Game
 		/ Refactor proccess to loop
 		/ add start function
-	- bring units back
+	! bring units back
 	/ test keyboard input
 	! Check if input is faster via callbacks
 	/ Model vb and va not refrences
 	! Spritesheets
-    ! background threats for timers
+    / background threats for timers
     $ Multithreading
 	! Optimisations with CLion
 	- Controller input
@@ -40,10 +40,11 @@ Enschin:
 	- Colored texture shader fix
 	/ icon for exe
 	- Draw part of a Model shader
+	- gui components
 	/ Renderer2 and Renderer3 for 2 and 3 Dimensions
 	/ isKeyPressed shouldnt require GLFW keycode -> General keycode or string
 	/ Texture not a refrence because the low memory size
-	- add vertices as variable in model
+	- add vertices as variable in model (Allocated on the heap)
 	/ Allgemeine Input Class
 	/ Shaderprogram no pointer
 	$ Settings system
@@ -67,7 +68,7 @@ Enschin:
 		/ Color (effect)
 		/ Scene (util)
 		/ Window (util)
-		- timers (util)
+		/ timers (util)
 		- camera (util)
 		- animations (effect)
 		

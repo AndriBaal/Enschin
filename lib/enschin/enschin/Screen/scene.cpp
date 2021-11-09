@@ -2,11 +2,13 @@
 
 Scene::Scene(Game& game) { 
     renderer = Renderer(game.getWindow().getSize());
+    input = Input(game.getWindow().getGlfw());
 }
 
 void Scene::updateTimers(float deltaTime) {
     for (auto timer = timers.begin(); timer != timers.end(); timer++) {
-        if ((*timer)->isActive() && (*timer)->isActiveAll())
+        if ((*timer)->isActive() && (*timer)->isActiveAll()){
             (*timer)->update(deltaTime);
+        }
     }
 }

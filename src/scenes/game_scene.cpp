@@ -29,11 +29,13 @@ GameScene::GameScene(Game& game) : Scene(game) {
     //     -0.5f, 0.5f, 0.0f, 1.0f  // 3
     // });
     cam = Camera(renderer, mousePos);
+    t.start();
+    RessourceLoader::loadGameInput(input);
 }
 
 void GameScene::update(Game& game, Ressources& ressources) {
-    mousePos = game.getInput().getCursorPos();
-    if (game.getInput().isInput(TEST_EVENT))
+    mousePos = input.getCursorPos();
+    if (input.isInput(TEST_EVENT))
         std::cout << "hello wärld" << std::endl;
 }
 

@@ -1,5 +1,4 @@
 #pragma once
-#include <chrono>
 #include "enschin/screen/window.h"
 #include "enschin/screen/scene.h"
 #include "enschin/graphics/renderer.h"
@@ -16,10 +15,8 @@ protected:
 	Scene* currentScene;
 	Ressources* currentRessources;
 	Window window;
-	Input input;
 private:
-	long long firstTime, secondTime, lastTime;
-	long long getNanos();
+	double firstTime, secondTime, lastTime;
 	float deltaTime, fps;
 	bool running = false;
 public:
@@ -31,5 +28,4 @@ public:
 	float getDeltaTime() const{ return deltaTime; }
 	float getFps(){ return fps; }
 	Window& getWindow(){ return window; }
-    Input& getInput() { return input; }
 };
