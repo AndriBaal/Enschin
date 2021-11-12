@@ -6,7 +6,8 @@
 
 class Entity {
 private:
-	std::string tag;
+    static unsigned int idCounter;
+    unsigned int id;
 	float health;
 	float maxHealth;
 public:
@@ -14,8 +15,7 @@ public:
 	Vec2 dir;
 	Dim2 dim;
     float scale;
-	Entity(std::string tag, Vec2 pos = {}, Dim2 dim = {}, Vec2 dir = {})
-		: tag(tag), pos(pos), dim(dim), dir(dir) {};
+	Entity(Vec2 pos = {}, Dim2 dim = {}, Vec2 dir = {});
 	~Entity();
 	virtual void update() = 0;
 	virtual void render() = 0;

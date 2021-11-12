@@ -13,21 +13,22 @@ Enschin:
 		/ add start function
 	! bring units back
 	/ test keyboard input
-	! Check if input is faster via callbacks
+	- Gui
+	/ Keycode file with #define's
 	/ Model vb and va not refrences
 	! Spritesheets
+	/ Backwards counting timer
     / background threats for timers
     $ Multithreading
 	! Optimisations with CLion
 	- Controller input
-	- Texturepacks
-	- Exponential timer
+	$ Texturepacks
 	? no .hpp's
 	- invert function for color
 	! Input as a Scene member
 	! Make camera working
 	! File names
-	- encrypt json models & paths
+	# encrypt json models & paths
 	/ new game structure
 	/ Linux compile errors fix
 	/ Model create by dimension
@@ -40,11 +41,10 @@ Enschin:
 	- Colored texture shader fix
 	/ icon for exe
 	- Draw part of a Model shader
-	- gui components
 	/ Renderer2 and Renderer3 for 2 and 3 Dimensions
 	/ isKeyPressed shouldnt require GLFW keycode -> General keycode or string
 	/ Texture not a refrence because the low memory size
-	- add vertices as variable in model (Allocated on the heap)
+	/ add vertices as variable in model (Allocated on the heap)
 	/ Allgemeine Input Class
 	/ Shaderprogram no pointer
 	$ Settings system

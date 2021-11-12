@@ -28,7 +28,6 @@ GameScene::GameScene(Game& game) : Scene(game) {
     //     0.6f, 0.5f, 1.0f, 1.0f, // 2
     //     -0.5f, 0.5f, 0.0f, 1.0f  // 3
     // });
-    cam = Camera(renderer, mousePos);
     t.start();
     RessourceLoader::loadGameInput(input);
 }

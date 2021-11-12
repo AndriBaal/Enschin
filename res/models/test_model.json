@@ -1,6 +1,15 @@
 {
   "test_model": {
-    "width": "0.5f",
-    "height": "0.5f"
+    "amountOfVertices": 4,
+    "vertices": [
+      -0.25, -0.25,
+      0.25, -0.25,
+      0.25, 0.25,
+      -0.25, 0.25
+    ],
+    "amountOfIndices": 0,
+    "indices": [
+      0, 1, 2, 2, 3, 0
+    ]
   }
 }

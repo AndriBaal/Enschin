@@ -9,12 +9,15 @@ add_subdirectory(dep/glfw)
 # Adding GLEW
 add_subdirectory(dep/glew)
 
+# Adding jsoncpp
+add_subdirectory(dep/jsoncpp)
+
 # Adding enschin 
 FILE(GLOB_RECURSE enschin_SRC enschin/*.cpp)
 
 # enschin libraries
 add_library(enschin 
-dep/stb/stb_image.cpp
+    dep/stb/stb_image.cpp
     ${enschin_SRC}
 )
 

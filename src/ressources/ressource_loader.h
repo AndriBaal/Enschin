@@ -1,5 +1,5 @@
 #pragma once
-#include <enschin/util/ressources.hpp>
+#include <enschin/util/ressources.h>
 #include <enschin/input/input.h>
 
 //Input events

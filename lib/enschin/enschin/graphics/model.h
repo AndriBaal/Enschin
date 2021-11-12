@@ -35,4 +35,5 @@ public:
 	void bind();
 	int getAmountOfVertices() { return amountOfVertices; }
 	unsigned int getAmountOfIndices() { return amountOfIndices; }
+    float* getVertices() const { return vertices; }
 };

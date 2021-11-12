@@ -3,7 +3,7 @@
 #include "enschin/graphics/renderer.h"
 #include "enschin/input/input.h"
 #include "enschin/game.h"
-#include "enschin/util/ressources.hpp"
+#include "enschin/util/ressources.h"
 #include "enschin/util/timer.h"
 
 /**

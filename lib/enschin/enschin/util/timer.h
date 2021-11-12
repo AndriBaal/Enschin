@@ -7,14 +7,14 @@ private:
     static bool activeAll;
     bool triggered;
     bool active;
-    float minValue;
-    float maxValue;
+    float startValue;
+    float endValue;
     float incrementPerSecond;
     float* value;
     Scene* scene;
 public:
     Timer() = default;
-    Timer(Scene* scene, float minValue, float maxValue, float incrementPerSecond, float* value, bool active=false);
+    Timer(Scene* scene, float startValue, float endValue, float incrementPerSecond, float* value, bool active=false);
     void update(float deltaTime);
     static void startAll();
     static void stopAll();

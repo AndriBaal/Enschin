@@ -18,7 +18,7 @@ private:
 	std::vector<Entity> entities;
 	Vec2 mousePos = Vec2();
     Timer t = Timer(this, 0.0f, 2.0f, 1.0f, &value);;
-    Camera cam;
+    Camera cam = Camera(renderer, mousePos);
     float value;
 public:
 	GameScene(Game& game);

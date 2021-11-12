@@ -34,6 +34,8 @@ unsigned int Model::defaultIndices[6] = {0, 1, 2, 2, 3, 0};
 Model::Model(float vertices[], unsigned short amountOfVertices, unsigned int indices[], unsigned short amountOfIndices, float texCoords[])
     : amountOfIndices(amountOfIndices), amountOfVertices(amountOfVertices) {
     float verticesTexCoord[amountOfVertices*4];
+    this->vertices = new float[amountOfVertices];
+    for (int i = 0; i < amountOfVertices; i++) this->vertices[i] = vertices[i];
     for (int i = 0; i < amountOfVertices*4; i+=4) {
         verticesTexCoord[i] = vertices[i/2];
         verticesTexCoord[i+1] = vertices[i/2+1];
@@ -70,7 +72,10 @@ Model::Model(Dim2 size) {
     float verticesTexCoord[16] = {};
     amountOfIndices = 6;
     amountOfVertices = 4;
+
     generateVerticesTex(size, verticesTexCoord);
+    this->vertices = new float[amountOfVertices];
+    generateVertices(size, this->vertices);
 
     vb = VertexBuffer(verticesTexCoord, 4 * amountOfVertices * sizeof(float));
     ib = IndexBuffer(defaultIndices, amountOfIndices);
@@ -90,6 +95,7 @@ void Model::free() {
     va.free();
     vb.free();
     ib.free();
+    delete vertices;
 }
 
 /**

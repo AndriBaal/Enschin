@@ -2,9 +2,7 @@
 
 namespace RessourceLoader {
     void loadGameRessources(Ressources& res) {
-        res.models = {
-                {"test_model", Model({0.5f, 0.5f})}
-        };
+        res.models = {{"test_model", Model({0.5f, 0.5f})}};
         res.textures = {
                 {"test_texture", Texture("./textures/bird.jpg")},
                 };

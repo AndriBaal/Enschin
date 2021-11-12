@@ -2,7 +2,7 @@
 #include "enschin/screen/window.h"
 #include "enschin/screen/scene.h"
 #include "enschin/graphics/renderer.h"
-#include "enschin/util/ressources.hpp"
+#include "enschin/util/ressources.h"
 #include "enschin/input/input.h"
 
 class Scene;

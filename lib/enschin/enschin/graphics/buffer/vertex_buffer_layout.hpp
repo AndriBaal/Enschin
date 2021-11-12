@@ -9,15 +9,6 @@ struct VertexBufferElement {
     unsigned int type;
     unsigned int count;
     unsigned char normalized;
-
-    static unsigned int getSizeOfType(unsigned int type) {
-        switch (type) {
-            case GL_FLOAT: return sizeof(GLfloat);
-            case GL_UNSIGNED_INT: return sizeof(GLuint);
-            case GL_UNSIGNED_BYTE: return sizeof(GLbyte);
-        }
-        return 0;
-    }
 };
 
 class VertexBufferLayout {
@@ -39,6 +30,6 @@ private:
     void push(unsigned int type, unsigned int count, unsigned char normalized) {
         VertexBufferElement vbe = { type, count, normalized };
         elements.push_back(vbe);
-        stride += count * VertexBufferElement::getSizeOfType(type);
+        stride += count * sizeof(type);
     };
 };
