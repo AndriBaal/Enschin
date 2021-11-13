@@ -1,4 +1,6 @@
 cmake_minimum_required(VERSION 3.10)
+project(Enschin VERSION 0.0.1)
+
 
 # Adding GLFW
 set(GLFW_BUILD_DOCS OFF CACHE BOOL "" FORCE)
@@ -19,12 +21,15 @@ FILE(GLOB_RECURSE enschin_SRC enschin/*.cpp)
 add_library(enschin 
     dep/stb/stb_image.cpp
     ${enschin_SRC}
-)
+        dep/stb/stb_image_resize.h)
+
+target_include_directories (enschin PUBLIC ${CMAKE_CURRENT_SOURCE_DIR} dep/glfw/include)
+target_include_directories (enschin PUBLIC ${CMAKE_CURRENT_SOURCE_DIR} dep/glew/include)
+target_include_directories (enschin PUBLIC ${CMAKE_CURRENT_SOURCE_DIR} dep/jsoncpp/include)
 
 target_link_libraries(enschin
     libglew_static
     glfw
+    jsoncpp_object
 )
 
-target_include_directories (enschin PUBLIC ${CMAKE_CURRENT_SOURCE_DIR} dep/glfw/include)
-target_include_directories (enschin PUBLIC ${CMAKE_CURRENT_SOURCE_DIR} dep/glew/include)

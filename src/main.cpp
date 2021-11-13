@@ -2,7 +2,7 @@
 #include "my_game.h"
 
 int main() {
-    MyGame myGame = MyGame("Enschin", {600.0f, 600.0f}, 0);
+    MyGame myGame = MyGame("Enschin", {1920.0f, 1080.0f}, 1);
     myGame.init();
     return 0;
 }

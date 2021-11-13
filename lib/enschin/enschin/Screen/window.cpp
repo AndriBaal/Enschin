@@ -14,7 +14,8 @@ Window::Window(std::string windowTitle, Dim2 windowSize, bool fullScreen) {
     glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 3);
     glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 3);
     glfwWindowHint(GLFW_OPENGL_FORWARD_COMPAT, GL_TRUE);
-    
+    glfwWindowHint(GLFW_AUTO_ICONIFY, GLFW_FALSE);
+
     /*glfwWindowHint(GLFW_RED_BITS, mode->redBits);
     glfwWindowHint(GLFW_GREEN_BITS, mode->greenBits);
     glfwWindowHint(GLFW_BLUE_BITS, mode->blueBits);
@@ -32,12 +33,13 @@ Window::Window(std::string windowTitle, Dim2 windowSize, bool fullScreen) {
         window = glfwCreateWindow(windowSize.w, windowSize.h, &windowTitle[0], NULL, NULL);
     }
 
+
     if (!window) {
         glfwTerminate();
         exit(0);
     }
     glfwMakeContextCurrent(window);
-    glfwSwapInterval(1);
+    glfwSwapInterval(0);
     if (glewInit() != GLEW_OK) exit(0);
 
     glEnable(GL_TEXTURE_2D);
@@ -65,6 +67,7 @@ bool Window::update() {
     int w, h;
     glfwGetWindowSize(window, &w, &h);
     if (w != windowSize.w || h != windowSize.h) {
+        glViewport(0, 0, w, h);
         windowSize = {float(w), float(h)};
         return true;
     }

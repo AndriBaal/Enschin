@@ -3,12 +3,9 @@
 
   ],
   "models": [
-
+    "./models/test_model.json"
   ],
   "sprite_sheets": [
-
-  ],
-  "textures": [
-
+    "./sprite_sheets/test_sprite_sheets.json"
   ]
 }

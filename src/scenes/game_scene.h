@@ -11,7 +11,6 @@
 #include <enschin/util/camera.hpp>
 #include <iostream>
 #include <vector>
-#include "ressources/ressource_loader.h"
 
 class GameScene : public Scene {
 private:

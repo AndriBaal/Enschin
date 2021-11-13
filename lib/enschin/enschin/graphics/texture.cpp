@@ -3,6 +3,9 @@
 
 unsigned int Texture::boundTexture = 0;
 
+
+
+
 /**
  * @brief Construct a new Texture object and create an id on the GPU
  * 
@@ -14,6 +17,7 @@ Texture::Texture(const std::string& path)
     int width, height, BPP;
     unsigned char* localBuffer = nullptr;
     localBuffer = stbi_load(path.c_str(), &width, &height, &BPP, 4);
+
 
     glGenTextures(1, &textureId);
     glBindTexture(GL_TEXTURE_2D, textureId); // Bind without slot selection

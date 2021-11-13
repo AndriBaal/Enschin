@@ -74,7 +74,7 @@ Model::Model(Dim2 size) {
     amountOfVertices = 4;
 
     generateVerticesTex(size, verticesTexCoord);
-    this->vertices = new float[amountOfVertices];
+    this->vertices = new float[8];
     generateVertices(size, this->vertices);
 
     vb = VertexBuffer(verticesTexCoord, 4 * amountOfVertices * sizeof(float));

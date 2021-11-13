@@ -3,8 +3,7 @@
 
 void MyGame::start() {
     window.setIcon("./textures/bird.jpg");
-    Ressources* r = new Ressources();
-    RessourceLoader::loadGameRessources(*r);
+    Ressources* r = new Ressources("./ressources/test_ressources.json");
     GameScene* myScene = new GameScene(*this);
     currentScene = myScene;
     currentRessources = r;
@@ -16,4 +15,5 @@ void MyGame::loop() {
 
 void MyGame::free() {
     //Cleanup when closing
+    delete r, myScene;
 }

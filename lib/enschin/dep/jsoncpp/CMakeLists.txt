@@ -170,8 +170,3 @@ add_subdirectory(src)
 
 #install the includes
 add_subdirectory(include)
-
-#install the example
-if(JSONCPP_WITH_EXAMPLE)
-    add_subdirectory(example)
-endif()
