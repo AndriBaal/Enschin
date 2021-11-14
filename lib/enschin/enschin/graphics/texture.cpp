@@ -11,13 +11,11 @@ unsigned int Texture::boundTexture = 0;
  * 
  * @param path Image path
  */
-Texture::Texture(const std::string& path)
-    : textureId(0) {
-    stbi_set_flip_vertically_on_load(1);
+Texture::Texture(const std::string& path) {
+    stbi_set_flip_vertically_on_load(true);
     int width, height, BPP;
     unsigned char* localBuffer = nullptr;
     localBuffer = stbi_load(path.c_str(), &width, &height, &BPP, 4);
-
 
     glGenTextures(1, &textureId);
     glBindTexture(GL_TEXTURE_2D, textureId); // Bind without slot selection
@@ -27,10 +25,32 @@ Texture::Texture(const std::string& path)
     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_CLAMP_TO_EDGE);
     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_CLAMP_TO_EDGE);
     glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA8, width, height, 0, GL_RGBA, GL_UNSIGNED_BYTE, localBuffer);
+
     unbind();
 
     if (localBuffer) stbi_image_free(localBuffer);
-};
+}
+
+/**
+ * @brief Create a new Texture by passing the pixels of the Image
+ * and the size
+ *
+ * @param pixelBuffer Pixels of the Texture
+ * @param pixelsW Amount of horizontal Pixels
+ * @param pixelsH Amount of vertical Pixels
+ */
+Texture::Texture(const char* pixelBuffer, unsigned short pixelsW, unsigned short pixelsH) {
+    glGenTextures(1, &textureId);
+    glBindTexture(GL_TEXTURE_2D, textureId); // Bind without slot selection
+
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_CLAMP_TO_EDGE);
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_CLAMP_TO_EDGE);
+    glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA8, pixelsW, pixelsH, 0, GL_RGBA, GL_UNSIGNED_BYTE, pixelBuffer);
+
+    unbind();
+}
 
 /**
  * @brief Destroy the Texture object and delete the Texture from the GPU

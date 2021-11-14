@@ -13,11 +13,10 @@ class Scene;
 class Game {
 protected:
 	Scene* currentScene;
-	Ressources* currentRessources;
 	Window window;
 private:
 	double firstTime, secondTime, lastTime;
-	float deltaTime, fps;
+	float deltaTime, fps, totalTime;
 	bool running = false;
 public:
 	Game(std::string gameName, Dim2 windowSize, bool fullscreen);
@@ -26,6 +25,7 @@ public:
 	virtual void loop() = 0;
     virtual void free() = 0;
 	float getDeltaTime() const{ return deltaTime; }
+    float getTotalTime() const { return totalTime; }
 	float getFps(){ return fps; }
 	Window& getWindow(){ return window; }
 };

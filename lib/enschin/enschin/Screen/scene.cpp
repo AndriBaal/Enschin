@@ -1,8 +1,12 @@
 #include "scene.h"
 
-Scene::Scene(Game& game) { 
+Scene::Scene(Game& game) : game(game){
     renderer = Renderer(game.getWindow().getSize());
     input = Input(game.getWindow().getGlfw());
+}
+
+Scene::~Scene() {
+    ressources->free();
 }
 
 void Scene::updateTimers(float deltaTime) {

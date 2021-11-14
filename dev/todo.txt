@@ -17,6 +17,7 @@ Enschin:
 	/ Keycode file with #define's
 	/ Model vb and va not refrences
 	! Spritesheets
+	! Health getter and setter for the entity.h
 	/ Backwards counting timer
     / background threats for timers
     $ Multithreading
@@ -27,7 +28,7 @@ Enschin:
 	- invert function for color
 	! Input as a Scene member
 	! Make camera working
-	! File names
+	/ File names
 	# encrypt json models & paths
 	/ new game structure
 	/ Linux compile errors fix
@@ -47,6 +48,7 @@ Enschin:
 	/ add vertices as variable in model (Allocated on the heap)
 	/ Allgemeine Input Class
 	/ Shaderprogram no pointer
+	! Entity events (onAttack, etc)
 	$ Settings system
 	$ Cross plattform, android, apple, etc...
 	/ size mulitplier for entities ()

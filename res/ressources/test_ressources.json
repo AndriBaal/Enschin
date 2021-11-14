@@ -5,6 +5,9 @@
   "models": [
     "./models/test_model.json"
   ],
+  "sprites": [
+    "./textures/bird.jpg"
+  ],
   "sprite_sheets": [
     "./sprite_sheets/test_sprite_sheets.json"
   ]

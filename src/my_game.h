@@ -4,7 +4,6 @@
 
 class MyGame : public Game {
 private:
-    Ressources* r;
     GameScene* myScene;
 public:
     MyGame(std::string gameName, Dim2 windowSize, bool fullscreen)

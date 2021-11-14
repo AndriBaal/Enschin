@@ -1,18 +1,18 @@
 #include "game_scene.h"
 
-GameScene::GameScene(Game& game) : Scene(game) {
-    t.start();
+GameScene::GameScene(Game &game) : Scene(game) {
+    ressources = new Ressources("./ressources/test_ressources.json");
+    entities.push_back(new Player(*ressources, {}, {}, {}));
 }
 
-void GameScene::update(Game& game, Ressources& ressources) {
-    mousePos = input.getCursorPos();
+void GameScene::update() {
+    for (auto i = entities.begin(); i < entities.end(); i++) {
+        (*i)->update(game, *this);
+    }
 }
 
-void GameScene::render(Ressources& ressources) {
-    renderer.translateAndRenderTexture(ressources.models.at("test_model"), ressources.textures.at("test_texture"), mousePos);
-    renderer.translate({-0.5f, -0.5f});
-    renderer.rotate(45.0f);
-    renderer.renderTexture(ressources.models.at("test_model"), ressources.textures.at("test_texture"));
-    renderer.rotate(-45.0f);
-    renderer.translate({0.5f, 0.5f});
+void GameScene::render() {
+    for (auto i = entities.begin(); i != entities.end(); i++) {
+        (*i)->render(renderer);
+    }
 }

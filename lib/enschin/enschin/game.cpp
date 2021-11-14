@@ -27,13 +27,14 @@ void Game::init() {
 		secondTime = glfwGetTime();
 		deltaTime = (float)secondTime - firstTime;
         firstTime = glfwGetTime();
+        totalTime = (float) firstTime;
 
         glfwPollEvents();
 		loop();
         currentScene->updateTimers(deltaTime);
         currentScene->updateInput();
-        currentScene->update(*this, *currentRessources);
-        currentScene->render(*currentRessources);
+        currentScene->update();
+        currentScene->render();
 		
 		fps++;
 		if (glfwGetTime() > lastTime+1) {

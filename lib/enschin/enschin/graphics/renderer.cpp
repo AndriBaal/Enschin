@@ -3,6 +3,7 @@
 ShaderProgram Renderer::colorProgram;
 ShaderProgram Renderer::textureProgram;
 ShaderProgram Renderer::coloredTextureProgram;
+ShaderProgram Renderer::rainbowProgram;
 
 /**
  * @brief Create a new Renderer with its own projection matrices.
@@ -22,6 +23,7 @@ void Renderer::initShaderPrograms() {
     colorProgram = ShaderProgram("./enschin/shader/vertex.vert", "./enschin/shader/color.frag");
     textureProgram = ShaderProgram("./enschin/shader/vertex.vert", "./enschin/shader/texture.frag");
     coloredTextureProgram = ShaderProgram("./enschin/shader/vertex.vert", "./enschin/shader/colored_texture.frag");
+    rainbowProgram = ShaderProgram("./enschin/shader/vertex.vert", "./enschin/shader/rainbow.frag");
 }
 
 /**
@@ -71,6 +73,19 @@ void Renderer::renderColoredTexture(Model& model, Texture& texture, Color& color
     coloredTextureProgram.setUniform1i("u_Texture", 0);
     coloredTextureProgram.setUniformMat4f("u_MVP", mvp);
     coloredTextureProgram.setColor("u_Color", color);
+    glDrawElements(GL_TRIANGLES, model.getAmountOfIndices(), GL_UNSIGNED_INT, nullptr);
+}
+
+/**
+ * @brief Render an animated rainbow pattern on top of the model
+ *
+ * @param model Model to render
+ */
+void Renderer::renderRainbow(Model &model, float totalTime) {
+    model.bind();
+    rainbowProgram.bind();
+    rainbowProgram.setUniformMat4f("u_MVP", mvp);
+    rainbowProgram.setUniform1f("u_TotalTime", totalTime);
     glDrawElements(GL_TRIANGLES, model.getAmountOfIndices(), GL_UNSIGNED_INT, nullptr);
 }
 

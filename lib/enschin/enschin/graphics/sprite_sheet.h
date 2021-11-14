@@ -1,11 +1,19 @@
 #pragma once
 #include "enschin/math/dim2.h"
+#include "enschin/graphics/texture.h"
 
-struct SpriteSheet() {
+struct SpriteSheet {
+protected:
+    Texture* textures;
 private:
-    const Texture* textures;
     unsigned short amountOfSprites;
+    unsigned char fps;
 public:
-    SpriteSheet(const char* filePath, Dim2 spriteSize, unsigned short amountOfSprites);
+    SpriteSheet() = default;
+    SpriteSheet(const std::string& filePath, Dim2 spriteSize, unsigned char fps);
+    SpriteSheet(const std::string& filePath);
+
+    Texture& getCurrentSprite(unsigned int sprite = 0);
+    Texture& getTexture(int index = 0){ return textures[index]; }
     void free();
 };

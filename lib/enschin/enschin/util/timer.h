@@ -10,11 +10,11 @@ private:
     float startValue;
     float endValue;
     float incrementPerSecond;
-    float* value;
+    float value;
     Scene* scene;
 public:
     Timer() = default;
-    Timer(Scene* scene, float startValue, float endValue, float incrementPerSecond, float* value, bool active=false);
+    Timer(Scene* scene, float startValue, float endValue, float incrementPerSecond, bool active=false);
     void update(float deltaTime);
     static void startAll();
     static void stopAll();

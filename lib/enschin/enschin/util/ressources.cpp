@@ -11,7 +11,7 @@ Ressources::~Ressources() {
 
 void Ressources::free() {
     for (auto model = models.begin(); model != models.end(); model++) model->second.free();
-    for (auto texture = textures.begin(); texture != textures.end(); texture++) texture->second.free();
+    for (auto texture = spriteSheets.begin(); texture != spriteSheets.end(); texture++) texture->second.free();
 }
 
 void Ressources::load(std::string ressourcePath) {
@@ -37,7 +37,7 @@ void Ressources::load(std::string ressourcePath) {
                         (*m)["amountOfIndices"].asInt()
                 )});
             } else if (m->isMember("width")) {
-                models.insert({(*m)["name"].asString(), Model({
+                models.insert({m.key().asString(), Model({
                                                                   (*m)["width"].asFloat(),
                                                                   (*m)["height"].asFloat()
                                                           })});
@@ -50,10 +50,10 @@ void Ressources::load(std::string ressourcePath) {
         Json::Value textureValues;
         textureReader.parse(textureStream, textureValues);
         for (auto t = textureValues.begin(); t != textureValues.end(); ++t) {
-            if (0) {
+            if ((*t)["sprite_width"]) {
 
             }else {
-                textures.insert({t.key().asString(), (*t)["texture"].asString()});
+                spriteSheets.insert({t.key().asString(), SpriteSheet((*t)["texture"].asString())});
             }
         }
     }

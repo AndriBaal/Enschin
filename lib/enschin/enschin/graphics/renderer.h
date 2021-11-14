@@ -9,7 +9,7 @@
 #include "enschin/math/physics.h"
 #include "enschin/math/matrix.h"
 #include "enschin/math/ray2.hpp"
-#include "enschin/objects/game_object.h"
+#include "enschin/components/game_object.h"
 #include "enschin/input/mouse.h"
 
 /**
@@ -25,6 +25,7 @@ private:
 	static ShaderProgram colorProgram;
 	static ShaderProgram textureProgram;
 	static ShaderProgram coloredTextureProgram;
+	static ShaderProgram rainbowProgram;
 
 	float ratio;
 	float units;
@@ -43,6 +44,7 @@ public:
 	void renderColor(Model& model, Color& color);
 	void renderTexture(Model& model, Texture& texture);
 	void renderColoredTexture(Model& model, Texture& texture, Color& color);
+    void renderRainbow(Model& model, float totalTime);
 	void renderRaytracing(Model& model, float vertices[], int amountOfVertices, Light& light, std::vector<GameObject> objects);
 
 	float getRatio() { return ratio; }
