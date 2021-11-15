@@ -1,7 +1,7 @@
 #include <iostream>
 #include "sprite_sheet.h"
 
-SpriteSheet::SpriteSheet(const std::string& filePath, Dim2 spriteSize, unsigned char fps) {
+SpriteSheet::SpriteSheet(const std::string& filePath, Dim2 spriteSize, unsigned char fps) : fps(fps) {
     stbi_set_flip_vertically_on_load(true);
     int width, height, BPP;
     unsigned char* localBuffer = nullptr;
@@ -10,12 +10,11 @@ SpriteSheet::SpriteSheet(const std::string& filePath, Dim2 spriteSize, unsigned 
     textures = new Texture[int(height / spriteSize.h * (width / spriteSize.w))];
 
     glPixelStorei(GL_UNPACK_ROW_LENGTH, width);
-    unsigned short spriteCounter = 0;
     for (int y = 0; y< height; y += spriteSize.h) {
         for (int x = 0; x < width; x += spriteSize.w) {
             const unsigned char* subimg = localBuffer + (y + x)*4;
-            textures[spriteCounter] = Texture(subimg, spriteSize.w, spriteSize.h);
-            spriteCounter++;
+            textures[amountOfSprites] = Texture(subimg, spriteSize.w, spriteSize.h);
+            amountOfSprites++;
         }
     }
     glPixelStorei(GL_UNPACK_ROW_LENGTH, 0);

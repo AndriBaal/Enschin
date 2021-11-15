@@ -6,7 +6,7 @@ struct SpriteSheet {
 protected:
     Texture* textures;
 private:
-    unsigned short amountOfSprites;
+    unsigned short amountOfSprites = 0;
     unsigned char fps;
 public:
     SpriteSheet() = default;
