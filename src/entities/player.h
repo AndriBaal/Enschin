@@ -7,7 +7,7 @@ private:
 public:
     Player(Ressources& res, Vec2 pos, Dim2 dim, Vec2 dir);
 	virtual void update(Game& game, Scene& scene) override;
-    virtual void render(Renderer& r) override;
+    virtual void render(Game&, Renderer& r) override;
 //	virtual void onEntityCollision() override;
 //	virtual void onDamage(float damage) override;
 //	virtual void onDeath() override;

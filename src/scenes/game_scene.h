@@ -8,6 +8,7 @@ private:
 	std::vector<Entity*> entities;
 public:
 	GameScene(Game& game);
+    ~GameScene(){ free(); }
 	virtual void update() override;
 	virtual void render() override;
 };

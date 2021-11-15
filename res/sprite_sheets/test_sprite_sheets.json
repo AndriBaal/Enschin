@@ -1,13 +1,8 @@
 {
-  "test_texture": {
-    "texture": "./textures/bird.jpg"
-  },
   "test_sheet": {
-    "texture": "./textures/spell_dispose.png",
+    "texture": "./sprites/spell_dispose.png",
     "sprite_width": 21,
     "sprite_height": 21,
-    "sprites_horizontally": 6,
-    "sprites_vertically": 1,
     "fps": 12
   }
 }

@@ -1,4 +1,3 @@
-#include <iostream>
 #include "ressources.h"
 
 Ressources::Ressources(std::string ressourcePath) {
@@ -11,7 +10,8 @@ Ressources::~Ressources() {
 
 void Ressources::free() {
     for (auto model = models.begin(); model != models.end(); model++) model->second.free();
-    for (auto texture = spriteSheets.begin(); texture != spriteSheets.end(); texture++) texture->second.free();
+    for (auto spriteSheet = spriteSheets.begin(); spriteSheet != spriteSheets.end(); spriteSheet++) spriteSheet->second.free();
+    for (auto sprite = sprites.begin(); sprite != sprites.end(); sprite++) sprite->second.free();
 }
 
 void Ressources::load(std::string ressourcePath) {
@@ -45,17 +45,24 @@ void Ressources::load(std::string ressourcePath) {
         }
     }
     for (int i = 0; i < ressourceValues["sprite_sheets"].size(); i++) {
-        std::ifstream textureStream(ressourceValues["sprite_sheets"][i].asString(), std::ifstream::binary);
-        Json::Reader textureReader;
-        Json::Value textureValues;
-        textureReader.parse(textureStream, textureValues);
-        for (auto t = textureValues.begin(); t != textureValues.end(); ++t) {
-            if ((*t)["sprite_width"]) {
-
-            }else {
-                spriteSheets.insert({t.key().asString(), SpriteSheet((*t)["texture"].asString())});
-            }
+        std::ifstream spriteSheetStream(ressourceValues["sprite_sheets"][i].asString(), std::ifstream::binary);
+        Json::Reader spriteSheetReader;
+        Json::Value spriteSheetValues;
+        spriteSheetReader.parse(spriteSheetStream, spriteSheetValues);
+        for (auto s = spriteSheetValues.begin(); s != spriteSheetValues.end(); ++s) {
+            spriteSheets.insert({s.key().asString(), SpriteSheet(
+                    (*s)["texture"].asString(),
+                    {(*s)["sprite_width"].asFloat(),(*s)["sprite_height"].asFloat()},
+                    (*s)["fps"].asFloat()
+                    )});
         }
+    }
+
+    for (int i = 0; i < ressourceValues["sprites"].size(); i++) {
+        std::string texturePath = ressourceValues["sprites"][i].asString();
+        std::string fileNameWithExtension = texturePath.substr(texturePath.find_last_of("/\\") + 1);
+        std::string fileNameWithoutExtension = fileNameWithExtension.substr(0, (fileNameWithExtension.find_last_of('.')));
+        sprites.insert({fileNameWithoutExtension, Sprite(texturePath)});
     }
 }
 

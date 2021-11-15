@@ -31,5 +31,5 @@ public:
     std::unordered_map<int, std::pair<int, bool>> mouseButtonsMapping; //TriggerId, Buttoncode
     void update(float units);
     bool isInput(int);
-    Vec2& getCursorPos(){ return cursorPos; };
+    Vec2 getCursorPos(){ return cursorPos; };
 };

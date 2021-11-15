@@ -13,7 +13,7 @@ Enschin:
 		/ add start function
 	! bring units back
 	/ test keyboard input
-	- Gui
+	! Gui
 	/ Keycode file with #define's
 	/ Model vb and va not refrences
 	! Spritesheets
@@ -25,8 +25,8 @@ Enschin:
 	- Controller input
 	$ Texturepacks
 	? no .hpp's
-	- invert function for color
-	! Input as a Scene member
+	! invert function for color
+	/ Input as a Scene member
 	! Make camera working
 	/ File names
 	# encrypt json models & paths
@@ -35,13 +35,14 @@ Enschin:
 	/ Model create by dimension
 	/ Math library vector optimization
 	/ New folder structure
+	/ scaling
 	/ Don't bind textures / models twice
 	/ icon for .exe
 	/ Vec2 & Vec3 operators
 	/ C++ call super method
-	- Colored texture shader fix
+	! Colored texture shader fix
 	/ icon for exe
-	- Draw part of a Model shader
+	! Draw part of a Model shader
 	/ Renderer2 and Renderer3 for 2 and 3 Dimensions
 	/ isKeyPressed shouldnt require GLFW keycode -> General keycode or string
 	/ Texture not a refrence because the low memory size

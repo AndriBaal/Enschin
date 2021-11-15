@@ -13,5 +13,5 @@ void MyGame::loop() {
 
 void MyGame::free() {
     //Cleanup when closing
-    delete myScene;
+    delete currentScene;
 }

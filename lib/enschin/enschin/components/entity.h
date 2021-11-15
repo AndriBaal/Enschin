@@ -25,7 +25,7 @@ public:
 	Entity(Ressources& res, Vec2 pos = {}, Dim2 dim = {}, Vec2 dir = {});
 	~Entity();
 	virtual void update(Game& game, Scene& scene) = 0;
-	virtual void render(Renderer& r) = 0;
+	virtual void render(Game&, Renderer& r) = 0;
 //	virtual void onEntityCollision() = 0;
 //	virtual void onDamage(float damage) = 0;
 //	virtual void onDeath() = 0;

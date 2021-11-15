@@ -11,7 +11,7 @@
  * @brief Scenes that are meant to be used for different environments
  * For example between loading & game screen or for different rooms.
  */
- class Entity;
+class Entity;
 class Timer;
 class Game;
 class Scene {
@@ -21,11 +21,11 @@ protected:
 	Renderer renderer;
 	Input input;
     std::vector<Entity*> entities;
+    void free();
 private:
     std::vector<Timer*> timers;
 public:
 	Scene(Game& game);
-    ~Scene();
 	virtual void update() = 0;
 	virtual void render() = 0;
 	Renderer& getRenderer(){ return renderer; }

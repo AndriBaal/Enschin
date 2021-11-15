@@ -39,12 +39,12 @@ Texture::Texture(const std::string& path) {
  * @param pixelsW Amount of horizontal Pixels
  * @param pixelsH Amount of vertical Pixels
  */
-Texture::Texture(const char* pixelBuffer, unsigned short pixelsW, unsigned short pixelsH) {
+Texture::Texture(unsigned const char* pixelBuffer, unsigned short pixelsW, unsigned short pixelsH) {
     glGenTextures(1, &textureId);
     glBindTexture(GL_TEXTURE_2D, textureId); // Bind without slot selection
 
-    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
-    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_NEAREST);
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_NEAREST);
     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_CLAMP_TO_EDGE);
     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_CLAMP_TO_EDGE);
     glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA8, pixelsW, pixelsH, 0, GL_RGBA, GL_UNSIGNED_BYTE, pixelBuffer);

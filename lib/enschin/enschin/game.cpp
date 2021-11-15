@@ -46,5 +46,7 @@ void Game::init() {
         glfwSwapBuffers(glfw);
     }
 	running = false;
+    glfwDestroyWindow(glfw);
     glfwTerminate();
+    free();
 }

@@ -167,7 +167,6 @@ namespace Matrix {
         }
     }
 
-
     /**
      * @brief Set the boundries of a matrix.
      * 

@@ -6,13 +6,11 @@ GameScene::GameScene(Game &game) : Scene(game) {
 }
 
 void GameScene::update() {
-    for (auto i = entities.begin(); i < entities.end(); i++) {
+    for (auto i = entities.begin(); i < entities.end(); i++)
         (*i)->update(game, *this);
-    }
 }
 
 void GameScene::render() {
-    for (auto i = entities.begin(); i != entities.end(); i++) {
-        (*i)->render(renderer);
-    }
+    for (auto i = entities.begin(); i != entities.end(); i++)
+        (*i)->render(game, renderer);
 }

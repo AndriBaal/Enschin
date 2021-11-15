@@ -149,7 +149,8 @@ void Renderer::rotate(float angle) {
  * @param scaling Scale factor on x and y axis
  */
 void Renderer::scale(Vec2 scaling) {
-
+    Matrix::scale(view, {scaling.x, scaling.y, 0});
+    Matrix::multiply(mvp, view, proj);
 }
 
 
