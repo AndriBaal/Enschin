@@ -1,7 +1,7 @@
 #pragma once
 #include <math.h>
 #include "enschin/graphics/buffer/vertex_buffer.h"
-#include "enschin/graphics/buffer/vertex_buffer_layout.hpp"
+#include "enschin/graphics/buffer/vertex_buffer_layout.h"
 #include "enschin/graphics/buffer/vertex_array.h"
 #include "enschin/graphics/buffer/index_buffer.h"
 #include "enschin/math/dim2.h"

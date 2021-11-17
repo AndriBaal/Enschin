@@ -8,7 +8,7 @@
 #include "enschin/math/vec4.h"
 #include "enschin/math/physics.h"
 #include "enschin/math/matrix.h"
-#include "enschin/math/ray2.hpp"
+#include "enschin/math/ray2.h"
 #include "enschin/components/game_object.h"
 #include "enschin/input/mouse.h"
 

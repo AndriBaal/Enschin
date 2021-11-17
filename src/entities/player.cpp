@@ -9,7 +9,6 @@ Player::Player(Scene& scene, Ressources& res, Vec2 pos)
 
 void Player::update(Game& game, Scene& scene) {
     mousePos = scene.getInput().getCursorPos();
-
 }
 
 void Player::render(Game& game, Renderer& r) {
@@ -18,7 +17,7 @@ void Player::render(Game& game, Renderer& r) {
     r.rotate(45.0f);
     r.scale({2, 2});
     Color c = {0, 0, 1};
-    r.renderColoredTexture(model, sprite.getTexture(0), c);
+    r.renderRainbow(model, game.getTotalTime());
     r.scale({0.5, 0.5});
     r.rotate(-45.0f);
     r.translate({0.5f, 0.5f});
