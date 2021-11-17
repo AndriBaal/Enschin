@@ -1,4 +1,4 @@
-#include "player.h"
+#include <game/player.h>
 
 Player::Player(Scene& scene, Ressources& res, Vec2 pos)
     : Entity(res.getModel("test_model"), res.getSprite("bird")){

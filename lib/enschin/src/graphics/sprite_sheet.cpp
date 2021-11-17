@@ -1,5 +1,5 @@
 #include <iostream>
-#include "sprite_sheet.h"
+#include <enschin/sprite_sheet.h>
 
 SpriteSheet::SpriteSheet(const std::string& filePath, Dim2 spriteSize, unsigned char fps) : fps(fps) {
     stbi_set_flip_vertically_on_load(true);

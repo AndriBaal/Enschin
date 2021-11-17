@@ -1,6 +1,6 @@
 #pragma once
-#include "enschin/graphics/renderer.h"
-#include "enschin/math/vec2.h"
+#include "renderer.h"
+#include "vec2.h"
 
 class Camera {
 private:

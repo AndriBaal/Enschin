@@ -1,5 +1,5 @@
 #include <iostream>
-#include "ressources.h"
+#include <enschin/ressources.h>
 
 Ressources::Ressources(std::string ressourcePath) {
     load(std::move(ressourcePath));

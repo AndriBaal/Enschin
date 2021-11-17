@@ -6,26 +6,27 @@ project(Enschin VERSION 0.0.1)
 set(GLFW_BUILD_DOCS OFF CACHE BOOL "" FORCE)
 set(GLFW_BUILD_TESTS OFF CACHE BOOL "" FORCE)
 set(GLFW_BUILD_EXAMPLES OFF CACHE BOOL "" FORCE)
-add_subdirectory(dep/glfw)
+add_subdirectory(deps/glfw)
 
 # Adding GLEW
-add_subdirectory(dep/glew)
+add_subdirectory(deps/glew)
 
 # Adding jsoncpp
-add_subdirectory(dep/jsoncpp)
+add_subdirectory(deps/jsoncpp)
 
 # Adding enschin 
-FILE(GLOB_RECURSE enschin_SRC enschin/*.cpp)
+FILE(GLOB_RECURSE enschin_SRC src/*.cpp)
 
 # enschin libraries
-add_library(enschin 
-    dep/stb/stb_image.cpp
+add_library(enschin
+    deps/stb/stb_image.cpp
     ${enschin_SRC}
-        dep/stb/stb_image_resize.h)
+)
 
-target_include_directories (enschin PUBLIC ${CMAKE_CURRENT_SOURCE_DIR} dep/glfw/include)
-target_include_directories (enschin PUBLIC ${CMAKE_CURRENT_SOURCE_DIR} dep/glew/include)
-target_include_directories (enschin PUBLIC ${CMAKE_CURRENT_SOURCE_DIR} dep/jsoncpp/include)
+target_include_directories (enschin PUBLIC ${CMAKE_CURRENT_SOURCE_DIR} deps/glfw/include)
+target_include_directories (enschin PUBLIC ${CMAKE_CURRENT_SOURCE_DIR} deps/glew/include)
+target_include_directories (enschin PUBLIC ${CMAKE_CURRENT_SOURCE_DIR} deps/jsoncpp/include)
+target_include_directories (enschin PUBLIC ${CMAKE_CURRENT_SOURCE_DIR} include)
 
 target_link_libraries(enschin
     libglew_static

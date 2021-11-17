@@ -1,4 +1,4 @@
-#include "vec3.h"
+#include <include/enschin/vec3.h>
 
 
 //Arithmetic 

@@ -1,5 +1,4 @@
-#include "model.h"
-#include <iostream>
+#include <enschin/model.h>
 // 0, 1, 2,
 // 2, 3, 0 Indicies for 4 corners
 

@@ -17,6 +17,8 @@ Enschin:
 	/ Keycode file with #define's
 	/ Model vb and va not refrences
 	/ Spritesheets
+	/ Refactor header file structure
+	/ Use include directory
 	- Health getter and setter for the entity.h
 	/ Backwards counting timer
     / background threats for timers

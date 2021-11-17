@@ -1,6 +1,6 @@
 #pragma once
-#include "enschin/math/dim2.h"
-#include "enschin/graphics/texture.h"
+#include "dim2.h"
+#include "texture.h"
 
 struct SpriteSheet {
 protected:

@@ -1,4 +1,4 @@
-#include "timer.h"
+#include <enschin/timer.h>
 
 bool Timer::activeAll = true;
 

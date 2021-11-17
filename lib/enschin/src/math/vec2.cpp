@@ -1,4 +1,4 @@
-#include "vec2.h"
+#include <enschin/vec2.h>
 
 //Arithmetic 
 Vec2 Vec2::operator+(const Vec2& v) {

@@ -2,7 +2,7 @@
 #include <iostream>
 #include <unordered_map>
 #include <GLFW/glfw3.h>
-#include "enschin/math/vec2.h"
+#include "vec2.h"
 
 /**
  * @brief Mouse class that handles input

@@ -2,9 +2,8 @@
 
 #include <iostream>
 #include <GL/glew.h>
-#include "enschin/math/dim2.h"
-#include "../../dep/stb/stb_image.h"
-#include "../../dep/stb/stb_image_resize.h"
+#include "dim2.h"
+#include "../deps/stb/stb_image.h"
 
 /**
  * @brief Texture that can be drawn on a model

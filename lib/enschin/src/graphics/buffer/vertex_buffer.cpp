@@ -1,4 +1,4 @@
-#include "vertex_buffer.h"
+#include <enschin/vertex_buffer.h>
 
 unsigned int VertexBuffer::boundVertexBuffer = 1231132;
 

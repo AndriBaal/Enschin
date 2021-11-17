@@ -1,4 +1,4 @@
-#include "camera.h"
+#include <enschin/camera.h>
 
 Camera::Camera(Vec2& cameraTarget) : cameraTarget(cameraTarget) {}
 

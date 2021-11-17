@@ -1,10 +1,10 @@
 #pragma once
 #include <math.h>
-#include "enschin/graphics/buffer/vertex_buffer.h"
-#include "enschin/graphics/buffer/vertex_buffer_layout.h"
-#include "enschin/graphics/buffer/vertex_array.h"
-#include "enschin/graphics/buffer/index_buffer.h"
-#include "enschin/math/dim2.h"
+#include "vertex_buffer.h"
+#include "vertex_buffer_layout.h"
+#include "vertex_array.h"
+#include "index_buffer.h"
+#include "dim2.h"
 
 /**
  * @brief Model that holds all Buffers for rendering

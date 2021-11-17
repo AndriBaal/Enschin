@@ -1,11 +1,11 @@
 #pragma once
 #include <vector>
-#include "enschin/graphics/renderer.h"
-#include "enschin/input/input.h"
+#include "renderer.h"
+#include "input.h"
 #include "enschin/game.h"
-#include "enschin/util/ressources.h"
-#include "enschin/util/timer.h"
-#include "enschin/components/entity.h"
+#include "ressources.h"
+#include "timer.h"
+#include "entity.h"
 
 /**
  * @brief Scenes that are meant to be used for different environments

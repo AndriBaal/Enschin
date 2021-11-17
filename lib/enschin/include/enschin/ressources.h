@@ -2,10 +2,10 @@
 #include <unordered_map>
 #include <json/json.h>
 #include <fstream>
-#include "enschin/graphics/effects/color.h"
-#include "enschin/graphics/model.h"
-#include "enschin/graphics/texture.h"
-#include <enschin/graphics/sprite.h>
+#include "color.h"
+#include "model.h"
+#include "texture.h"
+#include "sprite.h"
 
 struct Ressources {
 private:

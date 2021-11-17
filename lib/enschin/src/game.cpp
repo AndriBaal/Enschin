@@ -1,4 +1,4 @@
-#include "game.h"
+#include <enschin/game.h>
 
 
 Game::Game(std::string gameName, Dim2 windowSize, bool fullscreen) {

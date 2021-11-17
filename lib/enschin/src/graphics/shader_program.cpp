@@ -1,4 +1,4 @@
-#include "shader_program.h"
+#include <enschin/shader_program.h>
 
 unsigned int ShaderProgram::boundProgram = 0;
 

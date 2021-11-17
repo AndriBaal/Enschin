@@ -1,6 +1,6 @@
 #pragma once
-#include "../math/vec2.h"
-#include "../math/dim2.h"
+#include "vec2.h"
+#include "dim2.h"
 
 class GameObject{
 public:

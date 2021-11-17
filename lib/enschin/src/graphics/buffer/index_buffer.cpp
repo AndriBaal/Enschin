@@ -1,4 +1,4 @@
-#include "index_buffer.h"
+#include <enschin/index_buffer.h>
 
 unsigned int IndexBuffer::boundIndexBuffer = 0;
 

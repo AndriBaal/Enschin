@@ -1,4 +1,4 @@
-#include "mouse.h"
+#include <enschin/mouse.h>
 
 /**
  * @brief Updates the position of the Cursor

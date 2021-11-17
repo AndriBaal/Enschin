@@ -1,4 +1,4 @@
-#include "matrix.h"
+#include <enschin/matrix.h>
 
 namespace Matrix {
 

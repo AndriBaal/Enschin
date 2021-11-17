@@ -1,5 +1,4 @@
-#include "my_game.h"
-
+#include <game/my_game.h>
 
 void MyGame::start() {
     window.setIcon("./textures/bird.jpg");

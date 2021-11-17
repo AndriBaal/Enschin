@@ -1,4 +1,4 @@
-#include "window.h"
+#include <enschin/window.h>
 
 /**
  * @brief Create and initialize the window,

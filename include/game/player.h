@@ -8,8 +8,8 @@ private:
     Timer* t;
 public:
     Player(Scene& scene, Ressources& res, Vec2 pos);
-	virtual void update(Game& game, Scene& scene) override;
-    virtual void render(Game& game, Renderer& r) override;
+	void update(Game& game, Scene& scene) override;
+    void render(Game& game, Renderer& r) override;
 //	virtual void onEntityCollision() override;
 //	virtual void onDamage(float damage) override;
 //	virtual void onDeath() override;

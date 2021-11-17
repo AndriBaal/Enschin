@@ -1,10 +1,10 @@
 #pragma once
 #include <string>
 #include "enschin/game.h"
-#include "enschin/math/dim2.h"
-#include "enschin/math/vec2.h"
-#include "enschin/graphics/sprite.h"
-#include "enschin/graphics/model.h"
+#include "dim2.h"
+#include "vec2.h"
+#include "sprite.h"
+#include "model.h"
 #include <iostream>
 
 class Scene;

@@ -1,5 +1,5 @@
 #pragma once
-#include "enschin/screen/scene.h"
+#include "scene.h"
 
 class Timer {
 private:

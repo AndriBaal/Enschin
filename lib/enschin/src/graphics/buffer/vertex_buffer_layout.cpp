@@ -1,4 +1,4 @@
-#include "vertex_buffer_layout.h"
+#include <enschin/vertex_buffer_layout.h>
 
 void VertexBufferLayout::addFloat(unsigned int count) {
     push(GL_FLOAT, count, GL_FALSE);

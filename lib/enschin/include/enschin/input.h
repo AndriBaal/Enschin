@@ -5,7 +5,7 @@
 #include <map>
 #include "keyboard.h"
 #include "mouse.h"
-#include "enschin/math/vec2.h"
+#include "vec2.h"
 
 #define KEYMOUSE 0
 #define CONTROLLER 1

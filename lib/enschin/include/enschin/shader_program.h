@@ -9,8 +9,8 @@
 #include <malloc.h>
 #include <GL/glew.h>
 #include <string>
-#include "enschin/graphics/effects/color.h"
-#include "enschin/math/vec4.h"
+#include "color.h"
+#include "vec4.h"
 
 /**
  * @brief With a shaderprogram you can load your

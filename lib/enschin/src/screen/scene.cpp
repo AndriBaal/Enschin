@@ -1,4 +1,4 @@
-#include "scene.h"
+#include <enschin/scene.h>
 
 Scene::Scene(Game& game) : game(game){
     renderer = Renderer(game.getWindow().getSize());

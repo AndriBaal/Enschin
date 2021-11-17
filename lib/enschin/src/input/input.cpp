@@ -1,4 +1,4 @@
-#include "input.h"
+#include <enschin/input.h>
 
 Input::Input(const std::string& eventPath) {
     load(eventPath);

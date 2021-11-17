@@ -1,4 +1,4 @@
-#include "game_scene.h"
+#include <game/game_scene.h>
 
 GameScene::GameScene(Game &game) : Scene(game) {
     res = Ressources("./ressources/test_ressources.json");

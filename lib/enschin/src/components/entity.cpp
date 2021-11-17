@@ -1,4 +1,4 @@
-#include "entity.h"
+#include <enschin/entity.h>
 
 unsigned int Entity::idCounter = 1;
 

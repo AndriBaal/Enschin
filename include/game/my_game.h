@@ -1,6 +1,6 @@
-#include "enschin/screen/window.h"
-#include "enschin/game.h"
-#include "scenes/game_scene.h"
+#include <enschin/window.h>
+#include <enschin/game.h>
+#include "game_scene.h"
 
 class MyGame : public Game {
 private:

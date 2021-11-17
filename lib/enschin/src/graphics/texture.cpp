@@ -1,10 +1,7 @@
 #include <iostream>
-#include "texture.h"
+#include <enschin/texture.h>
 
 unsigned int Texture::boundTexture = 0;
-
-
-
 
 /**
  * @brief Construct a new Texture object and create an id on the GPU

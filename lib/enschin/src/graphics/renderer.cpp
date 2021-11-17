@@ -1,4 +1,4 @@
-#include "renderer.h"
+#include <enschin/renderer.h>
 
 ShaderProgram Renderer::colorProgram;
 ShaderProgram Renderer::textureProgram;

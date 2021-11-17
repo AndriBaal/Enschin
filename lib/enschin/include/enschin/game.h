@@ -1,9 +1,9 @@
 #pragma once
-#include "enschin/screen/window.h"
-#include "enschin/screen/scene.h"
-#include "enschin/graphics/renderer.h"
-#include "enschin/util/ressources.h"
-#include "enschin/input/input.h"
+#include "window.h"
+#include "scene.h"
+#include "renderer.h"
+#include "ressources.h"
+#include "input.h"
 
 class Scene;
 /**

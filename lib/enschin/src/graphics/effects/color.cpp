@@ -1,4 +1,4 @@
-#include "color.h"
+#include <enschin/color.h>
 
 /**
  * @brief Construct a new Color object. All Values are between 0.0f and 1.0f

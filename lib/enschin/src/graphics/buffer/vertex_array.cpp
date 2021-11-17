@@ -1,4 +1,4 @@
-#include "vertex_array.h"
+#include <enschin/vertex_array.h>
 
 unsigned int VertexArray::boundVertexArray = 0;
 
