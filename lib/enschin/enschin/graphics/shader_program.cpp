@@ -185,8 +185,8 @@ void ShaderProgram::setUniform1f(const std::string& name, float value) {
  * @param f2 value3
  * @param f3 value4
  */
-void ShaderProgram::setUniform4f(const std::string& name, float f0, float f1, float f2, float f3) {
-    glUniform4f(getUniformLocation(name), f0, f1, f2, f3);
+void ShaderProgram::setUniform4f(const std::string& name, Vec4 v) {
+    glUniform4f(getUniformLocation(name), v.x, v.y, v.z, v.a);
 }
 
 /**

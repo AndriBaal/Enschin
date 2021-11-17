@@ -40,7 +40,7 @@ Vec3 Vec3::operator/(float f) {
 }
 
 Vec3 Vec3::operator%(int i) {
-	return Vec3(int(x) % i, int(y) % i, int(z) / i);
+	return Vec3(int(x) % i, int(y) % i, int(z) % i);
 }
 
 //Assignment
@@ -135,7 +135,7 @@ bool Vec3::operator==(const Vec3& v) {
 }
 
 bool Vec3::operator!=(const Vec3& v) {
-	return !(x == v.x && y == v.y && z != v.z);
+	return !(x == v.x && y == v.y && z == v.z);
 }
 
 bool Vec3::operator>=(const Vec3& v) {

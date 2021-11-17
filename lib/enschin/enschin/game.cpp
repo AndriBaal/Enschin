@@ -25,17 +25,16 @@ void Game::init() {
 		}
 
 		secondTime = glfwGetTime();
-		deltaTime = (float)secondTime - firstTime;
+		deltaTime = float(secondTime - firstTime);
         firstTime = glfwGetTime();
         totalTime = (float) firstTime;
 
         glfwPollEvents();
 		loop();
         currentScene->updateTimers(deltaTime);
-        currentScene->updateInput();
+        currentScene->updateInput(glfw);
         currentScene->update();
         currentScene->render();
-		
 		fps++;
 		if (glfwGetTime() > lastTime+1) {
 			std::cout << fps << std::endl;

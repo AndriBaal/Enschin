@@ -14,5 +14,7 @@ public:
 
     Texture& getCurrentSprite(unsigned int sprite = 0);
     Texture& getTexture(int index = 0){ return textures[index]; }
+    unsigned short getAmountOfSprites(){ return amountOfSprites; }
+    unsigned char getFps(){ return fps; }
     void free();
 };

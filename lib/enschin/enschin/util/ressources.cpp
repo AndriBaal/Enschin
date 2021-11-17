@@ -1,17 +1,15 @@
+#include <iostream>
 #include "ressources.h"
 
 Ressources::Ressources(std::string ressourcePath) {
-    load(ressourcePath);
+    load(std::move(ressourcePath));
 }
 
-Ressources::~Ressources() {
-    free();
-}
 
 void Ressources::free() {
-    for (auto model = models.begin(); model != models.end(); model++) model->second.free();
-    for (auto spriteSheet = spriteSheets.begin(); spriteSheet != spriteSheets.end(); spriteSheet++) spriteSheet->second.free();
-    for (auto sprite = sprites.begin(); sprite != sprites.end(); sprite++) sprite->second.free();
+    for (auto& model : models) model.second.free();
+    for (auto& spriteSheet : spriteSheets) spriteSheet.second.free();
+    for (auto& sprite : sprites) sprite.second.free();
 }
 
 void Ressources::load(std::string ressourcePath) {
@@ -26,9 +24,9 @@ void Ressources::load(std::string ressourcePath) {
         modelReader.parse(modelStream, modelValues);
         for (auto m = modelValues.begin(); m != modelValues.end(); ++m) {
             if (m->isMember("amountOfVertices")) {
-                float* vertices = new float[(*m)["amountOfVertices"].asInt()*2];
+                auto* vertices = new float[(*m)["amountOfVertices"].asInt()*2];
                 jsonToArray(vertices, (*m)["vertices"],(*m)["amountOfVertices"].asInt()*2);
-                unsigned int* indices = new unsigned int[(*m)["amountOfIndices"].asInt()];
+                auto* indices = new unsigned int[(*m)["amountOfIndices"].asInt()];
                 jsonToArray(indices, (*m)["indices"],(*m)["amountOfIndices"].asInt());
                 models.insert({m.key().asString(), Model(
                         vertices,
@@ -38,9 +36,9 @@ void Ressources::load(std::string ressourcePath) {
                 )});
             } else if (m->isMember("width")) {
                 models.insert({m.key().asString(), Model({
-                                                                  (*m)["width"].asFloat(),
-                                                                  (*m)["height"].asFloat()
-                                                          })});
+                                                      (*m)["width"].asFloat(),
+                                                      (*m)["height"].asFloat()
+                                              })});
             }
         }
     }
@@ -53,11 +51,10 @@ void Ressources::load(std::string ressourcePath) {
             spriteSheets.insert({s.key().asString(), SpriteSheet(
                     (*s)["texture"].asString(),
                     {(*s)["sprite_width"].asFloat(),(*s)["sprite_height"].asFloat()},
-                    (*s)["fps"].asFloat()
+                    (*s)["fps"].asInt()
                     )});
         }
     }
-
     for (int i = 0; i < ressourceValues["sprites"].size(); i++) {
         std::string texturePath = ressourceValues["sprites"][i].asString();
         std::string fileNameWithExtension = texturePath.substr(texturePath.find_last_of("/\\") + 1);

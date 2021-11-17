@@ -2,7 +2,7 @@
 #include <unordered_map>
 #include <json/json.h>
 #include <fstream>
-#include "enschin/graphics/effects/color.hpp"
+#include "enschin/graphics/effects/color.h"
 #include "enschin/graphics/model.h"
 #include "enschin/graphics/texture.h"
 #include <enschin/graphics/sprite.h>
@@ -18,7 +18,6 @@ private:
 public:
     Ressources() = default;
     Ressources(std::string ressources);
-    ~Ressources();
     void load(std::string);
     void free();
     Model& getModel(std::string key){ return models.at(key); }

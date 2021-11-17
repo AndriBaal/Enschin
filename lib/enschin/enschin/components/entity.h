@@ -7,22 +7,22 @@
 #include "enschin/graphics/model.h"
 #include <iostream>
 
+class Scene;
 class Game;
 class Entity {
 protected:
     Vec2 pos;
     Vec2 dir;
-    Dim2 dim;
-    float scale;
-    Model model;
-    SpriteSheet sprite;
+    float scale = 1;
+    Model& model;
+    SpriteSheet& sprite;
 private:
     static unsigned int idCounter;
     unsigned int id;
-	float health;
-	float maxHealth;
+	float health = 100;
+	float maxHealth = 100;
 public:
-	Entity(Ressources& res, Vec2 pos = {}, Dim2 dim = {}, Vec2 dir = {});
+	Entity(Model& model, SpriteSheet& sprite);
 	~Entity();
 	virtual void update(Game& game, Scene& scene) = 0;
 	virtual void render(Game&, Renderer& r) = 0;

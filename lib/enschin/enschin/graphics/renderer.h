@@ -1,11 +1,11 @@
 #pragma once
-#include "enschin/graphics/effects/light.hpp"
-#include "enschin/graphics/effects/color.hpp"
+#include "enschin/graphics/effects/light.h"
+#include "enschin/graphics/effects/color.h"
 #include "enschin/graphics/shader_program.h"
 #include "enschin/graphics/model.h"
 #include "enschin/graphics/texture.h"
-#include "enschin/math/vec2.h"
 #include "enschin/math/dim2.h"
+#include "enschin/math/vec4.h"
 #include "enschin/math/physics.h"
 #include "enschin/math/matrix.h"
 #include "enschin/math/ray2.hpp"
@@ -26,6 +26,7 @@ private:
 	static ShaderProgram textureProgram;
 	static ShaderProgram coloredTextureProgram;
 	static ShaderProgram rainbowProgram;
+    static ShaderProgram cropProgram;
 
 	float ratio;
 	float units;
@@ -45,6 +46,7 @@ public:
 	void renderTexture(Model& model, Texture& texture);
 	void renderColoredTexture(Model& model, Texture& texture, Color& color);
     void renderRainbow(Model& model, float totalTime);
+    void renderCroppedTexture(Model& model, Texture& tex, Vec4 textureCoordinates);
 	void renderRaytracing(Model& model, float vertices[], int amountOfVertices, Light& light, std::vector<GameObject> objects);
 
 	float getRatio() { return ratio; }

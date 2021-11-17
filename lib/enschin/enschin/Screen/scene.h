@@ -17,7 +17,7 @@ class Game;
 class Scene {
 protected:
     Game& game;
-    Ressources* ressources;
+    Ressources res;
 	Renderer renderer;
 	Input input;
     std::vector<Entity*> entities;
@@ -26,13 +26,14 @@ private:
     std::vector<Timer*> timers;
 public:
 	Scene(Game& game);
+    ~Scene(){ free(); }
 	virtual void update() = 0;
 	virtual void render() = 0;
 	Renderer& getRenderer(){ return renderer; }
 
-    void removeTimer(Timer* timer){ timers.erase(std::remove(timers.begin(), timers.end(), timer), timers.end()); }
     void addTimer(Timer* timer){ timers.push_back(timer); }
+    void removeTimer(Timer* timer){ timers.erase(std::remove(timers.begin(), timers.end(), timer), timers.end());}
     void updateTimers(float deltaTime);
-	void updateInput(){ input.update(renderer.getUnits()); }
+	void updateInput(GLFWwindow* window){ input.update(window, renderer.getUnits()); }
 	Input& getInput() { return input; }
 }; 

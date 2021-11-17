@@ -4,10 +4,12 @@
 class Player : public Entity{
 private:
     Vec2 mousePos;
+    Timer* timer;
+    Timer* t;
 public:
-    Player(Ressources& res, Vec2 pos, Dim2 dim, Vec2 dir);
+    Player(Scene& scene, Ressources& res, Vec2 pos);
 	virtual void update(Game& game, Scene& scene) override;
-    virtual void render(Game&, Renderer& r) override;
+    virtual void render(Game& game, Renderer& r) override;
 //	virtual void onEntityCollision() override;
 //	virtual void onDamage(float damage) override;
 //	virtual void onDeath() override;

@@ -9,12 +9,9 @@
  */
 class Mouse {
 private:
-    GLFWwindow* window;
 	Vec2 translateMousePosition(float units, double mouseX, double mouseY, int windowW, int windowH);
 public:
     Mouse() = default;
-    Mouse(GLFWwindow* window) : window(window){}
-	void updateCursor(float units, Vec2& cursorPos);
-	void updateButtons(std::unordered_map<int, std::pair<int, bool>>&);
+	void updateCursor(GLFWwindow* window, float units, Vec2& cursorPos);
 };
 

@@ -4,6 +4,7 @@ ShaderProgram Renderer::colorProgram;
 ShaderProgram Renderer::textureProgram;
 ShaderProgram Renderer::coloredTextureProgram;
 ShaderProgram Renderer::rainbowProgram;
+ShaderProgram Renderer::cropProgram;
 
 /**
  * @brief Create a new Renderer with its own projection matrices.
@@ -24,6 +25,7 @@ void Renderer::initShaderPrograms() {
     textureProgram = ShaderProgram("./enschin/shader/vertex.vert", "./enschin/shader/texture.frag");
     coloredTextureProgram = ShaderProgram("./enschin/shader/vertex.vert", "./enschin/shader/colored_texture.frag");
     rainbowProgram = ShaderProgram("./enschin/shader/vertex.vert", "./enschin/shader/rainbow.frag");
+    cropProgram = ShaderProgram("./enschin/shader/vertex.vert", "./enschin/shader/crop.frag");
 }
 
 /**
@@ -86,6 +88,15 @@ void Renderer::renderRainbow(Model &model, float totalTime) {
     rainbowProgram.bind();
     rainbowProgram.setUniformMat4f("u_MVP", mvp);
     rainbowProgram.setUniform1f("u_TotalTime", totalTime);
+    glDrawElements(GL_TRIANGLES, model.getAmountOfIndices(), GL_UNSIGNED_INT, nullptr);
+}
+
+void Renderer::renderCroppedTexture(Model &model, Texture& tex, Vec4 textureCoordinates) {
+    model.bind();
+    tex.bind();
+    cropProgram.bind();
+    cropProgram.setUniformMat4f("u_MVP", mvp);
+    cropProgram.setUniform4f("u_NewCoords", textureCoordinates);
     glDrawElements(GL_TRIANGLES, model.getAmountOfIndices(), GL_UNSIGNED_INT, nullptr);
 }
 

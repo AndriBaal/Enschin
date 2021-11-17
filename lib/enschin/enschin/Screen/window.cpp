@@ -33,13 +33,12 @@ Window::Window(std::string windowTitle, Dim2 windowSize, bool fullScreen) {
         window = glfwCreateWindow(windowSize.w, windowSize.h, &windowTitle[0], NULL, NULL);
     }
 
-
     if (!window) {
         glfwTerminate();
         exit(0);
     }
     glfwMakeContextCurrent(window);
-    glfwSwapInterval(0);
+    glfwSwapInterval(1);
     if (glewInit() != GLEW_OK) exit(0);
 
     glEnable(GL_TEXTURE_2D);

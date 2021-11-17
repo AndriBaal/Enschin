@@ -5,11 +5,12 @@
 /**
  * @brief Update all buttons of the keyboard.
  *
- * @param window GLFWWIndow
+ * @param window GLFWwindow
  * @param keys Keys to be checked
  */
-void Keyboard::update(std::unordered_map<int, std::pair<int, bool>> &keys) {
-    for (auto key = keys.begin(); key != keys.end(); key++)
-        key->second.second = glfwGetKey(window, key->second.first);
+void Keyboard::update(GLFWwindow* window) {
+    for (auto i = keys.begin(); i != keys.end(); i++) {
+        *i->second = glfwGetKey(window, i->first);
+    }
 }
 

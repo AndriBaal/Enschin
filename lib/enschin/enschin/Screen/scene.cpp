@@ -2,7 +2,6 @@
 
 Scene::Scene(Game& game) : game(game){
     renderer = Renderer(game.getWindow().getSize());
-    input = Input(game.getWindow().getGlfw());
 }
 
 void Scene::updateTimers(float deltaTime) {
@@ -14,7 +13,7 @@ void Scene::updateTimers(float deltaTime) {
 }
 
 void Scene::free() {
-    ressources->free();
+    res.free();
     for (auto i = entities.begin(); i < entities.end(); i++)
         delete *i;
     for (auto i = timers.begin(); i < timers.end(); i++)

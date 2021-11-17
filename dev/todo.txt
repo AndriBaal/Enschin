@@ -13,11 +13,11 @@ Enschin:
 		/ add start function
 	! bring units back
 	/ test keyboard input
-	! Gui
+	- Gui
 	/ Keycode file with #define's
 	/ Model vb and va not refrences
-	! Spritesheets
-	! Health getter and setter for the entity.h
+	/ Spritesheets
+	- Health getter and setter for the entity.h
 	/ Backwards counting timer
     / background threats for timers
     $ Multithreading
@@ -25,9 +25,10 @@ Enschin:
 	- Controller input
 	$ Texturepacks
 	? no .hpp's
-	! invert function for color
+	/ invert function for color
 	/ Input as a Scene member
 	! Make camera working
+	!!! Box2D integration
 	/ File names
 	# encrypt json models & paths
 	/ new game structure
@@ -40,9 +41,9 @@ Enschin:
 	/ icon for .exe
 	/ Vec2 & Vec3 operators
 	/ C++ call super method
-	! Colored texture shader fix
+	/ Colored texture shader fix
 	/ icon for exe
-	! Draw part of a Model shader
+	/ Draw part of a Model shader
 	/ Renderer2 and Renderer3 for 2 and 3 Dimensions
 	/ isKeyPressed shouldnt require GLFW keycode -> General keycode or string
 	/ Texture not a refrence because the low memory size

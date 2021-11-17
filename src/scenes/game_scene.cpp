@@ -1,8 +1,9 @@
 #include "game_scene.h"
 
 GameScene::GameScene(Game &game) : Scene(game) {
-    ressources = new Ressources("./ressources/test_ressources.json");
-    entities.push_back(new Player(*ressources, {}, {}, {}));
+    res = Ressources("./ressources/test_ressources.json");
+    input = Input("./settings/input/events/events.json");
+    entities.push_back(new Player(*this, res, {0, 0}));
 }
 
 void GameScene::update() {

@@ -2,15 +2,18 @@
 
 #include <GLFW/glfw3.h>
 #include <unordered_map>
+#include <vector>
 
 /**
  * @brief Keyboard class that handles keyboard inputs
  */
 class Keyboard {
 private:
-    GLFWwindow* window;
+    std::vector<std::pair<int, bool*>> keys;
 public:
     Keyboard() = default;
-    Keyboard(GLFWwindow* window) : window(window){}
-    void update(std::unordered_map<int, std::pair<int, bool>> &keys);
+    Keyboard(std::vector<std::pair<int, bool*>> keys) : keys(keys){
+
+    }
+    void update(GLFWwindow* window);
 };

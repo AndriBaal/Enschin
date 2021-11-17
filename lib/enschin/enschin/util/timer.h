@@ -1,7 +1,6 @@
 #pragma once
 #include "enschin/screen/scene.h"
 
-class Scene;
 class Timer {
 private:
     static bool activeAll;
@@ -11,16 +10,16 @@ private:
     float endValue;
     float incrementPerSecond;
     float value;
-    Scene* scene;
 public:
     Timer() = default;
-    Timer(Scene* scene, float startValue, float endValue, float incrementPerSecond, bool active=false);
+    Timer(float startValue, float endValue, float incrementPerSecond, bool active=false);
     void update(float deltaTime);
     static void startAll();
     static void stopAll();
+    static bool isActiveAll();
     void start(){ active=true; }
     void stop(){ active=false; }
-    bool isTriggered(){ return triggered; }
-    static bool isActiveAll();
     bool isActive() { return active; }
+    bool isTriggered(){ return triggered; }
+    float getValue(){ return value; }
 };

@@ -6,9 +6,8 @@ void Timer::startAll(){ activeAll=1; }
 void Timer::stopAll(){ activeAll=0; }
 bool Timer::isActiveAll() { return activeAll; }
 
-Timer::Timer(Scene *scene, float startValue, float endValue, float incrementPerSecond, bool active)
-    : scene(scene), startValue(startValue), endValue(endValue), incrementPerSecond(incrementPerSecond), active(active) {
-    scene->addTimer(this);
+Timer::Timer(float startValue, float endValue, float incrementPerSecond, bool active)
+    : startValue(startValue), endValue(endValue), incrementPerSecond(incrementPerSecond), active(active) {
     value = startValue;
 }
 

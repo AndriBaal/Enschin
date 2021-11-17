@@ -15,7 +15,8 @@ protected:
 	Scene* currentScene;
 	Window window;
 private:
-	double firstTime, secondTime, lastTime;
+	double firstTime, secondTime;
+    double lastTime = 0;
 	float deltaTime, fps, totalTime;
 	bool running = false;
 public:

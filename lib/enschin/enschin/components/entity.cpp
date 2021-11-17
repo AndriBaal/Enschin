@@ -2,8 +2,7 @@
 
 unsigned int Entity::idCounter = 1;
 
-Entity::Entity(Ressources& res, Vec2 pos, Dim2 dim, Vec2 dir)
-    : pos(pos), dim(dim), dir(dir) {
+Entity::Entity(Model& model, SpriteSheet& sprite) : model(model), sprite(sprite){
     id = idCounter;
     idCounter += 1;
 }

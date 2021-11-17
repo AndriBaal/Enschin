@@ -9,7 +9,8 @@
 #include <malloc.h>
 #include <GL/glew.h>
 #include <string>
-#include "enschin/graphics/effects/color.hpp"
+#include "enschin/graphics/effects/color.h"
+#include "enschin/math/vec4.h"
 
 /**
  * @brief With a shaderprogram you can load your
@@ -32,7 +33,7 @@ public:
     // Set uniforms
     void setUniform1i(const std::string& name, int value);
     void setUniform1f(const std::string& name, float value);
-    void setUniform4f(const std::string& name, float f0, float f1, float f2, float f3);
+    void setUniform4f(const std::string& name, Vec4 f);
     void setColor(const std::string& name, const Color& color);
     void setUniformMat4f(const std::string& name, const float matrix[]);
 
