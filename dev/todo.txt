@@ -25,11 +25,11 @@ Enschin:
     $ Multithreading
 	! Optimisations with CLion
 	- Controller input
-	$ Texturepacks
-	? no .hpp's
+	/ no .hpp's
 	/ invert function for color
+	- Matrix reseet on window size change
 	/ Input as a Scene member
-	! Make camera working
+	/ Make camera working
 	!!! Box2D integration
 	/ File names
 	# encrypt json models & paths
@@ -54,7 +54,6 @@ Enschin:
 	/ Shaderprogram no pointer
 	! Entity events (onAttack, etc)
 	$ Settings system
-	$ Cross plattform, android, apple, etc...
 	/ size mulitplier for entities ()
 	? Shaderprogram class for 3rd party shaders evtl. json file
 	- Code revision:

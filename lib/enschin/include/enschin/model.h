@@ -1,5 +1,6 @@
 #pragma once
 #include <math.h>
+#include <box2d/b2_body.h>
 #include "vertex_buffer.h"
 #include "vertex_buffer_layout.h"
 #include "vertex_array.h"

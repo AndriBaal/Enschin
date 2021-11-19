@@ -16,7 +16,6 @@ class Timer;
 class Game;
 class Scene {
 protected:
-    Game& game;
     Ressources res;
 	Renderer renderer;
 	Input input;
@@ -27,8 +26,8 @@ private:
 public:
 	Scene(Game& game);
     ~Scene(){ free(); }
-	virtual void update() = 0;
-	virtual void render() = 0;
+	virtual void update(Game& game) = 0;
+	virtual void render(Game& game) = 0;
 	Renderer& getRenderer(){ return renderer; }
 
     void addTimer(Timer* timer){ timers.push_back(timer); }

@@ -33,8 +33,8 @@ void Game::init() {
 		loop();
         currentScene->updateTimers(deltaTime);
         currentScene->updateInput(glfw);
-        currentScene->update();
-        currentScene->render();
+        currentScene->update(*this);
+        currentScene->render(*this);
 		fps++;
 		if (glfwGetTime() > lastTime+1) {
 			std::cout << fps << std::endl;

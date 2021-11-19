@@ -4,12 +4,12 @@
 
 class Camera {
 private:
-    Vec2& cameraTarget;
+    Vec2* cameraTarget;
 public:
     Camera() = default;
-    Camera(Vec2& cameraTarget);
+    Camera(Vec2* cameraTarget);
     void update(Renderer&);
     void reset(Renderer&);
-    Vec2& getCameraTarget() { return cameraTarget; }
+    Vec2 getCameraTarget() { return *cameraTarget; }
     void setCameraTarget(Vec2 cameraTarget) { cameraTarget = cameraTarget; }
 };

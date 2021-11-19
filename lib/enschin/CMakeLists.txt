@@ -14,6 +14,9 @@ add_subdirectory(deps/glew)
 # Adding jsoncpp
 add_subdirectory(deps/jsoncpp)
 
+#Adding Box2d for physics
+add_subdirectory(deps/box2d)
+
 # Adding enschin 
 FILE(GLOB_RECURSE enschin_SRC src/*.cpp)
 
@@ -23,10 +26,11 @@ add_library(enschin
     ${enschin_SRC}
 )
 
+target_include_directories (enschin PUBLIC ${CMAKE_CURRENT_SOURCE_DIR} include)
 target_include_directories (enschin PUBLIC ${CMAKE_CURRENT_SOURCE_DIR} deps/glfw/include)
 target_include_directories (enschin PUBLIC ${CMAKE_CURRENT_SOURCE_DIR} deps/glew/include)
 target_include_directories (enschin PUBLIC ${CMAKE_CURRENT_SOURCE_DIR} deps/jsoncpp/include)
-target_include_directories (enschin PUBLIC ${CMAKE_CURRENT_SOURCE_DIR} include)
+target_include_directories (enschin PUBLIC ${CMAKE_CURRENT_SOURCE_DIR} deps/box2d/include)
 
 target_link_libraries(enschin
     libglew_static

@@ -1,6 +1,6 @@
 #pragma once
 #include <string>
-#include "enschin/game.h"
+#include "game.h"
 #include "dim2.h"
 #include "vec2.h"
 #include "sprite.h"
@@ -32,7 +32,8 @@ public:
 //	virtual void onAttack() = 0;
 
     void setPos(Vec2 newPos){ pos = newPos; }
-    Vec2 getPos() { return pos; };
+    Vec2 getPos() { return pos; }
+	Vec2* getPosAsPointer() { return &pos; }
     void increasePos(Vec2 increment) { pos += increment; }
 
 };

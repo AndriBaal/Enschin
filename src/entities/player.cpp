@@ -1,7 +1,7 @@
 #include <game/player.h>
 
 Player::Player(Scene& scene, Ressources& res, Vec2 pos)
-    : Entity(res.getModel("test_model"), res.getSprite("bird")){
+    : Entity(res.getModel("test_model"), res.getSprite("cute")){
     timer = new Timer(0, sprite.getAmountOfSprites(), sprite.getFps(), true);
     scene.addTimer(timer);
     scene.addTimer(t = new Timer(0, 1, 1, 1));
@@ -9,10 +9,14 @@ Player::Player(Scene& scene, Ressources& res, Vec2 pos)
 
 void Player::update(Game& game, Scene& scene) {
     mousePos = scene.getInput().getCursorPos();
+    if (scene.getInput().getEvent("walk_forward")) pos.y+= 1 * game.getDeltaTime();
+    if (scene.getInput().getEvent("walk_backwards")) pos.y-= 1 * game.getDeltaTime();
+    if (scene.getInput().getEvent("walk_left")) pos.x-= 1 * game.getDeltaTime();
+    if (scene.getInput().getEvent("walk_right")) pos.x+= 1 * game.getDeltaTime();
 }
 
 void Player::render(Game& game, Renderer& r) {
-    r.translateAndRenderTexture(model, sprite.getTexture(timer->getValue()), mousePos);
+    r.translateAndRenderTexture(model, sprite.getTexture(timer->getValue()), pos);
     r.translate({-0.5f, -0.5f});
     r.rotate(45.0f);
     r.scale({2, 2});
