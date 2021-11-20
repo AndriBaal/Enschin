@@ -1,5 +1,6 @@
 #pragma once
 #include <ostream>
+#include <box2d/b2_math.h>
 
 /**
  * @brief Data structure that holds 3 floating point values.
@@ -7,7 +8,12 @@
 struct Vec3 {
 	float x, y, z;
 	Vec3(float x = 0, float y = 0, float z = 0) : x(x), y(y), z(z){}
-	Vec3 operator+(const Vec3& v);
+
+    const static Vec3 nullVec3;
+
+    b2Vec3 toBox(){ return b2Vec3(x, y, z); }
+
+    Vec3 operator+(const Vec3& v);
 	Vec3 operator-(const Vec3& v);
 	Vec3 operator*(const Vec3& v);
 	Vec3 operator/(const Vec3& v);

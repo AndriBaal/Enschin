@@ -7,6 +7,7 @@
 struct Vec4 {
     float x, y, z, a;
     Vec4(float x = 0, float y = 0, float z = 0, float a = 0) : x(x), y(y), z(z), a(a){}
+
     Vec4 operator+(const Vec4& v);
     Vec4 operator-(const Vec4& v);
     Vec4 operator*(const Vec4& v);

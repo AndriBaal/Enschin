@@ -1,5 +1,6 @@
 #pragma once
 #include <vector>
+#include <box2d/b2_world.h>
 #include "renderer.h"
 #include "input.h"
 #include "enschin/game.h"
@@ -19,6 +20,8 @@ protected:
     Ressources res;
 	Renderer renderer;
 	Input input;
+    Vec2 gravity = {0, -10.f};
+    b2World world = (gravity.toBox());
     std::vector<Entity*> entities;
     void free();
 private:
@@ -34,5 +37,7 @@ public:
     void removeTimer(Timer* timer){ timers.erase(std::remove(timers.begin(), timers.end(), timer), timers.end());}
     void updateTimers(float deltaTime);
 	void updateInput(GLFWwindow* window){ input.update(window, renderer.getUnits()); }
+    void setGravity(Vec2 gravity){ this->gravity = gravity; world = (gravity.toBox()); }
+    Vec2 getGravity(){ return gravity; }
 	Input& getInput() { return input; }
 }; 

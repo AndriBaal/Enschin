@@ -1,5 +1,6 @@
 #include <include/enschin/vec3.h>
 
+const Vec3 Vec3::nullVec3 = {0, 0, 0};
 
 //Arithmetic 
 Vec3 Vec3::operator+(const Vec3& v) {

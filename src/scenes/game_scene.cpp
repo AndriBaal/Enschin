@@ -12,10 +12,10 @@ void GameScene::update(Game& game) {
     //move in default scene update function
     for (auto i = entities.begin(); i < entities.end(); i++)
         (*i)->update(game, *this);
-    //Implement automatic collssion detection
-    for (entities) {
-
-    }
+//    Implement automatic collssion detection
+//    for (entities) {
+//
+//    }
 }
 
 void GameScene::render(Game& game) {

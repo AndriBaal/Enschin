@@ -19,6 +19,7 @@ Enschin:
 	/ Spritesheets
 	/ Refactor header file structure
 	/ Use include directory
+	!!! Circles
 	- Health getter and setter for the entity.h
 	/ Backwards counting timer
     / background threats for timers
