@@ -32,7 +32,7 @@ private:
 public:
     static std::unordered_map<int, ShaderProgram> programs;
 	Renderer() = default;
-	Renderer(Dim2 windowSize, float units=50.0f);
+	Renderer(Dim2 windowSize, float units=5.0f);
 	static void initShaderPrograms();
 	void resetProjection(Dim2 windowDim);
 	void resetMatrix();

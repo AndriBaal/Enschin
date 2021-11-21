@@ -143,13 +143,14 @@ void Renderer::translate(Vec2 pos) {
 }
 
 /**
- * @brief Rotate the matrix by an angle in degree.
+ * @brief Rotate the matrix by an angle in radians.
  * The rotation always rotates from the last rotation, so you have to
  * rotate back after rendering.
  * 
- * @param angle Rotation angle in degree
+ * @param angle Rotation angle in radians
  */
 void Renderer::rotate(float angle) {
+    angle *= -(180/3.14159265359);
     Matrix::rotate(view, angle);
     Matrix::multiply(mvp, view, proj);
 }

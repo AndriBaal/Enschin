@@ -488,6 +488,7 @@ inline float b2Body::GetAngle() const
 	return m_sweep.a;
 }
 
+
 inline const b2Vec2& b2Body::GetWorldCenter() const
 {
 	return m_sweep.c;

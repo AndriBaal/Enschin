@@ -2,7 +2,7 @@
 
 void MyGame::start() {
     window.setIcon("./textures/bird.jpg");
-    GameScene* myScene = new GameScene(*this);
+    myScene = new GameScene(*this);
     currentScene = myScene;
 }
 

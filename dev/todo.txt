@@ -16,6 +16,10 @@ Enschin:
 	!!! Update radius for Entity
 	!!! standyby / not render / not update field for entity / gameObject
 	!!! Static field for gameObject -> box2d static or dyncamic body
+	!!! friction and density in model json
+	!!! Object class for map component
+	!!! Getter setter for anti aliasing
+	!!! Round model with "radius" json value
 	- Raw mousemotion with glfwSetInputMode
 	/ test keyboard input
 	- Gui

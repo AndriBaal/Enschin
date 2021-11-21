@@ -1,6 +1,8 @@
 #pragma once
 #include <math.h>
 #include <box2d/b2_body.h>
+#include <box2d/b2_polygon_shape.h>
+#include <box2d/b2_fixture.h>
 #include "vertex_buffer.h"
 #include "vertex_buffer_layout.h"
 #include "vertex_array.h"
@@ -16,10 +18,11 @@ private:
 	static unsigned int defaultIndices[6];
 	unsigned short amountOfVertices;
 	unsigned short amountOfIndices;
-	float* vertices;
 	VertexArray va = (1);
 	IndexBuffer ib;
     VertexBuffer vb;
+
+    b2PolygonShape collisionShape;
 
 public:
 	Model() = default;
@@ -34,7 +37,8 @@ public:
 	static void generateVertices(Dim2 size, float dest[16]);
 	static void generateVerticesTex(Dim2 size, float dest[]);
 	void bind();
+
 	int getAmountOfVertices() { return amountOfVertices; }
 	unsigned int getAmountOfIndices() { return amountOfIndices; }
-    float* getVertices() const { return vertices; }
+    b2PolygonShape& getCollisionShape(){ return collisionShape; }
 };

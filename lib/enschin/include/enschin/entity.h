@@ -24,8 +24,11 @@ private:
     unsigned int id;
 	float health = 100;
 	float maxHealth = 100;
+    float friction;
+    float density;
+    bool fixedRotation;
 public:
-	Entity(Scene& scene, Model& model, SpriteSheet& sprite);
+	Entity(Scene& scene, Model& model, SpriteSheet& sprite, Vec2 pos={0, 0}, float density=1.0f, float friction=0.3f, bool fixedRotation=false);
 	~Entity();
 	virtual void update(Game& game, Scene& scene) = 0;
 	virtual void render(Game&, Renderer& r) = 0;

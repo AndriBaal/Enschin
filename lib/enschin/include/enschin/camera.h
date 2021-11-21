@@ -11,5 +11,5 @@ public:
     void update(Renderer&);
     void reset(Renderer&);
     Vec2 getCameraTarget() { return *cameraTarget; }
-    void setCameraTarget(Vec2 cameraTarget) { cameraTarget = cameraTarget; }
+    void setCameraTarget(Vec2* cameraTarget) { cameraTarget = cameraTarget; }
 };

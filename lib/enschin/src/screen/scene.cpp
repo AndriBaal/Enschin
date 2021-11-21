@@ -4,14 +4,6 @@
 
 Scene::Scene(Game& game) {
     renderer = Renderer(game.getWindow().getSize());
-    b2BodyDef groundBodyDef;
-    groundBodyDef.position.Set(0.0f, -10.0f);
-    groundBody = world.CreateBody(&groundBodyDef);
-
-    b2PolygonShape groundBox;
-    groundBox.SetAsBox(15.0f, 15.0f);
-    groundBody->CreateFixture(&groundBox, 0.0f);
-
 }
 
 void Scene::updateTimers(float deltaTime) {
@@ -29,10 +21,7 @@ void Scene::update(Game &game) {
 }
 
 void Scene::render(Game &game) {
-    c.update(renderer);
-    for (auto i = entities.begin(); i != entities.end(); i++)
-        (*i)->render(game, renderer);
-    c.reset(renderer);
+
 }
 
 void Scene::free() {

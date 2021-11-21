@@ -22,7 +22,7 @@ protected:
 	Renderer renderer;
 	Input input;
     Camera c = Camera(&Vec2::nullVec2);
-    Vec2 gravity = {0, -10.f};
+    Vec2 gravity = {0, 10.f};
     b2World world = (b2Vec2(0, -10.0));
 //    Model* groundModel;
     b2Body* groundBody;
@@ -48,6 +48,6 @@ public:
     Vec2 getGravity(){ return gravity; }
 
 	Input& getInput() { return input; }
-
 	b2World& getWorld(){ return world; }
+    void addEntity(Entity* entity) { entities.push_back(entity); }
 }; 

@@ -27,6 +27,8 @@ Window::Window(std::string windowTitle, Dim2 windowSize, bool fullScreen) {
     glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);*/
     //glfwWindowHint(GLFW_RESIZABLE, GL_FALSE);
 
+    glfwWindowHint(GLFW_SAMPLES, 4);
+
     if (fullScreen) {
         window = glfwCreateWindow(windowSize.w, windowSize.h, &windowTitle[0], glfwGetPrimaryMonitor(), NULL);
     } else {
@@ -44,6 +46,7 @@ Window::Window(std::string windowTitle, Dim2 windowSize, bool fullScreen) {
     glEnable(GL_TEXTURE_2D);
     glEnable(GL_BLEND);
     glEnable(GL_TRIANGLES);
+    glEnable(GL_MULTISAMPLE);
     glBlendFunc(GL_ONE, GL_ONE_MINUS_SRC_ALPHA);
     //glfwSetInputMode(window, GLFW_CURSOR, GLFW_CURSOR_HIDDEN);
     //glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
