@@ -2,6 +2,4 @@
 
 2D Game Engine completly written in C / C++.
 
-Features to come:
-  - full 3D support
-  - Compiling for mobile
+![image](https://user-images.githubusercontent.com/80914617/142782853-8ce04867-4002-49f8-91ee-40fd233f92cd.png)
