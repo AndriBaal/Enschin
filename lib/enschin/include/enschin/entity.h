@@ -1,11 +1,13 @@
 #pragma once
+#include <box2d/b2_polygon_shape.h>
+#include <box2d/b2_fixture.h>
 #include <string>
+#include <iostream>
 #include "game.h"
 #include "dim2.h"
 #include "vec2.h"
 #include "sprite.h"
 #include "model.h"
-#include <iostream>
 
 class Scene;
 class Game;
@@ -16,13 +18,14 @@ protected:
     float scale = 1;
     Model& model;
     SpriteSheet& sprite;
+    b2Body* body;
 private:
     static unsigned int idCounter;
     unsigned int id;
 	float health = 100;
 	float maxHealth = 100;
 public:
-	Entity(Model& model, SpriteSheet& sprite);
+	Entity(Scene& scene, Model& model, SpriteSheet& sprite);
 	~Entity();
 	virtual void update(Game& game, Scene& scene) = 0;
 	virtual void render(Game&, Renderer& r) = 0;
@@ -33,7 +36,7 @@ public:
 
     void setPos(Vec2 newPos){ pos = newPos; }
     Vec2 getPos() { return pos; }
-	Vec2* getPosAsPointer() { return &pos; }
+	Vec2* getPosAddress() { return &pos; }
     float getRotation(){ return rotation; }
     void setRotation(float rotation){ this->rotation = rotation; }
     void increaseRotation(float rotation){ this->rotation += rotation; }

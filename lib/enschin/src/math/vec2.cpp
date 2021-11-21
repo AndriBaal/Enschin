@@ -1,6 +1,6 @@
 #include <enschin/vec2.h>
 
-const Vec2 Vec2::nullVec2 = {0, 0};
+Vec2 Vec2::nullVec2 = {0, 0};
 
 //Arithmetic 
 Vec2 Vec2::operator+(const Vec2& v) {

@@ -2,10 +2,10 @@
   "test_model": {
     "amountOfVertices": 4,
     "vertices": [
-      -0.25, -0.25,
-      0.25, -0.25,
-      0.25, 0.25,
-      -0.25, 0.25
+      -12, -12,
+      12, -12,
+      12, 12,
+      -12, 12
     ],
     "amountOfIndices": 6,
     "indices": [

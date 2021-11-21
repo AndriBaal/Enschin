@@ -3,7 +3,7 @@
 
   ],
   "models": [
-    "./models/test_model.json"
+    "./models/test_model1.json"
   ],
   "sprites": [
     "./sprites/bird.jpg",

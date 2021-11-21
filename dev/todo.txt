@@ -11,7 +11,12 @@ Enschin:
 	/ Refactor GameHandler to Game
 		/ Refactor proccess to loop
 		/ add start function
-	! bring units back
+	/ bring units back
+	!!! set  ground method for scene
+	!!! Update radius for Entity
+	!!! standyby / not render / not update field for entity / gameObject
+	!!! Static field for gameObject -> box2d static or dyncamic body
+	- Raw mousemotion with glfwSetInputMode
 	/ test keyboard input
 	- Gui
 	/ Keycode file with #define's

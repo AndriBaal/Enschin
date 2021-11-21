@@ -6,8 +6,7 @@
 
 class GameScene : public Scene {
 private:
-	std::vector<Entity*> entities;
-    Camera c;
+
 public:
 	GameScene(Game& game);
     ~GameScene(){ free(); }

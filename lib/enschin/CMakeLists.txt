@@ -36,5 +36,6 @@ target_link_libraries(enschin
     libglew_static
     glfw
     jsoncpp_object
+    box2d
 )
 

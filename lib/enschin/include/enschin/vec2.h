@@ -1,5 +1,4 @@
 #pragma once
-#include <box2d/b2_math.h>
 #include <ostream>
 
 /**
@@ -9,11 +8,9 @@ struct Vec2 {
 	float x, y;
 	Vec2(float x = 0, float y = 0) : x(x), y(y){};
 
-    const static Vec2 nullVec2;
+    static Vec2 nullVec2;
 
-    b2Vec2 toBox(){ return b2Vec2(x, y); }
-
-	//Arithmetic 
+	//Arithmetic
 	Vec2 operator+(const Vec2& v);
 	Vec2 operator-(const Vec2& v);
 	Vec2 operator*(const Vec2& v);

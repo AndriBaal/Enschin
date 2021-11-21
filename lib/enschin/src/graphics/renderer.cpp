@@ -173,7 +173,7 @@ void Renderer::scale(Vec2 scaling) {
  */
 void Renderer::resetProjection(Dim2 windowSize) {
     ratio = windowSize.getRatioWH();
-    Matrix::frustum(proj, ratio, -ratio, -1, 1, 3.0f, 7.0f);
+    Matrix::frustum(proj, ratio*units, -ratio*units, -1*units, 1*units, 3.0f, 7.0f);
 }
 
 /**

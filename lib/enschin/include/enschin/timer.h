@@ -1,5 +1,4 @@
 #pragma once
-#include "scene.h"
 
 class Timer {
 private:
