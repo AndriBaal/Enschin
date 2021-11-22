@@ -5,8 +5,7 @@ unsigned int Entity::idCounter = 1;
 Entity::Entity(Scene& scene, Model& model, SpriteSheet& sprite, Vec2 pos, float density, float friction, bool fixedRotation)
     : model(model), sprite(sprite), pos(pos), density(density), friction(friction), fixedRotation(fixedRotation){
     scene.addEntity(this);
-    id = idCounter;
-    idCounter += 1;
+    id = idCounter++;
 
     b2BodyDef bodyDef;
     bodyDef.type = b2_dynamicBody;

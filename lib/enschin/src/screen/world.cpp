@@ -1,9 +1,10 @@
-#include <enschin/world.h>
+ #include <enschin/world.h>
 
 World::World(Model& model, Vec2 worldPos, Vec2 gravity)
     : worldModel(&model), worldPos(worldPos){
 
     world.SetGravity(gravity.toB2());
+    world.SetContactListener(this->contactListener);
     b2BodyDef groundBodyDef;
     groundBodyDef.position.Set(worldPos.x, worldPos.y);
     groundBody = world.CreateBody(&groundBodyDef);
@@ -11,21 +12,28 @@ World::World(Model& model, Vec2 worldPos, Vec2 gravity)
     groundBody->CreateFixture(model.getCollisionShape(), 0.0f);
 }
 
-void World::update(float deltaTime) {
-    world.Step(deltaTime, velocityIterations, positionIterations);
+void World::update(Game& game, Scene& scene) {
+    world.Step(game.getDeltaTime(), velocityIterations, positionIterations);
 }
 
 b2Body* World::addBody(b2BodyDef* bodyDef) {
     return world.CreateBody(bodyDef);
 }
 
-void World::renderBackground(Renderer &renderer) {
-    Color c = {0, 1, 0, 0};
-    renderer.translate(groundBody->GetPosition());
-    renderer.renderColor(*worldModel, c);
-    renderer.translate(-groundBody->GetPosition());
+void World::renderBackground(Game& game, Renderer &r) {
+    r.translate(groundBody->GetPosition());
+    r.renderRainbow(*worldModel, game.getTotalTime());
+    r.translate(-groundBody->GetPosition());
 }
 
-void World::renderForeground(Renderer &renderer) {
+void World::renderForeground(Game& game, Renderer &r) {
+
+}
+
+void ContactListener::BeginContact(b2Contact *contact) {
+//    (Entity) contact->GetFixtureA()->GetBody()->GetUserData();
+}
+
+void ContactListener::EndContact(b2Contact *contact) {
 
 }

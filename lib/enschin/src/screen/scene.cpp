@@ -15,17 +15,17 @@ void Scene::updateTimers(float deltaTime) {
 void Scene::update(Game &game) {
     updateTimers(game.getDeltaTime());
     updateInput(game.getWindow().getGlfw());
-    world.update(game.getDeltaTime());
+    world->update(game, *this);
     for (auto i = entities.begin(); i < entities.end(); i++)
         (*i)->update(game, *this);
 }
 
 void Scene::render(Game &game) {
-    world.renderBackground(renderer);
+    world->renderBackground(game, renderer);
     camera.update(renderer);
     for (auto & entity : entities)
         entity->render(game, renderer);
-    world.renderForeground(renderer);
+    world->renderForeground(game, renderer);
     camera.reset(renderer);
 }
 

@@ -15,12 +15,13 @@
  */
 class Entity;
 class Game;
+class World;
 class Scene {
 protected:
     Ressources res;
 	Renderer renderer;
 	Input input;
-    World world;
+    World* world;
     Camera camera = Camera(&Vec2::nullVec2);
     std::vector<Entity*> entities;
 //    std::vector<GameObject*> gameObjects;
@@ -43,5 +44,5 @@ public:
 	Input& getInput() { return input; }
     void addEntity(Entity* entity) { entities.push_back(entity); }
 
-    World& getWorld(){ return world; }
+    World& getWorld(){ return *world; }
 }; 

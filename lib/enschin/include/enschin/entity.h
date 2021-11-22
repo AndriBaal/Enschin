@@ -35,7 +35,9 @@ public:
 	virtual void update(Game& game, Scene& scene) = 0;
 	virtual void render(Game&, Renderer& r) = 0;
     virtual void onEntityCollision(Entity& otherEntity) = 0;
+    virtual void onEntityRelease(Entity& otherEntity) {}
     virtual void onCollision() = 0;
+    virtual void onRelease(){}
 //	virtual void onDamage(float damage) = 0;
 //	virtual void onDeath() = 0;
 //	virtual void onAttack() = 0;

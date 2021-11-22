@@ -23,20 +23,12 @@ private:
     bool running = false;
 public:
     Game(std::string gameName, Vec2 windowSize, bool fullscreen);
-
     void init();
-
     virtual void start() = 0;
-
     virtual void loop() = 0;
-
     virtual void free() = 0;
-
     float getDeltaTime() const { return deltaTime; }
-
     float getTotalTime() const { return totalTime; }
-
     float getFps() { return fps; }
-
     Window &getWindow() { return window; }
 };
