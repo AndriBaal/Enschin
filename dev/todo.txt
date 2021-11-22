@@ -20,6 +20,10 @@ Enschin:
 	!!! Object class for map component
 	!!! Getter setter for anti aliasing
 	!!! Round model with "radius" json value
+	!!! Move world things to world.h
+	!!! Background elements for world
+    !!! const&
+    !!! Text module
 	- Raw mousemotion with glfwSetInputMode
 	/ test keyboard input
 	- Gui

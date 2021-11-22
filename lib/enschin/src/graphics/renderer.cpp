@@ -12,7 +12,7 @@ ShaderProgram Renderer::cropProgram;
  * @param windowSize WindowSize for the matrices
  * @param units Units from the Center to the Top/Bottom of the Screen
  */
-Renderer::Renderer(Dim2 windowSize, float units) : units(units) {
+Renderer::Renderer(Vec2 windowSize, float units) : units(units) {
     resetProjection(windowSize);
     resetMatrix();
 }
@@ -172,8 +172,8 @@ void Renderer::scale(Vec2 scaling) {
  * 
  * @param windowSize New Size of the window
  */
-void Renderer::resetProjection(Dim2 windowSize) {
-    ratio = windowSize.getRatioWH();
+void Renderer::resetProjection(Vec2 windowSize) {
+    ratio = windowSize.x / windowSize.y;
     Matrix::frustum(proj, ratio*units, -ratio*units, -1*units, 1*units, 3.0f, 7.0f);
 }
 

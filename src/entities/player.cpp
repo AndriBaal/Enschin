@@ -23,13 +23,13 @@ void Player::update(Game& game, Scene& scene) {
 }
 
 void Player::render(Game& game, Renderer& r) {
-    r.translateAndRenderTexture(model, sprite.getTexture(), {body->GetPosition().x, body->GetPosition().y}, body->GetAngle());
-    r.translate({-25.f, -25.f});
-    r.rotate(45.0f);
-    r.scale({2, 2});
-    Color c = {0, 0, 1};
-    r.renderRainbow(model, game.getTotalTime());
-    r.scale({0.5, 0.5});
-    r.rotate(-45.0f);
-    r.translate({25.f, 25.f});
+    r.translateAndRenderTexture(model, sprite.getTexture(), body->GetPosition(), body->GetAngle());
+}
+
+void Player::onCollision() {
+
+}
+
+void Player::onEntityCollision(Entity &entity) {
+
 }

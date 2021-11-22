@@ -1,19 +1,19 @@
 #include <iostream>
 #include <enschin/sprite_sheet.h>
 
-SpriteSheet::SpriteSheet(const std::string& filePath, Dim2 spriteSize, unsigned char fps) : fps(fps) {
+SpriteSheet::SpriteSheet(const std::string& filePath, Vec2 spriteSize, unsigned char fps) : fps(fps) {
     stbi_set_flip_vertically_on_load(true);
     int width, height, BPP;
     unsigned char* localBuffer = nullptr;
     localBuffer = stbi_load(filePath.c_str(), &width, &height, &BPP, 4);
 
-    textures = new Texture[int(height / spriteSize.h * (width / spriteSize.w))];
+    textures = new Texture[int(height / spriteSize.y * (width / spriteSize.x))];
 
     glPixelStorei(GL_UNPACK_ROW_LENGTH, width);
-    for (int y = 0; y< height; y += spriteSize.h) {
-        for (int x = 0; x < width; x += spriteSize.w) {
+    for (int y = 0; y< height; y += spriteSize.y) {
+        for (int x = 0; x < width; x += spriteSize.x) {
             const unsigned char* subimg = localBuffer + (y + x)*4;
-            textures[amountOfSprites] = Texture(subimg, spriteSize.w, spriteSize.h);
+            textures[amountOfSprites] = Texture(subimg, spriteSize.x, spriteSize.y);
             amountOfSprites++;
         }
     }

@@ -7,7 +7,7 @@
  * @param windowSize Size of the window
  * @param fullScreen Set fullscreen
  */
-Window::Window(std::string windowTitle, Dim2 windowSize, bool fullScreen) {
+Window::Window(std::string windowTitle, Vec2 windowSize, bool fullScreen) {
     if (!glfwInit()) exit(0);
     const GLFWvidmode* mode = glfwGetVideoMode(glfwGetPrimaryMonitor());
 
@@ -30,9 +30,9 @@ Window::Window(std::string windowTitle, Dim2 windowSize, bool fullScreen) {
     glfwWindowHint(GLFW_SAMPLES, 4);
 
     if (fullScreen) {
-        window = glfwCreateWindow(windowSize.w, windowSize.h, &windowTitle[0], glfwGetPrimaryMonitor(), NULL);
+        window = glfwCreateWindow(windowSize.x, windowSize.y, &windowTitle[0], glfwGetPrimaryMonitor(), NULL);
     } else {
-        window = glfwCreateWindow(windowSize.w, windowSize.h, &windowTitle[0], NULL, NULL);
+        window = glfwCreateWindow(windowSize.x, windowSize.y, &windowTitle[0], NULL, NULL);
     }
 
     if (!window) {
@@ -53,8 +53,8 @@ Window::Window(std::string windowTitle, Dim2 windowSize, bool fullScreen) {
 
     int w, h = 0;
     glfwGetWindowSize(window, &w, &h);
-    windowSize.w = w;
-    windowSize.h = h;
+    windowSize.x = w;
+    windowSize.y = h;
     this->windowSize = windowSize;
     this->fullScreen = fullScreen;
 }
@@ -68,7 +68,7 @@ Window::Window(std::string windowTitle, Dim2 windowSize, bool fullScreen) {
 bool Window::update() {
     int w, h;
     glfwGetWindowSize(window, &w, &h);
-    if (w != windowSize.w || h != windowSize.h) {
+    if (w != windowSize.x || h != windowSize.y) {
         glViewport(0, 0, w, h);
         windowSize = {float(w), float(h)};
         return true;
@@ -81,9 +81,9 @@ bool Window::update() {
  * 
  * @param newDim New size
  */
-void Window::setSize(Dim2& newDim) {
+void Window::setSize(Vec2 newDim) {
     windowSize = newDim;
-    glfwSetWindowSize(window, newDim.w, newDim.h);
+    glfwSetWindowSize(window, newDim.x, newDim.y);
 }
 
 /**

@@ -4,7 +4,7 @@
 #include "shader_program.h"
 #include "model.h"
 #include "texture.h"
-#include "dim2.h"
+#include "vec2.h"
 #include "vec4.h"
 #include "matrix.h"
 #include "ray2.h"
@@ -32,9 +32,9 @@ private:
 public:
     static std::unordered_map<int, ShaderProgram> programs;
 	Renderer() = default;
-	Renderer(Dim2 windowSize, float units=5.0f);
+	Renderer(Vec2 windowSize, float units=5.0f);
 	static void initShaderPrograms();
-	void resetProjection(Dim2 windowDim);
+	void resetProjection(Vec2 windowDim);
 	void resetMatrix();
 	void translate(Vec2 pos);
 	void rotate(float angle);

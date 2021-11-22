@@ -65,14 +65,14 @@ Model::Model(float vertices[], unsigned short amountOfVertices, unsigned int ind
  * @param amountOfIndices Amount of Indices of the model (default=6)
  */
 
-Model::Model(Dim2 size) {
+Model::Model(Vec2 size) {
     float verticesTexCoord[16] = {};
     amountOfIndices = 6;
     amountOfVertices = 4;
 
     generateVerticesTex(size, verticesTexCoord);
 
-    collisionShape.SetAsBox(size.w/2, size.h/2);
+    collisionShape.SetAsBox(size.x/2, size.y/2);
 
     vb = VertexBuffer(verticesTexCoord, 4 * amountOfVertices * sizeof(float));
     ib = IndexBuffer(defaultIndices, amountOfIndices);
@@ -108,15 +108,15 @@ void Model::bind() {
  * @param dim Dimension of Verticces
  * @param dest Destination array
  */
-void Model::generateVertices(Dim2 dim, float dest[]) {
-    dest[2] = dim.w/2.0f;
-    dest[4] = dim.w/2.0f;
-    dest[0] = -dim.w/2.0f;
-    dest[6] = -dim.w/2.0f;
-    dest[5] = dim.h/2.0f;
-    dest[7] = dim.h/2.0f;
-    dest[1] = -dim.h/2.0f;
-    dest[3] = -dim.h/2.0f;
+void Model::generateVertices(Vec2 dim, float dest[]) {
+    dest[2] = dim.x/2.0f;
+    dest[4] = dim.x/2.0f;
+    dest[0] = -dim.x/2.0f;
+    dest[6] = -dim.x/2.0f;
+    dest[5] = dim.y/2.0f;
+    dest[7] = dim.y/2.0f;
+    dest[1] = -dim.y/2.0f;
+    dest[3] = -dim.y/2.0f;
 }
 
 /**
@@ -125,15 +125,15 @@ void Model::generateVertices(Dim2 dim, float dest[]) {
  * @param dim Dimension of the vertices
  * @param dest Destination array
  */
-void Model::generateVerticesTex(Dim2 dim, float dest[16]) {
-    dest[4] = dim.w/2.0f;
-    dest[8] = dim.w/2.0f;
-    dest[0] = -dim.w/2.0f;
-    dest[12] = -dim.w/2.0f;
-    dest[9] = dim.h/2.0f;
-    dest[13] = dim.h/2.0f;
-    dest[1] = -dim.h/2.0f;
-    dest[5] = -dim.h/2.0f;
+void Model::generateVerticesTex(Vec2 dim, float dest[16]) {
+    dest[4] = dim.x/2.0f;
+    dest[8] = dim.x/2.0f;
+    dest[0] = -dim.x/2.0f;
+    dest[12] = -dim.x/2.0f;
+    dest[9] = dim.y/2.0f;
+    dest[13] = dim.y/2.0f;
+    dest[1] = -dim.y/2.0f;
+    dest[5] = -dim.y/2.0f;
     dest[2] = 0.0f;
     dest[3] = 0.0f;
     dest[7] = 0.0f;

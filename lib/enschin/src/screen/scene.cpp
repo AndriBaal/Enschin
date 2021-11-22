@@ -1,6 +1,4 @@
 #include <enschin/scene.h>
-#include <box2d/b2_polygon_shape.h>
-
 
 Scene::Scene(Game& game) {
     renderer = Renderer(game.getWindow().getSize());
@@ -15,13 +13,20 @@ void Scene::updateTimers(float deltaTime) {
 }
 
 void Scene::update(Game &game) {
-    world.Step(game.getDeltaTime(), 6, 2);
+    updateTimers(game.getDeltaTime());
+    updateInput(game.getWindow().getGlfw());
+    world.update(game.getDeltaTime());
     for (auto i = entities.begin(); i < entities.end(); i++)
         (*i)->update(game, *this);
 }
 
 void Scene::render(Game &game) {
-
+    world.renderBackground(renderer);
+    camera.update(renderer);
+    for (auto & entity : entities)
+        entity->render(game, renderer);
+    world.renderForeground(renderer);
+    camera.reset(renderer);
 }
 
 void Scene::free() {
@@ -30,11 +35,6 @@ void Scene::free() {
         delete *i;
     for (auto i = timers.begin(); i < timers.end(); i++)
         delete *i;
-}
-
-void Scene::setGravity(Vec2 gravity) {
-    this->gravity = gravity;
-//    world = (gravity.toBox());
 }
 
 void Scene::updateInput(GLFWwindow *window) {

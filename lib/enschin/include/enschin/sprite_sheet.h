@@ -1,5 +1,5 @@
 #pragma once
-#include "dim2.h"
+#include "vec2.h"
 #include "texture.h"
 
 struct SpriteSheet {
@@ -10,7 +10,7 @@ private:
     unsigned char fps;
 public:
     SpriteSheet() = default;
-    SpriteSheet(const std::string& filePath, Dim2 spriteSize, unsigned char fps);
+    SpriteSheet(const std::string& filePath, Vec2 spriteSize, unsigned char fps);
 
     Texture& getCurrentSprite(unsigned int sprite = 0);
     Texture& getTexture(int index = 0){ return textures[index]; }

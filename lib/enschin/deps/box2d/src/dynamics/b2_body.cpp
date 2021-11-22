@@ -162,6 +162,7 @@ void b2Body::SetType(b2BodyType type)
 	}
 }
 
+#include "iostream"
 b2Fixture* b2Body::CreateFixture(const b2FixtureDef* def)
 {
 	b2Assert(m_world->IsLocked() == false);
@@ -170,13 +171,13 @@ b2Fixture* b2Body::CreateFixture(const b2FixtureDef* def)
 		return nullptr;
 	}
 
-	b2BlockAllocator* allocator = &m_world->m_blockAllocator;
+    b2BlockAllocator* allocator = &m_world->m_blockAllocator;
 
 	void* memory = allocator->Allocate(sizeof(b2Fixture));
 	b2Fixture* fixture = new (memory) b2Fixture;
-	fixture->Create(allocator, this, def);
+    fixture->Create(allocator, this, def);
 
-	if (m_flags & e_enabledFlag)
+    if (m_flags & e_enabledFlag)
 	{
 		b2BroadPhase* broadPhase = &m_world->m_contactManager.m_broadPhase;
 		fixture->CreateProxies(broadPhase, m_xf);

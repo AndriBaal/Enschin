@@ -2,7 +2,7 @@
 
 #include <iostream>
 #include <GL/glew.h>
-#include "dim2.h"
+#include "vec2.h"
 #include "../deps/stb/stb_image.h"
 
 /**

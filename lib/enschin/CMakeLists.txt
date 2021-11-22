@@ -20,6 +20,12 @@ add_subdirectory(deps/box2d)
 # Adding enschin 
 FILE(GLOB_RECURSE enschin_SRC src/*.cpp)
 
+## Enschin math
+#FILE(enschin_math_SRC
+#        src/math/vec2.cpp
+#        src/math/vec3.cpp
+#)
+
 # enschin libraries
 add_library(enschin
     deps/stb/stb_image.cpp

@@ -1,7 +1,5 @@
 #pragma once
 #include <vector>
-#include <box2d/b2_world.h>
-#include <box2d/b2_body.h>
 #include "renderer.h"
 #include "input.h"
 #include "game.h"
@@ -9,6 +7,7 @@
 #include "timer.h"
 #include "entity.h"
 #include "camera.h"
+#include "world.h"
 
 /**
  * @brief Scenes that are meant to be used for different environments
@@ -21,11 +20,8 @@ protected:
     Ressources res;
 	Renderer renderer;
 	Input input;
-    Camera c = Camera(&Vec2::nullVec2);
-    Vec2 gravity = {0, 10.f};
-    b2World world = (b2Vec2(0, -10.0));
-//    Model* groundModel;
-    b2Body* groundBody;
+    World world;
+    Camera camera = Camera(&Vec2::nullVec2);
     std::vector<Entity*> entities;
 //    std::vector<GameObject*> gameObjects;
 //    std::vector<GuiObject*> guiObjects;
@@ -44,10 +40,8 @@ public:
     void updateTimers(float deltaTime);
 	void updateInput(GLFWwindow* window);
 
-    void setGravity(Vec2 gravity);
-    Vec2 getGravity(){ return gravity; }
-
 	Input& getInput() { return input; }
-	b2World& getWorld(){ return world; }
     void addEntity(Entity* entity) { entities.push_back(entity); }
+
+    World& getWorld(){ return world; }
 }; 

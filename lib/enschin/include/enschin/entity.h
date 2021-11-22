@@ -4,7 +4,6 @@
 #include <string>
 #include <iostream>
 #include "game.h"
-#include "dim2.h"
 #include "vec2.h"
 #include "sprite.h"
 #include "model.h"
@@ -26,16 +25,22 @@ private:
 	float maxHealth = 100;
     float friction;
     float density;
+    float updateRadius = 10.0f;
+//    bool visible, updatable, disabled;
+    bool onGround = 1;
     bool fixedRotation;
 public:
 	Entity(Scene& scene, Model& model, SpriteSheet& sprite, Vec2 pos={0, 0}, float density=1.0f, float friction=0.3f, bool fixedRotation=false);
 	~Entity();
 	virtual void update(Game& game, Scene& scene) = 0;
 	virtual void render(Game&, Renderer& r) = 0;
-//	virtual void onEntityCollision() = 0;
+    virtual void onEntityCollision(Entity& otherEntity) = 0;
+    virtual void onCollision() = 0;
 //	virtual void onDamage(float damage) = 0;
 //	virtual void onDeath() = 0;
 //	virtual void onAttack() = 0;
+
+    b2Body& getBody(){ return *body; }
 
     void setPos(Vec2 newPos){ pos = newPos; }
     Vec2 getPos() { return pos; }
@@ -44,5 +49,6 @@ public:
     void setRotation(float rotation){ this->rotation = rotation; }
     void increaseRotation(float rotation){ this->rotation += rotation; }
     void increasePos(Vec2 increment) { pos += increment; }
+    float getUpdateRadius(){ return updateRadius; }
 
 };

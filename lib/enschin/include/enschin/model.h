@@ -7,7 +7,7 @@
 #include "vertex_buffer_layout.h"
 #include "vertex_array.h"
 #include "index_buffer.h"
-#include "dim2.h"
+#include "vec2.h"
 
 /**
  * @brief Model that holds all Buffers for rendering
@@ -26,7 +26,7 @@ private:
 
 public:
 	Model() = default;
-	Model(Dim2 size);
+	Model(Vec2 size);
 	Model(float vertices[],
 		unsigned short amountOfVertices = 4,
 		unsigned int indices[6] = defaultIndices,
@@ -34,11 +34,11 @@ public:
         float texCoords[8] = defaultTexCoords);
     void free();
 
-	static void generateVertices(Dim2 size, float dest[16]);
-	static void generateVerticesTex(Dim2 size, float dest[]);
+	static void generateVertices(Vec2 size, float dest[16]);
+	static void generateVerticesTex(Vec2 size, float dest[]);
 	void bind();
 
 	int getAmountOfVertices() { return amountOfVertices; }
 	unsigned int getAmountOfIndices() { return amountOfIndices; }
-    b2PolygonShape& getCollisionShape(){ return collisionShape; }
+    b2PolygonShape* getCollisionShape(){ return &collisionShape; }
 };
