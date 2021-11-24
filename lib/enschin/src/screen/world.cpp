@@ -31,9 +31,31 @@ void World::renderForeground(Game& game, Renderer &r) {
 }
 
 void ContactListener::BeginContact(b2Contact *contact) {
-//    (Entity) contact->GetFixtureA()->GetBody()->GetUserData();
+    Entity* e1 = (Entity *) contact->GetFixtureA()->GetBody()->GetUserData().pointer;
+    Entity* e2 = (Entity *) contact->GetFixtureB()->GetBody()->GetUserData().pointer;
+    if (e1 != nullptr && e2 != nullptr) {
+        e1->onEntityCollision(*e2);
+        e2->onEntityCollision(*e1);
+    }
+    if (e1 != nullptr) {
+        e1->onCollision();
+    }
+    if (e2 != nullptr) {
+        e2->onCollision();
+    }
 }
 
 void ContactListener::EndContact(b2Contact *contact) {
-
+    Entity* e1 = (Entity *) contact->GetFixtureA()->GetBody()->GetUserData().pointer;
+    Entity* e2 = (Entity *) contact->GetFixtureB()->GetBody()->GetUserData().pointer;
+    if (e1 != nullptr && e2 != nullptr) {
+        e1->onEntityRelease(*e2);
+        e2->onEntityRelease(*e1);
+    }
+    if (e1 != nullptr) {
+        e1->onRelease();
+    }
+    if (e2 != nullptr) {
+        e2->onRelease();
+    }
 }

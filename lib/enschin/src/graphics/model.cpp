@@ -30,21 +30,17 @@ unsigned int Model::defaultIndices[6] = {0, 1, 2, 2, 3, 0};
  * @param indicies Indices (draw order of triangles) of the model (default=[0, 1, 2, 2, 3, 0])
  * @param amountOfIndices Amount of Indices of the model (default=6)
  */
+#include <iostream>
 Model::Model(float vertices[], unsigned short amountOfVertices, unsigned int indices[], unsigned short amountOfIndices, float texCoords[])
     : amountOfIndices(amountOfIndices), amountOfVertices(amountOfVertices) {
-    float verticesTexCoord[amountOfVertices*4];
+    b2Vec2 b2vertices[amountOfVertices];
     for (int i = 0; i < amountOfVertices*4; i+=4) {
-        verticesTexCoord[i] = vertices[i/2];
-        verticesTexCoord[i+1] = vertices[i/2+1];
-        if (i/2+1 < 8) {
-            verticesTexCoord[i+2] = texCoords[i/2];
-            verticesTexCoord[i+3] = texCoords[i/2+1];
-        }else{
-            verticesTexCoord[i+2] = texCoords[0];
-            verticesTexCoord[i+3] = texCoords[0];
-        }
+        b2vertices[i/4].Set(vertices[i], vertices[i+1]);
+        std::cout << vertices[i] << "     " << vertices[i+1] << std::endl;
     }
-    vb = VertexBuffer(verticesTexCoord, 4 * amountOfVertices * sizeof(float));
+    collisionShape.Set(b2vertices, amountOfVertices);
+
+    vb = VertexBuffer(vertices, 4 * amountOfVertices * sizeof(float));
     ib = IndexBuffer(indices, amountOfIndices);
 
     VertexBufferLayout layout;

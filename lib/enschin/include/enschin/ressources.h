@@ -9,8 +9,8 @@
 
 struct Ressources {
 private:
-    void jsonToArray(float output[], Json::Value jsonArray, unsigned int size);
-    void jsonToArray(unsigned int output[], Json::Value jsonArray, unsigned int size);
+    float* jsonToFloatArray(Json::Value jsonArray, unsigned int size);
+    unsigned int* jsonToUIntArray(Json::Value jsonArray, unsigned int size);
     std::unordered_map<std::string, Model> models;
     std::unordered_map<std::string, SpriteSheet> spriteSheets;
     std::unordered_map<std::string, Sprite> sprites;

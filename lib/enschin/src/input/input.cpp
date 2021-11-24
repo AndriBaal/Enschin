@@ -44,13 +44,11 @@ void Input::load(const std::string& eventPath) {
         Json::Value keyboardValues;
         keyboardReader.parse(keyboardStream, keyboardValues);
 
-        std::vector<std::pair<int, bool*>> keyMaps;
-        std::vector<std::pair<int, bool*>> buttonMaps;
-
+        std::vector<Mapping> keyMaps;
 
         for (auto & inputEvent : inputEvents) {
             if (keyboardValues.isMember(inputEvent.first)) {
-                keyMaps.emplace_back(keyboardValues[inputEvent.first].asInt(), &inputEvent.second);
+                keyMaps.push_back({keyboardValues[inputEvent.first].asInt(), &inputEvent.second});
             }
             inputEvent.second = 1;
         }

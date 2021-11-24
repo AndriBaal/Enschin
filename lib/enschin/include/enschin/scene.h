@@ -9,6 +9,7 @@
 #include "camera.h"
 #include "world.h"
 
+
 /**
  * @brief Scenes that are meant to be used for different environments
  * For example between loading & game screen or for different rooms.

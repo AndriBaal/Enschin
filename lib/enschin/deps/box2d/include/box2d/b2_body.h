@@ -202,7 +202,7 @@ public:
 	/// @param force the world force vector, usually in Newtons (N).
 	/// @param point the world position of the point of application.
 	/// @param wake also wake up the body
-	void ApplyForce(const b2Vec2& force, const b2Vec2& point, bool wake);
+	void ApplyForce(const b2Vec2& force, const b2Vec2& point, bool wake = true);
 
 	/// Apply a force to the center of mass. This wakes up the body.
 	/// @param force the world force vector, usually in Newtons (N).

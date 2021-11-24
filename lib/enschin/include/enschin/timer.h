@@ -9,15 +9,17 @@ private:
     float endValue;
     float incrementPerSecond;
     float value;
+    float totalValue;
 public:
     Timer() = default;
-    Timer(float startValue, float endValue, float incrementPerSecond, bool active=false);
+    Timer(float startValue, float endValue, float incrementPerSecond=1.0f, bool active=true);
     void update(float deltaTime);
     static void startAll();
     static void stopAll();
     static bool isActiveAll();
     void start(){ active=true; }
     void stop(){ active=false; }
+    bool take();
     bool isActive() { return active; }
     bool isTriggered(){ return triggered; }
     float getValue(){ return value; }

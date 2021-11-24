@@ -22,18 +22,17 @@ void Ressources::load(std::string ressourcePath) {
         Json::Reader modelReader;
         Json::Value modelValues;
         modelReader.parse(modelStream, modelValues);
-        for (auto m = modelValues.begin(); m != modelValues.end(); ++m) {
+        for (auto m = modelValues.begin(); m != modelValues.end(); m++) {
             if (m->isMember("amountOfVertices")) {
-                auto* vertices = new float[(*m)["amountOfVertices"].asInt()*2];
-                jsonToArray(vertices, (*m)["vertices"],(*m)["amountOfVertices"].asInt()*2);
-                auto* indices = new unsigned int[(*m)["amountOfIndices"].asInt()];
-                jsonToArray(indices, (*m)["indices"],(*m)["amountOfIndices"].asInt());
+                float *vertices = jsonToFloatArray((*m)["vertices"],(*m)["amountOfVertices"].asInt()*4);
+                unsigned int *indices = jsonToUIntArray((*m)["indices"],(*m)["amountOfIndices"].asInt());
                 models.insert({m.key().asString(), Model(
                         vertices,
                         (*m)["amountOfVertices"].asInt(),
                         indices,
                         (*m)["amountOfIndices"].asInt()
                 )});
+                delete vertices, delete indices;
             } else if (m->isMember("width")) {
                 models.insert({m.key().asString(), Model({
                                                       (*m)["width"].asFloat(),
@@ -63,14 +62,18 @@ void Ressources::load(std::string ressourcePath) {
     }
 }
 
-void Ressources::jsonToArray(unsigned int output[], Json::Value jsonArray, unsigned int size) {
+unsigned int* Ressources::jsonToUIntArray(Json::Value jsonArray, unsigned int size) {
+    auto* output = new unsigned int[size];
     for (int i = 0; i < size; i++) {
         output[i] = jsonArray[i].asUInt();
     }
+    return output;
 }
 
-void Ressources::jsonToArray(float output[], Json::Value jsonArray, unsigned int size) {
+float* Ressources::jsonToFloatArray(Json::Value jsonArray, unsigned int size) {
+    auto* output = new float[size];
     for (int i = 0; i < size; i++) {
         output[i] = jsonArray[i].asFloat();
     }
+    return output;
 }
