@@ -2,6 +2,7 @@
 
 #include <GLFW/glfw3.h>
 #include <unordered_map>
+#include <utility>
 #include <vector>
 #include "mapping.h"
 
@@ -13,7 +14,7 @@ private:
     std::vector<Mapping> mappings;
 public:
     Keyboard() = default;
-    Keyboard(std::vector<Mapping> mappings) : mappings(mappings){
+    Keyboard(std::vector<Mapping> mappings) : mappings(std::move(mappings)){
 
     }
     void update(GLFWwindow* window);

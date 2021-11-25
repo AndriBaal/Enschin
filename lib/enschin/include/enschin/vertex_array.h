@@ -10,7 +10,7 @@ public:
     VertexArray(bool b){}
     VertexArray();
 
-    void free();
+    void free() const;
     void addBuffer(const VertexBuffer& vb, const VertexBufferLayout& layout) const;
     void bind() const;
     static void unbind() ;

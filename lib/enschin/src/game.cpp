@@ -1,7 +1,7 @@
 #include <enschin/game.h>
 
 
-Game::Game(std::string gameName, Vec2 windowSize, bool fullscreen) {
+Game::Game(std::string gameName, Vec2 windowSize, bool fullscreen) : gameName(gameName){
 	window = Window(gameName, windowSize, fullscreen);
 }
 
@@ -16,7 +16,12 @@ void Game::init() {
     Renderer::initShaderPrograms();
     GLFWwindow* glfw = window.getGlfw();
 
-    start();
+    start({
+                  glfw,
+                  window.getSize(),
+                  deltaTime,
+                  totalTime
+          });
 	while (!glfwWindowShouldClose(glfw)) {
         glClear(GL_COLOR_BUFFER_BIT);
 
@@ -29,12 +34,20 @@ void Game::init() {
         firstTime = glfwGetTime();
         totalTime = (float) firstTime;
 
+        const GContext gameContext = {
+                glfw,
+                window.getSize(),
+                deltaTime,
+                totalTime
+        };
+
         glfwPollEvents();
-		loop();
+		loop(gameContext);
         currentScene->updateTimers(deltaTime);
         currentScene->updateInput(glfw);
-        currentScene->update(*this);
-        currentScene->render(*this);
+
+        currentScene->update(gameContext);
+        currentScene->render(gameContext);
 		fps++;
 		if (glfwGetTime() > lastTime+1) {
 			std::cout << fps << std::endl;
@@ -48,4 +61,8 @@ void Game::init() {
     glfwDestroyWindow(glfw);
     glfwTerminate();
     free();
+}
+
+void Game::free() {
+    Renderer::free();
 }

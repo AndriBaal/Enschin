@@ -21,7 +21,7 @@ SpriteSheet::SpriteSheet(const std::string& filePath, Vec2 spriteSize, unsigned 
     if (localBuffer) stbi_image_free(localBuffer);
 }
 
-void SpriteSheet::free() {
+void SpriteSheet::free() const{
     for (int i = 0; i< amountOfSprites; i ++)
         textures[i].free();
     delete(textures);

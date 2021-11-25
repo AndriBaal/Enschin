@@ -10,7 +10,7 @@ private:
 public:
     MyGame(std::string gameName, Vec2 windowSize, bool fullscreen)
     : Game(std::move(gameName), windowSize, fullscreen){}
-    void start() override;
-    void loop() override;
+    void start(const GContext& gtx) override;
+    void loop(const GContext& gtx) override;
     void free() override;
 };

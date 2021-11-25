@@ -30,25 +30,24 @@ private:
 	float ratio;
 	float units;
 public:
-    static std::unordered_map<int, ShaderProgram> programs;
 	Renderer() = default;
 	Renderer(Vec2 windowSize, float units=5.0f);
+    static void free();
 	static void initShaderPrograms();
 	void resetProjection(Vec2 windowDim);
 	void resetMatrix();
-	void translate(Vec2 pos);
+	void translate (Vec2 pos);
 	void rotate(float angle);
 	void scale(Vec2 scaling);
 
-	void translateAndRenderTexture(Model& model, Texture& tex, Vec2 pos, float rotation=.0f);
-	void renderColor(Model& model, Color& color);
-	void renderTexture(Model& model, Texture& texture);
-	void renderColoredTexture(Model& model, Texture& texture, Color& color);
-    void renderRainbow(Model& model, float totalTime);
-    void renderCroppedTexture(Model& model, Texture& tex, Vec4 textureCoordinates);
-	void renderRaytracing(Model& model, float vertices[], int amountOfVertices, Light& light, std::vector<GameObject> objects);
+	void translateAndRenderTexture(const Model& model, const Texture& tex, Vec2 pos, float rotation=.0f);
+	void renderColor(const Model& model, Color& color) const;
+	void renderTexture(const Model& model, const Texture& texture) const;
+	void renderColoredTexture(const Model& model, const Texture& texture, Color& color) const;
+    void renderRainbow(const Model& model, float totalTime) const;
+    void renderCroppedTexture(const Model& model, const Texture& tex, Vec4 textureCoordinates) const;
 
-	float getRatio() { return ratio; }
-	float getUnits() { return units; }
+	float getRatio() const{ return ratio; }
+	float getUnits() const{ return units; }
 };
 

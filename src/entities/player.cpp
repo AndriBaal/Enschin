@@ -1,14 +1,14 @@
 #include <game/player.h>
 
-Player::Player(Scene& scene, Ressources& res, Vec2 pos)
-    : Entity(scene, res.getModel("test_model"), res.getSprite("cute"), pos, 1.0f){
+Player::Player(const UContext& ctx, Vec2 pos)
+    : Entity(ctx, ctx.res.getModel("test_model"), ctx.res.getSprite("cute"), pos, 1.0f){
     jumpTimer = new Timer(0, .25f);
-    scene.addTimer(jumpTimer);
+    ctx.timers.push_back(jumpTimer);
 }
 
-void Player::update(Game& game, Scene& scene) {
-    mousePos = scene.getInput().getCursorPos();
-    if (scene.getInput().getEvent("walk_forward") && jumps && jumpTimer->take()){
+void Player::update(const UContext& ctx) {
+    mousePos = ctx.input.getCursorPos();
+    if (ctx.input.getEvent("walk_forward") && jumps && jumpTimer->take()){
         if (jumps >= 1){
             body->SetLinearVelocity({body->GetLinearVelocity().x, 0});
             body->ApplyForce({0, 1400}, body->GetPosition());
@@ -17,19 +17,21 @@ void Player::update(Game& game, Scene& scene) {
         }
         jumps--;
     }
-    if (scene.getInput().getEvent("walk_backwards")) {
+    if (ctx.input.getEvent("walk_backwards")) {
         body->ApplyForce({0, -1000}, body->GetPosition());
     }
-    if (scene.getInput().getEvent("walk_left")) {
+    if (ctx.input.getEvent("walk_left")) {
         body->ApplyForce({-25, 0}, body->GetPosition());
     }
-    if (scene.getInput().getEvent("walk_right")) {
+    if (ctx.input.getEvent("walk_right")) {
         body->ApplyForce({25, 0}, body->GetPosition());
     }
 }
 
-void Player::render(Game& game, Renderer& r) {
-    r.translateAndRenderTexture(model, sprite.getTexture(), body->GetPosition(), body->GetAngle());
+void Player::render(const RContext& ctx) {
+    ctx.renderer.translate({0, 1});
+    ctx.renderer.renderRainbow(model, ctx.totalTime);
+    ctx.renderer.translate({0, -1});
 }
 
 void Player::onRelease() {
@@ -39,6 +41,6 @@ void Player::onCollision() {
     jumps = maxJumps;
 }
 
-void Player::onEntityCollision(Entity &entity) {
+void Player::onEntityCollision(Entity& entity) {
 
 }

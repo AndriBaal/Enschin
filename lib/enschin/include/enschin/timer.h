@@ -20,7 +20,7 @@ public:
     void start(){ active=true; }
     void stop(){ active=false; }
     bool take();
-    bool isActive() { return active; }
-    bool isTriggered(){ return triggered; }
-    float getValue(){ return value; }
+    bool isActive() const { return active; }
+    bool isTriggered() const{ return triggered; }
+    float getValue() const{ return value; }
 };

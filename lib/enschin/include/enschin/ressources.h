@@ -9,8 +9,8 @@
 
 struct Ressources {
 private:
-    float* jsonToFloatArray(Json::Value jsonArray, unsigned int size);
-    unsigned int* jsonToUIntArray(Json::Value jsonArray, unsigned int size);
+    float* jsonToFloatArray(const Json::Value& jsonArray, unsigned int size) const;
+    unsigned int* jsonToUIntArray(const Json::Value& jsonArray, unsigned int size) const;
     std::unordered_map<std::string, Model> models;
     std::unordered_map<std::string, SpriteSheet> spriteSheets;
     std::unordered_map<std::string, Sprite> sprites;
@@ -19,9 +19,9 @@ public:
     Ressources() = default;
     Ressources(std::string ressources);
     void load(std::string);
-    void free();
-    Model& getModel(std::string key){ return models.at(key); }
-    SpriteSheet& getSpriteSheet(std::string key){ return spriteSheets.at(key); }
-    Color& getColor(std::string key){ return colors.at(key); }
-    Sprite& getSprite(std::string key){ return sprites.at(key); }
+    void free() const;
+    Model& getModel(std::string key) const{ return const_cast<Model &>(models.at(key)); }
+    SpriteSheet& getSpriteSheet(std::string key) const { return const_cast<SpriteSheet &>(spriteSheets.at(key)); }
+    Color& getColor(std::string key) const { return const_cast<Color &>(colors.at(key)); }
+    Sprite& getSprite(std::string key) const { return const_cast<Sprite &>(sprites.at(key)); }
 };

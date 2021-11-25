@@ -12,14 +12,14 @@
 // 0, 1, 2, Pentagon
 
 
-float Model::defaultTexCoords[8] = {
+const float Model::defaultTexCoords[8] = {
     0.0f, 0.0f, //Bottom left
     1.0f, 0.0f, //Bottom right
     1.0f, 1.0f, //Top right
     0.0f, 1.0f //Top left
 };
 
-unsigned int Model::defaultIndices[6] = {0, 1, 2, 2, 3, 0};
+const unsigned int Model::defaultIndices[6] = {0, 1, 2, 2, 3, 0};
 
 /**
  * @brief Construct a new Model object. Mostly used
@@ -30,24 +30,20 @@ unsigned int Model::defaultIndices[6] = {0, 1, 2, 2, 3, 0};
  * @param indicies Indices (draw order of triangles) of the model (default=[0, 1, 2, 2, 3, 0])
  * @param amountOfIndices Amount of Indices of the model (default=6)
  */
-#include <iostream>
-Model::Model(float vertices[], unsigned short amountOfVertices, unsigned int indices[], unsigned short amountOfIndices, float texCoords[])
-    : amountOfIndices(amountOfIndices), amountOfVertices(amountOfVertices) {
+
+Model::Model(const float vertices[], const unsigned short amountOfVertices, const unsigned int indices[], const unsigned short amountOfIndices)
+    : amountOfIndices(amountOfIndices), amountOfVertices(amountOfVertices),
+      vb(vertices, 4 * amountOfVertices * sizeof(float)), ib(indices, amountOfIndices), va() {
     b2Vec2 b2vertices[amountOfVertices];
     for (int i = 0; i < amountOfVertices*4; i+=4) {
         b2vertices[i/4].Set(vertices[i], vertices[i+1]);
-        std::cout << vertices[i] << "     " << vertices[i+1] << std::endl;
     }
-    collisionShape.Set(b2vertices, amountOfVertices);
-
-    vb = VertexBuffer(vertices, 4 * amountOfVertices * sizeof(float));
-    ib = IndexBuffer(indices, amountOfIndices);
+    polygonShape.Set(b2vertices, amountOfVertices);
 
     VertexBufferLayout layout;
     layout.addFloat(2);
     layout.addFloat(2);
 
-    va = VertexArray();
     va.addBuffer(vb, layout);
 }
 
@@ -61,30 +57,26 @@ Model::Model(float vertices[], unsigned short amountOfVertices, unsigned int ind
  * @param amountOfIndices Amount of Indices of the model (default=6)
  */
 
-Model::Model(Vec2 size) {
-    float verticesTexCoord[16] = {};
+Model::Model(Vec2 size)
+    : buffer(generateVerticesTex(size)), vb(buffer, 4 * amountOfVertices * sizeof(float)), ib(defaultIndices, amountOfIndices), va(){
     amountOfIndices = 6;
     amountOfVertices = 4;
 
-    generateVerticesTex(size, verticesTexCoord);
-
-    collisionShape.SetAsBox(size.x/2, size.y/2);
-
-    vb = VertexBuffer(verticesTexCoord, 4 * amountOfVertices * sizeof(float));
-    ib = IndexBuffer(defaultIndices, amountOfIndices);
+    polygonShape.SetAsBox(size.x / 2, size.y / 2);
 
     VertexBufferLayout layout;
     layout.addFloat(2);
     layout.addFloat(2);
 
-    va = VertexArray();
     va.addBuffer(vb, layout);
+    delete buffer;
+    buffer = nullptr;
 }
 
 /**
  * Delete all the buffers of the model.
  */
-void Model::free() {
+void Model::free() const{
     va.free();
     vb.free();
     ib.free();
@@ -93,35 +85,14 @@ void Model::free() {
 /**
  * @brief Bind the model for rendering.
  */
-void Model::bind() {
+void Model::bind() const{
     va.bind();
     ib.bind();
 }
 
-/**
- * @brief Writes 4 vertices into the given array based on the wished dimension.
- * 
- * @param dim Dimension of Verticces
- * @param dest Destination array
- */
-void Model::generateVertices(Vec2 dim, float dest[]) {
-    dest[2] = dim.x/2.0f;
-    dest[4] = dim.x/2.0f;
-    dest[0] = -dim.x/2.0f;
-    dest[6] = -dim.x/2.0f;
-    dest[5] = dim.y/2.0f;
-    dest[7] = dim.y/2.0f;
-    dest[1] = -dim.y/2.0f;
-    dest[3] = -dim.y/2.0f;
-}
 
-/**
- * @brief Writes 4 vertices and the texture coordinates into the given array.
- * 
- * @param dim Dimension of the vertices
- * @param dest Destination array
- */
-void Model::generateVerticesTex(Vec2 dim, float dest[16]) {
+float* Model::generateVerticesTex(Vec2 dim) {
+    float* dest = new float[16];
     dest[4] = dim.x/2.0f;
     dest[8] = dim.x/2.0f;
     dest[0] = -dim.x/2.0f;
@@ -138,4 +109,5 @@ void Model::generateVerticesTex(Vec2 dim, float dest[16]) {
     dest[15] = 1.0f;
     dest[10] = 1.0f;
     dest[11] = 1.0f;
+    return dest;
 }

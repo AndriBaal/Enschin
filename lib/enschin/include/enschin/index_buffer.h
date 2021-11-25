@@ -15,7 +15,7 @@ private:
 public:
     IndexBuffer() = default;
     IndexBuffer(const unsigned int* indices, unsigned int count);
-    void free();
+    void free() const;
     void bind() const;
     static void unbind() ;
 };

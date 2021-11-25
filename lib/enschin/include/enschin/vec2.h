@@ -13,7 +13,7 @@ struct Vec2 {
 
     Vec2(b2Vec2 v) : x(v.x), y(v.y) {}
 
-    b2Vec2 toB2() { return b2Vec2(x, y); }
+    b2Vec2 toB2() const { return {x, y}; }
 
     static Vec2 nullVec2;
 

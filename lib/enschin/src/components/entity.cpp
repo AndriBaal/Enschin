@@ -2,16 +2,16 @@
 
 unsigned int Entity::idCounter = 1;
 
-Entity::Entity(Scene& scene, Model& model, SpriteSheet& sprite, Vec2 pos, float density, float friction, bool fixedRotation)
-    : model(model), sprite(sprite), pos(pos), density(density), friction(friction), fixedRotation(fixedRotation){
-    scene.addEntity(this);
+Entity::Entity(const UContext& ctx, const Model& model, const SpriteSheet& sprite, Vec2 pos, float density, float friction, bool fixedRotation)
+    : model(model), sprite(sprite), density(density), friction(friction), fixedRotation(fixedRotation){
+    ctx.entities.push_back(this);
     id = idCounter++;
 
     b2BodyDef bodyDef;
     bodyDef.type = b2_dynamicBody;
     bodyDef.position.Set(pos.x, pos.y);
     bodyDef.userData.pointer = reinterpret_cast<uintptr_t>(this);
-    body = scene.getWorld().addBody(&bodyDef);
+    body = ctx.world.CreateBody(&bodyDef);
 
     b2FixtureDef fixtureDef;
     fixtureDef.shape = model.getCollisionShape();

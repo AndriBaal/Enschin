@@ -24,6 +24,7 @@ Enschin:
 	!!! Background elements for world
     !!! const&
     !!! Text module
+    !!! Make entity inherit from gameobject
 	- Raw mousemotion with glfwSetInputMode
 	/ test keyboard input
 	- Gui

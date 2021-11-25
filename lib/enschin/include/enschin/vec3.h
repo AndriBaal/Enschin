@@ -13,11 +13,10 @@ struct Vec3 {
 
     Vec3(b2Vec3 v) : x(v.x), y(v.y), z(v.z) {}
 
-    b2Vec3 toB2() { return b2Vec3(x, y, z); }
 
     const static Vec3 nullVec3;
 
-    b2Vec3 toBox() { return b2Vec3(x, y, z); }
+    b2Vec3 toBox() { return {x, y, z}; }
 
     Vec3 operator+(const Vec3 &v);
 

@@ -19,16 +19,8 @@ ShaderProgram::ShaderProgram(const std::string& vertexPath, const std::string& f
     glUseProgram(shaderProgramId);
 }
 
-/**
- * @brief Destroy the Shader Program object and delete the
- * Program from the GPU memory.
- */
-ShaderProgram::~ShaderProgram() {
-    if (created) {
-        glDeleteProgram(shaderProgramId);
-    }else{
-        created = true;
-    }
+void ShaderProgram::free() const{
+    glDeleteProgram(shaderProgramId);
 }
 
 /**
@@ -75,7 +67,7 @@ int ShaderProgram::getUniformLocation(const std::string& name) {
  * @param shaderPath Path to the file
  * @return std::string Returns the shader code as a string
  */
-std::string ShaderProgram::getShaderCode(const std::string& shaderPath) {
+std::string ShaderProgram::getShaderCode(const std::string& shaderPath) const{
     std::ifstream stream(shaderPath);
     std::string line;
     std::stringstream ss;
@@ -93,7 +85,7 @@ std::string ShaderProgram::getShaderCode(const std::string& shaderPath) {
  * @param source Source code of the Shader
  * @return unsigned int Returns the id of the shader in the GPU
  */
-unsigned int ShaderProgram::compileShader(unsigned int type, const std::string& source) {
+unsigned int ShaderProgram::compileShader(unsigned int type, const std::string& source) const{
     unsigned int id = glCreateShader(type);
     const char* src = source.c_str();
     glShaderSource(id, 1, &src, nullptr);
@@ -162,7 +154,7 @@ unsigned int ShaderProgram::createShaderProgram(const std::string& vertexShader,
  * @param name Location id of the variable name in the shader
  * @param value Integer value
  */
-void ShaderProgram::setUniform1i(const std::string& name, int value) {
+void ShaderProgram::setUniform1i(const std::string& name, int value){
     glUniform1i(getUniformLocation(name), value);
 }
 
@@ -172,7 +164,7 @@ void ShaderProgram::setUniform1i(const std::string& name, int value) {
  * @param name Location id of the variable name in the shader
  * @param value Float value
  */
-void ShaderProgram::setUniform1f(const std::string& name, float value) {
+void ShaderProgram::setUniform1f(const std::string& name, float value){
     glUniform1f(getUniformLocation(name), value);
 }
 
@@ -185,7 +177,7 @@ void ShaderProgram::setUniform1f(const std::string& name, float value) {
  * @param f2 value3
  * @param f3 value4
  */
-void ShaderProgram::setUniform4f(const std::string& name, Vec4 v) {
+void ShaderProgram::setUniform4f(const std::string& name, Vec4 v){
     glUniform4f(getUniformLocation(name), v.x, v.y, v.z, v.a);
 }
 
@@ -195,7 +187,7 @@ void ShaderProgram::setUniform4f(const std::string& name, Vec4 v) {
  * @param name Location id of the variable name in the shader
  * @param color 
  */
-void ShaderProgram::setColor(const std::string& name, const Color& color) {
+void ShaderProgram::setColor(const std::string& name, const Color& color){
     glUniform4f(getUniformLocation(name), color.r, color.g, color.b, color.a);
 }
 
@@ -205,6 +197,6 @@ void ShaderProgram::setColor(const std::string& name, const Color& color) {
  * @param name Location id of the variable name in the shader
  * @param matrix 4x4 Matrix to pass
  */
-void ShaderProgram::setUniformMat4f(const std::string& name, const float matrix[]) {
+void ShaderProgram::setUniformMat4f(const std::string& name, const float matrix[]){
     glUniformMatrix4fv(getUniformLocation(name), 1, GL_FALSE, &matrix[0]);
 }

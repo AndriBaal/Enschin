@@ -18,7 +18,6 @@
  */
 class ShaderProgram {
 private:
-    bool created = false;
     unsigned int shaderProgramId;
     static unsigned int boundProgram;
     std::unordered_map<std::string, int> uniformLocationCache;
@@ -26,7 +25,7 @@ private:
 public:
     ShaderProgram() = default;
     ShaderProgram(const std::string& vertexPath, const std::string& fragmentPath);
-    ~ShaderProgram();
+    void free() const;
     void bind() const;
     void unbind() const;
 
@@ -39,8 +38,8 @@ public:
 
 private:
     int getUniformLocation(const std::string& name);
-    std::string getShaderCode(const std::string& shaderPath);
-    unsigned int compileShader(unsigned int type, const std::string& source);
+    std::string getShaderCode(const std::string& shaderPath) const;
+    unsigned int compileShader(unsigned int type, const std::string& source) const;
     unsigned int createShaderProgram(const std::string& vertexShader, const std::string& fragmentShader);
 
 };

@@ -1,7 +1,7 @@
  #include <enschin/world.h>
 
 World::World(Model& model, Vec2 worldPos, Vec2 gravity)
-    : worldModel(&model), worldPos(worldPos){
+    : worldModel(&model){
 
     world.SetGravity(gravity.toB2());
     world.SetContactListener(this->contactListener);
@@ -12,21 +12,21 @@ World::World(Model& model, Vec2 worldPos, Vec2 gravity)
     groundBody->CreateFixture(model.getCollisionShape(), 0.0f);
 }
 
-void World::update(Game& game, Scene& scene) {
-    world.Step(game.getDeltaTime(), velocityIterations, positionIterations);
+void World::update(const UContext& ctx) {
+    world.Step(ctx.deltaTime, 6.0, 2.0);
 }
 
 b2Body* World::addBody(b2BodyDef* bodyDef) {
     return world.CreateBody(bodyDef);
 }
 
-void World::renderBackground(Game& game, Renderer &r) {
-    r.translate(groundBody->GetPosition());
-    r.renderRainbow(*worldModel, game.getTotalTime());
-    r.translate(-groundBody->GetPosition());
+void World::renderBackground(const RContext& ctx) {
+    ctx.renderer.translate(groundBody->GetPosition());
+    ctx.renderer.renderRainbow(*worldModel, ctx.totalTime);
+    ctx.renderer.translate(-groundBody->GetPosition());
 }
 
-void World::renderForeground(Game& game, Renderer &r) {
+void World::renderForeground(const RContext& ctx) {
 
 }
 

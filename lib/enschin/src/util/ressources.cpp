@@ -6,7 +6,7 @@ Ressources::Ressources(std::string ressourcePath) {
 }
 
 
-void Ressources::free() {
+void Ressources::free() const {
     for (auto& model : models) model.second.free();
     for (auto& spriteSheet : spriteSheets) spriteSheet.second.free();
     for (auto& sprite : sprites) sprite.second.free();
@@ -62,7 +62,7 @@ void Ressources::load(std::string ressourcePath) {
     }
 }
 
-unsigned int* Ressources::jsonToUIntArray(Json::Value jsonArray, unsigned int size) {
+unsigned int* Ressources::jsonToUIntArray(const Json::Value& jsonArray, unsigned int size) const{
     auto* output = new unsigned int[size];
     for (int i = 0; i < size; i++) {
         output[i] = jsonArray[i].asUInt();
@@ -70,7 +70,7 @@ unsigned int* Ressources::jsonToUIntArray(Json::Value jsonArray, unsigned int si
     return output;
 }
 
-float* Ressources::jsonToFloatArray(Json::Value jsonArray, unsigned int size) {
+float* Ressources::jsonToFloatArray(const Json::Value& jsonArray, unsigned int size) const{
     auto* output = new float[size];
     for (int i = 0; i < size; i++) {
         output[i] = jsonArray[i].asFloat();

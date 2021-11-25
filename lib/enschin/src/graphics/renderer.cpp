@@ -34,7 +34,7 @@ void Renderer::initShaderPrograms() {
  * @param model Model to render
  * @param color Color & opacity of the paint
  */
-void Renderer::renderColor(Model& model, Color& color) {
+void Renderer::renderColor(const Model& model, Color& color) const{
     model.bind();
     colorProgram.bind();
     colorProgram.setUniformMat4f("u_MVP", mvp);
@@ -49,7 +49,7 @@ void Renderer::renderColor(Model& model, Color& color) {
  * @param model Model to render
  * @param texture Texture to render
  */
-void Renderer::renderTexture(Model& model, Texture& texture) {
+void Renderer::renderTexture(const Model& model, const Texture& texture) const{
     model.bind();
     texture.bind(); 
     textureProgram.bind();
@@ -68,7 +68,7 @@ void Renderer::renderTexture(Model& model, Texture& texture) {
  * @param texture Texture to render
  * @param color Color to paint the texture with
  */
-void Renderer::renderColoredTexture(Model& model, Texture& texture, Color& color) {
+void Renderer::renderColoredTexture(const Model& model, const Texture& texture, Color& color) const{
     model.bind();
     texture.bind(); 
     coloredTextureProgram.bind();
@@ -83,7 +83,7 @@ void Renderer::renderColoredTexture(Model& model, Texture& texture, Color& color
  *
  * @param model Model to render
  */
-void Renderer::renderRainbow(Model &model, float totalTime) {
+void Renderer::renderRainbow(const Model &model, float totalTime) const{
     model.bind();
     rainbowProgram.bind();
     rainbowProgram.setUniformMat4f("u_MVP", mvp);
@@ -91,7 +91,7 @@ void Renderer::renderRainbow(Model &model, float totalTime) {
     glDrawElements(GL_TRIANGLES, model.getAmountOfIndices(), GL_UNSIGNED_INT, nullptr);
 }
 
-void Renderer::renderCroppedTexture(Model &model, Texture& tex, Vec4 textureCoordinates) {
+void Renderer::renderCroppedTexture(const Model &model, const Texture& tex, Vec4 textureCoordinates) const{
     model.bind();
     tex.bind();
     cropProgram.bind();
@@ -100,17 +100,7 @@ void Renderer::renderCroppedTexture(Model &model, Texture& tex, Vec4 textureCoor
     glDrawElements(GL_TRIANGLES, model.getAmountOfIndices(), GL_UNSIGNED_INT, nullptr);
 }
 
-// DO Documentation
-void Renderer::renderRaytracing(Model& model, float vertices[], int amountOfVertices, Light& light, std::vector<GameObject> objects) {
-    std::vector<Ray2> intersectingLines = std::vector<Ray2>();
-    for(std::vector<GameObject>::iterator it = objects.begin(); it != objects.end(); it++) {
-        for(int i = 0; i < amountOfVertices; i++) {
-            // if (Physics::isLineIntersecting(it., )
-            // {
-            // }
-        }
-    }
-}
+
 
 
 // Matrix operations
@@ -122,7 +112,7 @@ void Renderer::renderRaytracing(Model& model, float vertices[], int amountOfVert
  * @param tex Texture to render
  * @param pos Position to translate to
  */
-void Renderer::translateAndRenderTexture(Model& model, Texture& tex, Vec2 pos, float rotation){
+void Renderer::translateAndRenderTexture(const Model& model, const Texture& tex, Vec2 pos, float rotation) {
     translate(pos);
     rotate(rotation);
     renderTexture(model, tex);
@@ -137,7 +127,7 @@ void Renderer::translateAndRenderTexture(Model& model, Texture& tex, Vec2 pos, f
  * 
  * @param pos Position to translate to
  */
-void Renderer::translate(Vec2 pos) {
+void Renderer::translate (Vec2 pos) {
     Matrix::translate(view, pos);
     Matrix::multiply(mvp, view, proj);
 }
@@ -186,3 +176,10 @@ void Renderer::resetMatrix() {
     Matrix::multiply(mvp, view, proj);
 }
 
+void Renderer::free() {
+    coloredTextureProgram.free();
+    colorProgram.free();
+    rainbowProgram.free();
+    cropProgram.free();
+    textureProgram.free();
+}

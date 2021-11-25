@@ -26,6 +26,6 @@ public:
     Input(const std::string &inputEvents);
     void load(const std::string &eventPath);
     void update(GLFWwindow *window, float units);
-    bool getEvent(const std::string &eventKey) { return inputEvents.at(eventKey); }
-    Vec2 getCursorPos() { return cursorPos; };
+    bool getEvent(const std::string &eventKey) const { return inputEvents.at(eventKey); }
+    Vec2 getCursorPos() const { return cursorPos; };
 };

@@ -5,8 +5,8 @@
 #include "renderer.h"
 #include "ressources.h"
 #include "input.h"
+#include "game_context.h"
 
-class Scene;
 
 /**
  * @brief Main class of Enschin. Innherit from this class to start
@@ -21,12 +21,13 @@ private:
     double lastTime = 0;
     float deltaTime, fps, totalTime;
     bool running = false;
+    std::string gameName;
 public:
     Game(std::string gameName, Vec2 windowSize, bool fullscreen);
     void init();
-    virtual void start() = 0;
-    virtual void loop() = 0;
-    virtual void free() = 0;
+    virtual void start(const GContext& gtx) = 0;
+    virtual void loop(const GContext& gtx) = 0;
+    virtual void free();
     float getDeltaTime() const { return deltaTime; }
     float getTotalTime() const { return totalTime; }
     float getFps() { return fps; }

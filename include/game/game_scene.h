@@ -8,8 +8,8 @@ class GameScene : public Scene {
 private:
 
 public:
-	GameScene(Game& game);
+	GameScene(const GContext& ctx);
     ~GameScene(){ free(); }
-	void update(Game& game) override;
-	void render(Game& game) override;
+    void update(const GContext& ctx) override;
+    void render(const GContext& ctx) override;
 };
