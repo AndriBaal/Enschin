@@ -1,7 +1,4 @@
 {
-  "colors": [
-
-  ],
   "models": [
     "./models/test_model1.json",
     "./models/world_model.json"

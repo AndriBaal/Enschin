@@ -23,7 +23,11 @@ Enschin:
 	!!! Move world things to world.h
 	!!! Background elements for world
     !!! Text module
-    !!! Make entity inherit from gameobject
+    / Make entity inherit from gameobject
+
+
+    / Ressources can load other ressources
+    !!! Try bring back destructors
 	- Raw mousemotion with glfwSetInputMode
 	/ test keyboard input
 	- Gui
@@ -44,7 +48,7 @@ Enschin:
 	- Matrix reseet on window size change
 	/ Input as a Scene member
 	/ Make camera working
-	!!! Box2D integration
+	/ Box2D integration
 	/ File names
 	# encrypt json models & paths
 	/ new game structure

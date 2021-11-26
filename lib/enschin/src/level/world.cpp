@@ -1,29 +1,26 @@
- #include <enschin/world.h>
+#include <enschin/world.h>
 
-World::World(Model& model, Vec2 worldPos, Vec2 gravity)
-    : worldModel(&model){
+World::World(WorldBody& worldBody, Vec2 worldPos, Vec2 gravity) : worldBody(&worldBody) {
 
     world.SetGravity(gravity.toB2());
     world.SetContactListener(this->contactListener);
     b2BodyDef groundBodyDef;
     groundBodyDef.position.Set(worldPos.x, worldPos.y);
-    groundBody = world.CreateBody(&groundBodyDef);
+    b2Body* groundBody = world.CreateBody(&groundBodyDef);
 
-    groundBody->CreateFixture(model.getCollisionShape(), 0.0f);
+    groundBody->CreateFixture(worldBody.getChainShape(), 0.0f);
 }
 
 void World::update(const UContext& ctx) {
-    world.Step(ctx.deltaTime, 4, 6);
+    world.Step(ctx.deltaTime, 6, 2);
 }
 
 void World::renderBackground(const RContext& ctx) {
-    ctx.renderer.translate(groundBody->GetPosition());
-    ctx.renderer.renderRainbow(*worldModel, ctx.totalTime);
-    ctx.renderer.translate(-groundBody->GetPosition());
+
 }
 
 void World::renderForeground(const RContext& ctx) {
-
+    worldBody.renderBodies(ctx);
 }
 
 void ContactListener::BeginContact(b2Contact *contact) {
@@ -54,4 +51,9 @@ void ContactListener::EndContact(b2Contact *contact) {
     if (e2 != nullptr) {
         e2->onRelease();
     }
+}
+
+void World::setGround(WorldBody *worldBody) {
+    delete this->worldBody;
+    this->worldBody = worldBody;
 }

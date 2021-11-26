@@ -32,4 +32,6 @@ public:
 
     bool isFixedRotation(){ return fixedRotation; }
     void setFixedRotation(bool fixedRotation){ this->fixedRotation = fixedRotation; }
+
+    b2Body& getBody(){ return *body; }
 };
