@@ -8,7 +8,6 @@
 #include "vec4.h"
 #include "matrix.h"
 #include "ray2.h"
-#include "game_object.h"
 #include "mouse.h"
 
 /**

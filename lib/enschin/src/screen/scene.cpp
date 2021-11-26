@@ -76,7 +76,6 @@ UContext Scene::getUpdateContext(const GContext& ctx) {
         input,
         res,
         world->getWorld(),
-        entities,
         timers
     };
 }

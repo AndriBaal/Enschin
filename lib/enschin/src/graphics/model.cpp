@@ -56,11 +56,9 @@ Model::Model(const float vertices[], const unsigned short amountOfVertices, cons
  * @param indicies Indices (draw order of triangles) of the model (default=[0, 1, 2, 2, 3, 0])
  * @param amountOfIndices Amount of Indices of the model (default=6)
  */
-
 Model::Model(Vec2 size)
-    : buffer(generateVerticesTex(size)), vb(buffer, 4 * amountOfVertices * sizeof(float)), ib(defaultIndices, amountOfIndices), va(){
-    amountOfIndices = 6;
-    amountOfVertices = 4;
+    : amountOfIndices(6), amountOfVertices(6),
+    buffer(generateVerticesTex(size)), vb(buffer, 4 * amountOfVertices * sizeof(float)), ib(defaultIndices, amountOfIndices), va() {
 
     polygonShape.SetAsBox(size.x / 2, size.y / 2);
 
@@ -70,7 +68,6 @@ Model::Model(Vec2 size)
 
     va.addBuffer(vb, layout);
     delete buffer;
-    buffer = nullptr;
 }
 
 /**
@@ -92,7 +89,7 @@ void Model::bind() const{
 
 
 float* Model::generateVerticesTex(Vec2 dim) {
-    float* dest = new float[16];
+    auto* dest = new float[16];
     dest[4] = dim.x/2.0f;
     dest[8] = dim.x/2.0f;
     dest[0] = -dim.x/2.0f;

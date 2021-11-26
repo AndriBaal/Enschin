@@ -22,7 +22,6 @@ Enschin:
 	!!! Round model with "radius" json value
 	!!! Move world things to world.h
 	!!! Background elements for world
-    !!! const&
     !!! Text module
     !!! Make entity inherit from gameobject
 	- Raw mousemotion with glfwSetInputMode

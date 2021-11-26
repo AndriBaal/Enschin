@@ -1,12 +1,10 @@
 #pragma once
-#include "entity.h"
 #include "ressources.h"
 #include "input.h"
 #include "timer.h"
 #include "renderer.h"
 #include <box2d/b2_world.h>
 
-class Entity;
 /**
  * @brief Update context
  */
@@ -17,7 +15,6 @@ struct UContext {
     const Input& input;
     const Ressources& res;
     b2World& world;
-    std::vector<Entity*>& entities;
     std::vector<Timer*>& timers;
 };
 

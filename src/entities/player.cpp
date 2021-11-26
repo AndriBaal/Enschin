@@ -29,9 +29,11 @@ void Player::update(const UContext& ctx) {
 }
 
 void Player::render(const RContext& ctx) {
-    ctx.renderer.translate({0, 1});
-    ctx.renderer.renderRainbow(model, ctx.totalTime);
-    ctx.renderer.translate({0, -1});
+    ctx.renderer.translate(body->GetPosition());
+    ctx.renderer.rotate(body->GetAngle());
+    ctx.renderer.renderTexture(model, sprite.getTexture());
+    ctx.renderer.rotate(-body->GetAngle());
+    ctx.renderer.translate(-body->GetPosition());
 }
 
 void Player::onRelease() {

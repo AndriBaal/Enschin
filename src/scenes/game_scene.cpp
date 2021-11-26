@@ -2,12 +2,12 @@
 
 GameScene::GameScene(const GContext& ctx) : Scene(ctx, "./ressources/test_ressources.json") {
     input = Input("./settings/input/events/events.json");
-    world = new World(res.getModel("world_model"), {0, -2.f}, {0, -18});
+    world = new World(res.getModel("world_model"), {0, -3.f}, {0, -10});
 
     UContext updateContext = Scene::getUpdateContext(ctx);
 
     Player* p = new Player(updateContext, {02.f, 1});
-    camera.setCameraTarget((Vec2 *) &p->getBody().GetPosition());
+    entities.push_back(p);
 }
 
 void GameScene::update(const GContext& ctx) {

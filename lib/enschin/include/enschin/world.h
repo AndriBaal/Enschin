@@ -3,6 +3,7 @@
 #include "model.h"
 #include "renderer.h"
 #include "context.h"
+#include "entity.h"
 #include <box2d/box2d.h>
 
 class ContactListener : public b2ContactListener {
