@@ -226,7 +226,7 @@ public:
 	/// Apply an impulse to the center of mass. This immediately modifies the velocity.
 	/// @param impulse the world impulse vector, usually in N-seconds or kg-m/s.
 	/// @param wake also wake up the body
-	void ApplyLinearImpulseToCenter(const b2Vec2& impulse, bool wake);
+	void ApplyLinearImpulseToCenter(const b2Vec2& impulse, bool wake = true);
 
 	/// Apply an angular impulse.
 	/// @param impulse the angular impulse in units of kg*m*m/s

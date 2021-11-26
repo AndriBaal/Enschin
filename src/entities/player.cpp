@@ -11,20 +11,20 @@ void Player::update(const UContext& ctx) {
     if (ctx.input.getEvent("walk_forward") && jumps && jumpTimer->take()){
         if (jumps >= 1){
             body->SetLinearVelocity({body->GetLinearVelocity().x, 0});
-            body->ApplyForce({0, 1400}, body->GetPosition());
+            body->ApplyLinearImpulseToCenter({0, 12});
         }else{
-            body->ApplyForce({0, 1000}, body->GetPosition());
+            body->ApplyLinearImpulseToCenter({0, 23});
         }
         jumps--;
     }
     if (ctx.input.getEvent("walk_backwards")) {
-        body->ApplyForce({0, -1000}, body->GetPosition());
+        body->ApplyLinearImpulseToCenter({0, -12});
     }
     if (ctx.input.getEvent("walk_left")) {
-        body->ApplyForce({-25, 0}, body->GetPosition());
+        body->ApplyLinearImpulseToCenter({-.2, 0});
     }
     if (ctx.input.getEvent("walk_right")) {
-        body->ApplyForce({25, 0}, body->GetPosition());
+        body->ApplyLinearImpulseToCenter({.2, 0});
     }
 }
 

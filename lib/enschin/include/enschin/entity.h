@@ -10,7 +10,7 @@
 #include "model.h"
 
 class Entity : public GameObject{
-private:
+protected:
 	float health = 100;
 	float maxHealth = 100;
     float updateRadius = 10.0f;

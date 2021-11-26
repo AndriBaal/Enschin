@@ -13,7 +13,7 @@ World::World(Model& model, Vec2 worldPos, Vec2 gravity)
 }
 
 void World::update(const UContext& ctx) {
-    world.Step(ctx.deltaTime, 4, 2);
+    world.Step(ctx.deltaTime, 4, 6);
 }
 
 void World::renderBackground(const RContext& ctx) {
