@@ -21,10 +21,10 @@ void Player::update(const UContext& ctx) {
         body->ApplyLinearImpulseToCenter({0, -12});
     }
     if (ctx.input.getEvent("walk_left")) {
-        body->ApplyLinearImpulseToCenter({-.2, 0});
+        body->ApplyLinearImpulseToCenter({-.5, 0});
     }
     if (ctx.input.getEvent("walk_right")) {
-        body->ApplyLinearImpulseToCenter({.2, 0});
+        body->ApplyLinearImpulseToCenter({.5, 0});
     }
 }
 

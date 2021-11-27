@@ -1,13 +1,13 @@
 {
   "test_model": {
-    "amountOfVertices": 4,
+    "amount_of_vertices": 4,
     "vertices": [
       -0.75, -0.75, 0, 0,
       0.75, -0.75, 1, 0,
       0.75, 0.75, 1, 1,
       -0.75, 0.75, 0, 1
     ],
-    "amountOfIndices": 6,
+    "amount_of_indices": 6,
     "indices": [
       0, 1, 2, 2, 3, 0
     ]

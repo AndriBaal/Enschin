@@ -2,8 +2,8 @@
 
 unsigned int VertexArray::boundVertexArray = 0;
 
-VertexArray::VertexArray() {
-    glGenVertexArrays(1, &vertexArrayId);
+VertexArray::VertexArray(unsigned int amount) {
+    glGenVertexArrays(amount, &vertexArrayId);
 }
 
 void VertexArray::free() const{

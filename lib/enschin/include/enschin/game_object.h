@@ -10,6 +10,8 @@
 #include "context.h"
 
 class GameObject{
+private:
+    b2World* world;
 protected:
     float friction = 0.3f;
     float density = 1.0f;
@@ -21,6 +23,7 @@ protected:
     bool fixedRotation = false;
 public:
     GameObject(const UContext& ctx, const Model& model, const SpriteSheet& sprite,Vec2 pos, float density = 1.0f, float friction = 0.3f, bool visible=true, bool collision=true, bool fixedRotation=false);
+    ~GameObject();
     void applyForce(const b2Vec2& force){ applyForce(force, body->GetPosition()); }
     void applyForce(const b2Vec2& force, const b2Vec2& point){ body->ApplyForce(force, point); }
 

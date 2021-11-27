@@ -20,7 +20,7 @@ protected:
     const Ressources res;
     Input input;
     Renderer renderer;
-    World* world;
+    World world;
     Camera camera;
     std::vector<Entity*> entities;
 //    std::vector<GameObject*> gameObjects;

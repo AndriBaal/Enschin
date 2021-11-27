@@ -32,21 +32,20 @@ void Scene::update(const GContext& ctx) {
         }
     }
 
-    world->update(updateContext);
+    world.update(updateContext);
 }
 
 void Scene::render(const GContext& ctx) {
     const RContext renderContext = getRenderContext(ctx);
-    world->renderBackground(renderContext);
+    world.renderBackground(renderContext);
     camera.update(renderer);
     for (auto & entity : entities)
         entity->render(renderContext);
-    world->renderForeground(renderContext);
+    world.renderForeground(renderContext);
     camera.reset(renderer);
 }
 
 void Scene::free() {
-    delete world;
     res.free();
     for (auto e : entities)
         delete e;
@@ -75,7 +74,7 @@ UContext Scene::getUpdateContext(const GContext& ctx) {
         ctx.windowSize,
         input,
         res,
-        world->getWorld(),
+        world.getWorld(),
         timers
     };
 }

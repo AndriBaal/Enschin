@@ -34,7 +34,7 @@ void Renderer::initShaderPrograms() {
  * @param model Model to render
  * @param color Color & opacity of the paint
  */
-void Renderer::renderColor(const Model& model, Color& color) const{
+void Renderer::renderColor(const RenderModel& model, Color& color) const{
     model.bind();
     colorProgram.bind();
     colorProgram.setUniformMat4f("u_MVP", mvp);
@@ -49,7 +49,7 @@ void Renderer::renderColor(const Model& model, Color& color) const{
  * @param model Model to render
  * @param texture Texture to render
  */
-void Renderer::renderTexture(const Model& model, const Texture& texture) const{
+void Renderer::renderTexture(const RenderModel& model, const Texture& texture) const{
     model.bind();
     texture.bind(); 
     textureProgram.bind();
@@ -68,7 +68,7 @@ void Renderer::renderTexture(const Model& model, const Texture& texture) const{
  * @param texture Texture to render
  * @param color Color to paint the texture with
  */
-void Renderer::renderColoredTexture(const Model& model, const Texture& texture, Color& color) const{
+void Renderer::renderColoredTexture(const RenderModel& model, const Texture& texture, Color& color) const{
     model.bind();
     texture.bind(); 
     coloredTextureProgram.bind();
@@ -83,7 +83,7 @@ void Renderer::renderColoredTexture(const Model& model, const Texture& texture, 
  *
  * @param model Model to render
  */
-void Renderer::renderRainbow(const Model &model, float totalTime) const{
+void Renderer::renderRainbow(const RenderModel &model, float totalTime) const{
     model.bind();
     rainbowProgram.bind();
     rainbowProgram.setUniformMat4f("u_MVP", mvp);
@@ -91,7 +91,7 @@ void Renderer::renderRainbow(const Model &model, float totalTime) const{
     glDrawElements(GL_TRIANGLES, model.getAmountOfIndices(), GL_UNSIGNED_INT, nullptr);
 }
 
-void Renderer::renderCroppedTexture(const Model &model, const Texture& tex, Vec4 textureCoordinates) const{
+void Renderer::renderCroppedTexture(const RenderModel &model, const Texture& tex, Vec4 textureCoordinates) const{
     model.bind();
     tex.bind();
     cropProgram.bind();
@@ -112,7 +112,7 @@ void Renderer::renderCroppedTexture(const Model &model, const Texture& tex, Vec4
  * @param tex Texture to render
  * @param pos Position to translate to
  */
-void Renderer::translateAndRenderTexture(const Model& model, const Texture& tex, Vec2 pos, float rotation) {
+void Renderer::translateAndRenderTexture(const RenderModel& model, const Texture& tex, Vec2 pos, float rotation) {
     translate(pos);
     rotate(rotation);
     renderTexture(model, tex);

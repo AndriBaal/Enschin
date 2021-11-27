@@ -1,12 +1,13 @@
 #include <game/game_scene.h>
 
-GameScene::GameScene(const GContext& ctx) : Scene(ctx, "./ressources/ulul.json") {
+GameScene::GameScene(const GContext& ctx) : Scene(ctx, "./ressources/test_ressources.json") {
     input = Input("./settings/input/events/events.json");
-    world = new World(res.getModel("world_model"), {-1, -3.f}, {0, -10});
+    world.setGravity({0, -15});
+    world.addTerrain(res.getTerrain("test_terrain"),{2, -5});
 
     UContext updateContext = Scene::getUpdateContext(ctx);
 
-    Player* p = new Player(updateContext, {02.f, 1});
+    Player* p = new Player(updateContext, {02.f, 3});
     entities.push_back(p);
 
     camera.setCameraTarget(p);

@@ -7,11 +7,11 @@ private:
     unsigned int vertexArrayId;
     static unsigned int boundVertexArray;
 public:
-    VertexArray(bool b){}
-    VertexArray();
+    VertexArray() = default;
+    VertexArray(unsigned int amount);
 
     void free() const;
     void addBuffer(const VertexBuffer& vb, const VertexBufferLayout& layout) const;
     void bind() const;
-    static void unbind() ;
+    static void unbind();
 };

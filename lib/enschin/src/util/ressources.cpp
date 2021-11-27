@@ -1,4 +1,3 @@
-#include <iostream>
 #include <enschin/ressources.h>
 
 Ressources::Ressources(std::string ressourcePath) {
@@ -10,6 +9,7 @@ void Ressources::free() const {
     for (auto& model : models) model.second.free();
     for (auto& spriteSheet : spriteSheets) spriteSheet.second.free();
     for (auto& sprite : sprites) sprite.second.free();
+    for (auto& terrain : terrains) terrain.second->free();
 }
 
 void Ressources::load(std::string ressourcePath) {
@@ -22,6 +22,19 @@ void Ressources::load(std::string ressourcePath) {
             load(ressourceValues["ressources"][i].asString());
         }
     }
+    if (ressourceValues.isMember("terrains")) {
+        for (int i = 0; i < ressourceValues["terrains"].size(); i++) {
+            std::ifstream terrainStream(ressourceValues["terrains"][i].asString(), std::ifstream::binary);
+            Json::Reader terrainReader;
+            Json::Value terrainValues;
+            terrainReader.parse(terrainStream, terrainValues);
+            for (auto t = terrainValues.begin(); t != terrainValues.end(); t++) {
+                float* worldVertices = jsonToFloatArray((*t)["vertices"], (*t)["amount_of_vertices"].asUInt() * 4);
+                terrains.insert({t.key().asString(),new Terrain(worldVertices, (*t)["amount_of_vertices"].asInt())});
+                delete worldVertices;
+            }
+        }
+    }
     if (ressourceValues.isMember("models")) {
         for (int i = 0; i < ressourceValues["models"].size(); i++) {
             std::ifstream modelStream(ressourceValues["models"][i].asString(), std::ifstream::binary);
@@ -29,14 +42,14 @@ void Ressources::load(std::string ressourcePath) {
             Json::Value modelValues;
             modelReader.parse(modelStream, modelValues);
             for (auto m = modelValues.begin(); m != modelValues.end(); m++) {
-                if (m->isMember("amountOfVertices")) {
-                    float *vertices = jsonToFloatArray((*m)["vertices"], (*m)["amountOfVertices"].asInt() * 4);
-                    unsigned int *indices = jsonToUIntArray((*m)["indices"], (*m)["amountOfIndices"].asInt());
+                if (m->isMember("amount_of_vertices")) {
+                    float *vertices = jsonToFloatArray((*m)["vertices"], (*m)["amount_of_vertices"].asInt() * 4);
+                    unsigned int *indices = jsonToUIntArray((*m)["indices"], (*m)["amount_of_indices"].asInt());
                     models.insert({m.key().asString(), Model(
                             vertices,
-                            (*m)["amountOfVertices"].asInt(),
+                            (*m)["amount_of_vertices"].asInt(),
                             indices,
-                            (*m)["amountOfIndices"].asInt()
+                            (*m)["amount_of_indices"].asInt()
                     )});
                     delete vertices, delete indices;
                 } else if (m->isMember("width")) {

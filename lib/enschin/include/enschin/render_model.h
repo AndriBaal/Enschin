@@ -21,14 +21,13 @@ protected:
     const static unsigned int defaultIndices[6];
     unsigned short amountOfVertices;
     unsigned short amountOfIndices;
-    const VertexArray va = (1);
+    const VertexArray va;
     const IndexBuffer ib;
     const VertexBuffer vb;
 
 public:
-    RenderModel():ib(), va(1), vb(){}
-    RenderModel(const float vertices[8]);
-    RenderModel(float radius);
+    RenderModel():ib(), va(), vb(){}
+    //RenderModel(float radius);
     RenderModel(Vec2 size);
     RenderModel(const float vertices[],
           const unsigned short amountOfVertices = 4,

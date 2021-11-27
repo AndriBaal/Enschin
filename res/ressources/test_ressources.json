@@ -1,6 +1,9 @@
 {
+  "terrains":[
+    "./terrains/terrain_01.json"
+  ],
   "models": [
-    "./models/test_model1.json",
+    "./models/test_model.json",
     "./models/world_model.json"
   ],
   "sprites": [

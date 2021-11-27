@@ -2,7 +2,7 @@
 
 GameObject::GameObject(const UContext &ctx, const Model &model, const SpriteSheet &sprite, Vec2 pos, float density,
                        float friction, bool visible, bool collision, bool fixedRotation)
-                       : model(model), sprite(sprite), density(density), friction(friction), fixedRotation(fixedRotation),
+                       : world(&ctx.world), model(model), sprite(sprite), density(density), friction(friction), fixedRotation(fixedRotation),
                        visible(visible), collision(collision){
     b2BodyDef bodyDef;
     bodyDef.type = b2_dynamicBody;
@@ -17,4 +17,8 @@ GameObject::GameObject(const UContext &ctx, const Model &model, const SpriteShee
 
     body->CreateFixture(&fixtureDef);
     body->SetFixedRotation(fixedRotation);
+}
+
+GameObject::~GameObject() {
+    world->DestroyBody(body);
 }

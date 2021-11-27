@@ -2,7 +2,7 @@
 #include "light.h"
 #include "color.h"
 #include "shader_program.h"
-#include "model.h"
+#include "render_model.h"
 #include "texture.h"
 #include "vec2.h"
 #include "vec4.h"
@@ -39,12 +39,12 @@ public:
 	void rotate(float angle);
 	void scale(Vec2 scaling);
 
-	void translateAndRenderTexture(const Model& model, const Texture& tex, Vec2 pos, float rotation=.0f);
-	void renderColor(const Model& model, Color& color) const;
-	void renderTexture(const Model& model, const Texture& texture) const;
-	void renderColoredTexture(const Model& model, const Texture& texture, Color& color) const;
-    void renderRainbow(const Model& model, float totalTime) const;
-    void renderCroppedTexture(const Model& model, const Texture& tex, Vec4 textureCoordinates) const;
+	void translateAndRenderTexture(const RenderModel& model, const Texture& tex, Vec2 pos, float rotation=.0f);
+	void renderColor(const RenderModel& model, Color& color) const;
+	void renderTexture(const RenderModel& model, const Texture& texture) const;
+	void renderColoredTexture(const RenderModel& model, const Texture& texture, Color& color) const;
+    void renderRainbow(const RenderModel& model, float totalTime) const;
+    void renderCroppedTexture(const RenderModel& model, const Texture& tex, Vec4 textureCoordinates) const;
 
 	float getRatio() const{ return ratio; }
 	float getUnits() const{ return units; }

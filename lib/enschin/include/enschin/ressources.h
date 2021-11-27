@@ -6,11 +6,13 @@
 #include "model.h"
 #include "texture.h"
 #include "sprite.h"
+#include "terrain.h"
 
 struct Ressources {
 private:
-    static float* jsonToFloatArray(const Json::Value& jsonArray, unsigned int size) ;
-    static unsigned int* jsonToUIntArray(const Json::Value& jsonArray, unsigned int size) ;
+    static float* jsonToFloatArray(const Json::Value& jsonArray, unsigned int size);
+    static unsigned int* jsonToUIntArray(const Json::Value& jsonArray, unsigned int size);
+    std::unordered_map<std::string, Terrain*> terrains;
     std::unordered_map<std::string, Model> models;
     std::unordered_map<std::string, SpriteSheet> spriteSheets;
     std::unordered_map<std::string, Sprite> sprites;
@@ -24,4 +26,5 @@ public:
     SpriteSheet& getSpriteSheet(std::string key) const { return const_cast<SpriteSheet &>(spriteSheets.at(key)); }
     Color& getColor(std::string key) const { return const_cast<Color &>(colors.at(key)); }
     Sprite& getSprite(std::string key) const { return const_cast<Sprite &>(sprites.at(key)); }
+    Terrain& getTerrain(std::string key) const { return const_cast<Terrain &>(*terrains.at(key)); }
 };

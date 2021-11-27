@@ -33,7 +33,7 @@ const unsigned int RenderModel::defaultIndices[6] = {0, 1, 2, 2, 3, 0};
 
 RenderModel::RenderModel(const float vertices[], const unsigned short amountOfVertices, const unsigned int indices[], const unsigned short amountOfIndices)
         : amountOfIndices(amountOfIndices), amountOfVertices(amountOfVertices),
-          vb(vertices, 4 * amountOfVertices * sizeof(float)), ib(indices, amountOfIndices), va() {
+          vb(vertices, 4 * amountOfVertices * sizeof(float)), ib(indices, amountOfIndices), va(1) {
 
     VertexBufferLayout layout;
     layout.addFloat(2);
@@ -53,7 +53,7 @@ RenderModel::RenderModel(const float vertices[], const unsigned short amountOfVe
  */
 RenderModel::RenderModel(Vec2 size)
         : amountOfIndices(6), amountOfVertices(6),
-          buffer(generateVerticesTex(size)), vb(buffer, 4 * amountOfVertices * sizeof(float)), ib(defaultIndices, amountOfIndices), va() {
+          buffer(generateVerticesTex(size)), vb(buffer, 4 * amountOfVertices * sizeof(float)), ib(defaultIndices, amountOfIndices), va(1) {
 
     VertexBufferLayout layout;
     layout.addFloat(2);
@@ -61,16 +61,6 @@ RenderModel::RenderModel(Vec2 size)
 
     va.addBuffer(vb, layout);
     delete buffer;
-}
-
-RenderModel::RenderModel(const float *vertices) :
-    vb(vertices, 4 * amountOfVertices * sizeof(float)), ib(defaultIndices, amountOfIndices), va() {
-
-    VertexBufferLayout layout;
-    layout.addFloat(2);
-    layout.addFloat(2);
-
-    va.addBuffer(vb, layout);
 }
 
 /**
