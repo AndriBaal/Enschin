@@ -6,8 +6,8 @@ class Player : public Entity{
 private:
     Vec2 mousePos;
     Timer* jumpTimer;
-    short jumps = 2;
-    short maxJumps = 2;
+    short jumps = 7;
+    short maxJumps = 7;
 public:
     Player(const UContext& ctx, Vec2 pos);
 	void update(const UContext& ctx) override;
@@ -16,6 +16,6 @@ public:
     void onCollision() override;
     void onRelease() override;
 //	virtual void onDamage(float damage) override;
-//	virtual void onDeath() override;
+//	virtual void onDeath() override//
 //	virtual void onAttack() override;
 };

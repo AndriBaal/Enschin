@@ -11,9 +11,9 @@ void Player::update(const UContext& ctx) {
     if (ctx.input.getEvent("walk_forward") && jumps && jumpTimer->take()){
         if (jumps >= 1){
             body->SetLinearVelocity({body->GetLinearVelocity().x, 0});
-            body->ApplyLinearImpulseToCenter({0, 12});
+            body->ApplyLinearImpulseToCenter({0, 800 * ctx.deltaTime});
         }else{
-            body->ApplyLinearImpulseToCenter({0, 23});
+            body->ApplyLinearImpulseToCenter({0, 800 * ctx.deltaTime});
         }
         jumps--;
     }
@@ -21,10 +21,10 @@ void Player::update(const UContext& ctx) {
         body->ApplyLinearImpulseToCenter({0, -12});
     }
     if (ctx.input.getEvent("walk_left")) {
-        body->ApplyLinearImpulseToCenter({-.5, 0});
+        body->ApplyLinearImpulseToCenter({-40 * ctx.deltaTime, 0});
     }
     if (ctx.input.getEvent("walk_right")) {
-        body->ApplyLinearImpulseToCenter({.5, 0});
+        body->ApplyLinearImpulseToCenter({40 * ctx.deltaTime, 0});
     }
 }
 

@@ -9,7 +9,7 @@ void Ressources::free() const {
     for (auto& model : models) model.second.free();
     for (auto& spriteSheet : spriteSheets) spriteSheet.second.free();
     for (auto& sprite : sprites) sprite.second.free();
-    for (auto& terrain : terrains) terrain.second->free();
+    for (auto& terrain : terrains) terrain.second.free();
 }
 
 void Ressources::load(std::string ressourcePath) {
@@ -30,7 +30,7 @@ void Ressources::load(std::string ressourcePath) {
             terrainReader.parse(terrainStream, terrainValues);
             for (auto t = terrainValues.begin(); t != terrainValues.end(); t++) {
                 float* worldVertices = jsonToFloatArray((*t)["vertices"], (*t)["amount_of_vertices"].asUInt() * 4);
-                terrains.insert({t.key().asString(),new Terrain(worldVertices, (*t)["amount_of_vertices"].asInt())});
+                terrains.insert({t.key().asString(), Terrain(worldVertices, (*t)["amount_of_vertices"].asInt())});
                 delete worldVertices;
             }
         }

@@ -46,13 +46,14 @@ Terrain::Terrain(float* vertices, unsigned int amountOfVertices, bool collisionO
                 Color{1, 0, 0, 1}
         };
     }
-
-    ground.CreateLoop(groundVertices, amountOfVertices);
+    ground = new b2ChainShape();
+    ground->CreateLoop(groundVertices, amountOfVertices);
 }
 
 void Terrain::free() const {
     for (int i = 0; i < amountOfElements; i++) {
         elements[i].free();
     }
+    delete ground;
     delete elements;
 }

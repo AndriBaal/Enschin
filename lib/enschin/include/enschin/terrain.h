@@ -16,13 +16,13 @@ struct TerrainElement {
 
 class Terrain{
 private:
-    b2ChainShape ground;
+    b2ChainShape* ground;
     TerrainElement* elements;
     unsigned int amountOfElements;
 public:
     Terrain(float* vertices, unsigned int amountOfVertices, bool collisionOutside=1);
     void free() const;
-    b2ChainShape *getChainShape() { return &ground; }
-    unsigned int getAmountOfElements() { return amountOfElements; };
+    b2ChainShape *getChainShape() { return ground; }
+    unsigned int getAmountOfElements() const { return amountOfElements; };
     TerrainElement* getElements() { return elements; }
 };
