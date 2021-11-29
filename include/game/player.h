@@ -9,9 +9,9 @@ private:
     short jumps = 7;
     short maxJumps = 7;
 public:
-    Player(const UContext& ctx, Vec2 pos);
-	void update(const UContext& ctx) override;
-    void render(const RContext& ctx) override;
+    Player(const UpdateContext& ctx, Vec2 pos);
+	void update(const UpdateContext& ctx) override;
+    void render(const RenderContext& ctx) override;
     void onEntityCollision(Entity& entity) override;
     void onCollision() override;
     void onRelease() override;

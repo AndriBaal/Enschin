@@ -34,7 +34,7 @@ void Game::init() {
         firstTime = glfwGetTime();
         totalTime = (float) firstTime;
 
-        const GContext gameContext = {
+        const GameContext gameContext = {
                 glfw,
                 window.getSize(),
                 deltaTime,

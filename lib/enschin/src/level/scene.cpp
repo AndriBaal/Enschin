@@ -1,14 +1,18 @@
 #include <enschin/scene.h>
 
-#include <utility>
-
-Scene::Scene(const GContext& ctx, std::string ressourcePath)
-    : res(std::move(ressourcePath)) {
+Scene::Scene(Ressources* res, Input* input, const GameContext& ctx)
+    : res(*res), input((Input &) *input) {
     renderer = Renderer(ctx.windowSize);
 }
 
 Scene::~Scene() {
-    free();
+    //delete res;
+    for (auto e : entities)
+        delete e;
+    entities.clear();
+    for (auto t : timers)
+        delete t;
+    timers.clear();
 }
 
 void Scene::updateTimers(float deltaTime) {
@@ -19,10 +23,10 @@ void Scene::updateTimers(float deltaTime) {
     }
 }
 
-void Scene::update(const GContext& ctx) {
+void Scene::update(const GameContext& ctx) {
     updateTimers(ctx.deltaTime);
     updateInput(ctx.window);
-    const UContext updateContext = getUpdateContext(ctx);
+    const UpdateContext updateContext = getUpdateContext(ctx);
     for (auto e = entities.begin(); e < entities.end(); e++){
         if ((*e)->isDead()){
             delete (*e);
@@ -35,8 +39,8 @@ void Scene::update(const GContext& ctx) {
     world.update(updateContext);
 }
 
-void Scene::render(const GContext& ctx) {
-    const RContext renderContext = getRenderContext(ctx);
+void Scene::render(const GameContext& ctx) {
+    const RenderContext renderContext = getRenderContext(ctx);
     world.renderBackground(renderContext);
     camera.update(renderer);
     for (auto & entity : entities)
@@ -45,15 +49,6 @@ void Scene::render(const GContext& ctx) {
     camera.reset(renderer);
 }
 
-void Scene::free() {
-    res.free();
-    for (auto e : entities)
-        delete e;
-    entities.clear();
-    for (auto t : timers)
-        delete t;
-    timers.clear();
-}
 
 void Scene::updateInput(GLFWwindow *window) {
     input.update(window, renderer.getUnits());
@@ -67,7 +62,7 @@ void Scene::addTimer(Timer* timer){
     timers.push_back(timer);
 }
 
-UContext Scene::getUpdateContext(const GContext& ctx) {
+UpdateContext Scene::getUpdateContext(const GameContext& ctx) {
     return {
         ctx.deltaTime,
         ctx.totalTime,
@@ -79,7 +74,7 @@ UContext Scene::getUpdateContext(const GContext& ctx) {
     };
 }
 
-RContext Scene::getRenderContext(const GContext& ctx) {
+RenderContext Scene::getRenderContext(const GameContext& ctx) {
     return {
         renderer,
         ctx.deltaTime,

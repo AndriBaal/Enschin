@@ -18,10 +18,10 @@ protected:
     bool dead = false;
     float deathDelay = 0.0f;
 public:
-	Entity(const UContext& ctx, const Model& model, const SpriteSheet& sprite, Vec2 pos={0, 0}, float density=1.0f, float friction=0.3f, bool fixedRotation=false);
+	Entity(const UpdateContext& ctx, const Model& model, const SpriteSheet& sprite, Vec2 pos={0, 0}, float density=1.0f, float friction=0.3f, bool fixedRotation=false);
 	~Entity();
-	virtual void update(const UContext& ctx) = 0;
-	virtual void render(const RContext& ctx) = 0;
+	virtual void update(const UpdateContext& ctx) = 0;
+	virtual void render(const RenderContext& ctx) = 0;
     virtual void onEntityCollision(Entity& otherEntity) = 0;
     virtual void onEntityRelease(Entity& otherEntity) {}
     virtual void onCollision() = 0;

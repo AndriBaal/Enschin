@@ -24,6 +24,6 @@ SpriteSheet::SpriteSheet(const std::string& filePath, Vec2 spriteSize, unsigned 
 SpriteSheet::~SpriteSheet() {
     for (int i = 0; i< amountOfSprites; i ++)
         delete textures[i];
-    delete(textures);
+    delete []textures;
 }
 

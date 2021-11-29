@@ -1,19 +1,19 @@
 #include <game/player.h>
 
-Player::Player(const UContext& ctx, Vec2 pos)
-    : Entity(ctx, ctx.res.getModel("test_model"), ctx.res.getSprite("cute"), pos, 1.0f){
+Player::Player(const UpdateContext& ctx, Vec2 pos)
+    : Entity(ctx, ctx.res.getModel("test_model"), ctx.res.getSprite("cute"), pos, 1.4f){
     jumpTimer = new Timer(0, .25f);
     ctx.timers.push_back(jumpTimer);
 }
 
-void Player::update(const UContext& ctx) {
+void Player::update(const UpdateContext& ctx) {
     mousePos = ctx.input.getCursorPos();
     if (ctx.input.getEvent("walk_forward") && jumps && jumpTimer->take()){
         if (jumps >= 1){
             body->SetLinearVelocity({body->GetLinearVelocity().x, 0});
-            body->ApplyLinearImpulseToCenter({0, 800 * ctx.deltaTime});
+            body->ApplyLinearImpulseToCenter({0, 25});
         }else{
-            body->ApplyLinearImpulseToCenter({0, 800 * ctx.deltaTime});
+            body->ApplyLinearImpulseToCenter({0, 25});
         }
         jumps--;
     }
@@ -28,7 +28,7 @@ void Player::update(const UContext& ctx) {
     }
 }
 
-void Player::render(const RContext& ctx) {
+void Player::render(const RenderContext& ctx) {
     ctx.renderer.translate(body->GetPosition());
     ctx.renderer.rotate(body->GetAngle());
     ctx.renderer.renderTexture(model, sprite.getTexture());

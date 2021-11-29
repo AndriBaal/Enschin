@@ -25,8 +25,8 @@ private:
 public:
     Game(std::string gameName, Vec2 windowSize, bool fullscreen);
     void init();
-    virtual void start(const GContext& gtx) = 0;
-    virtual void loop(const GContext& gtx) = 0;
+    virtual void start(const GameContext& gtx) = 0;
+    virtual void loop(const GameContext& gtx) = 0;
     virtual void free();
     float getDeltaTime() const { return deltaTime; }
     float getTotalTime() const { return totalTime; }

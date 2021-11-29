@@ -5,34 +5,37 @@ World::World(Vec2 gravity) {
     world->SetContactListener(this->contactListener);
 }
 
-void World::update(const UContext& ctx) {
+World::~World() {
+    delete world;
+}
+
+void World::update(const UpdateContext& ctx) {
     world->Step(ctx.deltaTime, 6, 2);
 }
 
-void World::renderBackground(const RContext& ctx) {
+void World::renderBackground(const RenderContext& ctx) {
 
 }
 
-void World::renderForeground(const RContext& ctx) {
+void World::renderForeground(const RenderContext& ctx) {
     for (auto& t: terrains) {
-        ctx.renderer.translate(t.offset);
-        for (int i = 0; i < t.terrain.getAmountOfElements(); i ++) {
-            ctx.renderer.renderRainbow(*t.terrain.getElements()[i].model, ctx.totalTime);
+        ctx.renderer.translate(t->offset);
+        for (int i = 0; i < t->terrain.getAmountOfElements(); i++) {
+            Color c(.08, .45, 0.8, 1);
+            ctx.renderer.renderColor(t->terrain.getElements()[i]->model, c);
         }
-        ctx.renderer.translate(-t.offset);
+        ctx.renderer.translate(-t->offset);
     }
 }
 
-unsigned int World::addTerrain(Terrain& terrain, Vec2 positionOffSet) {
-
+unsigned int World::addTerrain(const Terrain& terrain, Vec2 positionOffSet) {
     b2BodyDef groundBodyDef;
     groundBodyDef.position.Set(positionOffSet.x, positionOffSet.y);
     b2Body* groundBody = world->CreateBody(&groundBodyDef);
-    std::cout << terrain.getChainShape()->GetChildCount() << std::endl;
 
     groundBody->CreateFixture(terrain.getChainShape(), 0.0f);
 
-    terrains.push_back(WorldComponent{
+    terrains.push_back(new WorldComponent{
         groundBody,
         terrain,
         positionOffSet
@@ -41,7 +44,7 @@ unsigned int World::addTerrain(Terrain& terrain, Vec2 positionOffSet) {
 }
 
 void World::removeTerrain(unsigned int id) {
-    world->DestroyBody(terrains.at(id).body);
+    world->DestroyBody(terrains.at(id)->body);
     //terrains.erase(terrains.begin() + id);
 }
 

@@ -5,10 +5,11 @@
 #include "renderer.h"
 #include <box2d/b2_world.h>
 
+
 /**
  * @brief Update context
  */
-struct UContext {
+struct UpdateContext {
     const float deltaTime = 0;
     const float totalTime = 0;
     const Vec2 windowSize;
@@ -21,7 +22,7 @@ struct UContext {
 /**
  * @brief Render context
  */
-struct RContext {
+struct RenderContext {
     Renderer& renderer;
     const float deltaTime = 0;
     const float totalTime = 0;

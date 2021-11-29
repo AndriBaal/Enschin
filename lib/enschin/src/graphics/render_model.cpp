@@ -11,7 +11,6 @@
 // 2, 4, 0,
 // 0, 1, 2, Pentagon
 
-
 const float RenderModel::defaultTexCoords[8] = {
         0.0f, 0.0f, //Bottom left
         1.0f, 0.0f, //Bottom right

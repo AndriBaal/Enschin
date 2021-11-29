@@ -22,7 +22,7 @@ protected:
     bool collision = true;
     bool fixedRotation = false;
 public:
-    GameObject(const UContext& ctx, const Model& model, const SpriteSheet& sprite,Vec2 pos, float density = 1.0f, float friction = 0.3f, bool visible=true, bool collision=true, bool fixedRotation=false);
+    GameObject(const UpdateContext& ctx, const Model& model, const SpriteSheet& sprite, Vec2 pos, float density = 1.0f, float friction = 0.3f, bool visible=true, bool collision=true, bool fixedRotation=false);
     ~GameObject();
     void applyForce(const b2Vec2& force){ applyForce(force, body->GetPosition()); }
     void applyForce(const b2Vec2& force, const b2Vec2& point){ body->ApplyForce(force, point); }

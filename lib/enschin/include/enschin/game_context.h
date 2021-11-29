@@ -2,7 +2,7 @@
 #include <GLFW/glfw3.h>
 #include "vec2.h"
 
-struct GContext{
+struct GameContext{
     GLFWwindow* window;
     Vec2 windowSize;
     const float deltaTime;

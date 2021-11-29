@@ -5,24 +5,22 @@
 #include "model.h"
 #include "color.h"
 #include <algorithm>
+#include <iostream>
 
 struct TerrainElement {
-    RenderModel* model;
+    RenderModel model;
     Color color;
-    void free() {
-        delete model;
-    }
 };
 
 class Terrain{
 private:
     b2ChainShape* ground;
-    TerrainElement* elements;
+    TerrainElement** elements;
     unsigned int amountOfElements;
 public:
     Terrain(float* vertices, unsigned int amountOfVertices, bool collisionOutside=1);
-    void free() const;
-    b2ChainShape *getChainShape() { return ground; }
+    ~Terrain();
+    b2ChainShape *getChainShape() const { return ground; }
     unsigned int getAmountOfElements() const { return amountOfElements; };
-    TerrainElement* getElements() { return elements; }
+    TerrainElement** getElements() const { return elements; }
 };

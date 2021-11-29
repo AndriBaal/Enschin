@@ -17,28 +17,27 @@
  */
 class Scene {
 protected:
-    const Ressources res;
-    Input input;
+    const Ressources& res;
+    Input& input;
     Renderer renderer;
     World world;
     Camera camera;
     std::vector<Entity*> entities;
 //    std::vector<GameObject*> gameObjects;
 //    std::vector<GuiObject*> guiObjects;
-    void free();
 private:
     std::vector<Timer*> timers;
 public:
-	Scene(const GContext& ctx, std::string ressourcePath);
+	Scene(Ressources* res, Input* input, const GameContext& ctx);
     ~Scene();
-	virtual void update(const GContext& ctx);
-	virtual void render(const GContext& ctx);
+	virtual void update(const GameContext& ctx);
+	virtual void render(const GameContext& ctx);
     Renderer& getRenderer(){ return renderer; }
 
     void addTimer(Timer* timer);
     void removeTimer(Timer* timer);
     void updateTimers(float deltaTime);
 	void updateInput(GLFWwindow* window);
-    UContext getUpdateContext(const GContext& ctx);
-    RContext getRenderContext(const GContext& ctx);
+    UpdateContext getUpdateContext(const GameContext& ctx);
+    RenderContext getRenderContext(const GameContext& ctx);
 };

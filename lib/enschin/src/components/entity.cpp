@@ -1,7 +1,7 @@
 #include <enschin/entity.h>
 
 
-Entity::Entity(const UContext& ctx, const Model& model, const SpriteSheet& sprite, Vec2 pos, float density, float friction, bool fixedRotation)
+Entity::Entity(const UpdateContext& ctx, const Model& model, const SpriteSheet& sprite, Vec2 pos, float density, float friction, bool fixedRotation)
     : GameObject(ctx, model, sprite, pos, density, friction, fixedRotation){
     body->GetUserData().pointer = reinterpret_cast<uintptr_t>(this);
     

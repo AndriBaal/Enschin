@@ -1,6 +1,6 @@
 #include <enschin/game_object.h>
 
-GameObject::GameObject(const UContext &ctx, const Model &model, const SpriteSheet &sprite, Vec2 pos, float density,
+GameObject::GameObject(const UpdateContext &ctx, const Model &model, const SpriteSheet &sprite, Vec2 pos, float density,
                        float friction, bool visible, bool collision, bool fixedRotation)
                        : world(&ctx.world), model(model), sprite(sprite), density(density), friction(friction), fixedRotation(fixedRotation),
                        visible(visible), collision(collision){
