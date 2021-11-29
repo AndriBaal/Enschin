@@ -7,13 +7,13 @@ SpriteSheet::SpriteSheet(const std::string& filePath, Vec2 spriteSize, unsigned 
     unsigned char* localBuffer = nullptr;
     localBuffer = stbi_load(filePath.c_str(), &width, &height, &BPP, 4);
 
-    textures = new Texture[int(height / spriteSize.y * (width / spriteSize.x))];
+    textures = new Texture*[int(height / spriteSize.y * (width / spriteSize.x))];
 
     glPixelStorei(GL_UNPACK_ROW_LENGTH, width);
     for (int y = 0; y< height; y += spriteSize.y) {
         for (int x = 0; x < width; x += spriteSize.x) {
             const unsigned char* subimg = localBuffer + (y + x)*4;
-            textures[amountOfSprites] = Texture(subimg, spriteSize.x, spriteSize.y);
+            textures[amountOfSprites] = new Texture(subimg, spriteSize.x, spriteSize.y);
             amountOfSprites++;
         }
     }
@@ -21,9 +21,9 @@ SpriteSheet::SpriteSheet(const std::string& filePath, Vec2 spriteSize, unsigned 
     if (localBuffer) stbi_image_free(localBuffer);
 }
 
-void SpriteSheet::free() const{
+SpriteSheet::~SpriteSheet() {
     for (int i = 0; i< amountOfSprites; i ++)
-        textures[i].free();
+        delete textures[i];
     delete(textures);
 }
 

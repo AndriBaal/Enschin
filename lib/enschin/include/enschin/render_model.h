@@ -33,7 +33,6 @@ public:
           const unsigned short amountOfVertices = 4,
           const unsigned int indices[6] = defaultIndices,
           const unsigned short amountOfIndices = 6);
-    void free() const;
 
     static float* generateVerticesTex(Vec2 size);
     void bind() const;

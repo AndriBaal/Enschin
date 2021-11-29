@@ -9,8 +9,7 @@ private:
 public:
     VertexArray() = default;
     VertexArray(unsigned int amount);
-
-    void free() const;
+    ~VertexArray();
     void addBuffer(const VertexBuffer& vb, const VertexBufferLayout& layout) const;
     void bind() const;
     static void unbind();

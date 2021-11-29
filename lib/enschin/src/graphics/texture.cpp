@@ -52,7 +52,7 @@ Texture::Texture(unsigned const char* pixelBuffer, unsigned short pixelsW, unsig
 /**
  * @brief Destroy the Texture object and delete the Texture from the GPU
  */
-void Texture::free() {
+Texture::~Texture() {
     glDeleteTextures(1, &textureId);
 }
 

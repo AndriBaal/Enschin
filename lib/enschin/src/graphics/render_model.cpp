@@ -63,14 +63,6 @@ RenderModel::RenderModel(Vec2 size)
     delete buffer;
 }
 
-/**
- * Delete all the buffers of the model.
- */
-void RenderModel::free() const{
-    va.free();
-    vb.free();
-    ib.free();
-}
 
 /**
  * @brief Bind the model for rendering.

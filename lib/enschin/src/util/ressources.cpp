@@ -4,11 +4,10 @@ Ressources::Ressources(std::string ressourcePath) {
     load(std::move(ressourcePath));
 }
 
-
 void Ressources::free() const {
-    for (auto& model : models) model.second.free();
-    for (auto& spriteSheet : spriteSheets) spriteSheet.second.free();
-    for (auto& sprite : sprites) sprite.second.free();
+    for (auto& model : models) delete model.second;
+    for (auto& spriteSheet : spriteSheets) delete spriteSheet.second;
+    for (auto& sprite : sprites) delete sprite.second;
     for (auto& terrain : terrains) terrain.second.free();
 }
 
@@ -45,7 +44,7 @@ void Ressources::load(std::string ressourcePath) {
                 if (m->isMember("amount_of_vertices")) {
                     float *vertices = jsonToFloatArray((*m)["vertices"], (*m)["amount_of_vertices"].asInt() * 4);
                     unsigned int *indices = jsonToUIntArray((*m)["indices"], (*m)["amount_of_indices"].asInt());
-                    models.insert({m.key().asString(), Model(
+                    models.insert({m.key().asString(), new Model(
                             vertices,
                             (*m)["amount_of_vertices"].asInt(),
                             indices,
@@ -53,7 +52,7 @@ void Ressources::load(std::string ressourcePath) {
                     )});
                     delete vertices, delete indices;
                 } else if (m->isMember("width")) {
-                    models.insert({m.key().asString(), Model({
+                    models.insert({m.key().asString(), new Model({
                                                                      (*m)["width"].asFloat(),
                                                                      (*m)["height"].asFloat()
                                                              })});
@@ -68,7 +67,7 @@ void Ressources::load(std::string ressourcePath) {
             Json::Value spriteSheetValues;
             spriteSheetReader.parse(spriteSheetStream, spriteSheetValues);
             for (auto s = spriteSheetValues.begin(); s != spriteSheetValues.end(); ++s) {
-                spriteSheets.insert({s.key().asString(), SpriteSheet(
+                spriteSheets.insert({s.key().asString(), new SpriteSheet(
                         (*s)["texture"].asString(),
                         {(*s)["sprite_width"].asFloat(),(*s)["sprite_height"].asFloat()},
                         (*s)["fps"].asInt()
@@ -81,7 +80,7 @@ void Ressources::load(std::string ressourcePath) {
             std::string texturePath = ressourceValues["sprites"][i].asString();
             std::string fileNameWithExtension = texturePath.substr(texturePath.find_last_of("/\\") + 1);
             std::string fileNameWithoutExtension = fileNameWithExtension.substr(0, (fileNameWithExtension.find_last_of('.')));
-            sprites.insert({fileNameWithoutExtension, Sprite(texturePath)});
+            sprites.insert({fileNameWithoutExtension, new Sprite(texturePath)});
         }
     }
 }

@@ -6,7 +6,7 @@ VertexArray::VertexArray(unsigned int amount) {
     glGenVertexArrays(amount, &vertexArrayId);
 }
 
-void VertexArray::free() const{
+VertexArray::~VertexArray(){
     glDeleteVertexArrays(1, &vertexArrayId);
 }
 
