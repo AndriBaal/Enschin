@@ -26,12 +26,10 @@ void Scene::updateTimers(float deltaTime) {
 void Scene::update(const GameContext& ctx) {
     updateTimers(ctx.deltaTime);
     updateInput(ctx.window);
+    renderer.resetMatrix();
     const UpdateContext updateContext = getUpdateContext(ctx);
     for (auto e = entities.begin(); e < entities.end(); e++){
-        if ((*e)->isDead()){
-            delete (*e);
-            entities.erase(e);
-        }else {
+        if((*e)->isActive()){
             (*e)->update(updateContext);
         }
     }
@@ -43,8 +41,10 @@ void Scene::render(const GameContext& ctx) {
     const RenderContext renderContext = getRenderContext(ctx);
     world.renderBackground(renderContext);
     camera.update(renderer);
+    world.renderGround(renderContext);
     for (auto & entity : entities)
-        entity->render(renderContext);
+        if (entity->isVisible())
+            entity->render(renderContext);
     world.renderForeground(renderContext);
     camera.reset(renderer);
 }

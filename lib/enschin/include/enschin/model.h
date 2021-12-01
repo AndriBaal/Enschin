@@ -1,11 +1,14 @@
 #pragma once
 #include "render_model.h"
 
+enum CollisionType {CIRCLE, POLYGON};
+
 /**
  * @brief Model that holds all Buffers for rendering with collsions
  */
 struct Model : public RenderModel{
 private:
+    CollisionType collisionType;
     b2PolygonShape polygonShape;
     b2CircleShape circleShape;
 public:
@@ -15,5 +18,6 @@ public:
           const unsigned short amountOfVertices = 4,
           const unsigned int indices[6] = defaultIndices,
           const unsigned short amountOfIndices = 6);
-    const b2PolygonShape* getCollisionShape() const { return &polygonShape; }
+    const b2Shape* getCollisionShape() const;
+    CollisionType getCollisionType() const { return collisionType; }
 };

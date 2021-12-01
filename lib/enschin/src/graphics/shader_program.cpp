@@ -187,8 +187,8 @@ void ShaderProgram::setUniform4f(const std::string& name, Vec4 v){
  * @param name Location id of the variable name in the shader
  * @param color 
  */
-void ShaderProgram::setColor(const std::string& name, const Color& color){
-    glUniform4f(getUniformLocation(name), color.r, color.g, color.b, color.a);
+void ShaderProgram::setColor(const std::string& name, const Color* color){
+    glUniform4f(getUniformLocation(name), color->r, color->g, color->b, color->a);
 }
 
 /**

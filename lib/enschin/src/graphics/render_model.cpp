@@ -62,6 +62,17 @@ RenderModel::RenderModel(Vec2 size)
     delete buffer;
 }
 
+RenderModel::RenderModel(float radius)
+    : amountOfIndices(6), amountOfVertices(6),
+    buffer(generateVerticesTex({radius*2, radius*2})), vb(buffer, 4 * amountOfVertices * sizeof(float)), ib(defaultIndices, amountOfIndices), va(1) {
+
+    VertexBufferLayout layout;
+    layout.addFloat(2);
+    layout.addFloat(2);
+
+    va.addBuffer(vb, layout);
+    delete buffer;
+}
 
 /**
  * @brief Bind the model for rendering.

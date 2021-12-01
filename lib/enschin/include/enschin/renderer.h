@@ -25,6 +25,7 @@ private:
 	static ShaderProgram coloredTextureProgram;
 	static ShaderProgram rainbowProgram;
     static ShaderProgram cropProgram;
+    static ShaderProgram circleColorProgram;
 
 	float ratio;
 	float units;
@@ -39,12 +40,13 @@ public:
 	void rotate(float angle);
 	void scale(Vec2 scaling);
 
-	void translateAndRenderTexture(const RenderModel& model, const Texture& tex, Vec2 pos, float rotation=.0f);
-	void renderColor(const RenderModel& model, Color& color) const;
-	void renderTexture(const RenderModel& model, const Texture& texture) const;
-	void renderColoredTexture(const RenderModel& model, const Texture& texture, Color& color) const;
-    void renderRainbow(const RenderModel& model, float totalTime) const;
-    void renderCroppedTexture(const RenderModel& model, const Texture& tex, Vec4 textureCoordinates) const;
+	void translateAndRenderTexture(const RenderModel* model, const Texture* tex, Vec2 pos, float rotation=.0f);
+	void renderColor(const RenderModel* model, const Color*) const;
+	void renderTexture(const RenderModel* model, const Texture* texture) const;
+	void renderColoredTexture(const RenderModel* model, const Texture* texture, const Color* color) const;
+    void renderRainbow(const RenderModel* model, float totalTime) const;
+    void renderCroppedTexture(const RenderModel* model, const Texture* tex, Vec4 textureCoordinates) const;
+    void renderCircleColor(const RenderModel* model, const Color* color);
 
 	float getRatio() const{ return ratio; }
 	float getUnits() const{ return units; }

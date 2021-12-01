@@ -22,7 +22,7 @@ protected:
     Renderer renderer;
     World world;
     Camera camera;
-    std::vector<Entity*> entities;
+    std::vector<GameObject*> entities;
 //    std::vector<GameObject*> gameObjects;
 //    std::vector<GuiObject*> guiObjects;
 private:

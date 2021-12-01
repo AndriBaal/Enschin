@@ -2,12 +2,17 @@
   "terrains":[
     "./terrains/terrain_01.json"
   ],
+  "colors":[
+    "./colors/test_color.json"
+  ],
   "models": [
     "./models/test_model.json",
+    "./models/crate.json",
+    "./models/ball.json",
     "./models/world_model.json"
   ],
   "sprites": [
-    "./sprites/bird.jpg",
+    "./sprites/crate.png",
     "./sprites/cute.png"
   ],
   "sprite_sheets": [

@@ -16,13 +16,15 @@ private:
     std::unordered_map<std::string, const Model*> models;
     std::unordered_map<std::string, const SpriteSheet*> spriteSheets;
     std::unordered_map<std::string, const Sprite*> sprites;
+    std::unordered_map<std::string, const Color*> colors;
 public:
     Ressources() = default;
     Ressources(std::string ressources);
     ~Ressources();
     void load(std::string);
-    const Model& getModel(const std::string& key) const { return  *models.at(key); }
-    const SpriteSheet& getSpriteSheet(const std::string& key) const { return *spriteSheets.at(key); }
-    const Sprite& getSprite(const std::string& key) const { return *sprites.at(key); }
-    const Terrain& getTerrain(const std::string& key) const { return *terrains.at(key); }
+    const Model* getModel(const std::string& key) const { return  models.at(key); }
+    const SpriteSheet* getSpriteSheet(const std::string& key) const { return spriteSheets.at(key); }
+    const Sprite* getSprite(const std::string& key) const { return sprites.at(key); }
+    const Terrain* getTerrain(const std::string& key) const { return terrains.at(key); }
+    const Color* getColor(const std::string& key) const { return colors.at(key); }
 };

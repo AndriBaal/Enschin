@@ -5,6 +5,7 @@ ShaderProgram Renderer::textureProgram;
 ShaderProgram Renderer::coloredTextureProgram;
 ShaderProgram Renderer::rainbowProgram;
 ShaderProgram Renderer::cropProgram;
+ShaderProgram Renderer::circleColorProgram;
 
 /**
  * @brief Create a new Renderer with its own projection matrices.
@@ -26,6 +27,7 @@ void Renderer::initShaderPrograms() {
     coloredTextureProgram = ShaderProgram("./enschin/shader/vertex.vert", "./enschin/shader/colored_texture.frag");
     rainbowProgram = ShaderProgram("./enschin/shader/vertex.vert", "./enschin/shader/rainbow.frag");
     cropProgram = ShaderProgram("./enschin/shader/vertex.vert", "./enschin/shader/crop.frag");
+    circleColorProgram = ShaderProgram("./enschin/shader/vertex.vert", "./enschin/shader/circle_color.frag");
 }
 
 /**
@@ -34,13 +36,13 @@ void Renderer::initShaderPrograms() {
  * @param model Model to render
  * @param color Color & opacity of the paint
  */
-void Renderer::renderColor(const RenderModel& model, Color& color) const{
-    model.bind();
+void Renderer::renderColor(const RenderModel* model, const Color* color) const{
+    model->bind();
     colorProgram.bind();
     colorProgram.setUniformMat4f("u_MVP", mvp);
     colorProgram.setColor("u_Color", color);
 
-    glDrawElements(GL_TRIANGLES, model.getAmountOfIndices(), GL_UNSIGNED_INT, nullptr);
+    glDrawElements(GL_TRIANGLES, model->getAmountOfIndices(), GL_UNSIGNED_INT, nullptr);
 }
 
 /**
@@ -49,14 +51,14 @@ void Renderer::renderColor(const RenderModel& model, Color& color) const{
  * @param model Model to render
  * @param texture Texture to render
  */
-void Renderer::renderTexture(const RenderModel& model, const Texture& texture) const{
-    model.bind();
-    texture.bind(); 
+void Renderer::renderTexture(const RenderModel* model, const Texture* texture) const{
+    model->bind();
+    texture->bind();
     textureProgram.bind();
     textureProgram.setUniform1i("u_Texture", 0);
     textureProgram.setUniformMat4f("u_MVP", mvp);
 
-    glDrawElements(GL_TRIANGLES, model.getAmountOfIndices(), GL_UNSIGNED_INT, nullptr);
+    glDrawElements(GL_TRIANGLES, model->getAmountOfIndices(), GL_UNSIGNED_INT, nullptr);
 }
 
 /**
@@ -68,14 +70,14 @@ void Renderer::renderTexture(const RenderModel& model, const Texture& texture) c
  * @param texture Texture to render
  * @param color Color to paint the texture with
  */
-void Renderer::renderColoredTexture(const RenderModel& model, const Texture& texture, Color& color) const{
-    model.bind();
-    texture.bind(); 
+void Renderer::renderColoredTexture(const RenderModel* model, const Texture* texture, const Color* color) const{
+    model->bind();
+    texture->bind();
     coloredTextureProgram.bind();
     coloredTextureProgram.setUniform1i("u_Texture", 0);
     coloredTextureProgram.setUniformMat4f("u_MVP", mvp);
     coloredTextureProgram.setColor("u_Color", color);
-    glDrawElements(GL_TRIANGLES, model.getAmountOfIndices(), GL_UNSIGNED_INT, nullptr);
+    glDrawElements(GL_TRIANGLES, model->getAmountOfIndices(), GL_UNSIGNED_INT, nullptr);
 }
 
 /**
@@ -83,25 +85,31 @@ void Renderer::renderColoredTexture(const RenderModel& model, const Texture& tex
  *
  * @param model Model to render
  */
-void Renderer::renderRainbow(const RenderModel &model, float totalTime) const{
-    model.bind();
+void Renderer::renderRainbow(const RenderModel* model, float totalTime) const{
+    model->bind();
     rainbowProgram.bind();
     rainbowProgram.setUniformMat4f("u_MVP", mvp);
     rainbowProgram.setUniform1f("u_TotalTime", totalTime);
-    glDrawElements(GL_TRIANGLES, model.getAmountOfIndices(), GL_UNSIGNED_INT, nullptr);
+    glDrawElements(GL_TRIANGLES, model->getAmountOfIndices(), GL_UNSIGNED_INT, nullptr);
 }
 
-void Renderer::renderCroppedTexture(const RenderModel &model, const Texture& tex, Vec4 textureCoordinates) const{
-    model.bind();
-    tex.bind();
+void Renderer::renderCroppedTexture(const RenderModel* model, const Texture* tex, Vec4 textureCoordinates) const{
+    model->bind();
+    tex->bind();
     cropProgram.bind();
     cropProgram.setUniformMat4f("u_MVP", mvp);
     cropProgram.setUniform4f("u_NewCoords", textureCoordinates);
-    glDrawElements(GL_TRIANGLES, model.getAmountOfIndices(), GL_UNSIGNED_INT, nullptr);
+    glDrawElements(GL_TRIANGLES, model->getAmountOfIndices(), GL_UNSIGNED_INT, nullptr);
 }
 
 
-
+void Renderer::renderCircleColor(const RenderModel* model, const Color* color) {
+    model->bind();
+    circleColorProgram.bind();
+    circleColorProgram.setUniformMat4f("u_MVP", mvp);
+    circleColorProgram.setColor("u_Color", color);
+    glDrawElements(GL_TRIANGLES, model->getAmountOfIndices(), GL_UNSIGNED_INT, nullptr);
+}
 
 // Matrix operations
 
@@ -112,7 +120,7 @@ void Renderer::renderCroppedTexture(const RenderModel &model, const Texture& tex
  * @param tex Texture to render
  * @param pos Position to translate to
  */
-void Renderer::translateAndRenderTexture(const RenderModel& model, const Texture& tex, Vec2 pos, float rotation) {
+void Renderer::translateAndRenderTexture(const RenderModel* model, const Texture* tex, Vec2 pos, float rotation) {
     translate(pos);
     rotate(rotation);
     renderTexture(model, tex);
@@ -180,6 +188,7 @@ void Renderer::free() {
     coloredTextureProgram.free();
     colorProgram.free();
     rainbowProgram.free();
-    cropProgram.free();
     textureProgram.free();
+    cropProgram.free();
+    circleColorProgram.free();
 }

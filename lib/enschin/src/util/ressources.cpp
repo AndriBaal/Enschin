@@ -9,6 +9,7 @@ Ressources::~Ressources() {
     for (auto& spriteSheet : spriteSheets) delete spriteSheet.second;
     for (auto& sprite : sprites) delete sprite.second;
     for (auto& terrain : terrains) delete terrain.second;
+    for (auto& color: colors) delete color.second;
 }
 
 void Ressources::load(std::string ressourcePath) {
@@ -19,6 +20,23 @@ void Ressources::load(std::string ressourcePath) {
     if (ressourceValues.isMember("ressources")) {
         for (int i = 0; i < ressourceValues["ressources"].size(); i++) {
             load(ressourceValues["ressources"][i].asString());
+        }
+    }
+    if (ressourceValues.isMember("colors")) {
+        for (int i = 0; i < ressourceValues["colors"].size(); i++) {
+            std::ifstream colorStream(ressourceValues["colors"][i].asString(), std::ifstream::binary);
+            Json::Reader colorReader;
+            Json::Value colorValues;
+            colorReader.parse(colorStream, colorValues);
+            for (auto c = colorValues.begin(); c != colorValues.end(); c++) {
+                const std::string key = c.key().asString();
+                colors.insert({key, new Color(
+                        (*c)[0].asFloat(),
+                        (*c)[1].asFloat(),
+                        (*c)[2].asFloat(),
+                        (*c)[3].asFloat()
+                )});
+            }
         }
     }
     if (ressourceValues.isMember("terrains")) {
@@ -56,6 +74,8 @@ void Ressources::load(std::string ressourcePath) {
                                                                      (*m)["width"].asFloat(),
                                                                      (*m)["height"].asFloat()
                                                              })});
+                } else if (m->isMember("radius")) {
+                    models.insert({m.key().asString(), new Model((*m)["radius"].asFloat())});
                 }
             }
         }

@@ -107,7 +107,7 @@ Creating a Ground Box</h1>
 <div class="line">groundBodyDef.<a class="code" href="https://box2d.org/documentation/structb2_body_def.html#a680cadc09ad6cf4b3366cbf0914c648b">position</a>.<a class="code" href="https://box2d.org/documentation/structb2_vec2.html#a78f0e635a664a563dd9246397d5f6e7e">Set</a>(0.0f, -10.0f);</div>
 </div><!-- fragment --><p>For step 2 the body definition is passed to the world object to create the ground body. The world object does not keep a reference to the body definition. Bodies are static by default. Static bodies don't collide with other static bodies and are immovable.</p>
 <div class="fragment"><div class="line"><a class="code" href="https://box2d.org/documentation/classb2_body.html">b2Body</a>* groundBody = world.CreateBody(&amp;groundBodyDef);</div>
-</div><!-- fragment --><p>For step 3 we create a ground polygon. We use the SetAsBox shortcut to form the ground polygon into a box shape, with the box centered on the origin of the parent body.</p>
+</div><!-- fragment --><p>For step 3 we create a ground POLYGON. We use the SetAsBox shortcut to form the ground POLYGON into a box shape, with the box centered on the origin of the parent body.</p>
 <div class="fragment"><div class="line"><a class="code" href="https://box2d.org/documentation/classb2_polygon_shape.html">polygonShape</a> groundBox;</div>
 <div class="line">groundBox.<a class="code" href="https://box2d.org/documentation/classb2_polygon_shape.html#ae356d825f51f7b827edb0c71fec781f8">SetAsBox</a>(50.0f, 10.0f);</div>
 </div><!-- fragment --><p>The SetAsBox function takes the <b>half</b>-**width** and <b>half</b>-**height** (extents). So in this case the ground box is 100 units wide (x-axis) and 20 units tall (y-axis). Box2D is tuned for meters, kilograms, and seconds. So you can consider the extents to be in meters. Box2D generally works best when objects are the size of typical real world objects. For example, a barrel is about 1 meter tall. Due to the limitations of floating point arithmetic, using Box2D to model the movement of glaciers or dust particles is not a good idea.</p>
@@ -127,7 +127,7 @@ Creating a Dynamic Body</h1>
 </div><!-- fragment --><blockquote class="doxtable">
 <p><b>Caution</b>: You must set the body type to b2_dynamicBody if you want the body to move in response to forces. </p>
 </blockquote>
-<p>Next we create and attach a polygon shape using a fixture definition. First we create a box shape:</p>
+<p>Next we create and attach a POLYGON shape using a fixture definition. First we create a box shape:</p>
 <div class="fragment"><div class="line"><a class="code" href="https://box2d.org/documentation/classb2_polygon_shape.html">polygonShape</a> dynamicBox;</div>
 <div class="line">dynamicBox.<a class="code" href="https://box2d.org/documentation/classb2_polygon_shape.html#ae356d825f51f7b827edb0c71fec781f8">SetAsBox</a>(1.0f, 1.0f);</div>
 </div><!-- fragment --><p>Next we create a fixture definition using the box. Notice that we set density to 1. The default density is zero. Also, the friction on the shape is set to 0.3.</p>

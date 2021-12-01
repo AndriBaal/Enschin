@@ -33,7 +33,7 @@ public:
     void setUniform1i(const std::string& name, int value);
     void setUniform1f(const std::string& name, float value);
     void setUniform4f(const std::string& name, Vec4 f);
-    void setColor(const std::string& name, const Color& color);
+    void setColor(const std::string& name, const Color* color);
     void setUniformMat4f(const std::string& name, const float matrix[]);
 
 private:

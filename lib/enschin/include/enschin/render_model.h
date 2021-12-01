@@ -11,6 +11,7 @@
 #include "index_buffer.h"
 #include "vec2.h"
 
+#include <iostream>
 /**
  * @brief Model for rendering without collisions
  */
@@ -26,8 +27,7 @@ protected:
     const VertexBuffer vb;
 
 public:
-    RenderModel():ib(), va(), vb(){}
-    //RenderModel(float radius);
+    RenderModel(float radius);
     RenderModel(Vec2 size);
     RenderModel(const float vertices[],
           const unsigned short amountOfVertices = 4,

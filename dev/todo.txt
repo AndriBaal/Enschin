@@ -23,6 +23,8 @@ Enschin:
 	!!! Move world things to world.h
 	!!! Background elements for world
     !!! Text module
+    !!! set collision on game object
+    !!! Foreach in Ressources instead of range based looop
     / Make entity inherit from gameobject
 
 

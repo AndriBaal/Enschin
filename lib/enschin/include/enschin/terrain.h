@@ -23,4 +23,5 @@ public:
     b2ChainShape *getChainShape() const { return ground; }
     unsigned int getAmountOfElements() const { return amountOfElements; };
     TerrainElement** getElements() const { return elements; }
+    TerrainElement* getElement(int index){ return elements[index]; }
 };
