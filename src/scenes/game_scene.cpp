@@ -4,6 +4,7 @@ GameScene::GameScene(Ressources* res, Input* input, const GameContext& ctx) : Sc
     for (float i = 0; i < 100; i++) {
         world->addTerrain(res->getTerrain("test_terrain"), res->getColor("green"), {i*50, -5});
     }
+
     UpdateContext updateContext = Scene::getUpdateContext(ctx);
     new Player(updateContext, {02.f, 3});
     new GameObject(updateContext, "crate", res->getModel("crate"), res->getSprite("crate"), {-13, -2}, 0, 1, 0, 0);

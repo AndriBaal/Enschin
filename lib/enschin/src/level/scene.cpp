@@ -26,7 +26,6 @@ void Scene::update(const GameContext& ctx) {
     updateComponents(updateContext);
     componentManager.removeDeadObjects();
     world->update(updateContext);
-    std::cout << camera.getFov() << std::endl;
     if (renderer.getFov() != camera.getFov())
         renderer.setFov(camera.getFov());
 }
