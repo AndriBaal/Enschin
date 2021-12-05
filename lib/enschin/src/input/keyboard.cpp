@@ -8,8 +8,11 @@
  * @param keys Keys to be checked
  */
 void Keyboard::update(GLFWwindow* window) {
-    for (auto i = mappings.begin(); i != mappings.end(); i++) {
-        *i->event = glfwGetKey(window, i->key);
+    for (auto & mapping : mappings) {
+        if (mapping.mappingType == KEY)
+            *mapping.event = glfwGetKey(window, mapping.key);
+        else
+            *mapping.event = glfwGetMouseButton(window, mapping.key);
     }
 }
 

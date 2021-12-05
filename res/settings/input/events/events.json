@@ -3,7 +3,9 @@
     "walk_forward",
     "walk_backwards",
     "walk_left",
-    "walk_right"
+    "walk_right",
+    "zoom_in",
+    "zoom_out"
   ],
   "keyboard_mapping": "./settings/input/mouse_keyboard/default_input.json"
 }

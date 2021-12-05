@@ -1,57 +1,57 @@
 #include <enschin/scene.h>
 
-Scene::Scene(Ressources* res, Input* input, const GameContext& ctx)
+Scene::Scene(Ressources* res, Input* input, const GameContext& ctx, float fov)
     : res(*res), input((Input &) *input) {
-    renderer = Renderer(ctx.windowSize);
+    camera.setFov(fov);
+    renderer = Renderer(ctx.windowSize, fov);
 }
 
 Scene::~Scene() {
-    //delete res;
-    for (auto e : entities)
-        delete e;
-    entities.clear();
     for (auto t : timers)
         delete t;
     timers.clear();
 }
 
 void Scene::updateTimers(float deltaTime) {
-    for (auto & timer : timers) {
-        if (timer->isActive() && Timer::isActiveAll()){
+    for (auto & timer : timers)
+        if (timer->isActive() && Timer::isActiveAll())
             timer->update(deltaTime);
-        }
-    }
+
 }
 
 void Scene::update(const GameContext& ctx) {
     updateTimers(ctx.deltaTime);
-    updateInput(ctx.window);
-    renderer.resetMatrix();
+    input.update(ctx.window, renderer.getFov());
     const UpdateContext updateContext = getUpdateContext(ctx);
-    for (auto e = entities.begin(); e < entities.end(); e++){
-        if((*e)->isActive()){
-            (*e)->update(updateContext);
-        }
-    }
-
-    world.update(updateContext);
+    updateComponents(updateContext);
+    componentManager.removeDeadObjects();
+    world->update(updateContext);
+    std::cout << camera.getFov() << std::endl;
+    if (renderer.getFov() != camera.getFov())
+        renderer.setFov(camera.getFov());
 }
 
 void Scene::render(const GameContext& ctx) {
     const RenderContext renderContext = getRenderContext(ctx);
-    world.renderBackground(renderContext);
-    camera.update(renderer);
-    world.renderGround(renderContext);
-    for (auto & entity : entities)
-        if (entity->isVisible())
-            entity->render(renderContext);
-    world.renderForeground(renderContext);
-    camera.reset(renderer);
+    renderer.resetMatrix();
+    Scene::renderComponents(renderContext);
 }
 
+void Scene::updateComponents(const UpdateContext &ctx) {
+    for (auto& g : componentManager.getGameObjects())
+        if (g->isActive())
+            g->update(ctx);
+}
 
-void Scene::updateInput(GLFWwindow *window) {
-    input.update(window, renderer.getUnits());
+void Scene::renderComponents(const RenderContext &ctx) {
+    world->renderBackground(ctx);
+    camera.update(renderer);
+    world->renderGround(ctx);
+    for (auto & g : componentManager.getGameObjects())
+        if (g->isVisible())
+            g->render(ctx);
+    world->renderForeground(ctx);
+    camera.reset(renderer);
 }
 
 void Scene::removeTimer(Timer *timer) {
@@ -69,7 +69,9 @@ UpdateContext Scene::getUpdateContext(const GameContext& ctx) {
         ctx.windowSize,
         input,
         res,
-        world.getWorld(),
+        camera,
+        componentManager,
+        world->getWorld(),
         timers
     };
 }

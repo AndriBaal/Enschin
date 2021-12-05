@@ -1,3 +1,3 @@
 cmake --build ./build
-cd ./build/Windows
+cd ./build/bin/Windows
 ./Game.exe

@@ -30,7 +30,7 @@ var NAVTREE =
       [ "Core Concepts", "index.html#autotoc_md4", null ],
       [ "Modules", "index.html#autotoc_md16", null ],
       [ "Units", "index.html#autotoc_md17", null ],
-      [ "Changing the length units", "index.html#autotoc_md18", null ],
+      [ "Changing the length fov", "index.html#autotoc_md18", null ],
       [ "Factories and Definitions", "index.html#autotoc_md19", null ]
     ] ],
     [ "Hello Box2D", "md__d_1__git_hub_box2d_docs_hello.html", [
@@ -181,7 +181,7 @@ var NAVTREE =
         [ "Math and Physics", "md__d_1__git_hub_box2d_docs__f_a_q.html#autotoc_md137", null ]
       ] ],
       [ "API", "md__d_1__git_hub_box2d_docs__f_a_q.html#autotoc_md138", [
-        [ "What units does Box2D use?", "md__d_1__git_hub_box2d_docs__f_a_q.html#autotoc_md139", null ],
+        [ "What fov does Box2D use?", "md__d_1__git_hub_box2d_docs__f_a_q.html#autotoc_md139", null ],
         [ "How do I convert pixels to meters?", "md__d_1__git_hub_box2d_docs__f_a_q.html#autotoc_md140", null ],
         [ "Why don't you use this awesome C++ feature?", "md__d_1__git_hub_box2d_docs__f_a_q.html#autotoc_md141", null ],
         [ "Can I use Box2D in a DLL?", "md__d_1__git_hub_box2d_docs__f_a_q.html#autotoc_md142", null ],

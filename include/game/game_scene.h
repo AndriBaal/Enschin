@@ -9,6 +9,4 @@ private:
 
 public:
 	GameScene(Ressources* res, Input* input, const GameContext& ctx);
-    void update(const GameContext& ctx) override;
-    void render(const GameContext& ctx) override;
 };

@@ -3,7 +3,7 @@
 #include "model.h"
 #include "renderer.h"
 #include "context.h"
-#include "entity.h"
+#include "game_object.h"
 #include "terrain.h"
 #include <box2d/box2d.h>
 
@@ -22,8 +22,9 @@ struct WorldComponent {
 class World{
 private:
     std::vector<WorldComponent*> terrains;
-    b2World* world = new b2World({0, -10});
+    b2World world = b2World({0, -10});
     ContactListener* contactListener = new ContactListener();
+
 public:
     World(Vec2 gravity = {0, -12.0f});
     ~World();
@@ -33,8 +34,8 @@ public:
     void renderBackground(const RenderContext& ctx) const;
     void renderGround(const RenderContext& ctx) const;
     void renderForeground(const RenderContext& ctx) const;
-    b2World& getWorld() { return *world; }
-    void setGravity(Vec2 newGravity) { world->SetGravity(newGravity.toB2()); }
-    Vec2 getGravity(){ return world->GetGravity(); }
+    b2World& getWorld() { return world; }
+    void setGravity(Vec2 newGravity) { world.SetGravity(newGravity.toB2()); }
+    Vec2 getGravity(){ return world.GetGravity(); }
 };
 

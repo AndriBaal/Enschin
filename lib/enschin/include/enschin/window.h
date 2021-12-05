@@ -30,4 +30,5 @@ public:
 	void setClearColor(Color newColor);
 	void setVSync(bool vSync);
     void setIcon(const char *filePath);
+    void setAntialiasing(bool state){ if(state)glEnable(GL_MULTISAMPLE); else glDisable(GL_MULTISAMPLE);}
 };

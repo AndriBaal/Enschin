@@ -1,14 +1,15 @@
 #include <game/player.h>
 
 Player::Player(const UpdateContext& ctx, Vec2 pos)
-    : Entity(ctx, ctx.res.getModel("ball"), ctx.res.getSprite("cute"), pos, 1.4f){
+    : GameObject(ctx, "player", ctx.res.getModel("crate"), ctx.res.getSprite("cute"), pos){
     jumpTimer = new Timer(0, .25f);
     ctx.timers.push_back(jumpTimer);
+    ctx.camera.setCameraTarget(body);
 }
 
 void Player::update(const UpdateContext& ctx) {
     mousePos = ctx.input.getCursorPos();
-    if (ctx.input.getEvent("walk_forward") && jumps && jumpTimer->take()){
+    if (ctx.input.isEvent("walk_forward") && jumps && jumpTimer->take()){
         if (jumps >= 1){
             body->SetLinearVelocity({body->GetLinearVelocity().x, 0});
             body->ApplyLinearImpulseToCenter({0, 25});
@@ -17,32 +18,25 @@ void Player::update(const UpdateContext& ctx) {
         }
         jumps--;
     }
-    if (ctx.input.getEvent("walk_backwards")) {
+    if (ctx.input.isEvent("walk_backwards")) {
         body->ApplyLinearImpulseToCenter({0, -12});
     }
-    if (ctx.input.getEvent("walk_left")) {
+    if (ctx.input.isEvent("walk_left")) {
         body->ApplyLinearImpulseToCenter({-40 * ctx.deltaTime, 0});
     }
-    if (ctx.input.getEvent("walk_right")) {
+    if (ctx.input.isEvent("walk_right")) {
         body->ApplyLinearImpulseToCenter({40 * ctx.deltaTime, 0});
+    }
+
+    if (ctx.input.isEvent("zoom_out")) {
+        ctx.camera.increaseFov(1);
+    }
+
+    if (ctx.input.isEvent("zoom_in")) {
+        ctx.camera.increaseFov(-1);
     }
 }
 
-void Player::render(const RenderContext& ctx) {
-    ctx.renderer.translate(body->GetPosition());
-    ctx.renderer.rotate(body->GetAngle());
-    ctx.renderer.renderTexture(model, sprite->getTexture());
-    ctx.renderer.rotate(-body->GetAngle());
-    ctx.renderer.translate(-body->GetPosition());
-}
-
-void Player::onRelease() {
-}
-
-void Player::onCollision() {
+void Player::onCollision(const GameObject* go) {
     jumps = maxJumps;
-}
-
-void Player::onEntityCollision(Entity& entity) {
-
 }

@@ -4,7 +4,6 @@
 #include "input.h"
 #include "ressources.h"
 #include "timer.h"
-#include "entity.h"
 #include "camera.h"
 #include "world.h"
 #include "context.h"
@@ -19,25 +18,25 @@ class Scene {
 protected:
     const Ressources& res;
     Input& input;
+    World* world = new World();
     Renderer renderer;
-    World world;
     Camera camera;
-    std::vector<GameObject*> entities;
-//    std::vector<GameObject*> gameObjects;
-//    std::vector<GuiObject*> guiObjects;
+    ComponentManager componentManager;
 private:
     std::vector<Timer*> timers;
+    RenderContext getRenderContext(const GameContext& ctx);
 public:
-	Scene(Ressources* res, Input* input, const GameContext& ctx);
+	Scene(Ressources* res, Input* input, const GameContext& ctx, float fov = 5.0f);
     ~Scene();
-	virtual void update(const GameContext& ctx);
-	virtual void render(const GameContext& ctx);
+    void update(const GameContext& ctx);
+    void render(const GameContext& ctx);
+    virtual void updateComponents(const UpdateContext& ctx);
+    virtual void renderComponents(const RenderContext& ctx);
     Renderer& getRenderer(){ return renderer; }
 
     void addTimer(Timer* timer);
     void removeTimer(Timer* timer);
     void updateTimers(float deltaTime);
-	void updateInput(GLFWwindow* window);
+
     UpdateContext getUpdateContext(const GameContext& ctx);
-    RenderContext getRenderContext(const GameContext& ctx);
 };

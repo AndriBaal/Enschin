@@ -11,25 +11,29 @@ Enschin:
 	/ Refactor GameHandler to Game
 		/ Refactor proccess to loop
 		/ add start function
-	/ bring units back
-	!!! set  ground method for scene
+	/ bring fov back
+	/ set  ground method for scene
 	!!! Update radius for Entity
-	!!! standyby / not render / not update field for entity / gameObject
-	!!! Static field for gameObject -> box2d static or dyncamic body
-	!!! friction and density in model json
-	!!! Object class for map component
-	!!! Getter setter for anti aliasing
-	!!! Round model with "radius" json value
-	!!! Move world things to world.h
+	!!! Fade function for camera
+	!!! Make world inheritable
+	!!! Update function for world
+	/ standyby / not render / not update field for entity / gameObject
+	/ Static field for gameObject -> box2d static or dyncamic body
+	/ Object class for map component
+	/ Getter setter for anti aliasing
+	/ Round model with "radius" json value
+	/ Move world things to world.h
 	!!! Background elements for world
     !!! Text module
-    !!! set collision on game object
+    / set collision on game object
     !!! Foreach in Ressources instead of range based looop
+    !!! Entity interface
+    !!! translation type for camera
+    !!! DifferentScenes (GameScene, GuiScene)
     / Make entity inherit from gameobject
 
-
     / Ressources can load other ressources
-    !!! Try bring back destructors
+    / Try bring back destructors
 	- Raw mousemotion with glfwSetInputMode
 	/ test keyboard input
 	- Gui
@@ -38,8 +42,7 @@ Enschin:
 	/ Spritesheets
 	/ Refactor header file structure
 	/ Use include directory
-	!!! Circles
-	- Health getter and setter for the entity.h
+	/ Circles
 	/ Backwards counting timer
     / background threats for timers
     $ Multithreading
@@ -47,7 +50,7 @@ Enschin:
 	- Controller input
 	/ no .hpp's
 	/ invert function for color
-	- Matrix reseet on window size change
+	/ Matrix reseet on window size change
 	/ Input as a Scene member
 	/ Make camera working
 	/ Box2D integration
@@ -72,9 +75,9 @@ Enschin:
 	/ add vertices as variable in model (Allocated on the heap)
 	/ Allgemeine Input Class
 	/ Shaderprogram no pointer
-	! Entity events (onAttack, etc)
+	# Entity events (onAttack, etc)
 	$ Settings system
-	/ size mulitplier for entities ()
+	/ size mulitplier for gameObjects ()
 	? Shaderprogram class for 3rd party shaders evtl. json file
 	- Code revision:
 		/1

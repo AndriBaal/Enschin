@@ -3,9 +3,11 @@
 #include "input.h"
 #include "timer.h"
 #include "renderer.h"
+#include "component_manager.h"
+#include "camera.h"
 #include <box2d/b2_world.h>
 
-
+struct ComponentManager;
 /**
  * @brief Update context
  */
@@ -15,6 +17,8 @@ struct UpdateContext {
     const Vec2 windowSize;
     const Input& input;
     const Ressources& res;
+    Camera& camera;
+    ComponentManager& componentManager;
     b2World& world;
     std::vector<Timer*>& timers;
 };

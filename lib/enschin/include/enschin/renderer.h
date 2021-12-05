@@ -26,17 +26,22 @@ private:
 	static ShaderProgram rainbowProgram;
     static ShaderProgram cropProgram;
     static ShaderProgram circleColorProgram;
+    static ShaderProgram circleTextureProgram;
 
 	float ratio;
-	float units;
+	float fov;
 public:
 	Renderer() = default;
 	Renderer(Vec2 windowSize, float units=5.0f);
     static void free();
 	static void initShaderPrograms();
+
 	void resetProjection(Vec2 windowDim);
 	void resetMatrix();
-	void translate (Vec2 pos);
+    void setFov(float fov);
+    float getFov() const{ return fov; }
+
+    void translate (Vec2 pos);
 	void rotate(float angle);
 	void scale(Vec2 scaling);
 
@@ -47,8 +52,9 @@ public:
     void renderRainbow(const RenderModel* model, float totalTime) const;
     void renderCroppedTexture(const RenderModel* model, const Texture* tex, Vec4 textureCoordinates) const;
     void renderCircleColor(const RenderModel* model, const Color* color);
+    void renderCircleTexture(const RenderModel* model, const Texture* texture);
 
 	float getRatio() const{ return ratio; }
-	float getUnits() const{ return units; }
+
 };
 

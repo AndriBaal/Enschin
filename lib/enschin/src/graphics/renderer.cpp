@@ -6,6 +6,7 @@ ShaderProgram Renderer::coloredTextureProgram;
 ShaderProgram Renderer::rainbowProgram;
 ShaderProgram Renderer::cropProgram;
 ShaderProgram Renderer::circleColorProgram;
+ShaderProgram Renderer::circleTextureProgram;
 
 /**
  * @brief Create a new Renderer with its own projection matrices.
@@ -13,7 +14,7 @@ ShaderProgram Renderer::circleColorProgram;
  * @param windowSize WindowSize for the matrices
  * @param units Units from the Center to the Top/Bottom of the Screen
  */
-Renderer::Renderer(Vec2 windowSize, float units) : units(units) {
+Renderer::Renderer(Vec2 windowSize, float units) : fov(units) {
     resetProjection(windowSize);
     resetMatrix();
 }
@@ -28,6 +29,7 @@ void Renderer::initShaderPrograms() {
     rainbowProgram = ShaderProgram("./enschin/shader/vertex.vert", "./enschin/shader/rainbow.frag");
     cropProgram = ShaderProgram("./enschin/shader/vertex.vert", "./enschin/shader/crop.frag");
     circleColorProgram = ShaderProgram("./enschin/shader/vertex.vert", "./enschin/shader/circle_color.frag");
+    circleTextureProgram = ShaderProgram("./enschin/shader/vertex.vert", "./enschin/shader/circle_texture.frag");
 }
 
 /**
@@ -111,6 +113,16 @@ void Renderer::renderCircleColor(const RenderModel* model, const Color* color) {
     glDrawElements(GL_TRIANGLES, model->getAmountOfIndices(), GL_UNSIGNED_INT, nullptr);
 }
 
+void Renderer::renderCircleTexture(const RenderModel *model, const Texture *texture) {
+    model->bind();
+    texture->bind();
+    circleTextureProgram.bind();
+    circleTextureProgram.setUniform1i("u_Texture", 0);
+    circleTextureProgram.setUniformMat4f("u_MVP", mvp);
+
+    glDrawElements(GL_TRIANGLES, model->getAmountOfIndices(), GL_UNSIGNED_INT, nullptr);
+}
+
 // Matrix operations
 
 /**
@@ -172,7 +184,12 @@ void Renderer::scale(Vec2 scaling) {
  */
 void Renderer::resetProjection(Vec2 windowSize) {
     ratio = windowSize.x / windowSize.y;
-    Matrix::frustum(proj, ratio*units, -ratio*units, -1*units, 1*units, 3.0f, 7.0f);
+    Matrix::frustum(proj, ratio * fov, -ratio * fov, -1 * fov, 1 * fov, 3.0f, 7.0f);
+}
+
+void Renderer::setFov(float fov) {
+    this->fov = fov;
+    Matrix::frustum(proj, ratio * fov, -ratio * fov, -1 * fov, 1 * fov, 3.0f, 7.0f);
 }
 
 /**

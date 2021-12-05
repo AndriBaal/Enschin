@@ -43,9 +43,6 @@ void Game::init() {
 
         glfwPollEvents();
 		loop(gameContext);
-        currentScene->updateTimers(deltaTime);
-        currentScene->updateInput(glfw);
-
         currentScene->update(gameContext);
         currentScene->render(gameContext);
 		fps++;

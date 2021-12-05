@@ -4,7 +4,7 @@ Input::Input(const std::string& eventPath) {
     load(eventPath);
 }
 
-void Input::update(GLFWwindow* window, float units) {
+void Input::update(GLFWwindow* window, float fov) {
     switch (inputType) {
     case KEYMOUSE:
 //        keyboard.update(keyboardMapping);
@@ -18,7 +18,7 @@ void Input::update(GLFWwindow* window, float units) {
 //                if (event->first == key->first && key->second.second) event->second = true;
 //        }
         keyboard.update(window);
-        mouse.updateCursor(window, units, cursorPos);
+        mouse.updateCursor(window, fov, cursorPos);
         break;
     case CONTROLLER:
 
@@ -48,7 +48,11 @@ void Input::load(const std::string& eventPath) {
 
         for (auto & inputEvent : inputEvents) {
             if (keyboardValues.isMember(inputEvent.first)) {
-                keyMaps.push_back({keyboardValues[inputEvent.first].asInt(), &inputEvent.second});
+                int key = keyboardValues[inputEvent.first].asInt();
+                if (key < 10)
+                    keyMaps.push_back({MOUSE_BUTTON, keyboardValues[inputEvent.first].asInt(), &inputEvent.second});
+                else
+                    keyMaps.push_back({KEY, keyboardValues[inputEvent.first].asInt(), &inputEvent.second});
             }
             inputEvent.second = 1;
         }

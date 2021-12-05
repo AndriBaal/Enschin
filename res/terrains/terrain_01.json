@@ -1,7 +1,10 @@
 {
   "test_terrain": {
-    "amount_of_vertices": 16,
+    "amount_of_vertices": 18,
     "vertices": [
+      -20, -0.75,
+      -20, -15.75,
+
       -5, -0.75,
       -5, -15.75,
 
