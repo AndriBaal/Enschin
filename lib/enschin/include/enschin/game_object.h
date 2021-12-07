@@ -38,7 +38,7 @@ public:
 
     void createBody(const UpdateContext& ctx, Vec2 pos, bool fixedRotation, bool collision, bool isStatic, float gravity, float density, float friction);
 
-    virtual void update(const UpdateContext& ctx);
+    virtual void update(const UpdateContext& ctx){}
     virtual void render(const RenderContext& ctx);
     virtual void onCollision(const GameObject* go = nullptr){}
     virtual void onRelease(const GameObject* go = nullptr){}
@@ -64,13 +64,13 @@ public:
     float getUpdateRadius() const{ return updateRadius; }
     void setUpdateRadius(float updateRadius){ this->updateRadius = updateRadius; }
 
-    const std::string getName() { return name; }
+    std::string getName() const { return name; }
 
     void setCollision(bool collision) {
         for (b2Fixture* f = body->GetFixtureList(); f; f = f->GetNext()) {
             f->SetSensor(collision);
         }
     }
-
-    b2Body* getBody(){ return body; }
+    const b2Body* getBody() const { return body; }
+    const b2Shape* getShape() const { return model->getCollisionShape(); }
 };

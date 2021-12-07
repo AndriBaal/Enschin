@@ -41,7 +41,8 @@ Window::Window(std::string windowTitle, Vec2 windowSize, bool fullScreen) {
     }
     glfwMakeContextCurrent(window);
     glfwSwapInterval(1);
-    if (glewInit() != GLEW_OK) exit(0);
+    if (glewInit() != GLEW_OK)
+        exit(0);
 
     glEnable(GL_TEXTURE_2D);
     glEnable(GL_BLEND);

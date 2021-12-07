@@ -13,10 +13,12 @@ Enschin:
 		/ add start function
 	/ bring fov back
 	/ set  ground method for scene
+	!!! Chunk system with always update function
 	!!! Update radius for Entity
 	!!! Fade function for camera
-	!!! Make world inheritable
-	!!! Update function for world
+	!!! Chunk system
+	/ Make world inheritable
+	/ Update function for world
 	/ standyby / not render / not update field for entity / gameObject
 	/ Static field for gameObject -> box2d static or dyncamic body
 	/ Object class for map component
@@ -24,7 +26,6 @@ Enschin:
 	/ Round model with "radius" json value
 	/ Move world things to world.h
 	!!! Background elements for world
-	!!! Fade method for camera
     !!! Text module
     / set collision on game object
     !!! Foreach in Ressources instead of range based looop

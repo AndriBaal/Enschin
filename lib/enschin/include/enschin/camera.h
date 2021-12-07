@@ -11,9 +11,11 @@ class Camera {
 private:
     CameraMode cameraMode;
     b2Body* cameraTarget;
+    b2PolygonShape cameraShape;
     Vec2 cameraPosition;
     Vec2 fadePosition;
     float fov;
+    float ratio;
     float minFov = 2.0f;
     float maxFov = 100.0f;
     bool fading = false;
@@ -30,11 +32,15 @@ public:
     void setMinFov(float fov){ this->minFov = fov; }
 
     float getFov() const{ return fov; }
-    void setFov(float newFov);
-    void increaseFov(float increasingFov);
+    float getRatio() const{ return ratio; }
+    void setFov(Vec2 windowSize, float newFov);
+    void increaseFov(Vec2 windowSize, float increasingFov);
 
     b2Body& getCameraTarget() { return *cameraTarget; }
-    Vec2 getCameraPosition();
+    Vec2 getCameraPosition() const;
+
+    b2PolygonShape* getCameraShape(){ return &cameraShape; }
+
     void setCameraTarget(b2Body* cameraTarget);
     void setCameraPosition(Vec2 position);
 };

@@ -2,32 +2,32 @@
 
 Scene::Scene(Ressources* res, Input* input, const GameContext& ctx, float fov)
     : res(*res), input((Input &) *input) {
-    camera.setFov(fov);
-    renderer = Renderer(ctx.windowSize, fov);
+    camera.setFov(ctx.windowSize, fov);
+    renderer = Renderer(fov, camera.getRatio());
 }
 
 Scene::~Scene() {
-    for (auto t : timers)
-        delete t;
-    timers.clear();
+//    for (auto t : timers)
+//        delete t;
+//    timers.clear();
 }
 
-void Scene::updateTimers(float deltaTime) {
-    for (auto & timer : timers)
-        if (timer->isActive() && Timer::isActiveAll())
-            timer->update(deltaTime);
-
-}
+//void Scene::updateTimers(float deltaTime) {
+//    for (auto & timer : timers)
+//        if (timer->isActive() && Timer::isActiveAll())
+//            timer->update(deltaTime);
+//
+//}
 
 void Scene::update(const GameContext& ctx) {
-    updateTimers(ctx.deltaTime);
+    if (renderer.getFov() != camera.getFov() || renderer.getRatio() != camera.getRatio())
+        renderer.resetProjection(camera.getFov(), camera.getRatio());
+    //updateTimers(ctx.deltaTime);
     input.update(ctx.window, renderer.getFov());
     const UpdateContext updateContext = getUpdateContext(ctx);
     updateComponents(updateContext);
     componentManager.removeDeadObjects();
     world->update(updateContext);
-    if (renderer.getFov() != camera.getFov())
-        renderer.setFov(camera.getFov());
 }
 
 void Scene::render(const GameContext& ctx) {
@@ -47,19 +47,19 @@ void Scene::renderComponents(const RenderContext &ctx) {
     camera.update(renderer);
     world->renderGround(ctx);
     for (auto & g : componentManager.getGameObjects())
-        if (g->isVisible())
+        if (g->isVisible() && ctx.inScreen(g->getShape(), g->getBody()))
             g->render(ctx);
     world->renderForeground(ctx);
     camera.reset(renderer);
 }
 
-void Scene::removeTimer(Timer *timer) {
-    timers.erase(std::remove(timers.begin(), timers.end(), timer), timers.end());
-}
-
-void Scene::addTimer(Timer* timer){
-    timers.push_back(timer);
-}
+//void Scene::removeTimer(Timer *timer) {
+//    timers.erase(std::remove(timers.begin(), timers.end(), timer), timers.end());
+//}
+//
+//void Scene::addTimer(Timer* timer){
+//    timers.push_back(timer);
+//}
 
 UpdateContext Scene::getUpdateContext(const GameContext& ctx) {
     return {
@@ -71,13 +71,14 @@ UpdateContext Scene::getUpdateContext(const GameContext& ctx) {
         camera,
         componentManager,
         world->getWorld(),
-        timers
     };
 }
 
 RenderContext Scene::getRenderContext(const GameContext& ctx) {
     return {
         renderer,
+        camera,
+        ctx.windowSize,
         ctx.deltaTime,
         ctx.totalTime
     };

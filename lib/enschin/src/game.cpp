@@ -26,7 +26,7 @@ void Game::init() {
         glClear(GL_COLOR_BUFFER_BIT);
 
 		if (window.update()) {
-			currentScene->getRenderer().resetProjection(window.getSize());
+			currentScene->getCamera().setFov(window.getSize(), currentScene->getCamera().getFov());
 		}
 
 		secondTime = glfwGetTime();

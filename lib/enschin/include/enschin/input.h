@@ -22,7 +22,6 @@ private:
     std::unordered_map<std::string, bool> inputEvents; //TriggerId, triggered
 public:
     Input() = default;
-
     Input(const std::string &inputEvents);
     void load(const std::string &eventPath);
     void update(GLFWwindow *window, float fov);

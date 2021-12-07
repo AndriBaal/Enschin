@@ -3,7 +3,7 @@
 Terrain::Terrain(float* vertices, unsigned int amountOfVertices, bool collisionOutside) {
     b2Vec2 groundVertices[amountOfVertices];
     amountOfElements = amountOfVertices / 2 - 1;
-    elements = new TerrainElement*[amountOfElements];
+    models = new Model*[amountOfElements];
 
     for (int i = 0; i < amountOfVertices / 2; i++) {
         groundVertices[i].Set(vertices[i*4], vertices[i*4+1]);
@@ -41,10 +41,7 @@ Terrain::Terrain(float* vertices, unsigned int amountOfVertices, bool collisionO
             1
         };
 
-        elements[i] = new TerrainElement{
-        RenderModel(modelVertices),
-        Color{1, 0, 0, 1}
-        };
+        models[i] = new Model(modelVertices);
     }
     ground = new b2ChainShape();
     ground->CreateLoop(groundVertices, amountOfVertices);
@@ -52,8 +49,8 @@ Terrain::Terrain(float* vertices, unsigned int amountOfVertices, bool collisionO
 
 Terrain::~Terrain() {
     for (int i = 0; i < amountOfElements; i++) {
-        delete elements[i];
+        delete models[i];
     }
     delete ground;
-    delete elements;
+    delete models;
 }

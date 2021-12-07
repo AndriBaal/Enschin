@@ -75,10 +75,3 @@ void GameObject::render(const RenderContext &ctx) {
         ctx.renderer.translate(-body->GetPosition());
     }
 }
-
-
-void GameObject::update(const UpdateContext &ctx) {
-
-}
-
-

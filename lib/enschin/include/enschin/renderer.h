@@ -2,7 +2,7 @@
 #include "light.h"
 #include "color.h"
 #include "shader_program.h"
-#include "render_model.h"
+#include "model.h"
 #include "texture.h"
 #include "vec2.h"
 #include "vec4.h"
@@ -16,6 +16,7 @@
  */
 class Renderer {
 private:
+    float fov, ratio;
 	float proj[16];
 	float view[16];
 	float mvp[16];
@@ -28,33 +29,29 @@ private:
     static ShaderProgram circleColorProgram;
     static ShaderProgram circleTextureProgram;
 
-	float ratio;
-	float fov;
 public:
 	Renderer() = default;
-	Renderer(Vec2 windowSize, float units=5.0f);
+	Renderer(float fov, float ratio);
     static void free();
 	static void initShaderPrograms();
 
-	void resetProjection(Vec2 windowDim);
+	void resetProjection(float fov, float ratio);
 	void resetMatrix();
-    void setFov(float fov);
-    float getFov() const{ return fov; }
 
     void translate (Vec2 pos);
 	void rotate(float angle);
 	void scale(Vec2 scaling);
 
-	void translateAndRenderTexture(const RenderModel* model, const Texture* tex, Vec2 pos, float rotation=.0f);
-	void renderColor(const RenderModel* model, const Color*) const;
-	void renderTexture(const RenderModel* model, const Texture* texture) const;
-	void renderColoredTexture(const RenderModel* model, const Texture* texture, const Color* color) const;
-    void renderRainbow(const RenderModel* model, float totalTime) const;
-    void renderCroppedTexture(const RenderModel* model, const Texture* tex, Vec4 textureCoordinates) const;
-    void renderCircleColor(const RenderModel* model, const Color* color);
-    void renderCircleTexture(const RenderModel* model, const Texture* texture);
+    float getRatio(){ return ratio; }
+    float getFov(){ return fov; }
 
-	float getRatio() const{ return ratio; }
-
+	void translateAndRenderTexture(const Model* model, const Texture* tex, Vec2 pos, float rotation=.0f);
+	void renderColor(const Model* model, const Color*) const;
+	void renderTexture(const Model* model, const Texture* texture) const;
+	void renderColoredTexture(const Model* model, const Texture* texture, const Color* color) const;
+    void renderRainbow(const Model* model, float totalTime) const;
+    void renderCroppedTexture(const Model* model, const Texture* tex, Vec4 textureCoordinates) const;
+    void renderCircleColor(const Model* model, const Color* color);
+    void renderCircleTexture(const Model* model, const Texture* texture);
 };
 

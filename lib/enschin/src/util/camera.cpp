@@ -30,7 +30,7 @@ void Camera::fade(b2Body *body, float time) {
 
 }
 
-Vec2 Camera::getCameraPosition(){
+Vec2 Camera::getCameraPosition() const{
     if (cameraMode == BODY) {
         return cameraTarget->GetPosition();
     } else {
@@ -46,20 +46,24 @@ void Camera::setCameraPosition(Vec2 position){
     cameraMode = POSITION;
 }
 
-void Camera::setFov(float newFov) {
+void Camera::setFov(Vec2 windowSize, float newFov) {
     if (newFov > maxFov)
         fov = maxFov;
     else if (newFov < minFov)
         fov = minFov;
     else
         fov = newFov;
+    ratio = windowSize.x / windowSize.y;
+    cameraShape.SetAsBox(ratio, fov);
 }
 
-void Camera::increaseFov(float increasingFov) {
+void Camera::increaseFov(Vec2 windowSize, float increasingFov) {
     if (fov + increasingFov > maxFov)
         fov = maxFov;
     else if (fov + increasingFov < minFov)
         fov = minFov;
     else
         fov = fov + increasingFov;
+    ratio = windowSize.x / windowSize.y;
+    cameraShape.SetAsBox(ratio, fov);
 }

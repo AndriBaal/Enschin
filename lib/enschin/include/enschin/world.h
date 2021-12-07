@@ -15,7 +15,6 @@ class ContactListener : public b2ContactListener {
 struct WorldComponent {
     b2Body* body;
     const Terrain* terrain;
-    const Color* terrainColor;
     Vec2 offset;
 };
 

@@ -23,7 +23,6 @@ protected:
     Camera camera;
     ComponentManager componentManager;
 private:
-    std::vector<Timer*> timers;
     RenderContext getRenderContext(const GameContext& ctx);
 public:
 	Scene(Ressources* res, Input* input, const GameContext& ctx, float fov = 5.0f);
@@ -32,11 +31,8 @@ public:
     void render(const GameContext& ctx);
     virtual void updateComponents(const UpdateContext& ctx);
     virtual void renderComponents(const RenderContext& ctx);
-    Renderer& getRenderer(){ return renderer; }
 
-    void addTimer(Timer* timer);
-    void removeTimer(Timer* timer);
-    void updateTimers(float deltaTime);
 
+    Camera& getCamera(){ return camera; }
     UpdateContext getUpdateContext(const GameContext& ctx);
 };

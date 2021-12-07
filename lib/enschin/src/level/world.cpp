@@ -21,7 +21,8 @@ void World::renderGround(const RenderContext& ctx) const{
     for (auto& t: terrains) {
         ctx.renderer.translate(t->offset);
         for (int i = 0; i < t->terrain->getAmountOfElements(); i++) {
-            ctx.renderer.renderColor(&t->terrain->getElements()[i]->model, t->terrainColor);
+            if (ctx.inScreen(t->terrain->getElements()[i]->getCollisionShape(), t->body))
+                ctx.renderer.renderColor(t->terrain->getElements()[i], t->terrainColor);
         }
         ctx.renderer.translate(-t->offset);
     }
@@ -38,7 +39,7 @@ unsigned int World::addTerrain(const Terrain* terrain, const Color* color, Vec2 
 
     groundBody->CreateFixture(terrain->getChainShape(), 0.0f);
 
-    terrains.push_back(new WorldComponent{
+    terrains.push_back(new WorldComponent {
         groundBody,
         terrain,
         color,

@@ -9,7 +9,8 @@
     "./models/test_model.json",
     "./models/crate.json",
     "./models/ball.json",
-    "./models/world_model.json"
+    "./models/world_model.json",
+    "./models/triangle.json"
   ],
   "sprites": [
     "./sprites/crate.png",

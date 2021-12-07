@@ -1,12 +1,12 @@
 #include <game/game_scene.h>
 
 GameScene::GameScene(Ressources* res, Input* input, const GameContext& ctx) : Scene(res, input, ctx, 5) {
-    for (float i = 0; i < 100; i++) {
+    for (float i = 0; i < 20; i++) {
         world->addTerrain(res->getTerrain("test_terrain"), res->getColor("green"), {i*50, -5});
     }
 
     UpdateContext updateContext = Scene::getUpdateContext(ctx);
-    new Player(updateContext, {02.f, 3});
+    new Player(updateContext, {0, 0});
     new GameObject(updateContext, "crate", res->getModel("crate"), res->getSprite("crate"), {-13, -2}, 0, 1, 0, 0);
     new GameObject(updateContext, "crate", res->getModel("crate"), res->getSprite("crate"), {-11.75, -1}, 0, 1, 0, 0);
     new GameObject(updateContext, "crate", res->getModel("crate"), res->getSprite("crate"), {-10.5, -2}, 0, 1, 0, 0);

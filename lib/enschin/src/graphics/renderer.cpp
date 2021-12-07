@@ -14,8 +14,8 @@ ShaderProgram Renderer::circleTextureProgram;
  * @param windowSize WindowSize for the matrices
  * @param units Units from the Center to the Top/Bottom of the Screen
  */
-Renderer::Renderer(Vec2 windowSize, float units) : fov(units) {
-    resetProjection(windowSize);
+Renderer::Renderer(float fov, float ratio) {
+    resetProjection(fov, ratio);
     resetMatrix();
 }
 
@@ -38,7 +38,7 @@ void Renderer::initShaderPrograms() {
  * @param model Model to render
  * @param color Color & opacity of the paint
  */
-void Renderer::renderColor(const RenderModel* model, const Color* color) const{
+void Renderer::renderColor(const Model* model, const Color* color) const{
     model->bind();
     colorProgram.bind();
     colorProgram.setUniformMat4f("u_MVP", mvp);
@@ -53,7 +53,7 @@ void Renderer::renderColor(const RenderModel* model, const Color* color) const{
  * @param model Model to render
  * @param texture Texture to render
  */
-void Renderer::renderTexture(const RenderModel* model, const Texture* texture) const{
+void Renderer::renderTexture(const Model* model, const Texture* texture) const{
     model->bind();
     texture->bind();
     textureProgram.bind();
@@ -72,7 +72,7 @@ void Renderer::renderTexture(const RenderModel* model, const Texture* texture) c
  * @param texture Texture to render
  * @param color Color to paint the texture with
  */
-void Renderer::renderColoredTexture(const RenderModel* model, const Texture* texture, const Color* color) const{
+void Renderer::renderColoredTexture(const Model* model, const Texture* texture, const Color* color) const{
     model->bind();
     texture->bind();
     coloredTextureProgram.bind();
@@ -87,7 +87,7 @@ void Renderer::renderColoredTexture(const RenderModel* model, const Texture* tex
  *
  * @param model Model to render
  */
-void Renderer::renderRainbow(const RenderModel* model, float totalTime) const{
+void Renderer::renderRainbow(const Model* model, float totalTime) const{
     model->bind();
     rainbowProgram.bind();
     rainbowProgram.setUniformMat4f("u_MVP", mvp);
@@ -95,7 +95,7 @@ void Renderer::renderRainbow(const RenderModel* model, float totalTime) const{
     glDrawElements(GL_TRIANGLES, model->getAmountOfIndices(), GL_UNSIGNED_INT, nullptr);
 }
 
-void Renderer::renderCroppedTexture(const RenderModel* model, const Texture* tex, Vec4 textureCoordinates) const{
+void Renderer::renderCroppedTexture(const Model* model, const Texture* tex, Vec4 textureCoordinates) const{
     model->bind();
     tex->bind();
     cropProgram.bind();
@@ -105,7 +105,7 @@ void Renderer::renderCroppedTexture(const RenderModel* model, const Texture* tex
 }
 
 
-void Renderer::renderCircleColor(const RenderModel* model, const Color* color) {
+void Renderer::renderCircleColor(const Model* model, const Color* color) {
     model->bind();
     circleColorProgram.bind();
     circleColorProgram.setUniformMat4f("u_MVP", mvp);
@@ -113,7 +113,7 @@ void Renderer::renderCircleColor(const RenderModel* model, const Color* color) {
     glDrawElements(GL_TRIANGLES, model->getAmountOfIndices(), GL_UNSIGNED_INT, nullptr);
 }
 
-void Renderer::renderCircleTexture(const RenderModel *model, const Texture *texture) {
+void Renderer::renderCircleTexture(const Model *model, const Texture *texture) {
     model->bind();
     texture->bind();
     circleTextureProgram.bind();
@@ -132,7 +132,7 @@ void Renderer::renderCircleTexture(const RenderModel *model, const Texture *text
  * @param tex Texture to render
  * @param pos Position to translate to
  */
-void Renderer::translateAndRenderTexture(const RenderModel* model, const Texture* tex, Vec2 pos, float rotation) {
+void Renderer::translateAndRenderTexture(const Model* model, const Texture* tex, Vec2 pos, float rotation) {
     translate(pos);
     rotate(rotation);
     renderTexture(model, tex);
@@ -182,15 +182,12 @@ void Renderer::scale(Vec2 scaling) {
  * 
  * @param windowSize New Size of the window
  */
-void Renderer::resetProjection(Vec2 windowSize) {
-    ratio = windowSize.x / windowSize.y;
+void Renderer::resetProjection(float fov, float ratio) {
+    this->fov = fov;
+    this->ratio = ratio;
     Matrix::frustum(proj, ratio * fov, -ratio * fov, -1 * fov, 1 * fov, 3.0f, 7.0f);
 }
 
-void Renderer::setFov(float fov) {
-    this->fov = fov;
-    Matrix::frustum(proj, ratio * fov, -ratio * fov, -1 * fov, 1 * fov, 3.0f, 7.0f);
-}
 
 /**
  * @brief Reset the matrices to look at 0
