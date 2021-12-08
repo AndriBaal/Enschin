@@ -20,9 +20,11 @@ void World::renderBackground(const RenderContext& ctx) const{
 void World::renderGround(const RenderContext& ctx) const{
     for (auto& t: terrains) {
         ctx.renderer.translate(t->offset);
-        for (int i = 0; i < t->terrain->getAmountOfElements(); i++) {
-            if (ctx.inScreen(t->terrain->getElements()[i]->getCollisionShape(), t->body))
-                ctx.renderer.renderColor(t->terrain->getElements()[i], t->terrainColor);
+        for (int i = 0; i < t->terrain->getAmountOfModels(); i++) {
+            Color c = Color{0, 0, 1, 0};
+            if (ctx.inScreen(t->terrain->getElements()[i]->getCollisionShape(), t->body)) {
+                ctx.renderer.renderColor(t->terrain->getElements()[i], &c);
+            }
         }
         ctx.renderer.translate(-t->offset);
     }
@@ -42,7 +44,6 @@ unsigned int World::addTerrain(const Terrain* terrain, const Color* color, Vec2 
     terrains.push_back(new WorldComponent {
         groundBody,
         terrain,
-        color,
         positionOffSet
     });
     return terrains.size()-1;

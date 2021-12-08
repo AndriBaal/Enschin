@@ -14,7 +14,8 @@
   ],
   "sprites": [
     "./sprites/crate.png",
-    "./sprites/cute.png"
+    "./sprites/cute.png",
+    "./sprites/noah.png"
   ],
   "sprite_sheets": [
     "./sprite_sheets/test_sprite_sheets.json"

@@ -64,6 +64,7 @@ void Ressources::load(std::string ressourcePath) {
                     unsigned int *indices = jsonToUIntArray((*m)["indices"], (*m)["amount_of_indices"].asInt());
                     models.insert({m.key().asString(), new Model(
                             vertices,
+                            false,
                             (*m)["amount_of_vertices"].asInt(),
                             indices,
                             (*m)["amount_of_indices"].asInt()

@@ -6,7 +6,7 @@ GameScene::GameScene(Ressources* res, Input* input, const GameContext& ctx) : Sc
     }
 
     UpdateContext updateContext = Scene::getUpdateContext(ctx);
-    new Player(updateContext, {0, 0});
+    new Player(updateContext, {0, 10});
     new GameObject(updateContext, "crate", res->getModel("crate"), res->getSprite("crate"), {-13, -2}, 0, 1, 0, 0);
     new GameObject(updateContext, "crate", res->getModel("crate"), res->getSprite("crate"), {-11.75, -1}, 0, 1, 0, 0);
     new GameObject(updateContext, "crate", res->getModel("crate"), res->getSprite("crate"), {-10.5, -2}, 0, 1, 0, 0);

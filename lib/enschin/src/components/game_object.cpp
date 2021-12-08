@@ -57,14 +57,14 @@ void GameObject::render(const RenderContext &ctx) {
         ctx.renderer.rotate(body->GetAngle());
         switch (renderType) {
             case COLOR:
-                if (model->getCollisionType() == CIRCLE) {
+                if (model->getCollisionShape()->GetType() == b2Shape::e_circle) {
                     ctx.renderer.renderCircleColor(model, color);
                 } else {
                     ctx.renderer.renderColor(model, color);
                 }
                 break;
             case SPRITE:
-                if (model->getCollisionType() == CIRCLE) {
+                if (model->getCollisionShape()->GetType() == b2Shape::e_circle) {
                     ctx.renderer.renderCircleTexture(model, sprite->getTexture());
                 } else {
                     ctx.renderer.renderTexture(model, sprite->getTexture());

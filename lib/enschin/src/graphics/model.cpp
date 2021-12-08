@@ -9,6 +9,11 @@ const float Model::defaultTexCoords[8] = {
 
 const unsigned int Model::defaultIndices[6] = {0, 1, 2, 2, 3, 0};
 
+Model::~Model() {
+    delete shape;
+    delete localBuffer;
+}
+
 /**
  * @brief Construct a new Model object. Mostly used
  * for unordinary Models that have more than 4 vertices.
@@ -19,16 +24,25 @@ const unsigned int Model::defaultIndices[6] = {0, 1, 2, 2, 3, 0};
  * @param amountOfIndices Amount of Indices of the model (default=6)
  */
 
-Model::Model(const float vertices[], const unsigned short amountOfVertices, const unsigned int indices[], const unsigned short amountOfIndices)
+Model::Model(const float vertices[], const bool chain, const unsigned short amountOfVertices, const unsigned int indices[], const unsigned short amountOfIndices)
         : amountOfIndices(amountOfIndices), amountOfVertices(amountOfVertices),
           vb(vertices, 4 * amountOfVertices * sizeof(float)), ib(indices, amountOfIndices), va(1) {
 
-    collisionType = POLYGON;
     b2Vec2 b2vertices[amountOfVertices];
     for (int i = 0; i < amountOfVertices*4; i+=4) {
         b2vertices[i/4].Set(vertices[i], vertices[i+1]);
     }
-    polygonShape.Set(b2vertices, amountOfVertices);
+
+    if (chain) {
+        std::reverse(b2vertices, b2vertices + sizeof(b2vertices)/sizeof(b2vertices[0]));
+        b2ChainShape* chainShape = new b2ChainShape;
+        chainShape->CreateLoop(b2vertices, amountOfVertices);
+        shape = chainShape;
+    } else {
+        b2PolygonShape* polygonShape = new b2PolygonShape;
+        polygonShape->Set(b2vertices, amountOfVertices);
+        shape = polygonShape;
+    }
 
     VertexBufferLayout layout;
     layout.addFloat(2);
@@ -48,32 +62,36 @@ Model::Model(const float vertices[], const unsigned short amountOfVertices, cons
  */
 Model::Model(Vec2 size)
         : amountOfIndices(6), amountOfVertices(6),
-          buffer(generateVerticesTex(size)), vb(buffer, 4 * amountOfVertices * sizeof(float)), ib(defaultIndices, amountOfIndices), va(1) {
+          localBuffer(generateVerticesTex(size)), vb(localBuffer, 4 * amountOfVertices * sizeof(float)),
+          ib(defaultIndices, amountOfIndices), va(1) {
 
-    collisionType = POLYGON;
-    polygonShape.SetAsBox(size.x / 2, size.y / 2);
+
+    b2PolygonShape* polygonShape = new b2PolygonShape;
+    polygonShape->SetAsBox(size.x / 2, size.y / 2);
+    shape = polygonShape;
 
     VertexBufferLayout layout;
     layout.addFloat(2);
     layout.addFloat(2);
 
     va.addBuffer(vb, layout);
-    delete buffer;
+    delete localBuffer;
 }
 
 Model::Model(float radius)
     : amountOfIndices(6), amountOfVertices(6),
-    buffer(generateVerticesTex({radius*2, radius*2})), vb(buffer, 4 * amountOfVertices * sizeof(float)), ib(defaultIndices, amountOfIndices), va(1) {
+      localBuffer(generateVerticesTex({radius * 2, radius * 2})), vb(localBuffer, 4 * amountOfVertices * sizeof(float)), ib(defaultIndices, amountOfIndices), va(1) {
 
-    collisionType = CIRCLE;
-    circleShape.m_radius = radius;
+    b2CircleShape* circleShape = new b2CircleShape;
+    circleShape->m_radius = radius;
+    shape = circleShape;
 
     VertexBufferLayout layout;
     layout.addFloat(2);
     layout.addFloat(2);
 
     va.addBuffer(vb, layout);
-    delete buffer;
+    delete localBuffer;
 }
 
 /**
@@ -104,11 +122,4 @@ float* Model::generateVerticesTex(Vec2 dim) {
     dest[10] = 1.0f;
     dest[11] = 1.0f;
     return dest;
-}
-
-const b2Shape* Model::getCollisionShape() const {
-    if (collisionType == POLYGON)
-        return &polygonShape;
-    else
-        return &circleShape;
 }

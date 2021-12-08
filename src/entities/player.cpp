@@ -1,7 +1,7 @@
 #include <game/player.h>
 
 Player::Player(const UpdateContext& ctx, Vec2 pos)
-    : GameObject(ctx, "triangle", ctx.res.getModel("triangle"), ctx.res.getSprite("cute"), pos){
+    : GameObject(ctx, "triangle", ctx.res.getModel("test_model"), ctx.res.getSprite("noah"), pos){
     jumpTimer = new Timer(0, .25f);
     ctx.camera.setCameraTarget(body);
 }

@@ -4,20 +4,22 @@
 #include "model.h"
 #include "model.h"
 #include "color.h"
+#include "game_object.h"
+#include "terrain_definition.h"
 #include <algorithm>
 #include <iostream>
 
 
 class Terrain{
 private:
-    b2ChainShape* ground;
-    Model** models;
-    unsigned int amountOfElements;
+    std::vector<GameObject*> groundObjects;
+    std::vector<GameObject*> backgroundObjects;
+    /////////////////
+    //Delete objects via .kill();
+    ///////////////
 public:
-    Terrain(float* vertices, unsigned int amountOfVertices, bool collisionOutside=1);
+    Terrain(const ChunkManager& chunkManager, const TerrainDefinition* terrainDefinition, Vec2 pos);
     ~Terrain();
-    b2ChainShape *getChainShape() const { return ground; }
-    unsigned int getAmountOfElements() const { return amountOfElements; };
-    Model** getElements() const { return models; }
-    Model* getElement(int index){ return models[index]; }
+    std::vector<GameObject*>& getGroundObjects(){ return groundObjects; }
+    std::vector<GameObject*>& getBackgroundObjects() { return backgroundObjects; }
 };

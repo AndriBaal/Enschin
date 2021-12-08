@@ -6,6 +6,6 @@
 
 
 struct Chunk {
+    Vec2 position;
     std::vector<GameObject*> gameObjects;
-
 };

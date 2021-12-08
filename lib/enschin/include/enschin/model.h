@@ -1,5 +1,6 @@
 #pragma once
 #include <math.h>
+#include <algorithm>
 #include <box2d/b2_body.h>
 #include <box2d/b2_polygon_shape.h>
 #include <box2d/b2_fixture.h>
@@ -11,14 +12,12 @@
 #include "index_buffer.h"
 #include "vec2.h"
 
-enum CollisionType {CIRCLE, POLYGON};
-
 /**
  * @brief Model for rendering without collisions
  */
 struct Model {
 protected:
-    float* buffer;
+    float* localBuffer;
     const static float defaultTexCoords[8];
     const static unsigned int defaultIndices[6];
     unsigned short amountOfVertices;
@@ -27,16 +26,16 @@ protected:
     const IndexBuffer ib;
     const VertexBuffer vb;
 
-    CollisionType collisionType;
-    b2PolygonShape polygonShape;
-    b2CircleShape circleShape;
+    b2Shape* shape;
 public:
     Model(float radius);
     Model(Vec2 size);
     Model(const float vertices[],
+          const bool chain = false,
           const unsigned short amountOfVertices = 4,
           const unsigned int indices[6] = defaultIndices,
           const unsigned short amountOfIndices = 6);
+    ~Model();
 
     static float* generateVerticesTex(Vec2 size);
     void bind() const;
@@ -44,6 +43,5 @@ public:
     int getAmountOfVertices() const { return amountOfVertices; }
     unsigned int getAmountOfIndices() const { return amountOfIndices; }
 
-    const b2Shape* getCollisionShape() const;
-    CollisionType getCollisionType() const { return collisionType; }
+    const b2Shape* getCollisionShape() const { return shape; };
 };
