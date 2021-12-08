@@ -1,6 +1,8 @@
 #pragma once
+
 #include <cassert>
 #include <GL/glew.h>
+
 #define ASSERT(x) if (!(x)) assert(false)
 #define INT2VOIDP(i) (void*)(uintptr_t)(i)
 
@@ -14,8 +16,12 @@ private:
     static unsigned boundIndexBuffer;
 public:
     IndexBuffer() = default;
-    IndexBuffer(const unsigned int* indices, unsigned int count);
+
+    IndexBuffer(const unsigned int *indices, unsigned int count);
+
     ~IndexBuffer();
+
     void bind() const;
-    static void unbind() ;
+
+    static void unbind();
 };

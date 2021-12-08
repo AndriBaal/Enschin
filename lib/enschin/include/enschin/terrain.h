@@ -1,4 +1,5 @@
 #pragma once
+
 #include <box2d/b2_chain_shape.h>
 #include <box2d/b2_math.h>
 #include "model.h"
@@ -6,20 +7,18 @@
 #include "color.h"
 #include "game_object.h"
 #include "terrain_definition.h"
+#include "enschin/chunk_manager.h"
 #include <algorithm>
 #include <iostream>
 
 
-class Terrain{
+class Terrain {
 private:
-    std::vector<GameObject*> groundObjects;
-    std::vector<GameObject*> backgroundObjects;
-    /////////////////
-    //Delete objects via .kill();
-    ///////////////
+    std::vector<GameObject *> groundObjects;
 public:
-    Terrain(const ChunkManager& chunkManager, const TerrainDefinition* terrainDefinition, Vec2 pos);
+    Terrain(const UpdateContext &ctx, const TerrainDefinition *terrainDefinition, Vec2 pos);
+
     ~Terrain();
-    std::vector<GameObject*>& getGroundObjects(){ return groundObjects; }
-    std::vector<GameObject*>& getBackgroundObjects() { return backgroundObjects; }
+
+    std::vector<GameObject *> &getGroundObjects() { return groundObjects; }
 };

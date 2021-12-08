@@ -25,7 +25,7 @@ GameObject::GameObject(const UpdateContext &ctx, const std::string name, const M
                        float gravity, float density, float friction)
                        : name(name), world(&ctx.world), model(model), sprite(sprite) {
     createBody(ctx, pos, fixedRotation, isStatic, collision, gravity, density, friction);
-    ctx.componentManager.addGameObject(this);
+    ctx.chunkManager.addGameObject(this);
     renderType = SPRITE;
 }
 
@@ -34,7 +34,7 @@ GameObject::GameObject(const UpdateContext &ctx, const std::string name, const M
                        float gravity, float density, float friction)
                        : name(name), world(&ctx.world), model(model), color(color) {
     createBody(ctx, pos, fixedRotation, isStatic, collision, gravity, density, friction);
-    ctx.componentManager.addGameObject(this);
+    ctx.chunkManager.addGameObject(this);
     renderType = COLOR;
 }
 
@@ -43,7 +43,7 @@ GameObject::GameObject(const UpdateContext &ctx, const std::string name, const M
                        float gravity, float density, float friction)
                         : name(name), world(&ctx.world), model(model) {
     createBody(ctx, pos, fixedRotation, isStatic, collision, gravity, density, friction);
-    ctx.componentManager.addGameObject(this);
+    ctx.chunkManager.addGameObject(this);
     renderType = SHADER;
 }
 

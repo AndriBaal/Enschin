@@ -1,4 +1,5 @@
 #pragma once
+
 #include <vector>
 #include "renderer.h"
 #include "input.h"
@@ -16,23 +17,29 @@
  */
 class Scene {
 protected:
-    const Ressources& res;
-    Input& input;
-    World* world = new World();
+    const Ressources &res;
+    Input &input;
+    World *world = new World();
     Renderer renderer;
     Camera camera;
-    ComponentManager componentManager;
 private:
-    RenderContext getRenderContext(const GameContext& ctx);
+    RenderContext getRenderContext(const GameContext &ctx);
+
 public:
-	Scene(Ressources* res, Input* input, const GameContext& ctx, float fov = 5.0f);
+    Scene(Ressources *res, Input *input, const GameContext &ctx, float fov = 5.0f);
+
     ~Scene();
-    void update(const GameContext& ctx);
-    void render(const GameContext& ctx);
-    virtual void updateComponents(const UpdateContext& ctx);
-    virtual void renderComponents(const RenderContext& ctx);
+
+    void update(const GameContext &ctx);
+
+    void render(const GameContext &ctx);
+
+    virtual void updateComponents(const UpdateContext &ctx);
+
+    virtual void renderComponents(const RenderContext &ctx);
 
 
-    Camera& getCamera(){ return camera; }
-    UpdateContext getUpdateContext(const GameContext& ctx);
+    Camera &getCamera() { return camera; }
+
+    UpdateContext getUpdateContext(const GameContext &ctx);
 };

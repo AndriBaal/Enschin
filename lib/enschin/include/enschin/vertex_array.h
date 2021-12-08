@@ -1,4 +1,5 @@
 #pragma once
+
 #include "vertex_buffer.h"
 #include "vertex_buffer_layout.h"
 
@@ -8,9 +9,14 @@ private:
     static unsigned int boundVertexArray;
 public:
     VertexArray() = default;
+
     VertexArray(unsigned int amount);
+
     ~VertexArray();
-    void addBuffer(const VertexBuffer& vb, const VertexBufferLayout& layout) const;
+
+    void addBuffer(const VertexBuffer &vb, const VertexBufferLayout &layout) const;
+
     void bind() const;
+
     static void unbind();
 };

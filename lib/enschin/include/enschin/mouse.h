@@ -1,4 +1,5 @@
 #pragma once
+
 #include <iostream>
 #include <unordered_map>
 #include <GLFW/glfw3.h>
@@ -9,9 +10,11 @@
  */
 class Mouse {
 private:
-	Vec2 translateMousePosition(float units, double mouseX, double mouseY, int windowW, int windowH);
+    Vec2 translateMousePosition(float units, double mouseX, double mouseY, int windowW, int windowH);
+
 public:
     Mouse() = default;
-	void updateCursor(GLFWwindow* window, float units, Vec2& cursorPos);
+
+    void updateCursor(GLFWwindow *window, float units, Vec2 &cursorPos);
 };
 

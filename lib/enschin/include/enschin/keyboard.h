@@ -14,8 +14,10 @@ private:
     std::vector<Mapping> mappings;
 public:
     Keyboard() = default;
-    Keyboard(std::vector<Mapping> mappings) : mappings(std::move(mappings)){
+
+    Keyboard(std::vector<Mapping> mappings) : mappings(std::move(mappings)) {
 
     }
-    void update(GLFWwindow* window);
+
+    void update(GLFWwindow *window);
 };

@@ -1,4 +1,5 @@
 #pragma once
+
 #include <GL/glew.h>
 #include <GLFW/glfw3.h>
 #include <cstdlib>
@@ -15,20 +16,31 @@
 class Window {
 private:
     Vec2 windowSize;
-	bool fullScreen;
-	bool vSync = true;
-	GLFWwindow* window;
+    bool fullScreen;
+    bool vSync = true;
+    GLFWwindow *window;
 public:
     Window() = default;
-	Window(std::string title, Vec2 size, bool fullscreen);
-	bool update();
-	Vec2 getSize() { return windowSize; }
-	GLFWwindow* getGlfw() { return window; }
-	void setSize(Vec2 v);
-	void setFullScreen(bool fullscreen);
-	void setTitle(std::string title);
-	void setClearColor(Color newColor);
-	void setVSync(bool vSync);
+
+    Window(std::string title, Vec2 size, bool fullscreen);
+
+    bool update();
+
+    Vec2 getSize() { return windowSize; }
+
+    GLFWwindow *getGlfw() { return window; }
+
+    void setSize(Vec2 v);
+
+    void setFullScreen(bool fullscreen);
+
+    void setTitle(std::string title);
+
+    void setClearColor(Color newColor);
+
+    void setVSync(bool vSync);
+
     void setIcon(const char *filePath);
-    void setAntialiasing(bool state){ if(state)glEnable(GL_MULTISAMPLE); else glDisable(GL_MULTISAMPLE);}
+
+    void setAntialiasing(bool state) { if (state)glEnable(GL_MULTISAMPLE); else glDisable(GL_MULTISAMPLE); }
 };

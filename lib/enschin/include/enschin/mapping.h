@@ -6,8 +6,8 @@ enum MappingType {
     CONTROLLER
 };
 
-struct Mapping{
+struct Mapping {
     MappingType mappingType;
     int key;
-    bool* event;
+    bool *event;
 };

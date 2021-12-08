@@ -1,4 +1,5 @@
 #pragma once
+
 #include <math.h>
 #include <algorithm>
 #include <box2d/b2_body.h>
@@ -17,7 +18,7 @@
  */
 struct Model {
 protected:
-    float* localBuffer;
+    float *localBuffer;
     const static float defaultTexCoords[8];
     const static unsigned int defaultIndices[6];
     unsigned short amountOfVertices;
@@ -26,22 +27,27 @@ protected:
     const IndexBuffer ib;
     const VertexBuffer vb;
 
-    b2Shape* shape;
+    b2Shape *shape;
 public:
     Model(float radius);
+
     Model(Vec2 size);
+
     Model(const float vertices[],
           const bool chain = false,
           const unsigned short amountOfVertices = 4,
           const unsigned int indices[6] = defaultIndices,
           const unsigned short amountOfIndices = 6);
+
     ~Model();
 
-    static float* generateVerticesTex(Vec2 size);
+    static float *generateVerticesTex(Vec2 size);
+
     void bind() const;
 
     int getAmountOfVertices() const { return amountOfVertices; }
+
     unsigned int getAmountOfIndices() const { return amountOfIndices; }
 
-    const b2Shape* getCollisionShape() const { return shape; };
+    const b2Shape *getCollisionShape() const { return shape; };
 };

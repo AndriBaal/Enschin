@@ -1,11 +1,15 @@
 #pragma once
-#include "game_object.h"
 
-#define CHUNK_WIDTH 10
-#define CHUNK_HEIGHT 10
+#include "game_object.h"
+#include "context.h"
 
 
 struct Chunk {
-    Vec2 position;
-    std::vector<GameObject*> gameObjects;
+private:
+    std::vector<GameObject *> gameObjects;
+public:
+    Vec2 getPosition() const { return position; }
+    void update(const UpdateContext& ctx);
+    void render(const RenderContext& ctx);
+    void add(GameObject *gameObject);
 };
