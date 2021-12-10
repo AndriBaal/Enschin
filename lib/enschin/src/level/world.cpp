@@ -13,26 +13,26 @@ void World::update(const UpdateContext& ctx) {
     world.Step(ctx.deltaTime, 6, 2);
 }
 
-void World::renderBackground(const RenderContext& ctx) const{
-
-}
-
-void World::renderGround(const RenderContext& ctx) const{
-    for (auto& t: terrains) {
-        ctx.renderer.translate(t->offset);
-        for (int i = 0; i < t->terrain->getAmountOfModels(); i++) {
-            Color c = Color{0, 0, 1, 0};
-            if (ctx.inScreen(t->terrain->getElements()[i]->getCollisionShape(), t->body)) {
-                ctx.renderer.renderColor(t->terrain->getElements()[i], &c);
-            }
-        }
-        ctx.renderer.translate(-t->offset);
-    }
-}
-
-void World::renderForeground(const RenderContext &ctx) const {
-
-}
+//void World::renderBackground(const RenderContext& ctx) const{
+//
+//}
+//
+//void World::renderGround(const RenderContext& ctx) const{
+//    for (auto& t: terrains) {
+//        ctx.renderer.translate(t->offset);
+//        for (int i = 0; i < t->terrain->getAmountOfModels(); i++) {
+//            Color c = Color{0, 0, 1, 0};
+//            if (ctx.inScreen(t->terrain->getElements()[i]->getCollisionShape(), t->body)) {
+//                ctx.renderer.renderColor(t->terrain->getElements()[i], &c);
+//            }
+//        }
+//        ctx.renderer.translate(-t->offset);
+//    }
+//}
+//
+//void World::renderForeground(const RenderContext &ctx) const {
+//
+//}
 
 unsigned int World::addTerrain(const Terrain* terrain, const Color* color, Vec2 positionOffSet) {
     b2BodyDef groundBodyDef;

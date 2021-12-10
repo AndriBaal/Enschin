@@ -23,26 +23,11 @@ private:
     ChunkManager chunkManager;
 public:
     World(Vec2 gravity = {0, -12.0f});
-
     ~World();
-
     unsigned int addTerrain(const Terrain *terrain, const Color *color, Vec2 positionOffset = {0, 0});
-
     void removeTerrain(unsigned int id);
-
-    void update(const UpdateContext &ctx);
-
-    void renderBackground(const RenderContext &ctx) const;
-
-    void renderGround(const RenderContext &ctx) const;
-
-    void renderForeground(const RenderContext &ctx) const;
-
     b2World &getWorld() { return world; }
-
     void setGravity(Vec2 newGravity) { world.SetGravity(newGravity.toB2()); }
-
     Vec2 getGravity() { return world.GetGravity(); }
-
     const ChunkManager &getChunkManager() const { return chunkManager; }
 };

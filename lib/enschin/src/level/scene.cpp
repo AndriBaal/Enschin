@@ -25,8 +25,7 @@ void Scene::update(const GameContext& ctx) {
     //updateTimers(ctx.deltaTime);
     input.update(ctx.window, renderer.getFov());
     const UpdateContext updateContext = getUpdateContext(ctx);
-    updateComponents(updateContext);
-    componentManager.removeDeadObjects();
+    world->getChunkManager()->update(updateContext);
     world->update(updateContext);
 }
 
@@ -36,20 +35,8 @@ void Scene::render(const GameContext& ctx) {
     Scene::renderComponents(renderContext);
 }
 
-void Scene::updateComponents(const UpdateContext &ctx) {
-    for (auto& g : componentManager.getGameObjects())
-        if (g->isActive())
-            g->update(ctx);
-}
-
 void Scene::renderComponents(const RenderContext &ctx) {
-    world->renderBackground(ctx);
     camera.update(renderer);
-    world->renderGround(ctx);
-    for (auto & g : componentManager.getGameObjects())
-        if (g->isVisible() && ctx.inScreen(g->getShape(), g->getBody()))
-            g->render(ctx);
-    world->renderForeground(ctx);
     camera.reset(renderer);
 }
 

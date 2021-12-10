@@ -8,6 +8,8 @@
 #include "chunk_manager.h"
 #include <box2d/b2_world.h>
 
+
+class ChunkManager;
 /**
  * @brief Update context
  */

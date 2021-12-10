@@ -8,7 +8,7 @@ Ressources::~Ressources() {
     for (auto& model : models) delete model.second;
     for (auto& spriteSheet : spriteSheets) delete spriteSheet.second;
     for (auto& sprite : sprites) delete sprite.second;
-    for (auto& terrain : terrains) delete terrain.second;
+    for (auto& terrain : terrainDefinitions) delete terrain.second;
     for (auto& color: colors) delete color.second;
 }
 
@@ -47,7 +47,7 @@ void Ressources::load(std::string ressourcePath) {
             terrainReader.parse(terrainStream, terrainValues);
             for (auto t = terrainValues.begin(); t != terrainValues.end(); t++) {
                 float* worldVertices = jsonToFloatArray((*t)["vertices"], (*t)["amount_of_vertices"].asUInt() * 4);
-                terrains.insert({t.key().asString(), new Terrain(worldVertices, (*t)["amount_of_vertices"].asInt())});
+                terrainDefinitions.insert({t.key().asString(), new TerrainDefinition(worldVertices, (*t)["amount_of_vertices"].asInt())});
                 delete worldVertices;
             }
         }

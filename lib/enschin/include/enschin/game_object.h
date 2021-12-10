@@ -14,7 +14,8 @@ enum RenderType {
     COLOR, SPRITE, SHADER
 };
 
-
+class UpdateContext;
+class RenderContext;
 class GameObject {
 private:
     const std::string name;
