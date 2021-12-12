@@ -25,20 +25,16 @@ void Scene::update(const GameContext& ctx) {
     //updateTimers(ctx.deltaTime);
     input.update(ctx.window, renderer.getFov());
     const UpdateContext updateContext = getUpdateContext(ctx);
-    world->getChunkManager()->update(updateContext);
-    world->update(updateContext);
+    world->getWorld().Step(ctx.deltaTime, 6, 2);
+    world->getChunkManager().update(updateContext);
 }
 
 void Scene::render(const GameContext& ctx) {
     const RenderContext renderContext = getRenderContext(ctx);
     renderer.resetMatrix();
-    Scene::renderComponents(renderContext);
+    world->getChunkManager().render(renderContext);
 }
 
-void Scene::renderComponents(const RenderContext &ctx) {
-    camera.update(renderer);
-    camera.reset(renderer);
-}
 
 //void Scene::removeTimer(Timer *timer) {
 //    timers.erase(std::remove(timers.begin(), timers.end(), timer), timers.end());
@@ -55,8 +51,8 @@ UpdateContext Scene::getUpdateContext(const GameContext& ctx) {
         ctx.windowSize,
         input,
         res,
+        world->getChunkManager(),
         camera,
-        componentManager,
         world->getWorld(),
     };
 }

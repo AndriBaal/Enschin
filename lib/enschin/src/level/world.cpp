@@ -1,16 +1,14 @@
 #include <enschin/world.h>
 
-World::World(Vec2 gravity) {
+World::World(Vec2 amountOfChunks, Vec2 chunkSizes, Vec2 gravity) {
     world.SetGravity(gravity.toB2());
     world.SetContactListener(this->contactListener);
+
+    chunkManager.init(amountOfChunks, chunkSizes);
 }
 
 World::~World() {
 
-}
-
-void World::update(const UpdateContext& ctx) {
-    world.Step(ctx.deltaTime, 6, 2);
 }
 
 //void World::renderBackground(const RenderContext& ctx) const{
@@ -34,23 +32,26 @@ void World::update(const UpdateContext& ctx) {
 //
 //}
 
-unsigned int World::addTerrain(const Terrain* terrain, const Color* color, Vec2 positionOffSet) {
-    b2BodyDef groundBodyDef;
-    groundBodyDef.position.Set(positionOffSet.x, positionOffSet.y);
-    b2Body* groundBody = world.CreateBody(&groundBodyDef);
-
-    groundBody->CreateFixture(terrain->getChainShape(), 0.0f);
-
-    terrains.push_back(new WorldComponent {
-        groundBody,
-        terrain,
-        positionOffSet
-    });
-    return terrains.size()-1;
+unsigned int World::addTerrain(const UpdateContext& ctx, const TerrainDefinition* terrainDef, const Color* color, Vec2 positionOffSet) {
+//    b2BodyDef groundBodyDef;
+//    groundBodyDef.position.Set(positionOffSet.x, positionOffSet.y);
+//    b2Body* groundBody = world.CreateBody(&groundBodyDef);
+//
+//    groundBody->CreateFixture(terrain->getChainShape(), 0.0f);
+//
+//    terrains.push_back(new WorldComponent {
+//        groundBody,
+//        terrain,
+//        positionOffSet
+//    });
+//    return terrains.size()-1;
+    Terrain* terrain = new Terrain(ctx, terrainDef, positionOffSet);
+    terrains.push_back(terrain);
+    return 1;
 }
 
 void World::removeTerrain(unsigned int id) {
-    world.DestroyBody(terrains.at(id)->body);
+    //world.DestroyBody(terrains.at(id)->body);
 }
 
 void ContactListener::PreSolve(b2Contact *contact, const b2Manifold *oldManifold) {

@@ -19,7 +19,7 @@ class Scene {
 protected:
     const Ressources &res;
     Input &input;
-    World *world = new World();
+    World *world;
     Renderer renderer;
     Camera camera;
 private:
@@ -27,19 +27,9 @@ private:
 
 public:
     Scene(Ressources *res, Input *input, const GameContext &ctx, float fov = 5.0f);
-
     ~Scene();
-
     void update(const GameContext &ctx);
-
     void render(const GameContext &ctx);
-
-    virtual void updateComponents(const UpdateContext &ctx);
-
-    virtual void renderComponents(const RenderContext &ctx);
-
-
     Camera &getCamera() { return camera; }
-
     UpdateContext getUpdateContext(const GameContext &ctx);
 };

@@ -14,6 +14,7 @@ Enschin:
 	/ bring fov back
 	/ set  ground method for scene
 	!!! Chunk system with always update function
+	!!! Refactor math libraries for Vec2i and Vec2f + make vectoir classes smaller
 	!!! Update radius for Entity
 	!!! Fade function for camera
 	!!! Chunk system

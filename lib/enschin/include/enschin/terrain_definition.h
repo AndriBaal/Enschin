@@ -1,5 +1,7 @@
 #pragma once
 
+#include "model.h"
+
 struct TerrainDefinition {
 private:
     Model** groundModels;

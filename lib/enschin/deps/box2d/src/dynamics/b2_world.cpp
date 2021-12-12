@@ -71,9 +71,11 @@ b2World::b2World(const b2Vec2& gravity)
 	memset(&m_profile, 0, sizeof(b2Profile));
 }
 
+#include "iostream"
 b2World::~b2World()
 {
 	// Some shapes allocate using b2Alloc.
+    std::cout << "jsdhfkjsdkfjhsdfkjhsdkjf" << std::endl;
 	b2Body* b = m_bodyList;
 	while (b)
 	{

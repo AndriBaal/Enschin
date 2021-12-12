@@ -19,7 +19,7 @@ struct UpdateContext {
     const Vec2 windowSize;
     const Input &input;
     const Ressources &res;
-    ChunkManager &chunkManager;
+    const ChunkManager &chunkManager;
     Camera &camera;
     b2World &world;
 };
