@@ -6,22 +6,29 @@ void ChunkManager::init(Vec2 amountOfChunks, Vec2 chunkDimension, float chunkUpd
     this->chunkDimension = chunkDimension;
     this-> chunkUpdateRadius = chunkUpdateRadius;
     totalChunks =  int(amountOfChunks.x * amountOfChunks.y);
-    chunks = new Chunk[int(amountOfChunks.x * amountOfChunks.y)];
+    chunks = new Chunk[totalChunks];
     for (int i = 0; i < totalChunks; i++) {
         Vec2 indexPosition = {
                 float(i % int(amountOfChunks.x)),
                 floor(i / amountOfChunks.x)
         };
-        chunks[i].setMatrixPosition({
-            floor((indexPosition.x + 1) - amountOfChunks.x / 2),
-            (indexPosition.y - 1) - floor(amountOfChunks.y / 2)
-        });
+        Vec2 matrixPosition = {
+            floor((indexPosition.x) - amountOfChunks.x / 2),
+            (indexPosition.y) - floor(amountOfChunks.y / 2),
+        };
+        if (int(amountOfChunks.x) % 2 == 1) matrixPosition.x++;
+        chunks[i].setMatrixPosition(matrixPosition);
     }
 }
 
 
 Chunk* ChunkManager::getChunk(Vec2 coords) const {
-    return &chunks[int(coords.x / chunkDimension.x) * int(coords.y / chunkDimension.y)];
+    int x = coords.x / chunkDimension.x + amountOfChunks.x / 2;
+    int y = coords.y / chunkDimension.y + amountOfChunks.y / 2;
+    std::cout << coords << "        " << Vec2{float(x), float(y)} <<"             "<< int(y * amountOfChunks.x + x) << std::endl;
+    Chunk* chunk = &chunks[int(y * amountOfChunks.x + x)];
+    std::cout << "Input: " << coords << "  Output: " << chunk->getMatrixPosition() << std::endl;
+    return chunk;
 }
 
 
@@ -49,22 +56,6 @@ void ChunkManager::update(UpdateContext ctx) const {
 void ChunkManager::render(RenderContext ctx) const {
     unsigned short horizontalRenders = ctx.camera.getRatio() / chunkDimension.x;
     unsigned short verticalRenders = ctx.camera.getFov() / chunkDimension.y;
-    Vec2 mainChunk = getChunk(ctx.camera.getCameraPosition())->getMatrixPosition();
-    for (int i = 0; i < totalChunks; i++) {
-        chunks[i].render(ctx);
-    }
-//    for (int i = 1; i < horizontalRenders / 2; i++ ) {
-//        for (int j = 0; j < verticalRenders / 2; j++) {
-//            get({
-//                mainChunk.x + i,
-//                mainChunk.y + j
-//            })->render(ctx);
-//            get({
-//                mainChunk.x - i,
-//                mainChunk.y - j
-//            })->render(ctx);
-//        }
-//    }
-//    get(mainChunk)->render(ctx);
-
+    Chunk* mainChunk = getChunk(ctx.camera.getCameraPosition());
+    mainChunk->render(ctx);
 }
