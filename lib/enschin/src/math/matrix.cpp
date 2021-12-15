@@ -65,7 +65,7 @@ namespace Matrix {
      * @param pos Location on x, y
      * @param z Z location (default=0.0f)
      */
-    void translate(float m[], Vec2 pos, float z) {
+    void translate(float m[], Vec2f pos, float z) {
         for (int i=0 ; i<4 ; i++) {
             m[12 + i] += m[i] * pos.x + m[4 + i] * pos.y + m[8 + i] * z;
         }

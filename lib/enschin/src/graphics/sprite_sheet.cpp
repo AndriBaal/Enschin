@@ -1,7 +1,7 @@
 #include <iostream>
 #include <enschin/sprite_sheet.h>
 
-SpriteSheet::SpriteSheet(const std::string& filePath, Vec2 spriteSize, unsigned char fps) : fps(fps) {
+SpriteSheet::SpriteSheet(const std::string& filePath, Vec2f spriteSize, unsigned char fps) : fps(fps) {
     stbi_set_flip_vertically_on_load(true);
     int width, height, BPP;
     unsigned char* localBuffer = nullptr;

@@ -5,7 +5,7 @@
 #include "shader_program.h"
 #include "model.h"
 #include "texture.h"
-#include "vec2.h"
+#include "vec2f.h"
 #include "vec4.h"
 #include "matrix.h"
 #include "ray2.h"
@@ -43,17 +43,17 @@ public:
 
     void resetMatrix();
 
-    void translate(Vec2 pos);
+    void translate(Vec2f pos);
 
     void rotate(float angle);
 
-    void scale(Vec2 scaling);
+    void scale(Vec2f scaling);
 
     float getRatio() { return ratio; }
 
     float getFov() { return fov; }
 
-    void translateAndRenderTexture(const Model *model, const Texture *tex, Vec2 pos, float rotation = .0f);
+    void translateAndRenderTexture(const Model *model, const Texture *tex, Vec2f pos, float rotation = .0f);
 
     void renderColor(const Model *model, const Color *) const;
 

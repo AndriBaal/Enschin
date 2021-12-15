@@ -5,7 +5,7 @@
 #include <string>
 #include <iostream>
 #include "game_object.h"
-#include "vec2.h"
+#include "vec2f.h"
 #include "sprite.h"
 #include "model.h"
 #include "context.h"
@@ -32,21 +32,21 @@ protected:
     b2Body *body;
 public:
     GameObject(const UpdateContext &ctx, const std::string name, const Model *model, const SpriteSheet *sprite,
-               Vec2 pos, bool fixedRotation = false, bool collision = true, bool isStatic = false, float gravity = 1.0f,
+               Vec2f pos, bool fixedRotation = false, bool collision = true, bool isStatic = false, float gravity = 1.0f,
                float density = 1.0f, float friction = 0.3f);
 
-    GameObject(const UpdateContext &ctx, const std::string name, const Model *model, const Color *c, Vec2 pos,
+    GameObject(const UpdateContext &ctx, const std::string name, const Model *model, const Color *c, Vec2f pos,
                bool fixedRotation = false, bool collision = true, bool isStatic = false, float gravity = 1.0f,
                float density = 1.0f, float friction = 0.3f);
 
-    GameObject(const UpdateContext &ctx, const std::string name, const Model *model, Vec2 pos,
+    GameObject(const UpdateContext &ctx, const std::string name, const Model *model, Vec2f pos,
                bool fixedRotation = false, bool collision = true, bool isStatic = false, float gravity = 1.0f,
                float density = 1.0f, float friction = 0.3f);
 
     ~GameObject();
 
     void
-    createBody(const UpdateContext &ctx, Vec2 pos, bool fixedRotation, bool collision, bool isStatic, float gravity,
+    createBody(const UpdateContext &ctx, Vec2f pos, bool fixedRotation, bool collision, bool isStatic, float gravity,
                float density, float friction);
 
     virtual void update(const UpdateContext &ctx) {}
@@ -73,9 +73,9 @@ public:
 
     void kill() { alive = false; }
 
-    Vec2 getPos() { return body->GetPosition(); }
+    Vec2f getPos() { return body->GetPosition(); }
 
-    void setPos(Vec2 pos) { body->SetTransform(pos.toB2(), body->GetAngle()); }
+    void setPos(Vec2f pos) { body->SetTransform(pos.toB2(), body->GetAngle()); }
 
     float getRotation() { return body->GetAngle(); }
 

@@ -1,18 +1,18 @@
 #include <enschin/chunk_manager.h>
 
 
-void ChunkManager::init(Vec2 amountOfChunks, Vec2 chunkDimension, float chunkUpdateRadius) {
-    this->amountOfChunks = amountOfChunks;
-    this->chunkDimension = chunkDimension;
+void ChunkManager::init(unsigned int verticalChunks, unsigned int  horizontalChunks, unsigned int chunkWidth, unsigned int chunkHeight, float chunkUpdateRadius) {
+    this->verticalChunks = verticalChunks;
+    this->horizontalChunks = horizontalChunks;
     this-> chunkUpdateRadius = chunkUpdateRadius;
-    totalChunks =  int(amountOfChunks.x * amountOfChunks.y);
+    totalChunks =  verticalChunks * horizontalChunks;
     chunks = new Chunk[totalChunks];
     for (int i = 0; i < totalChunks; i++) {
-        Vec2 indexPosition = {
-                float(i % int(amountOfChunks.x)),
-                floor(i / amountOfChunks.x)
+        Vec2f indexPosition = {
+                float(i % horizontalChunks),
+                i / horizontalChunks
         };
-        Vec2 matrixPosition = {
+        Vec2f matrixPosition = {
             floor((indexPosition.x) - amountOfChunks.x / 2),
             (indexPosition.y) - floor(amountOfChunks.y / 2),
         };
@@ -22,17 +22,16 @@ void ChunkManager::init(Vec2 amountOfChunks, Vec2 chunkDimension, float chunkUpd
 }
 
 
-Chunk* ChunkManager::getChunk(Vec2 coords) const {
+Chunk* ChunkManager::getChunk(Vec2f coords) const {
     int x = coords.x / chunkDimension.x + amountOfChunks.x / 2;
     int y = coords.y / chunkDimension.y + amountOfChunks.y / 2;
-    std::cout << coords << "        " << Vec2{float(x), float(y)} <<"             "<< int(y * amountOfChunks.x + x) << std::endl;
     Chunk* chunk = &chunks[int(y * amountOfChunks.x + x)];
     std::cout << "Input: " << coords << "  Output: " << chunk->getMatrixPosition() << std::endl;
     return chunk;
 }
 
 
-bool ChunkManager::isInChunk(Vec2* vertices) const {
+bool ChunkManager::isInChunk(Vec2f* vertices) const {
 //    bool inScreen() const {
 //        b2PolygonShape windowShape;
 //        windowShape.SetAsBox(camera.getFov() * camera.getRatio(), camera.getFov());

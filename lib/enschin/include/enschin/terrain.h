@@ -16,7 +16,7 @@ class Terrain {
 private:
     std::vector<GameObject *> groundObjects;
 public:
-    Terrain(const UpdateContext &ctx, const TerrainDefinition *terrainDefinition, Vec2 pos);
+    Terrain(const UpdateContext &ctx, const TerrainDefinition *terrainDefinition, Vec2f pos);
     ~Terrain();
 
     std::vector<GameObject *> &getGroundObjects() { return groundObjects; }

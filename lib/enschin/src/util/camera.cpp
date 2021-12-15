@@ -4,7 +4,7 @@ Camera::Camera(b2Body* cameraTarget) : cameraTarget(cameraTarget) {
     cameraMode = BODY;
 }
 
-Camera::Camera(Vec2 cameraPosition) : cameraPosition(cameraPosition){
+Camera::Camera(Vec2f cameraPosition) : cameraPosition(cameraPosition){
     cameraMode = POSITION;
 }
 
@@ -22,7 +22,7 @@ void Camera::reset(Renderer& r) {
     r.translate(cameraPosition);
 }
 
-void Camera::fade(Vec2 pos, float time) {
+void Camera::fade(Vec2f pos, float time) {
 
 }
 
@@ -30,7 +30,7 @@ void Camera::fade(b2Body *body, float time) {
 
 }
 
-Vec2 Camera::getCameraPosition() const{
+Vec2f Camera::getCameraPosition() const{
     if (cameraMode == BODY) {
         return cameraTarget->GetPosition();
     } else {
@@ -41,12 +41,12 @@ void Camera::setCameraTarget(b2Body* cameraTarget) {
     this->cameraTarget = cameraTarget;
     cameraMode = BODY;
 }
-void Camera::setCameraPosition(Vec2 position){
+void Camera::setCameraPosition(Vec2f position){
     this->cameraPosition = cameraPosition;
     cameraMode = POSITION;
 }
 
-void Camera::setFov(Vec2 windowSize, float newFov) {
+void Camera::setFov(Vec2f windowSize, float newFov) {
     if (newFov > maxFov)
         fov = maxFov;
     else if (newFov < minFov)
@@ -57,7 +57,7 @@ void Camera::setFov(Vec2 windowSize, float newFov) {
     cameraShape.SetAsBox(ratio, fov);
 }
 
-void Camera::increaseFov(Vec2 windowSize, float increasingFov) {
+void Camera::increaseFov(Vec2f windowSize, float increasingFov) {
     if (fov + increasingFov > maxFov)
         fov = maxFov;
     else if (fov + increasingFov < minFov)

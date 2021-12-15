@@ -4,8 +4,8 @@
 #include <algorithm>
 #include <iterator>
 #include <iostream>
-#include "vec2.h"
-#include "vec3.h"
+#include "vec2f.h"
+#include "vec3f.h"
 
 /**
  * @brief Matrix namespace that can handle matrices. No matrix
@@ -21,7 +21,7 @@ namespace Matrix {
 
     void translate(float m[16], Vec3 pos);
 
-    void translate(float m[16], Vec2 pos, float z = 0.0f);
+    void translate(float m[16], Vec2f pos, float z = 0.0f);
 
     void rotate(float m[16], float a = 0.0f, Vec3 axis = {0.0f, 0.0f, -1.0f});
 

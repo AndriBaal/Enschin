@@ -1,6 +1,6 @@
 #pragma once
 
-#include "vec2.h"
+#include "vec2f.h"
 #include "texture.h"
 
 struct SpriteSheet {
@@ -12,7 +12,7 @@ private:
 public:
     SpriteSheet() = default;
 
-    SpriteSheet(const std::string &filePath, Vec2 spriteSize, unsigned char fps);
+    SpriteSheet(const std::string &filePath, Vec2f spriteSize, unsigned char fps);
 
     ~SpriteSheet();
 

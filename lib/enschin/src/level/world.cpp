@@ -1,6 +1,6 @@
 #include <enschin/world.h>
 
-World::World(Vec2 amountOfChunks, Vec2 chunkSizes, Vec2 gravity) {
+World::World(Vec2f amountOfChunks, Vec2f chunkSizes, Vec2f gravity) {
     world.SetGravity(gravity.toB2());
     world.SetContactListener(this->contactListener);
 
@@ -32,7 +32,7 @@ World::~World() {
 //
 //}
 
-unsigned int World::addTerrain(const UpdateContext& ctx, const TerrainDefinition* terrainDef, const Color* color, Vec2 positionOffSet) {
+unsigned int World::addTerrain(const UpdateContext& ctx, const TerrainDefinition* terrainDef, const Color* color, Vec2f positionOffSet) {
 //    b2BodyDef groundBodyDef;
 //    groundBodyDef.position.Set(positionOffSet.x, positionOffSet.y);
 //    b2Body* groundBody = world.CreateBody(&groundBodyDef);

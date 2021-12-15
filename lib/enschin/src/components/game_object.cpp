@@ -1,6 +1,6 @@
 #include <enschin/game_object.h>
 
-void GameObject::createBody(const UpdateContext& ctx, Vec2 pos,
+void GameObject::createBody(const UpdateContext& ctx, Vec2f pos,
                             bool fixedRotation, bool collision, bool isStatic,
                             float gravity, float density, float friction) {
 
@@ -22,7 +22,7 @@ void GameObject::createBody(const UpdateContext& ctx, Vec2 pos,
 
 }
 
-GameObject::GameObject(const UpdateContext &ctx, const std::string name, const Model* model, const SpriteSheet* sprite, Vec2 pos,
+GameObject::GameObject(const UpdateContext &ctx, const std::string name, const Model* model, const SpriteSheet* sprite, Vec2f pos,
                        bool fixedRotation, bool isStatic, bool collision,
                        float gravity, float density, float friction)
                        : name(name), world(&ctx.world), model(model), sprite(sprite) {
@@ -31,7 +31,7 @@ GameObject::GameObject(const UpdateContext &ctx, const std::string name, const M
     renderType = SPRITE;
 }
 
-GameObject::GameObject(const UpdateContext &ctx, const std::string name, const Model *model, const Color* color, Vec2 pos,
+GameObject::GameObject(const UpdateContext &ctx, const std::string name, const Model *model, const Color* color, Vec2f pos,
                        bool fixedRotation, bool isStatic, bool collision,
                        float gravity, float density, float friction)
                        : name(name), world(&ctx.world), model(model), color(color) {
@@ -40,7 +40,7 @@ GameObject::GameObject(const UpdateContext &ctx, const std::string name, const M
     renderType = COLOR;
 }
 
-GameObject::GameObject(const UpdateContext &ctx, const std::string name, const Model *model, Vec2 pos,
+GameObject::GameObject(const UpdateContext &ctx, const std::string name, const Model *model, Vec2f pos,
                        bool fixedRotation, bool isStatic, bool collision,
                        float gravity, float density, float friction)
                         : name(name), world(&ctx.world), model(model) {

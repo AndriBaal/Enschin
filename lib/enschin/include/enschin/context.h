@@ -16,7 +16,7 @@ class ChunkManager;
 struct UpdateContext {
     const float deltaTime = 0;
     const float totalTime = 0;
-    const Vec2 windowSize;
+    const Vec2f windowSize;
     const Input &input;
     const Ressources &res;
     const ChunkManager &chunkManager;
@@ -30,7 +30,7 @@ struct UpdateContext {
 struct RenderContext {
     Renderer &renderer;
     const Camera& camera;
-    const Vec2 windowSize;
+    const Vec2f windowSize;
     const float deltaTime = 0;
     const float totalTime = 0;
 };

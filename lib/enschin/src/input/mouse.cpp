@@ -5,7 +5,7 @@
  * @param units Units
  * @param cursorPos Vec2 to write into
  */
-void Mouse::updateCursor(GLFWwindow* window, float units, Vec2& cursorPos) {
+void Mouse::updateCursor(GLFWwindow* window, float units, Vec2f& cursorPos) {
     double x, y;
     int width, height;
     glfwGetWindowSize(window, &width, &height);
@@ -24,8 +24,8 @@ void Mouse::updateCursor(GLFWwindow* window, float units, Vec2& cursorPos) {
  * @param windowH window height
  * @return Vec2 Returns the translated mouse position
  */
-Vec2 Mouse::translateMousePosition(float units, double mouseX, double mouseY, int windowW, int windowH) {
-	return Vec2(
+Vec2f Mouse::translateMousePosition(float units, double mouseX, double mouseY, int windowW, int windowH) {
+	return Vec2f(
 		(float(mouseX)/windowW*2.0f*units-units) * (windowW / float(windowH)),
 		-float(mouseY)/windowH*2.0f*units+units
 	);

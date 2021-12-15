@@ -1,6 +1,6 @@
 #pragma once
 
-#include "vec2.h"
+#include "vec2f.h"
 #include "color.h"
 
 /**
@@ -11,7 +11,7 @@ struct Light {
 private:
     float radius;
     Color lightColor;
-    Vec2 pos;
+    Vec2f pos;
 public:
     void setRadius(float newRadius) { this->radius = newRadius; }
 
@@ -21,7 +21,7 @@ public:
 
     Color getLightColor() { return lightColor; }
 
-    void setPos(Vec2 newPos) { this->pos = newPos; }
+    void setPos(Vec2f newPos) { this->pos = newPos; }
 
-    Vec2 getPos() { return pos; }
+    Vec2f getPos() { return pos; }
 };

@@ -6,7 +6,7 @@
 #include <string>
 #include <iostream>
 #include "../../deps/stb/stb_image.h"
-#include "vec2.h"
+#include "vec2f.h"
 #include "color.h"
 #include "renderer.h"
 
@@ -15,22 +15,22 @@
  */
 class Window {
 private:
-    Vec2 windowSize;
+    Vec2f windowSize;
     bool fullScreen;
     bool vSync = true;
     GLFWwindow *window;
 public:
     Window() = default;
 
-    Window(std::string title, Vec2 size, bool fullscreen);
+    Window(std::string title, Vec2f size, bool fullscreen);
 
     bool update();
 
-    Vec2 getSize() { return windowSize; }
+    Vec2f getSize() { return windowSize; }
 
     GLFWwindow *getGlfw() { return window; }
 
-    void setSize(Vec2 v);
+    void setSize(Vec2f v);
 
     void setFullScreen(bool fullscreen);
 

@@ -60,7 +60,7 @@ Model::Model(const float vertices[], const bool chain, const unsigned short amou
  * @param indicies Indices (draw order of triangles) of the model (default=[0, 1, 2, 2, 3, 0])
  * @param amountOfIndices Amount of Indices of the model (default=6)
  */
-Model::Model(Vec2 size)
+Model::Model(Vec2f size)
         : amountOfIndices(6), amountOfVertices(6),
           localBuffer(generateVerticesTex(size)), vb(localBuffer, 4 * amountOfVertices * sizeof(float)),
           ib(defaultIndices, amountOfIndices), va(1) {
@@ -103,7 +103,7 @@ void Model::bind() const{
 }
 
 
-float* Model::generateVerticesTex(Vec2 dim) {
+float* Model::generateVerticesTex(Vec2f dim) {
     auto* dest = new float[16];
     dest[4] = dim.x/2.0f;
     dest[8] = dim.x/2.0f;

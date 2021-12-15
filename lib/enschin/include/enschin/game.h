@@ -23,7 +23,7 @@ private:
     bool running = false;
     std::string gameName;
 public:
-    Game(std::string gameName, Vec2 windowSize, bool fullscreen);
+    Game(std::string gameName, Vec2f windowSize, bool fullscreen);
 
     void init();
 

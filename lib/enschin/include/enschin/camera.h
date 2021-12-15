@@ -13,8 +13,8 @@ private:
     CameraMode cameraMode;
     b2Body *cameraTarget;
     b2PolygonShape cameraShape;
-    Vec2 cameraPosition;
-    Vec2 fadePosition;
+    Vec2f cameraPosition;
+    Vec2f fadePosition;
     float fov;
     float ratio;
     float minFov = 2.0f;
@@ -23,13 +23,13 @@ private:
 public:
     Camera(b2Body *cameraTarget);
 
-    Camera(Vec2 cameraTarget = {0, 0});
+    Camera(Vec2f cameraTarget = {0, 0});
 
     void update(Renderer &);
 
     void reset(Renderer &);
 
-    void fade(Vec2 pos, float time);
+    void fade(Vec2f pos, float time);
 
     void fade(b2Body *body, float time);
 
@@ -41,17 +41,17 @@ public:
 
     float getRatio() const { return ratio; }
 
-    void setFov(Vec2 windowSize, float newFov);
+    void setFov(Vec2f windowSize, float newFov);
 
-    void increaseFov(Vec2 windowSize, float increasingFov);
+    void increaseFov(Vec2f windowSize, float increasingFov);
 
     b2Body &getCameraTarget() { return *cameraTarget; }
 
-    Vec2 getCameraPosition() const;
+    Vec2f getCameraPosition() const;
 
     b2PolygonShape *getCameraShape() { return &cameraShape; }
 
     void setCameraTarget(b2Body *cameraTarget);
 
-    void setCameraPosition(Vec2 position);
+    void setCameraPosition(Vec2f position);
 };

@@ -6,7 +6,7 @@
 #include <map>
 #include "keyboard.h"
 #include "mouse.h"
-#include "vec2.h"
+#include "vec2f.h"
 #include "mapping.h"
 
 #define KEYMOUSE 0
@@ -18,7 +18,7 @@ private:
     Mouse mouse;
     Keyboard keyboard;
     unsigned char inputType = 0;
-    Vec2 cursorPos;
+    Vec2f cursorPos;
     std::unordered_map<std::string, bool> inputEvents; //TriggerId, triggered
 public:
     Input() = default;
@@ -33,5 +33,5 @@ public:
 
     const bool *getEvent(const std::string &eventKey) const { return &inputEvents.at(eventKey); }
 
-    Vec2 getCursorPos() const { return cursorPos; };
+    Vec2f getCursorPos() const { return cursorPos; };
 };

@@ -132,7 +132,7 @@ void Renderer::renderCircleTexture(const Model *model, const Texture *texture) {
  * @param tex Texture to render
  * @param pos Position to translate to
  */
-void Renderer::translateAndRenderTexture(const Model* model, const Texture* tex, Vec2 pos, float rotation) {
+void Renderer::translateAndRenderTexture(const Model* model, const Texture* tex, Vec2f pos, float rotation) {
     translate(pos);
     rotate(rotation);
     renderTexture(model, tex);
@@ -147,7 +147,7 @@ void Renderer::translateAndRenderTexture(const Model* model, const Texture* tex,
  * 
  * @param pos Position to translate to
  */
-void Renderer::translate (Vec2 pos) {
+void Renderer::translate (Vec2f pos) {
     Matrix::translate(view, pos);
     Matrix::multiply(mvp, view, proj);
 }
@@ -170,7 +170,7 @@ void Renderer::rotate(float angle) {
  * 
  * @param scaling Scale factor on x and y axis
  */
-void Renderer::scale(Vec2 scaling) {
+void Renderer::scale(Vec2f scaling) {
     Matrix::scale(view, {scaling.x, scaling.y, 0});
     Matrix::multiply(mvp, view, proj);
 }

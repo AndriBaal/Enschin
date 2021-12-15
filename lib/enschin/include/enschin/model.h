@@ -11,7 +11,7 @@
 #include "vertex_buffer_layout.h"
 #include "vertex_array.h"
 #include "index_buffer.h"
-#include "vec2.h"
+#include "vec2f.h"
 
 /**
  * @brief Model for rendering without collisions
@@ -31,7 +31,7 @@ protected:
 public:
     Model(float radius);
 
-    Model(Vec2 size);
+    Model(Vec2f size);
 
     Model(const float vertices[],
           const bool chain = false,
@@ -41,7 +41,7 @@ public:
 
     ~Model();
 
-    static float *generateVerticesTex(Vec2 size);
+    static float *generateVerticesTex(Vec2f size);
 
     void bind() const;
 
