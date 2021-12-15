@@ -22,12 +22,12 @@ private:
     std::vector<Terrain*> terrains;
     ChunkManager chunkManager;
 public:
-    World(Vec2f amountOfChunks, Vec2f chunkSizes = {10, 10}, Vec2f gravity = {0, -12.0f});
+    World(Vec2i amountOfChunks, Vec2i chunkSizes = {10, 10}, Vec2f gravity = {0, -12.0f});
     ~World();
     unsigned int addTerrain(const UpdateContext& ctx, const TerrainDefinition* terrainDef, const Color* color, Vec2f positionOffSet = {0, 0});
     void removeTerrain(unsigned int id);
     b2World &getWorld() { return world; }
-    void setGravity(Vec2f newGravity) { world.SetGravity(newGravity.toB2()); }
+    void setGravity(Vec2f newGravity) { world.SetGravity({newGravity.x, newGravity.y}); }
     Vec2f getGravity() { return world.GetGravity(); }
     const ChunkManager& getChunkManager() const { return chunkManager; }
 };

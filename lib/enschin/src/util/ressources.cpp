@@ -90,7 +90,7 @@ void Ressources::load(std::string ressourcePath) {
             for (auto s = spriteSheetValues.begin(); s != spriteSheetValues.end(); ++s) {
                 spriteSheets.insert({s.key().asString(), new SpriteSheet(
                         (*s)["texture"].asString(),
-                        {(*s)["sprite_width"].asFloat(),(*s)["sprite_height"].asFloat()},
+                        {(*s)["sprite_width"].asInt(),(*s)["sprite_height"].asInt()},
                         (*s)["fps"].asInt()
                 )});
             }

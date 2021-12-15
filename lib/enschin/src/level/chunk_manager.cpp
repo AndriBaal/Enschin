@@ -1,31 +1,31 @@
 #include <enschin/chunk_manager.h>
 
 
-void ChunkManager::init(unsigned int verticalChunks, unsigned int  horizontalChunks, unsigned int chunkWidth, unsigned int chunkHeight, float chunkUpdateRadius) {
-    this->verticalChunks = verticalChunks;
-    this->horizontalChunks = horizontalChunks;
+void ChunkManager::init(Vec2i amountOfChunks, Vec2i chunksSize, float chunkUpdateRadius) {
+    this->amountOfChunks = amountOfChunks;
+    this->chunksSize = chunksSize;
     this-> chunkUpdateRadius = chunkUpdateRadius;
-    totalChunks =  verticalChunks * horizontalChunks;
+    totalChunks =  amountOfChunks.x * amountOfChunks.y;
     chunks = new Chunk[totalChunks];
     for (int i = 0; i < totalChunks; i++) {
-        Vec2f indexPosition = {
-                float(i % horizontalChunks),
-                i / horizontalChunks
+        Vec2i indexPosition = {
+                i % amountOfChunks.x,
+                i / amountOfChunks.y
         };
-        Vec2f matrixPosition = {
-            floor((indexPosition.x) - amountOfChunks.x / 2),
-            (indexPosition.y) - floor(amountOfChunks.y / 2),
+        Vec2i matrixPosition = {
+            indexPosition.x - amountOfChunks.x / 2,
+            indexPosition.y - amountOfChunks.y / 2,
         };
-        if (int(amountOfChunks.x) % 2 == 1) matrixPosition.x++;
+        if (amountOfChunks.x % 2 == 1) matrixPosition.x++;
         chunks[i].setMatrixPosition(matrixPosition);
     }
 }
 
 
 Chunk* ChunkManager::getChunk(Vec2f coords) const {
-    int x = coords.x / chunkDimension.x + amountOfChunks.x / 2;
-    int y = coords.y / chunkDimension.y + amountOfChunks.y / 2;
-    Chunk* chunk = &chunks[int(y * amountOfChunks.x + x)];
+    int x = coords.x / chunksSize.x + amountOfChunks.x / 2;
+    int y = coords.y / chunksSize.y + amountOfChunks.y / 2;
+    Chunk* chunk = &chunks[y * amountOfChunks.x + x];
     std::cout << "Input: " << coords << "  Output: " << chunk->getMatrixPosition() << std::endl;
     return chunk;
 }
@@ -53,8 +53,8 @@ void ChunkManager::update(UpdateContext ctx) const {
 }
 
 void ChunkManager::render(RenderContext ctx) const {
-    unsigned short horizontalRenders = ctx.camera.getRatio() / chunkDimension.x;
-    unsigned short verticalRenders = ctx.camera.getFov() / chunkDimension.y;
+    unsigned short horizontalRenders = ctx.camera.getRatio() / chunksSize.x;
+    unsigned short verticalRenders = ctx.camera.getFov() / chunksSize.y;
     Chunk* mainChunk = getChunk(ctx.camera.getCameraPosition());
     mainChunk->render(ctx);
 }

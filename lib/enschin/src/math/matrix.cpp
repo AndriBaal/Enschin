@@ -7,7 +7,7 @@ namespace Matrix {
      * 
      * @return float Size in float
      */
-    float length(Vec3 v) {
+    float length(Vec3f v) {
         return (float)sqrt(v.x * v.x + v.y * v.y + v.z * v.z);
     }
 
@@ -51,7 +51,7 @@ namespace Matrix {
      * @param m Matrix
      * @param pos Location
      */
-    void translate(float m[], Vec3 pos) {
+    void translate(float m[], Vec3f pos) {
         for (int i=0 ; i<4 ; i++) {
             m[12 + i] += m[i] * pos.x + m[4 + i] * pos.y + m[8 + i] * pos.z;
         }
@@ -80,7 +80,7 @@ namespace Matrix {
      * @param y y axis (default=0.0f)
      * @param z z axis (default=0.0f)
      */
-    void rotate(float m[], float a, Vec3 axis) {
+    void rotate(float m[], float a, Vec3f axis) {
         float sTemp[16] = {0.0f};
         setRotate(sTemp, a, axis);
         multiply(sTemp, sTemp, m);
@@ -96,7 +96,7 @@ namespace Matrix {
      * @param a Angle
      * @param axis Axis
      */
-    void setRotate(float rm[], float a, Vec3 axis) {
+    void setRotate(float rm[], float a, Vec3f axis) {
         rm[3] = 0;
         rm[7] = 0;
         rm[11]= 0;
@@ -107,19 +107,19 @@ namespace Matrix {
         a *= (float) (M_PI / 180.0f);
         float s = (float) sin(a);
         float c = (float) cos(a);
-        if (Vec3(1.0f, 0.0f, 0.0f) == axis) {
+        if (Vec3f(1.0f, 0.0f, 0.0f) == axis) {
             rm[5] = c;   rm[10]= c;
             rm[6] = s;   rm[9] = -s;
             rm[1] = 0;   rm[2] = 0;
             rm[4] = 0;   rm[8] = 0;
             rm[0] = 1;
-        } else if (Vec3(0.0f, 1.0f, 0.0f) == axis) {
+        } else if (Vec3f(0.0f, 1.0f, 0.0f) == axis) {
             rm[0] = c;   rm[10]= c;
             rm[8] = s;   rm[2] = -s;
             rm[1] = 0;   rm[4] = 0;
             rm[6] = 0;   rm[9] = 0;
             rm[5] = 1;
-        } else if (Vec3(0.0f, 0.0f, 1.0f) == axis) {
+        } else if (Vec3f(0.0f, 0.0f, 1.0f) == axis) {
             rm[0] = c;   rm[5] = c;
             rm[1] = s;   rm[4] = -s;
             rm[2] = 0;   rm[6] = 0;
@@ -158,7 +158,7 @@ namespace Matrix {
      * @param y Scale on the y-axis
      * @param z Scale on the z-axis
      */
-    void scale(float m[], Vec3 scaling) {
+    void scale(float m[], Vec3f scaling) {
         for (int i=0 ; i<4 ; i++)  {
             int mi = + i;
             m[     mi] *= scaling.x;
@@ -253,15 +253,15 @@ namespace Matrix {
      * @param eye center
      * @param eye up
      */
-    void setLookAt(float rm[],Vec3 eye, Vec3 center, Vec3 up) {
+    void setLookAt(float rm[], Vec3f eye, Vec3f center, Vec3f up) {
         // See the OpenGL GLUT documentation for gluLookAt for a description
         // of the algorithm. We implement it in a straightforward way:
-        Vec3 f = center-eye;
+        Vec3f f = center - eye;
         // Normalize f
         float rlf = 1.0f / length(f);
         f*=rlf;
         // compute s = f x up (x means "cross product")
-        Vec3 s;
+        Vec3f s;
         s.x = f.y * up.z - f.z * up.y;
         s.y = f.z * up.x - f.x * up.z;
         s.z = f.x * up.y - f.y * up.x;
@@ -269,7 +269,7 @@ namespace Matrix {
         float rls = 1.0f / length(s);
         s *= rls;
         // compute u = s x f
-        Vec3 u;
+        Vec3f u;
         u.x = s.y * f.z - s.z * f.y;
         u.y = s.z * f.x - s.x * f.z;
         u.z = s.x * f.y - s.y * f.x;

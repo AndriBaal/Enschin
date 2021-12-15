@@ -10,7 +10,7 @@ private:
     Ressources* res;
     Input* input;
 public:
-    MyGame(std::string gameName, Vec2f windowSize, bool fullscreen)
+    MyGame(std::string gameName, Vec2i windowSize, bool fullscreen)
     : Game(std::move(gameName), windowSize, fullscreen){}
     void start(const GameContext& gtx) override;
     void loop(const GameContext& gtx) override;

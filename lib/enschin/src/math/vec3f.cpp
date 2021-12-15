@@ -1,48 +1,48 @@
 #include <include/enschin/vec3f.h>
 
-const Vec3 Vec3::nullVec3 = {0, 0, 0};
+const Vec3f Vec3f::nullVec3 = {0, 0, 0};
 
 //Arithmetic 
-Vec3 Vec3::operator+(const Vec3& v) {
-	return Vec3(x + v.x, y + v.y, z + v.z);
+Vec3f Vec3f::operator+(const Vec3f& v) {
+	return Vec3f(x + v.x, y + v.y, z + v.z);
 }
 
-Vec3 Vec3::operator-(const Vec3& v) {
-	return Vec3(x - v.x, y - v.y, z - v.z);
+Vec3f Vec3f::operator-(const Vec3f& v) {
+	return Vec3f(x - v.x, y - v.y, z - v.z);
 }
 
-Vec3 Vec3::operator*(const Vec3& v) {
-	return Vec3(x * v.x, y * v.y, z * v.z);
+Vec3f Vec3f::operator*(const Vec3f& v) {
+	return Vec3f(x * v.x, y * v.y, z * v.z);
 }
 
-Vec3 Vec3::operator/(const Vec3& v) {
-	return Vec3(x / v.x, y / v.y, z / v.z);
+Vec3f Vec3f::operator/(const Vec3f& v) {
+	return Vec3f(x / v.x, y / v.y, z / v.z);
 }
 
 
 //Assignment
-Vec3& Vec3::operator+=(const Vec3& v) {
+Vec3f& Vec3f::operator+=(const Vec3f& v) {
 	x += v.x;
 	y += v.y;
 	z += v.z;
 	return *this;
 }
 
-Vec3& Vec3::operator-=(const Vec3& v) {
+Vec3f& Vec3f::operator-=(const Vec3f& v) {
 	x -= v.x;
 	y -= v.y;
 	z -= v.z;
 	return *this;
 }
 
-Vec3& Vec3::operator*=(const Vec3& v) {
+Vec3f& Vec3f::operator*=(const Vec3f& v) {
 	x *= v.x;
 	y *= v.y;
 	z *= v.z;
 	return *this;
 }
 
-Vec3& Vec3::operator/=(const Vec3& v) {
+Vec3f& Vec3f::operator/=(const Vec3f& v) {
 	x /= v.x;
 	y /= v.y;
 	z /= v.z;
@@ -50,21 +50,21 @@ Vec3& Vec3::operator/=(const Vec3& v) {
 }
 
 //Relational
-bool Vec3::operator==(const Vec3& v) {
+bool Vec3f::operator==(const Vec3f& v) {
 	return x == v.x && y == v.y && z == v.z;
 }
 
-bool Vec3::operator!=(const Vec3& v) {
+bool Vec3f::operator!=(const Vec3f& v) {
 	return !(x == v.x && y == v.y && z == v.z);
 }
 
 
 //Other
-Vec3 Vec3::operator-() {
-	return Vec3(-x, -y, -z);
+Vec3f Vec3f::operator-() {
+	return Vec3f(-x, -y, -z);
 }
 
-std::ostream& operator<<(std::ostream& os, const Vec3& v) {
+std::ostream& operator<<(std::ostream& os, const Vec3f& v) {
 	os << "{" << v.x << ", " << v.y << ", " << v.z << "}";
 	return os;
 }

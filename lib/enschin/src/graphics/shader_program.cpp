@@ -168,6 +168,11 @@ void ShaderProgram::setUniform1f(const std::string& name, float value){
     glUniform1f(getUniformLocation(name), value);
 }
 
+
+void ShaderProgram::setUniform2f(const std::string &name, Vec2f f1) {
+    glUniform2f(getUniformLocation(name), f1.x, f1.y);
+}
+
 /**
  * @brief Pass 4 Float to the shader
  * 
@@ -177,8 +182,8 @@ void ShaderProgram::setUniform1f(const std::string& name, float value){
  * @param f2 value3
  * @param f3 value4
  */
-void ShaderProgram::setUniform4f(const std::string& name, Vec4 v){
-    glUniform4f(getUniformLocation(name), v.x, v.y, v.z, v.a);
+void ShaderProgram::setUniform4f(const std::string& name, Vec2f f1, Vec2f f2){
+    glUniform4f(getUniformLocation(name), f1.x, f1.y, f2.x, f2.y);
 }
 
 /**

@@ -6,7 +6,6 @@
 #include "model.h"
 #include "texture.h"
 #include "vec2f.h"
-#include "vec4.h"
 #include "matrix.h"
 #include "ray2.h"
 #include "mouse.h"
@@ -32,41 +31,27 @@ private:
 
 public:
     Renderer() = default;
-
     Renderer(float fov, float ratio);
 
     static void free();
-
     static void initShaderPrograms();
 
     void resetProjection(float fov, float ratio);
-
     void resetMatrix();
-
     void translate(Vec2f pos);
-
     void rotate(float angle);
-
     void scale(Vec2f scaling);
 
     float getRatio() { return ratio; }
-
     float getFov() { return fov; }
 
     void translateAndRenderTexture(const Model *model, const Texture *tex, Vec2f pos, float rotation = .0f);
-
     void renderColor(const Model *model, const Color *) const;
-
     void renderTexture(const Model *model, const Texture *texture) const;
-
     void renderColoredTexture(const Model *model, const Texture *texture, const Color *color) const;
-
     void renderRainbow(const Model *model, float totalTime) const;
-
-    void renderCroppedTexture(const Model *model, const Texture *tex, Vec4 textureCoordinates) const;
-
+    void renderCroppedTexture(const Model* model, const Texture* tex, Vec2f topLeft, Vec2f bottomRight) const;
     void renderCircleColor(const Model *model, const Color *color);
-
     void renderCircleTexture(const Model *model, const Texture *texture);
 };
 

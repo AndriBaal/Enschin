@@ -19,21 +19,21 @@ namespace Matrix {
 
     void copyMatrix(float dest[16], float src[16], int size);
 
-    void translate(float m[16], Vec3 pos);
+    void translate(float m[16], Vec3f pos);
 
     void translate(float m[16], Vec2f pos, float z = 0.0f);
 
-    void rotate(float m[16], float a = 0.0f, Vec3 axis = {0.0f, 0.0f, -1.0f});
+    void rotate(float m[16], float a = 0.0f, Vec3f axis = {0.0f, 0.0f, -1.0f});
 
-    void setRotate(float rm[16], float a, Vec3 axis);
+    void setRotate(float rm[16], float a, Vec3f axis);
 
-    void scale(float m[16], Vec3 scaling);
+    void scale(float m[16], Vec3f scaling);
 
     void frustum(float m[16], float left, float right, float bottom, float top, float near, float far);
 
     void ortho(float m[16], float left, float right, float bottom, float top, float near, float far);
 
-    void setLookAt(float rm[16], Vec3 eye, Vec3 center, Vec3 up);
+    void setLookAt(float rm[16], Vec3f eye, Vec3f center, Vec3f up);
 
     void printMatrix(float matrix[16]);
 

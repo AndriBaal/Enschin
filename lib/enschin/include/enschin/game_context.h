@@ -5,7 +5,7 @@
 
 struct GameContext {
     GLFWwindow *window;
-    Vec2f windowSize;
+    Vec2i windowSize;
     const float deltaTime;
     const float totalTime;
 };

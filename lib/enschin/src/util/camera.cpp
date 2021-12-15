@@ -46,7 +46,7 @@ void Camera::setCameraPosition(Vec2f position){
     cameraMode = POSITION;
 }
 
-void Camera::setFov(Vec2f windowSize, float newFov) {
+void Camera::setFov(Vec2i windowSize, float newFov) {
     if (newFov > maxFov)
         fov = maxFov;
     else if (newFov < minFov)
@@ -54,10 +54,10 @@ void Camera::setFov(Vec2f windowSize, float newFov) {
     else
         fov = newFov;
     ratio = windowSize.x / windowSize.y;
-    cameraShape.SetAsBox(ratio, fov);
+    cameraDimension = {ratio, fov};
 }
 
-void Camera::increaseFov(Vec2f windowSize, float increasingFov) {
+void Camera::increaseFov(Vec2i windowSize, float increasingFov) {
     if (fov + increasingFov > maxFov)
         fov = maxFov;
     else if (fov + increasingFov < minFov)
@@ -65,5 +65,5 @@ void Camera::increaseFov(Vec2f windowSize, float increasingFov) {
     else
         fov = fov + increasingFov;
     ratio = windowSize.x / windowSize.y;
-    cameraShape.SetAsBox(ratio, fov);
+    cameraDimension = {ratio, fov};
 }

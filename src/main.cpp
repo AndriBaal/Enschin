@@ -1,7 +1,7 @@
 #include <game/my_game.h>
 
 int main(void) {
-    MyGame myGame = MyGame("Enschin", {800.0f, 600.0f}, 0);
+    MyGame myGame = MyGame("Enschin", {800, 600}, 0);
     myGame.init();
     return 0;
 }

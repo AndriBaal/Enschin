@@ -1,7 +1,7 @@
 #include <enschin/game.h>
 
 
-Game::Game(std::string gameName, Vec2f windowSize, bool fullscreen) : gameName(gameName){
+Game::Game(std::string gameName, Vec2i windowSize, bool fullscreen) : gameName(gameName){
 	window = Window(gameName, windowSize, fullscreen);
 }
 

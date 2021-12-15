@@ -9,11 +9,11 @@ struct RenderContext;
 struct Chunk {
 private:
     std::vector<GameObject *> gameObjects;
-    Vec2f matrixPosition;
+    Vec2i matrixPosition;
 public:
     Chunk() = default;
-    Vec2f getMatrixPosition(){ return matrixPosition; }
-    void setMatrixPosition(Vec2f matrixPosition){ this->matrixPosition = matrixPosition; }
+    Vec2i getMatrixPosition(){ return matrixPosition; }
+    void setMatrixPosition(Vec2i matrixPosition){ this->matrixPosition = matrixPosition; }
     void update(const UpdateContext& ctx);
     void render(const RenderContext& ctx);
     void add(GameObject *gameObject);

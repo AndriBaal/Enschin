@@ -95,12 +95,12 @@ void Renderer::renderRainbow(const Model* model, float totalTime) const{
     glDrawElements(GL_TRIANGLES, model->getAmountOfIndices(), GL_UNSIGNED_INT, nullptr);
 }
 
-void Renderer::renderCroppedTexture(const Model* model, const Texture* tex, Vec4 textureCoordinates) const{
+void Renderer::renderCroppedTexture(const Model* model, const Texture* tex, Vec2f topLeft, Vec2f bottomRight) const{
     model->bind();
     tex->bind();
     cropProgram.bind();
     cropProgram.setUniformMat4f("u_MVP", mvp);
-    cropProgram.setUniform4f("u_NewCoords", textureCoordinates);
+    cropProgram.setUniform4f("u_NewCoords", topLeft, bottomRight);
     glDrawElements(GL_TRIANGLES, model->getAmountOfIndices(), GL_UNSIGNED_INT, nullptr);
 }
 

@@ -10,7 +10,7 @@
 #include <GL/glew.h>
 #include <string>
 #include "color.h"
-#include "vec4.h"
+#include "vec2f.h"
 
 /**
  * @brief With a shaderprogram you can load your
@@ -32,7 +32,8 @@ public:
     // Set uniforms
     void setUniform1i(const std::string& name, int value);
     void setUniform1f(const std::string& name, float value);
-    void setUniform4f(const std::string& name, Vec4 f);
+    void setUniform2f(const std::string& name, Vec2f f1);
+    void setUniform4f(const std::string& name, Vec2f f1, Vec2f f2);
     void setColor(const std::string& name, const Color* color);
     void setUniformMat4f(const std::string& name, const float matrix[]);
 

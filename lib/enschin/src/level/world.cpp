@@ -1,7 +1,7 @@
 #include <enschin/world.h>
 
-World::World(Vec2f amountOfChunks, Vec2f chunkSizes, Vec2f gravity) {
-    world.SetGravity(gravity.toB2());
+World::World(Vec2i amountOfChunks, Vec2i chunkSizes, Vec2f gravity) {
+    world.SetGravity({gravity.x, gravity.y});
     world.SetContactListener(this->contactListener);
 
     chunkManager.init(amountOfChunks, chunkSizes);

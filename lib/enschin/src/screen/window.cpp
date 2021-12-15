@@ -7,7 +7,7 @@
  * @param windowSize Size of the window
  * @param fullScreen Set fullscreen
  */
-Window::Window(std::string windowTitle, Vec2f windowSize, bool fullScreen) {
+Window::Window(std::string windowTitle, Vec2i windowSize, bool fullScreen) {
     if (!glfwInit()) exit(0);
     const GLFWvidmode* mode = glfwGetVideoMode(glfwGetPrimaryMonitor());
 
@@ -71,7 +71,7 @@ bool Window::update() {
     glfwGetWindowSize(window, &w, &h);
     if (w != windowSize.x || h != windowSize.y) {
         glViewport(0, 0, w, h);
-        windowSize = {float(w), float(h)};
+        windowSize = {w, h};
         return true;
     }
     return false;
@@ -82,7 +82,7 @@ bool Window::update() {
  * 
  * @param newDim New size
  */
-void Window::setSize(Vec2f newDim) {
+void Window::setSize(Vec2i newDim) {
     windowSize = newDim;
     glfwSetWindowSize(window, newDim.x, newDim.y);
 }

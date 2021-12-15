@@ -4,19 +4,19 @@ Vec2f Vec2f::nullVec2 = {0, 0};
 
 //Arithmetic 
 Vec2f Vec2f::operator+(const Vec2f& v) {
-	return Vec2f(x + v.x, y + v.y);
+	return {x + v.x, y + v.y};
 }
 
 Vec2f Vec2f::operator-(const Vec2f& v) {
-	return Vec2f(x - v.x, y - v.y);
+	return {x - v.x, y - v.y};
 }
 
 Vec2f Vec2f::operator*(const Vec2f& v) {
-	return Vec2f(x * v.x, y * v.y);
+	return {x * v.x, y * v.y};
 }
 
 Vec2f Vec2f::operator/(const Vec2f& v) {
-	return Vec2f(x / v.x, y / v.y);
+	return {x / v.x, y / v.y};
 }
 
 
@@ -57,7 +57,7 @@ bool Vec2f::operator!=(const Vec2f& v) {
 
 //Other
 Vec2f Vec2f::operator-() {
-	return Vec2f(-x, -y);
+	return {-x, -y};
 }
 
 std::ostream& operator<<(std::ostream& os, const Vec2f& v) {
