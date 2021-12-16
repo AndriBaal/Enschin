@@ -4,8 +4,7 @@
 #include "vec2f.h"
 
 struct GameContext {
-    GLFWwindow *window;
-    Vec2i windowSize;
+    const Window& window;
     const float deltaTime;
     const float totalTime;
 };

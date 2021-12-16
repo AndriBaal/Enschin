@@ -15,8 +15,7 @@ private:
     float chunkUpdateRadius;
     unsigned int totalChunks;
 public:
-    ChunkManager() = default;
-    void init(Vec2i amountOfChunks, Vec2i chunksSize, float chunkUpdateRadius = 5);
+    ChunkManager(Vec2i amountOfChunks, Vec2i chunksSize, float chunkUpdateRadius = 5);
     void update(UpdateContext ctx) const;
     void render(RenderContext ctx) const;
     void addGameObject(GameObject* gameObject) const;

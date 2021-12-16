@@ -24,8 +24,8 @@ public:
     Window(std::string title, Vec2i size, bool fullscreen);
 
     bool update();
-    Vec2i getSize() { return windowSize; }
-    GLFWwindow *getGlfw() { return window; }
+    Vec2i getSize() const { return windowSize; }
+    GLFWwindow *getGlfw() const { return window; }
     void setSize(Vec2i v);
     void setFullScreen(bool fullscreen);
     void setTitle(std::string title);

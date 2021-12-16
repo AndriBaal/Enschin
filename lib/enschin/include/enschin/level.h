@@ -15,19 +15,24 @@ class ContactListener : public b2ContactListener {
     void PostSolve(b2Contact *contact, const b2ContactImpulse *impulse) override;
 };
 
-class World {
+class ChunkManager;
+class Terrain;
+class Level {
 private:
     b2World world = b2World({0, -10});
     ContactListener *contactListener = new ContactListener();
     std::vector<Terrain*> terrains;
-    ChunkManager chunkManager;
+    ChunkManager* chunkManager;
 public:
-    World(Vec2i amountOfChunks, Vec2i chunkSizes = {10, 10}, Vec2f gravity = {0, -12.0f});
-    ~World();
+    Level(Vec2i amountOfChunks, Vec2i chunkSizes = {10, 10}, Vec2f gravity = {0, -12.0f});
+    ~Level();
+    void addGameObject(GameObject* gameObject) const;
     unsigned int addTerrain(const UpdateContext& ctx, const TerrainDefinition* terrainDef, const Color* color, Vec2f positionOffSet = {0, 0});
     void removeTerrain(unsigned int id);
-    b2World &getWorld() { return world; }
+
     void setGravity(Vec2f newGravity) { world.SetGravity({newGravity.x, newGravity.y}); }
     Vec2f getGravity() { return world.GetGravity(); }
-    const ChunkManager& getChunkManager() const { return chunkManager; }
+
+    const ChunkManager& getChunkManager() const { return *chunkManager; }
+    b2World &getWorld() { return world; }
 };

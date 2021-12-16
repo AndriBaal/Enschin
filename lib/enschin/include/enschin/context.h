@@ -6,22 +6,23 @@
 #include "renderer.h"
 #include "camera.h"
 #include "chunk_manager.h"
-#include <box2d/b2_world.h>
+#include "window.h"
+#include "level.h"
 
 
 class ChunkManager;
+class Level;
 /**
  * @brief Update context
  */
 struct UpdateContext {
     const float deltaTime = 0;
     const float totalTime = 0;
-    const Vec2i windowSize;
+    const Window& window;
     const Input &input;
     const Ressources &res;
-    const ChunkManager &chunkManager;
+    Level& level;
     Camera &camera;
-    b2World &world;
 };
 
 /**
@@ -30,7 +31,7 @@ struct UpdateContext {
 struct RenderContext {
     Renderer &renderer;
     const Camera& camera;
-    const Vec2i windowSize;
+    const Window& window;
     const float deltaTime = 0;
     const float totalTime = 0;
 };

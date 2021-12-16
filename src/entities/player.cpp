@@ -29,11 +29,11 @@ void Player::update(const UpdateContext& ctx) {
     }
 
     if (ctx.input.isEvent("zoom_out")) {
-        ctx.camera.increaseFov(ctx.windowSize, ctx.deltaTime * 10);
+        ctx.camera.increaseFov(ctx.window.getSize(), ctx.deltaTime * 10);
     }
 
     if (ctx.input.isEvent("zoom_in")) {
-        ctx.camera.increaseFov(ctx.windowSize, -ctx.deltaTime * 10);
+        ctx.camera.increaseFov(ctx.window.getSize(), -ctx.deltaTime * 10);
     }
 }
 

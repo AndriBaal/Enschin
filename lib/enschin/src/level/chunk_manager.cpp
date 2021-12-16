@@ -1,11 +1,9 @@
 #include <enschin/chunk_manager.h>
 
 
-void ChunkManager::init(Vec2i amountOfChunks, Vec2i chunksSize, float chunkUpdateRadius) {
-    this->amountOfChunks = amountOfChunks;
-    this->chunksSize = chunksSize;
-    this-> chunkUpdateRadius = chunkUpdateRadius;
-    totalChunks = amountOfChunks.x * amountOfChunks.y;
+ChunkManager::ChunkManager(Vec2i amountOfChunks, Vec2i chunksSize, float chunkUpdateRadius)
+    : amountOfChunks(amountOfChunks), chunksSize(chunksSize),
+    chunkUpdateRadius(chunkUpdateRadius), totalChunks(amountOfChunks.x * amountOfChunks.y) {
     chunks = new Chunk[totalChunks];
     for (int i = 0; i < totalChunks; i++) {
         Vec2i indexPosition = {

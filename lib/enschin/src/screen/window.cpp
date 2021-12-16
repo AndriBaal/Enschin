@@ -8,8 +8,8 @@
  * @param fullScreen Set fullscreen
  */
 Window::Window(std::string windowTitle, Vec2i windowSize, bool fullScreen) {
-    if (!glfwInit()) exit(0);
-    const GLFWvidmode* mode = glfwGetVideoMode(glfwGetPrimaryMonitor());
+    if (!glfwInit()) exit(1);
+//    const GLFWvidmode* mode = glfwGetVideoMode(glfwGetPrimaryMonitor());
 
     glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 3);
     glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 3);
@@ -35,14 +35,10 @@ Window::Window(std::string windowTitle, Vec2i windowSize, bool fullScreen) {
         window = glfwCreateWindow(windowSize.x, windowSize.y, &windowTitle[0], NULL, NULL);
     }
 
-    if (!window) {
-        glfwTerminate();
-        exit(0);
-    }
     glfwMakeContextCurrent(window);
     glfwSwapInterval(1);
     if (glewInit() != GLEW_OK)
-        exit(0);
+        exit(1);
 
     glEnable(GL_TEXTURE_2D);
     glEnable(GL_BLEND);

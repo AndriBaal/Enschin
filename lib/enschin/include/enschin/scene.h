@@ -6,7 +6,7 @@
 #include "ressources.h"
 #include "timer.h"
 #include "camera.h"
-#include "world.h"
+#include "level.h"
 #include "context.h"
 #include "game_context.h"
 
@@ -19,7 +19,7 @@ class Scene {
 protected:
     const Ressources &res;
     Input &input;
-    World *world;
+    Level *level;
     Renderer renderer;
     Camera camera;
 private:

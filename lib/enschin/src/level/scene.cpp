@@ -2,7 +2,7 @@
 
 Scene::Scene(Ressources* res, Input* input, const GameContext& ctx, float fov)
     : res(*res), input((Input &) *input) {
-    camera.setFov(ctx.windowSize, fov);
+    camera.setFov(ctx.window.getSize(), fov);
     renderer = Renderer(fov, camera.getRatio());
 }
 
@@ -23,17 +23,17 @@ void Scene::update(const GameContext& ctx) {
     if (renderer.getFov() != camera.getFov() || renderer.getRatio() != camera.getRatio())
         renderer.resetProjection(camera.getFov(), camera.getRatio());
     //updateTimers(ctx.deltaTime);
-    input.update(ctx.window, renderer.getFov());
+    input.update(ctx.window.getGlfw(), renderer.getFov());
     const UpdateContext updateContext = getUpdateContext(ctx);
-    world->getWorld().Step(ctx.deltaTime, 6, 2);
-    world->getChunkManager().update(updateContext);
+    level->getWorld().Step(ctx.deltaTime, 6, 2);
+    level->getChunkManager().update(updateContext);
 }
 
 void Scene::render(const GameContext& ctx) {
     const RenderContext renderContext = getRenderContext(ctx);
     renderer.resetMatrix();
     camera.update(renderer);
-    world->getChunkManager().render(renderContext);
+    level->getChunkManager().render(renderContext);
     camera.reset(renderer);
 }
 
@@ -50,12 +50,11 @@ UpdateContext Scene::getUpdateContext(const GameContext& ctx) {
     return {
         ctx.deltaTime,
         ctx.totalTime,
-        ctx.windowSize,
+        ctx.window,
         input,
         res,
-        world->getChunkManager(),
+        *level,
         camera,
-        world->getWorld(),
     };
 }
 
@@ -63,7 +62,7 @@ RenderContext Scene::getRenderContext(const GameContext& ctx) {
     return {
         renderer,
         camera,
-        ctx.windowSize,
+        ctx.window,
         ctx.deltaTime,
         ctx.totalTime
     };

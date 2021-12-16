@@ -11,7 +11,8 @@
 #include "terrain_definition.h"
 #include "enschin/chunk_manager.h"
 
-
+class GameObject;
+struct UpdateContext;
 class Terrain {
 private:
     std::vector<GameObject *> groundObjects;
