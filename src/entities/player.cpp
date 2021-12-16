@@ -39,4 +39,5 @@ void Player::update(const UpdateContext& ctx) {
 
 void Player::onCollision(const GameObject* go) {
     jumps = maxJumps;
+
 }

@@ -1,7 +1,7 @@
 #include <game/game_scene.h>
 
 GameScene::GameScene(Ressources* res, Input* input, const GameContext& ctx) : Scene(res, input, ctx, 5) {
-    world = new World({500, 500}, {10, 10});
+    world = new World({5, 5}, {10, 10});
     UpdateContext updateContext = Scene::getUpdateContext(ctx);
 
     for (int i = 0; i < 1;i ++) {

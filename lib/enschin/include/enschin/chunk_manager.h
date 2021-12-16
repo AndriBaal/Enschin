@@ -13,7 +13,7 @@ private:
     Vec2i amountOfChunks;
     Vec2i chunksSize;
     float chunkUpdateRadius;
-    unsigned short totalChunks;
+    unsigned int totalChunks;
 public:
     ChunkManager() = default;
     void init(Vec2i amountOfChunks, Vec2i chunksSize, float chunkUpdateRadius = 5);

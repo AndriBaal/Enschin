@@ -16,10 +16,7 @@ void Camera::update(Renderer& r) {
 }
 
 void Camera::reset(Renderer& r) {
-    if (cameraMode == BODY) {
-        cameraPosition = cameraTarget->GetPosition();
-    }
-    r.translate(cameraPosition);
+    r.translate(-cameraPosition);
 }
 
 void Camera::fade(Vec2f pos, float time) {

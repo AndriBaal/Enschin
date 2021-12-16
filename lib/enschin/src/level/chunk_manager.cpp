@@ -5,7 +5,7 @@ void ChunkManager::init(Vec2i amountOfChunks, Vec2i chunksSize, float chunkUpdat
     this->amountOfChunks = amountOfChunks;
     this->chunksSize = chunksSize;
     this-> chunkUpdateRadius = chunkUpdateRadius;
-    totalChunks =  amountOfChunks.x * amountOfChunks.y;
+    totalChunks = amountOfChunks.x * amountOfChunks.y;
     chunks = new Chunk[totalChunks];
     for (int i = 0; i < totalChunks; i++) {
         Vec2i indexPosition = {
@@ -25,8 +25,7 @@ void ChunkManager::init(Vec2i amountOfChunks, Vec2i chunksSize, float chunkUpdat
 Chunk* ChunkManager::getChunk(Vec2f coords) const {
     int x = coords.x / chunksSize.x + amountOfChunks.x / 2;
     int y = coords.y / chunksSize.y + amountOfChunks.y / 2;
-    Chunk* chunk = &chunks[y * amountOfChunks.x + x];
-    std::cout << "Input: " << coords << "  Output: " << chunk->getMatrixPosition() << std::endl;
+    Chunk* chunk = &chunks[1];
     return chunk;
 }
 
@@ -55,6 +54,9 @@ void ChunkManager::update(UpdateContext ctx) const {
 void ChunkManager::render(RenderContext ctx) const {
     unsigned short horizontalRenders = ctx.camera.getRatio() / chunksSize.x;
     unsigned short verticalRenders = ctx.camera.getFov() / chunksSize.y;
-    Chunk* mainChunk = getChunk(ctx.camera.getCameraPosition());
-    mainChunk->render(ctx);
+//    Chunk* mainChunk = getChunk(ctx.camera.getCameraPosition());
+//    mainChunk->render(ctx);
+    for (int i = 0; i < totalChunks; i++) {
+        chunks[i].render(ctx);
+    }
 }
