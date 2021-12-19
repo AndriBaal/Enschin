@@ -1,4 +1,5 @@
 #include <enschin/model.h>
+#include <iostream>
 
 const float Model::defaultTexCoords[8] = {
         0.0f, 0.0f, //Bottom left

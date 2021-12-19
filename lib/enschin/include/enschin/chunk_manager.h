@@ -16,8 +16,8 @@ private:
     unsigned int totalChunks;
 public:
     ChunkManager(Vec2i amountOfChunks, Vec2i chunksSize, float chunkUpdateRadius = 5);
-    void update(UpdateContext ctx) const;
-    void render(RenderContext ctx) const;
+    void update(const UpdateContext& ctx) const;
+    void render(const RenderContext& ctx) const;
     void addGameObject(GameObject* gameObject) const;
     Chunk* getChunk(Vec2f worldCoords) const;
     bool isInChunk(Vec2f* vertices) const;

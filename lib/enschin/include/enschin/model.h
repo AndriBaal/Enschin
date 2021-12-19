@@ -30,9 +30,7 @@ protected:
     b2Shape *shape;
 public:
     Model(float radius);
-
     Model(Vec2f size);
-
     Model(const float vertices[],
           const bool chain = false,
           const unsigned short amountOfVertices = 4,
@@ -40,14 +38,9 @@ public:
           const unsigned short amountOfIndices = 6);
 
     ~Model();
-
     static float *generateVerticesTex(Vec2f size);
-
     void bind() const;
-
     int getAmountOfVertices() const { return amountOfVertices; }
-
     unsigned int getAmountOfIndices() const { return amountOfIndices; }
-
     const b2Shape *getCollisionShape() const { return shape; };
 };

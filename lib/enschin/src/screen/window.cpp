@@ -9,7 +9,7 @@
  */
 Window::Window(std::string windowTitle, Vec2i windowSize, bool fullScreen) {
     if (!glfwInit()) exit(1);
-//    const GLFWvidmode* mode = glfwGetVideoMode(glfwGetPrimaryMonitor());
+    const GLFWvidmode* mode = glfwGetVideoMode(glfwGetPrimaryMonitor());
 
     glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 3);
     glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 3);

@@ -36,20 +36,20 @@ bool ChunkManager::isInChunk(Vec2f* vertices) const {
 //        b2Transform cameraTransform = {{camPos.x, camPos.y}, b2Rot(0)};
 //        return b2TestOverlap(collisionShape, 0, &windowShape, 0, body->GetTransform(), cameraTransform);
 //    }
-    return false;
+    return true;
 }
 
 void ChunkManager::addGameObject(GameObject *gameObject) const {
     getChunk(gameObject->getPos())->add(gameObject);
 }
 
-void ChunkManager::update(UpdateContext ctx) const {
+void ChunkManager::update(const UpdateContext& ctx) const {
     for (int i = 0; i < totalChunks; i++) {
         chunks[i].update(ctx);
     }
 }
 
-void ChunkManager::render(RenderContext ctx) const {
+void ChunkManager::render(const RenderContext& ctx) const {
     unsigned short horizontalRenders = ctx.camera.getRatio() / chunksSize.x;
     unsigned short verticalRenders = ctx.camera.getFov() / chunksSize.y;
 //    Chunk* mainChunk = getChunk(ctx.camera.getCameraPosition());

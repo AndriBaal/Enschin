@@ -1,7 +1,7 @@
 #include <enschin/scene.h>
 
-Scene::Scene(Ressources* res, Input* input, const GameContext& ctx, float fov)
-    : res(*res), input((Input &) *input) {
+Scene::Scene(const GameContext& ctx, Ressources* res, Input* input, float fov)
+    : res(*res), input(*input) {
     camera.setFov(ctx.window.getSize(), fov);
     renderer = Renderer(fov, camera.getRatio());
 }

@@ -11,5 +11,6 @@ private:
 public:
     Player(const UpdateContext& ctx, Vec2f pos);
 	void update(const UpdateContext& ctx) override;
+    void render(const RenderContext& ctx) override;
     void onCollision(const GameObject* go = nullptr) override;
 };

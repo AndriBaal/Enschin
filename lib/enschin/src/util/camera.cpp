@@ -16,7 +16,7 @@ void Camera::update(Renderer& r) {
 }
 
 void Camera::reset(Renderer& r) {
-    r.translate(-cameraPosition);
+    r.translate(cameraPosition);
 }
 
 void Camera::fade(Vec2f pos, float time) {
@@ -50,7 +50,7 @@ void Camera::setFov(Vec2i windowSize, float newFov) {
         fov = minFov;
     else
         fov = newFov;
-    ratio = windowSize.x / windowSize.y;
+    ratio = windowSize.x / float(windowSize.y);
     cameraDimension = {ratio, fov};
 }
 
@@ -61,6 +61,6 @@ void Camera::increaseFov(Vec2i windowSize, float increasingFov) {
         fov = minFov;
     else
         fov = fov + increasingFov;
-    ratio = windowSize.x / windowSize.y;
+    ratio = windowSize.x / float(windowSize.y);
     cameraDimension = {ratio, fov};
 }

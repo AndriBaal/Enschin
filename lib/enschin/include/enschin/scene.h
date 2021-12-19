@@ -22,14 +22,13 @@ protected:
     Level *level;
     Renderer renderer;
     Camera camera;
-private:
     RenderContext getRenderContext(const GameContext &ctx);
-
+    UpdateContext getUpdateContext(const GameContext &ctx);
+private:
 public:
-    Scene(Ressources *res, Input *input, const GameContext &ctx, float fov = 5.0f);
+    Scene(const GameContext &ctx, Ressources *res, Input *input, float fov = 5.0f);
     ~Scene();
     void update(const GameContext &ctx);
     void render(const GameContext &ctx);
     Camera &getCamera() { return camera; }
-    UpdateContext getUpdateContext(const GameContext &ctx);
 };

@@ -1,8 +1,10 @@
 #include <game/game_scene.h>
 
-GameScene::GameScene(Ressources* res, Input* input, const GameContext& ctx) : Scene(res, input, ctx, 5) {
+GameScene::GameScene(Ressources* res, Input* input, const GameContext& ctx)
+    : Scene(ctx, res, input, 5) {
     level = new Level({5, 5}, {10, 10});
     UpdateContext updateContext = Scene::getUpdateContext(ctx);
+
 
     for (int i = 0; i < 1;i ++) {
         level->addTerrain(updateContext, res->getTerrain("test_terrain"), res->getColor("green"), {i * 50.0f, -5});
