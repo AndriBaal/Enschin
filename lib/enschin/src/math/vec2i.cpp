@@ -1,4 +1,4 @@
-#include <enschin/Vec2i.h>
+#include <enschin/vec2i.h>
 
 
 //Arithmetic 
