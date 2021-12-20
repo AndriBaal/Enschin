@@ -29,8 +29,8 @@ public:
     void setSize(Vec2i v);
     void setFullScreen(bool fullscreen);
     void setTitle(std::string title);
-    void setClearColor(Color newColor);
+    void setClearColor(Color newColor) const;
     void setVSync(bool vSync);
     void setIcon(const char *filePath);
-    void setAntialiasing(bool state) { if (state)glEnable(GL_MULTISAMPLE); else glDisable(GL_MULTISAMPLE); }
+    void setAntialiasing(bool state) const;
 };

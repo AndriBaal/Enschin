@@ -25,9 +25,11 @@ Model::~Model() {
  * @param amountOfIndices Amount of Indices of the model (default=6)
  */
 
-Model::Model(const float vertices[], const bool chain, const unsigned short amountOfVertices, const unsigned int indices[], const unsigned short amountOfIndices)
+Model::Model(const float vertices[], const bool chain, const unsigned short amountOfVertices,
+             const unsigned int indices[], const unsigned short amountOfIndices)
         : amountOfIndices(amountOfIndices), amountOfVertices(amountOfVertices),
-          vb(vertices, 4 * amountOfVertices * sizeof(float)), ib(indices, amountOfIndices), va(1) {
+          vb(vertices, 4 * amountOfVertices * sizeof(float)),
+          ib(indices, amountOfIndices), va(1) {
 
     b2Vec2 b2vertices[amountOfVertices];
     for (int i = 0; i < amountOfVertices*4; i+=4) {
@@ -63,7 +65,8 @@ Model::Model(const float vertices[], const bool chain, const unsigned short amou
  */
 Model::Model(Vec2f size)
         : amountOfIndices(6), amountOfVertices(6),
-          localBuffer(generateVerticesTex(size)), vb(localBuffer, 4 * amountOfVertices * sizeof(float)),
+          localBuffer(generateVerticesTex(size)),
+          vb(localBuffer, 4 * amountOfVertices * sizeof(float)),
           ib(defaultIndices, amountOfIndices), va(1) {
 
 
@@ -81,7 +84,9 @@ Model::Model(Vec2f size)
 
 Model::Model(float radius)
     : amountOfIndices(6), amountOfVertices(6),
-      localBuffer(generateVerticesTex({radius * 2, radius * 2})), vb(localBuffer, 4 * amountOfVertices * sizeof(float)), ib(defaultIndices, amountOfIndices), va(1) {
+      localBuffer(generateVerticesTex({radius * 2, radius * 2})),
+      vb(localBuffer, 4 * amountOfVertices * sizeof(float)),
+      ib(defaultIndices, amountOfIndices), va(1) {
 
     b2CircleShape* circleShape = new b2CircleShape;
     circleShape->m_radius = radius;

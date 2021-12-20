@@ -9,7 +9,6 @@
  */
 Window::Window(std::string windowTitle, Vec2i windowSize, bool fullScreen) {
     if (!glfwInit()) exit(1);
-    const GLFWvidmode* mode = glfwGetVideoMode(glfwGetPrimaryMonitor());
 
     glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 3);
     glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 3);
@@ -46,7 +45,7 @@ Window::Window(std::string windowTitle, Vec2i windowSize, bool fullScreen) {
     glEnable(GL_MULTISAMPLE);
     glBlendFunc(GL_ONE, GL_ONE_MINUS_SRC_ALPHA);
     //glfwSetInputMode(window, GLFW_CURSOR, GLFW_CURSOR_HIDDEN);
-    //glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
+    glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
 
     int w, h = 0;
     glfwGetWindowSize(window, &w, &h);
@@ -113,7 +112,7 @@ void Window::setFullScreen(bool fullScreen) {
     this->fullScreen = fullScreen;
 }
 
-void Window::setClearColor(Color newColor) {
+void Window::setClearColor(Color newColor) const {
     glClearColor(newColor.r, newColor.g, newColor.b, newColor.a);
 }
 
@@ -140,4 +139,11 @@ void Window::setIcon(const char *filePath) {
     images[0].pixels = stbi_load(filePath, &images[0].width, &images[0].height, 0, 4); //rgba channels
     glfwSetWindowIcon(window, 1, images);
     stbi_image_free(images[0].pixels);
+}
+
+void Window::setAntialiasing(bool state) const {
+    if (state)
+        glEnable(GL_MULTISAMPLE);
+    else
+        glDisable(GL_MULTISAMPLE);
 }

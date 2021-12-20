@@ -1,6 +1,5 @@
 #pragma once
 
-#include <math.h>
 #include <algorithm>
 #include <box2d/b2_body.h>
 #include <box2d/b2_polygon_shape.h>

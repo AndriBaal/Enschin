@@ -17,10 +17,10 @@ void Game::init() {
     GLFWwindow* glfw = window.getGlfw();
 
     start({
-                  window,
-                  deltaTime,
-                  totalTime
-          });
+          window,
+          deltaTime,
+          totalTime
+    });
 	while (!glfwWindowShouldClose(glfw)) {
         glClear(GL_COLOR_BUFFER_BIT);
 

@@ -2,7 +2,7 @@
 
 GameScene::GameScene(Ressources* res, Input* input, const GameContext& ctx)
     : Scene(ctx, res, input, 5) {
-    level = new Level({5, 5}, {10, 10});
+    level = new Level({50, 50}, {10, 10});
     UpdateContext updateContext = Scene::getUpdateContext(ctx);
 
 

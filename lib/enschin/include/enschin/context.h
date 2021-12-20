@@ -5,12 +5,10 @@
 #include "timer.h"
 #include "renderer.h"
 #include "camera.h"
-#include "chunk_manager.h"
 #include "window.h"
 #include "level.h"
 
 
-class ChunkManager;
 class Level;
 /**
  * @brief Update context
