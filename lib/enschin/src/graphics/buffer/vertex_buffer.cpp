@@ -13,10 +13,7 @@ VertexBuffer::~VertexBuffer() {
 }
 
 void VertexBuffer::bind() const {
-    if (boundVertexBuffer != vertexBufferId) {
-        boundVertexBuffer = vertexBufferId;
-        glBindBuffer(GL_ARRAY_BUFFER, vertexBufferId);
-    }
+    glBindBuffer(GL_ARRAY_BUFFER, vertexBufferId);
 }
 
 void VertexBuffer::unbind() {

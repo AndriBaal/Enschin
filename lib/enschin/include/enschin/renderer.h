@@ -7,7 +7,6 @@
 #include "texture.h"
 #include "vec2f.h"
 #include "matrix.h"
-#include "ray2.h"
 #include "mouse.h"
 
 /**

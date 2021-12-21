@@ -5,6 +5,7 @@ GameScene::GameScene(Ressources* res, Input* input, const GameContext& ctx)
     level = new Level({50, 50}, {10, 10});
     UpdateContext updateContext = Scene::getUpdateContext(ctx);
 
+    updateContext.window.setClearColor(Color{.7, 0.3,.8, 1});
 
     for (int i = 0; i < 1;i ++) {
         level->addTerrain(updateContext, res->getTerrain("test_terrain"), res->getColor("green"), {i * 50.0f, -5});

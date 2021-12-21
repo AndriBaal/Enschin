@@ -13,7 +13,6 @@
 class IndexBuffer {
 private:
     unsigned int indexBufferId;
-    static unsigned boundIndexBuffer;
 public:
     IndexBuffer() = default;
 

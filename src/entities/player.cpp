@@ -4,14 +4,15 @@ Player::Player(const UpdateContext& ctx, Vec2f pos)
     : GameObject(ctx, "triangle", ctx.res.getModel("test_model"), ctx.res.getSprite("noah"), pos){
     jumpTimer = new Timer(0, .25f);
     ctx.camera.setCameraTarget(body);
-    //ctx.window.setClearColor(Color{1, 0, 0, 1});
+    ctx.window.setClearColor(Color{1, 0, 0, 1});
 }
 
 void Player::update(const UpdateContext& ctx) {
     mousePos = ctx.input.getCursorPos();
     jumpTimer->update(ctx.deltaTime);
-    if (ctx.input.isEvent("walk_forward") && jumps && jumpTimer->take()){
-        if (jumps >= 1){
+    std::cout << ctx.camera.getCameraPosition() << std::endl;
+    if (ctx.input.isEvent("walk_forward") && jumps && jumpTimer->take()) {
+        if (jumps >= 1) {
             body->SetLinearVelocity({body->GetLinearVelocity().x, 0});
             body->ApplyLinearImpulseToCenter({0, 25});
         }else{
@@ -39,10 +40,9 @@ void Player::update(const UpdateContext& ctx) {
 }
 
 void Player::render(const RenderContext &ctx) {
-    ctx.renderer.renderTexture(model, sprite->getTexture(0));
+    ctx.renderer.renderTexture(model, sprite->getTexture());
 }
 
 void Player::onCollision(const GameObject* go) {
     jumps = maxJumps;
-
 }

@@ -45,7 +45,7 @@ Window::Window(std::string windowTitle, Vec2i windowSize, bool fullScreen) {
     glEnable(GL_MULTISAMPLE);
     glBlendFunc(GL_ONE, GL_ONE_MINUS_SRC_ALPHA);
     //glfwSetInputMode(window, GLFW_CURSOR, GLFW_CURSOR_HIDDEN);
-    glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
+    //glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
 
     int w, h = 0;
     glfwGetWindowSize(window, &w, &h);

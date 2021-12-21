@@ -1,6 +1,5 @@
 #include <enschin/index_buffer.h>
-
-unsigned int IndexBuffer::boundIndexBuffer = 0;
+#include <iostream>
 
 /**
  * @brief Construct a new Index Buffer by the given Indices.
@@ -29,10 +28,7 @@ IndexBuffer::~IndexBuffer() {
  * @brief Bind Buffer for drawing
  */
 void IndexBuffer::bind() const {
-    if (boundIndexBuffer != indexBufferId) {
-        boundIndexBuffer = indexBufferId;
-        glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, indexBufferId);
-    }
+    glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, indexBufferId);
 }
 
 /**

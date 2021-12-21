@@ -1,7 +1,5 @@
 #include <enschin/shader_program.h>
 
-unsigned int ShaderProgram::boundProgram = 0;
-
 
 /**
  * @brief Read and compile the Shader from a vertex and fragment 
@@ -27,10 +25,7 @@ void ShaderProgram::free() const{
  * @brief Bind and use the shaderprogram.
  */
 void ShaderProgram::bind() const {
-    if (shaderProgramId != boundProgram){
-        boundProgram = shaderProgramId;
-        glUseProgram(shaderProgramId);
-    } 
+    glUseProgram(shaderProgramId);
 }
 
 /**

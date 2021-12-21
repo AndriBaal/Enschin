@@ -9,12 +9,5 @@ in vec2 wordlPos;
 
 void main()
 {   
-    for
-    if isIntersectingLine()
-	color = u_Color;
-}
-
-bool isIntersectingLine(float pixelX, float pixelY, float lightX, float lightY)
-{
 
 }

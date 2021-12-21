@@ -104,7 +104,7 @@ namespace Matrix {
         rm[13]= 0;
         rm[14]= 0;
         rm[15]= 1;
-        a *= (float) (M_PI / 180.0f);
+        a *= (float) (3.14159265358979323846 / 180.0f);
         float s = (float) sin(a);
         float c = (float) cos(a);
         if (Vec3f(1.0f, 0.0f, 0.0f) == axis) {

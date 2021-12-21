@@ -1,7 +1,6 @@
 #include <iostream>
 #include <enschin/texture.h>
 
-unsigned int Texture::boundTexture = 0;
 
 /**
  * @brief Construct a new Texture object and create an id on the GPU
@@ -62,11 +61,8 @@ Texture::~Texture() {
  * @param slot Slot for the texture
  */
 void Texture::bind(unsigned int slot) const {
-    if (boundTexture != textureId) {
-        boundTexture = textureId;
-        glActiveTexture(GL_TEXTURE0 + slot);
-        glBindTexture(GL_TEXTURE_2D, textureId);
-    }
+    glActiveTexture(GL_TEXTURE0 + slot);
+    glBindTexture(GL_TEXTURE_2D, textureId);
 }
 
 /**

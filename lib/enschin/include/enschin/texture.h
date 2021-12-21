@@ -11,17 +11,11 @@
 class Texture {
 private:
     unsigned int textureId;
-    static unsigned int boundTexture;
 public:
     Texture() = default;
-
     Texture(unsigned const char *pixelBuffer, unsigned short pixelsW, unsigned short pixelsH);
-
     Texture(const std::string &path);
-
     ~Texture();
-
     void bind(unsigned int slot = 0) const;
-
     void unbind() const;
 };

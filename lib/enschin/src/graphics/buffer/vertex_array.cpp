@@ -1,7 +1,5 @@
 #include <enschin/vertex_array.h>
 
-unsigned int VertexArray::boundVertexArray = 0;
-
 VertexArray::VertexArray(unsigned int amount) {
     glGenVertexArrays(amount, &vertexArrayId);
 }
@@ -24,10 +22,7 @@ void VertexArray::addBuffer(const VertexBuffer& vb, const VertexBufferLayout& la
 }
 
 void VertexArray::bind() const {
-    if (boundVertexArray != vertexArrayId) {
-        boundVertexArray = vertexArrayId;
-        glBindVertexArray(vertexArrayId);
-    }
+    glBindVertexArray(vertexArrayId);
 }
 
 void VertexArray::unbind() {

@@ -43,7 +43,6 @@ void Renderer::renderColor(const Model* model, const Color* color) const{
     colorProgram.bind();
     colorProgram.setUniformMat4f("u_MVP", mvp);
     colorProgram.setColor("u_Color", color);
-
     glDrawElements(GL_TRIANGLES, model->getAmountOfIndices(), GL_UNSIGNED_INT, nullptr);
 }
 
