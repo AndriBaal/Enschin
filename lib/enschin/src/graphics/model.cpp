@@ -12,7 +12,6 @@ const unsigned int Model::defaultIndices[6] = {0, 1, 2, 2, 3, 0};
 
 Model::~Model() {
     delete shape;
-    delete localBuffer;
 }
 
 /**

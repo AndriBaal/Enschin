@@ -31,7 +31,7 @@ void Scene::update(const GameContext& ctx) {
 
 void Scene::render(const GameContext& ctx) {
     const RenderContext renderContext = getRenderContext(ctx);
-    renderer.resetMatrix();
+    //renderer.resetMatrix();
     camera.update(renderer);
     level->getChunkManager().render(renderContext);
     camera.reset(renderer);

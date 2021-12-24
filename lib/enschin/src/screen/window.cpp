@@ -34,11 +34,14 @@ Window::Window(std::string windowTitle, Vec2i windowSize, bool fullScreen) {
         window = glfwCreateWindow(windowSize.x, windowSize.y, &windowTitle[0], NULL, NULL);
     }
 
+    if (!window)
+        exit(1);
+
     glfwMakeContextCurrent(window);
-    glfwSwapInterval(1);
     if (glewInit() != GLEW_OK)
         exit(1);
 
+    glfwSwapInterval(1);
     glEnable(GL_TEXTURE_2D);
     glEnable(GL_BLEND);
     glEnable(GL_TRIANGLES);

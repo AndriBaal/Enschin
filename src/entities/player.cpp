@@ -10,7 +10,6 @@ Player::Player(const UpdateContext& ctx, Vec2f pos)
 void Player::update(const UpdateContext& ctx) {
     mousePos = ctx.input.getCursorPos();
     jumpTimer->update(ctx.deltaTime);
-    std::cout << ctx.camera.getCameraPosition() << std::endl;
     if (ctx.input.isEvent("walk_forward") && jumps && jumpTimer->take()) {
         if (jumps >= 1) {
             body->SetLinearVelocity({body->GetLinearVelocity().x, 0});
