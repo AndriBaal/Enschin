@@ -147,9 +147,6 @@ void Renderer::translateAndRenderTexture(const Model* model, const Texture* tex,
  * @param pos Position to translate to
  */
 void Renderer::translate (Vec2f pos) {
-    static Vec2f tpos;
-    tpos += pos;
-    std::cout << tpos << std::endl;
     Matrix::translate(view, pos);
     Matrix::multiply(mvp, view, proj);
 }
