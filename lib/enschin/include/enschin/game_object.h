@@ -9,13 +9,15 @@
 #include "sprite.h"
 #include "model.h"
 #include "context.h"
+#include "chunk.h"
 
 enum RenderType {
     COLOR, SPRITE, SHADER
 };
 
-class UpdateContext;
-class RenderContext;
+struct UpdateContext;
+struct RenderContext;
+struct Chunk;
 class GameObject {
 private:
     const std::string name;
@@ -29,6 +31,7 @@ protected:
     const Model *model;
     const SpriteSheet *sprite;
     const Color *color;
+    Chunk* currentChunk;
     b2Body *body;
 public:
     GameObject(const UpdateContext &ctx, const std::string name, const Model *model, const SpriteSheet *sprite,
@@ -52,6 +55,7 @@ public:
     virtual void render(const RenderContext &ctx);
     virtual void onCollision(const GameObject *go = nullptr) {}
     virtual void onRelease(const GameObject *go = nullptr) {}
+    void resolveChunk(const UpdateContext& ctx );
 
     void applyForce(const b2Vec2 &force) { body->ApplyLinearImpulseToCenter(force); }
     void applyForce(const b2Vec2 &force, const b2Vec2 &point) { body->ApplyLinearImpulse(force, point, true); }

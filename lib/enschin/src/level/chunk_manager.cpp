@@ -15,7 +15,7 @@ ChunkManager::ChunkManager(Vec2i amountOfChunks, Vec2i chunksSize, float chunkUp
             indexPosition.y - amountOfChunks.y / 2,
         };
         if (amountOfChunks.x % 2 == 1) matrixPosition.x++;
-        chunks[i].setMatrixPosition(matrixPosition);
+        chunks[i] = Chunk(matrixPosition, chunksSize);
     }
 }
 
@@ -23,8 +23,7 @@ ChunkManager::ChunkManager(Vec2i amountOfChunks, Vec2i chunksSize, float chunkUp
 Chunk* ChunkManager::getChunk(Vec2f coords) const {
     int x = coords.x / chunksSize.x + amountOfChunks.x / 2;
     int y = coords.y / chunksSize.y + amountOfChunks.y / 2;
-    Chunk* chunk = &chunks[1];
-    return chunk;
+    return &chunks[x * y * 2];
 }
 
 
@@ -52,9 +51,6 @@ void ChunkManager::update(const UpdateContext& ctx) const {
 void ChunkManager::render(const RenderContext& ctx) const {
     unsigned short horizontalRenders = ctx.camera.getRatio() / chunksSize.x;
     unsigned short verticalRenders = ctx.camera.getFov() / chunksSize.y;
-//    Chunk* mainChunk = getChunk(ctx.camera.getCameraPosition());
-//    mainChunk->render(ctx);
-    for (int i = 0; i < totalChunks; i++) {
-        chunks[i].render(ctx);
-    }
+    Chunk* mainChunk = getChunk(ctx.camera.getCameraPosition());
+    mainChunk->render(ctx);
 }

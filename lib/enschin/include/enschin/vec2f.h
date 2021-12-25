@@ -14,21 +14,25 @@ struct Vec2f {
     Vec2f(b2Vec2 v) : x(v.x), y(v.y) {}
 
     //Arithmetic
-    Vec2f operator+(const Vec2f &v);
-    Vec2f operator-(const Vec2f &v);
-    Vec2f operator*(const Vec2f &v);
-    Vec2f operator/(const Vec2f &v);
+    Vec2f operator+(const Vec2f &v) const;
+    Vec2f operator-(const Vec2f &v) const;
+    Vec2f operator*(const Vec2f &v) const;
+    Vec2f operator/(const Vec2f &v) const;
+
+    Vec2f operator*(float f) const;
 
     //Assignment
-    Vec2f &operator+=(const Vec2f &v);
-    Vec2f &operator-=(const Vec2f &v);
-    Vec2f &operator*=(const Vec2f &v);
-    Vec2f &operator/=(const Vec2f &v);
+    Vec2f& operator+=(const Vec2f& v);
+    Vec2f& operator-=(const Vec2f& v);
+    Vec2f& operator*=(const Vec2f& v);
+    Vec2f& operator/=(const Vec2f& v);
+
+    Vec2f& operator*=(float f);
 
     //other
-    bool operator==(const Vec2f &v);
-    bool operator!=(const Vec2f &v);
-    Vec2f operator-();
+    bool operator==(const Vec2f &v) const;
+    bool operator!=(const Vec2f &v) const;
+    Vec2f operator-() const;
 };
 
 std::ostream &operator<<(std::ostream &os, const Vec2f &v);

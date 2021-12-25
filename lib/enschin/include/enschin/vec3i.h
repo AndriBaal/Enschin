@@ -13,22 +13,27 @@ struct Vec3i {
     Vec3i(float x = 0, float y = 0, float z = 0) : x(x), y(y), z(z) {}
     Vec3i(b2Vec3 v) : x(v.x), y(v.y), z(v.z) {}
 
-    Vec3i operator+(const Vec3i &v);
-    Vec3i operator-(const Vec3i &v);
-    Vec3i operator*(const Vec3i &v);
-    Vec3i operator/(const Vec3i &v);
+    //Arithmetic
+    Vec3i operator+(const Vec3i& v) const;
+    Vec3i operator-(const Vec3i& v) const;
+    Vec3i operator*(const Vec3i& v) const;
+    Vec3i operator/(const Vec3i& v) const;
+
+    Vec3i operator*(int i) const;
 
     //Assignment
-    Vec3i &operator+=(const Vec3i &v);
-    Vec3i &operator-=(const Vec3i &v);
-    Vec3i &operator*=(const Vec3i &v);
-    Vec3i &operator/=(const Vec3i &v);
+    Vec3i& operator+=(const Vec3i& v);
+    Vec3i& operator-=(const Vec3i& v);
+    Vec3i& operator*=(const Vec3i& v);
+    Vec3i& operator/=(const Vec3i& v);
+
+    Vec3i& operator*=(int i);
 
     //other
-    bool operator==(const Vec3i &v);
-    bool operator!=(const Vec3i &v);
+    bool operator==(const Vec3i& v) const;
+    bool operator!=(const Vec3i& v) const;
 
-    Vec3i operator-();
+    Vec3i operator-() const;
 };
 
-std::ostream &operator<<(std::ostream &os, const Vec3i &v);
+std::ostream &operator<<(std::ostream &os, const Vec3i& v);

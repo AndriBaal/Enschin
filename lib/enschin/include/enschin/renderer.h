@@ -16,9 +16,9 @@
 class Renderer {
 private:
     float fov, ratio;
-    float proj[16];
-    float view[16];
-    float mvp[16];
+    float proj[16] = {0};
+    float view[16] = {0};
+    float mvp[16] = {0};
 
     static ShaderProgram colorProgram;
     static ShaderProgram textureProgram;

@@ -38,9 +38,6 @@ void Player::update(const UpdateContext& ctx) {
     }
 }
 
-void Player::render(const RenderContext &ctx) {
-    ctx.renderer.renderTexture(model, sprite->getTexture());
-}
 
 void Player::onCollision(const GameObject* go) {
     jumps = maxJumps;

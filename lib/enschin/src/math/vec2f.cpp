@@ -3,20 +3,24 @@
 Vec2f Vec2f::nullVec2 = {0, 0};
 
 //Arithmetic 
-Vec2f Vec2f::operator+(const Vec2f& v) {
+Vec2f Vec2f::operator+(const Vec2f& v) const {
 	return {x + v.x, y + v.y};
 }
 
-Vec2f Vec2f::operator-(const Vec2f& v) {
+Vec2f Vec2f::operator-(const Vec2f& v) const {
 	return {x - v.x, y - v.y};
 }
 
-Vec2f Vec2f::operator*(const Vec2f& v) {
+Vec2f Vec2f::operator*(const Vec2f& v) const {
 	return {x * v.x, y * v.y};
 }
 
-Vec2f Vec2f::operator/(const Vec2f& v) {
+Vec2f Vec2f::operator/(const Vec2f& v) const {
 	return {x / v.x, y / v.y};
+}
+
+Vec2f Vec2f::operator*(float f) const {
+    return {x * f, y * f};
 }
 
 
@@ -45,18 +49,24 @@ Vec2f& Vec2f::operator/=(const Vec2f& v) {
 	return *this;
 }
 
+Vec2f& Vec2f::operator*=(float f) {
+    x *= 2;
+    y *= f;
+    return *this;
+}
+
 
 //Relational
-bool Vec2f::operator==(const Vec2f& v) {
+bool Vec2f::operator==(const Vec2f& v) const {
 	return x == v.x && y == v.y;
 }
 
-bool Vec2f::operator!=(const Vec2f& v) {
+bool Vec2f::operator!=(const Vec2f& v) const {
 	return !(x == v.x && y == v.y);
 }
 
 //Other
-Vec2f Vec2f::operator-() {
+Vec2f Vec2f::operator-() const {
 	return {-x, -y};
 }
 

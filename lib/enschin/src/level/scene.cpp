@@ -25,13 +25,13 @@ void Scene::update(const GameContext& ctx) {
     //updateTimers(ctx.deltaTime);
     input.update(ctx.window.getGlfw(), renderer.getFov());
     const UpdateContext updateContext = getUpdateContext(ctx);
-    level->getWorld().Step(ctx.deltaTime, 6, 2);
     level->getChunkManager().update(updateContext);
+    level->getWorld().Step(ctx.deltaTime, 6, 2);
 }
 
 void Scene::render(const GameContext& ctx) {
     const RenderContext renderContext = getRenderContext(ctx);
-    //renderer.resetMatrix();
+    renderer.resetMatrix();
     camera.update(renderer);
     level->getChunkManager().render(renderContext);
     camera.reset(renderer);

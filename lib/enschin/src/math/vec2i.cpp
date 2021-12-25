@@ -2,21 +2,26 @@
 
 
 //Arithmetic 
-Vec2i Vec2i::operator+(const Vec2i& v) {
+Vec2i Vec2i::operator+(const Vec2i& v) const {
     return {x + v.x, y + v.y};
 }
 
-Vec2i Vec2i::operator-(const Vec2i& v) {
+Vec2i Vec2i::operator-(const Vec2i& v) const {
     return {x - v.x, y - v.y};
 }
 
-Vec2i Vec2i::operator*(const Vec2i& v) {
+Vec2i Vec2i::operator*(const Vec2i& v) const {
     return {x * v.x, y * v.y};
 }
 
-Vec2i Vec2i::operator/(const Vec2i& v) {
+Vec2i Vec2i::operator/(const Vec2i& v) const {
     return {x / v.x, y / v.y};
 }
+
+Vec2i Vec2i::operator*(int i) const {
+    return {x * i, y * i};
+}
+
 
 
 //Assignment
@@ -44,18 +49,24 @@ Vec2i& Vec2i::operator/=(const Vec2i& v) {
     return *this;
 }
 
+Vec2i& Vec2i::operator*=(int i) {
+    x *= i;
+    y *= i;
+    return *this;
+}
+
 
 //Relational
-bool Vec2i::operator==(const Vec2i& v) {
+bool Vec2i::operator==(const Vec2i& v) const {
     return x == v.x && y == v.y;
 }
 
-bool Vec2i::operator!=(const Vec2i& v) {
+bool Vec2i::operator!=(const Vec2i& v) const {
     return !(x == v.x && y == v.y);
 }
 
 //Other
-Vec2i Vec2i::operator-() {
+Vec2i Vec2i::operator-() const {
     return {-x, -y};
 }
 

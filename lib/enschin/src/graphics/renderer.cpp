@@ -159,7 +159,6 @@ void Renderer::translate (Vec2f pos) {
  * @param angle Rotation angle in radians
  */
 void Renderer::rotate(float angle) {
-    angle *= -(180/3.14159265359);
     Matrix::rotate(view, angle);
     Matrix::multiply(mvp, view, proj);
 }

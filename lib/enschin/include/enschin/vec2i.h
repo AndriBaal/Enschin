@@ -12,21 +12,25 @@ struct Vec2i {
     //Vec2i(b2Vec2 v) : x(v.x), y(v.y) {}
 
     //Arithmetic
-    Vec2i operator+(const Vec2i &v);
-    Vec2i operator-(const Vec2i &v);
-    Vec2i operator*(const Vec2i &v);
-    Vec2i operator/(const Vec2i &v);
+    Vec2i operator+(const Vec2i& v) const;
+    Vec2i operator-(const Vec2i& v) const;
+    Vec2i operator*(const Vec2i& v) const;
+    Vec2i operator/(const Vec2i& v) const;
+
+    Vec2i operator*(int i) const;
 
     //Assignment
-    Vec2i &operator+=(const Vec2i &v);
-    Vec2i &operator-=(const Vec2i &v);
-    Vec2i &operator*=(const Vec2i &v);
-    Vec2i &operator/=(const Vec2i &v);
+    Vec2i& operator+=(const Vec2i& v);
+    Vec2i& operator-=(const Vec2i& v);
+    Vec2i& operator*=(const Vec2i& v);
+    Vec2i& operator/=(const Vec2i& v);
+
+    Vec2i& operator*=(int i);
 
     //other
-    bool operator==(const Vec2i &v);
-    bool operator!=(const Vec2i &v);
-    Vec2i operator-();
+    bool operator==(const Vec2i& v) const;
+    bool operator!=(const Vec2i& v) const;
+    Vec2i operator-() const;
 };
 
-std::ostream &operator<<(std::ostream &os, const Vec2i &v);
+std::ostream &operator<<(std::ostream &os, const Vec2i& v);
