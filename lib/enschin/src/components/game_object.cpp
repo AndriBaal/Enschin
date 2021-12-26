@@ -53,11 +53,6 @@ GameObject::~GameObject() {
     world->DestroyBody(body);
 }
 
-void GameObject::resolveChunk(const UpdateContext& ctx) {
-    if (currentChunk->isInside(*this, ctx.level.getChunkManager().getChunkSize())) {
-
-    }
-}
 
 void GameObject::render(const RenderContext &ctx) {
     ctx.renderer.translate(body->GetPosition());

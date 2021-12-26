@@ -1,8 +1,8 @@
 cmake_minimum_required(VERSION 3.10)
 project(Game VERSION 0.0.1)
 
-SET(CMAKE_CXX_FLAGS_DEBUG "-O3")
-SET(CMAKE_C_FLAGS_DEBUG "-O3")
+#SET(CMAKE_CXX_FLAGS_DEBUG "-O3")
+#SET(CMAKE_C_FLAGS_DEBUG "-O3")
 
 add_subdirectory(lib/enschin)
 

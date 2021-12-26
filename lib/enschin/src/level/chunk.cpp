@@ -3,10 +3,10 @@
 bool Chunk::isInside(const GameObject &g, Vec2i chunkSize) {
     Vec2i worldPosition = matrixPosition * chunkSize;
     return (
-        g.getBody()->GetPosition().x > worldPosition.x &&
-        g.getBody()->GetPosition().x < worldPosition.x + chunkSize.x &&
-        g.getBody()->GetPosition().y > worldPosition.y &&
-        g.getBody()->GetPosition().y > worldPosition.x + chunkSize.y
+        g.getPos().x >= worldPosition.x &&
+        g.getPos().x < worldPosition.x + chunkSize.x &&
+        g.getPos().y >= worldPosition.y &&
+        g.getPos().y < worldPosition.y + chunkSize.y
     );
 }
 
@@ -15,8 +15,20 @@ void Chunk::add(GameObject* gameObject) {
 }
 
 void Chunk::update(const UpdateContext &ctx) {
-    for (auto& g : gameObjects)
-        g->update(ctx);
+    auto it = gameObjects.begin();
+    while(it != gameObjects.end()) {
+        (*it)->update(ctx);
+        if (!isInside(*(*it), ctx.level.getChunkManager().getChunkSize())) {
+            Chunk* newChunk = ctx.level.getChunkManager().getChunk((*it)->getPos());
+            (*it)->setCurrentChunk(newChunk);
+            newChunk->add((*it));
+            it = gameObjects.erase(it);
+            std::cout << "sdjkhksdfhsldkfksdfdhh" << std::endl;
+        } else {
+            ++it;
+        }
+    }
+
 }
 
 void Chunk::render(const RenderContext &ctx) {

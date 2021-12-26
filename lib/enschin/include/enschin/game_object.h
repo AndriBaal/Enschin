@@ -55,7 +55,9 @@ public:
     virtual void render(const RenderContext &ctx);
     virtual void onCollision(const GameObject *go = nullptr) {}
     virtual void onRelease(const GameObject *go = nullptr) {}
-    void resolveChunk(const UpdateContext& ctx );
+
+    Chunk* getCurrentChunk(){ return currentChunk; }
+    void setCurrentChunk(Chunk* newChunk){ this->currentChunk = newChunk; }
 
     void applyForce(const b2Vec2 &force) { body->ApplyLinearImpulseToCenter(force); }
     void applyForce(const b2Vec2 &force, const b2Vec2 &point) { body->ApplyLinearImpulse(force, point, true); }
@@ -69,7 +71,7 @@ public:
     bool isAlive() const { return alive; }
     void kill() { alive = false; }
 
-    Vec2f getPos() { return body->GetPosition(); }
+    Vec2f getPos() const { return body->GetPosition(); }
     void setPos(Vec2f pos) { body->SetTransform({pos.x, pos.y}, body->GetAngle()); }
     float getRotation() { return body->GetAngle(); }
     void setRotation(float rotation) { body->SetTransform(body->GetPosition(), rotation); }

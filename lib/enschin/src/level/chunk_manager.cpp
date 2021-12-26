@@ -11,8 +11,8 @@ ChunkManager::ChunkManager(Vec2i amountOfChunks, Vec2i chunksSize, float chunkUp
                 i / amountOfChunks.y
         };
         Vec2i matrixPosition = {
-            indexPosition.x - amountOfChunks.x / 2,
-            indexPosition.y - amountOfChunks.y / 2,
+                indexPosition.x - amountOfChunks.x / 2,
+                indexPosition.y - amountOfChunks.y / 2,
         };
         if (amountOfChunks.x % 2 == 1) matrixPosition.x++;
         chunks[i] = Chunk(matrixPosition, chunksSize);
@@ -23,7 +23,7 @@ ChunkManager::ChunkManager(Vec2i amountOfChunks, Vec2i chunksSize, float chunkUp
 Chunk* ChunkManager::getChunk(Vec2f coords) const {
     int x = coords.x / chunksSize.x + amountOfChunks.x / 2;
     int y = coords.y / chunksSize.y + amountOfChunks.y / 2;
-    return &chunks[x * y * 2];
+    return &chunks[y * amountOfChunks.x + x];
 }
 
 
@@ -43,9 +43,8 @@ void ChunkManager::addGameObject(GameObject *gameObject) const {
 }
 
 void ChunkManager::update(const UpdateContext& ctx) const {
-    for (int i = 0; i < totalChunks; i++) {
-        chunks[i].update(ctx);
-    }
+    Chunk* mainChunk = getChunk(ctx.camera.getCameraPosition());
+    mainChunk->update(ctx);
 }
 
 void ChunkManager::render(const RenderContext& ctx) const {
