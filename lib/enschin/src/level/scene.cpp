@@ -1,7 +1,7 @@
 #include <enschin/scene.h>
 
-Scene::Scene(const GameContext& ctx, Ressources* res, Input* input, float fov)
-    : res(*res), input(*input) {
+Scene::Scene(const GameContext& ctx, CommonResources* res, Input* input, float fov)
+    : commonRes(*res), input(*input) {
     camera.setFov(ctx.window.getSize(), fov);
     renderer = Renderer(fov, camera.getRatio());
 }
@@ -48,13 +48,13 @@ void Scene::render(const GameContext& ctx) {
 
 UpdateContext Scene::getUpdateContext(const GameContext& ctx) {
     return {
-        ctx.deltaTime,
-        ctx.totalTime,
-        ctx.window,
-        input,
-        res,
-        *level,
-        camera,
+            ctx.deltaTime,
+            ctx.totalTime,
+            ctx.window,
+            input,
+            commonRes,
+            *level,
+            camera,
     };
 }
 

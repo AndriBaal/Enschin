@@ -3,7 +3,7 @@
 #include <vector>
 #include "renderer.h"
 #include "input.h"
-#include "ressources.h"
+#include "common_ressources.h"
 #include "timer.h"
 #include "camera.h"
 #include "level.h"
@@ -17,7 +17,7 @@
  */
 class Scene {
 protected:
-    const Ressources &res;
+    const CommonResources &commonRes;
     Input &input;
     Level *level;
     Renderer renderer;
@@ -26,7 +26,7 @@ protected:
     UpdateContext getUpdateContext(const GameContext &ctx);
 private:
 public:
-    Scene(const GameContext &ctx, Ressources *res, Input *input, float fov = 5.0f);
+    Scene(const GameContext &ctx, CommonResources *res, Input *input, float fov = 5.0f);
     ~Scene();
     void update(const GameContext &ctx);
     void render(const GameContext &ctx);

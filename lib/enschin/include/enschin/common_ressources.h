@@ -9,7 +9,7 @@
 #include "sprite.h"
 #include "terrain_definition.h"
 
-struct Ressources {
+struct CommonResources {
 private:
     static float *jsonToFloatArray(const Json::Value &jsonArray, unsigned int size);
 
@@ -21,9 +21,9 @@ private:
     std::unordered_map<std::string, const Sprite*> sprites;
     std::unordered_map<std::string, const Color*> colors;
 public:
-    Ressources() = default;
-    Ressources(std::string ressources);
-    ~Ressources();
+    CommonResources() = default;
+    CommonResources(std::string ressources);
+    ~CommonResources();
     void load(std::string);
     const Model* getModel(const std::string &key) const { return models.at(key); }
     const SpriteSheet* getSpriteSheet(const std::string &key) const { return spriteSheets.at(key); }

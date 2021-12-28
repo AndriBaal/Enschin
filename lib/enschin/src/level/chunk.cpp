@@ -19,11 +19,9 @@ void Chunk::update(const UpdateContext &ctx) {
     while(it != gameObjects.end()) {
         (*it)->update(ctx);
         if (!isInside(*(*it), ctx.level.getChunkManager().getChunkSize())) {
-            Chunk* newChunk = ctx.level.getChunkManager().getChunk((*it)->getPos());
-            (*it)->setCurrentChunk(newChunk);
-            newChunk->add((*it));
+            ctx.level.addGameObject(*it);
+            std::cout << "JLJLhdsjfhkjsdfh" << std::endl;
             it = gameObjects.erase(it);
-            std::cout << "sdjkhksdfhsldkfksdfdhh" << std::endl;
         } else {
             ++it;
         }
@@ -32,6 +30,6 @@ void Chunk::update(const UpdateContext &ctx) {
 }
 
 void Chunk::render(const RenderContext &ctx) {
-    for (auto& g : gameObjects)
+    for (auto g : gameObjects)
         g->render(ctx);
 }

@@ -7,7 +7,7 @@
 class MyGame : public Game {
 private:
     GameScene* myScene;
-    Ressources* res;
+    CommonResources* res;
     Input* input;
 public:
     MyGame(std::string gameName, Vec2i windowSize, bool fullscreen)

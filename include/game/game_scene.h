@@ -8,5 +8,5 @@ class GameScene : public Scene {
 private:
 
 public:
-	GameScene(Ressources* res, Input* input, const GameContext& ctx);
+	GameScene(CommonResources* res, Input* input, const GameContext& ctx);
 };

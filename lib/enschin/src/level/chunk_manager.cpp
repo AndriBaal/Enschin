@@ -38,18 +38,30 @@ bool ChunkManager::isInChunk(Vec2f* vertices) const {
     return true;
 }
 
-void ChunkManager::addGameObject(GameObject *gameObject) const {
-    getChunk(gameObject->getPos())->add(gameObject);
+void ChunkManager::addGameObject(GameObject* gameObject) const {
+    Chunk* chunk = getChunk(gameObject->getPos());
+    chunk->add(gameObject);
+    gameObject->setCurrentChunk(chunk);
 }
 
 void ChunkManager::update(const UpdateContext& ctx) const {
     Chunk* mainChunk = getChunk(ctx.camera.getCameraPosition());
-    mainChunk->update(ctx);
+    getMainChunk(ctx.camera).update(ctx);
 }
 
 void ChunkManager::render(const RenderContext& ctx) const {
     unsigned short horizontalRenders = ctx.camera.getRatio() / chunksSize.x;
     unsigned short verticalRenders = ctx.camera.getFov() / chunksSize.y;
-    Chunk* mainChunk = getChunk(ctx.camera.getCameraPosition());
-    mainChunk->render(ctx);
+    getMainChunk(ctx.camera).render(ctx);
+}
+
+Chunk& ChunkManager::getMainChunk(const Camera& cam) const {
+    Chunk* mainChunk = nullptr;
+    if (cam.getCameraMode() == BODY) {
+        GameObject* go = (GameObject *) (cam.getCameraTarget().GetUserData().pointer);
+        mainChunk = go->getCurrentChunk();
+    } else {
+        mainChunk = getChunk(cam.getCameraPosition());
+    }
+    return *mainChunk;
 }

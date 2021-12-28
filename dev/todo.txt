@@ -30,13 +30,13 @@ Enschin:
 	!!! Background elements for world
     !!! Text module
     / set collision on game object
-    !!! Foreach in Ressources instead of range based looop
+    !!! Foreach in CommonResources instead of range based looop
     !!! Entity interface
     !!! translation type for camera
     !!! DifferentScenes (GameScene, GuiScene)
     / Make entity inherit from gameobject
 
-    / Ressources can load other ressources
+    / CommonResources can load other ressources
     / Try bring back destructors
 	- Raw mousemotion with glfwSetInputMode
 	/ test keyboard input

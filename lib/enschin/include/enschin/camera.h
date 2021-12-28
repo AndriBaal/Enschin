@@ -12,7 +12,7 @@ enum CameraMode {
 class Camera {
 private:
     CameraMode cameraMode;
-    b2Body *cameraTarget;
+    b2Body* cameraTarget;
     Vec2f cameraPosition;
     Vec2f fadePosition;
     Vec2f cameraDimension;
@@ -36,12 +36,14 @@ public:
     float getFov() const { return fov; }
     float getRatio() const { return ratio; }
 
+    CameraMode getCameraMode() const { return cameraMode; }
+
     void setFov(Vec2i windowSize, float newFov);
     void increaseFov(Vec2i windowSize, float increasingFov);
 
-    b2Body &getCameraTarget() { return *cameraTarget; }
+    b2Body& getCameraTarget() const { return *cameraTarget; }
     Vec2f getCameraPosition() const;
 
-    void setCameraTarget(b2Body *cameraTarget);
+    void setCameraTarget(b2Body* cameraTarget);
     void setCameraPosition(Vec2f position);
 };

@@ -1,10 +1,10 @@
-#include <enschin/ressources.h>
+#include <enschin/common_ressources.h>
 
-Ressources::Ressources(std::string ressourcePath) {
+CommonResources::CommonResources(std::string ressourcePath) {
     load(std::move(ressourcePath));
 }
 
-Ressources::~Ressources() {
+CommonResources::~CommonResources() {
     for (auto& model : models) delete model.second;
     for (auto& spriteSheet : spriteSheets) delete spriteSheet.second;
     for (auto& sprite : sprites) delete sprite.second;
@@ -12,7 +12,7 @@ Ressources::~Ressources() {
     for (auto& color: colors) delete color.second;
 }
 
-void Ressources::load(std::string ressourcePath) {
+void CommonResources::load(std::string ressourcePath) {
     std::ifstream ressourceStream(ressourcePath, std::ifstream::binary);
     Json::Reader ressourceReader;
     Json::Value ressourceValues;
@@ -106,7 +106,7 @@ void Ressources::load(std::string ressourcePath) {
     }
 }
 
-unsigned int* Ressources::jsonToUIntArray(const Json::Value& jsonArray, unsigned int size) {
+unsigned int* CommonResources::jsonToUIntArray(const Json::Value& jsonArray, unsigned int size) {
     auto* output = new unsigned int[size];
     for (int i = 0; i < size; i++) {
         output[i] = jsonArray[i].asUInt();
@@ -114,7 +114,7 @@ unsigned int* Ressources::jsonToUIntArray(const Json::Value& jsonArray, unsigned
     return output;
 }
 
-float* Ressources::jsonToFloatArray(const Json::Value& jsonArray, unsigned int size) {
+float* CommonResources::jsonToFloatArray(const Json::Value& jsonArray, unsigned int size) {
     auto* output = new float[size];
     for (int i = 0; i < size; i++) {
         output[i] = jsonArray[i].asFloat();

@@ -20,6 +20,8 @@ public:
     void render(const RenderContext& ctx) const;
     void addGameObject(GameObject* gameObject) const;
 
+    Chunk& getMainChunk(const Camera& cam) const;
+
     Vec2i getChunkSize() const { return chunksSize; }
     Vec2i getAmountOfChunks() const { return amountOfChunks; }
     float getTotalChunks() const { return totalChunks; }

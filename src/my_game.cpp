@@ -2,7 +2,7 @@
 
 void MyGame::start(const GameContext& ctx) {
     window.setIcon("./sprites/bird.jpg");
-    res = new Ressources("./ressources/ulul.json");
+    res = new CommonResources("./ressources/ulul.json");
     input = new Input("./settings/input/events/events.json");
     myScene = new GameScene(res, input, ctx);
     currentScene = myScene;

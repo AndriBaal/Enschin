@@ -1,6 +1,6 @@
 #pragma once
 
-#include "ressources.h"
+#include "common_ressources.h"
 #include "input.h"
 #include "timer.h"
 #include "renderer.h"
@@ -17,8 +17,8 @@ struct UpdateContext {
     const float deltaTime = 0;
     const float totalTime = 0;
     const Window& window;
-    const Input &input;
-    const Ressources &res;
+    const Input& input;
+    const CommonResources& commonRes;
     Level& level;
     Camera &camera;
 };
@@ -27,7 +27,7 @@ struct UpdateContext {
  * @brief Render context
  */
 struct RenderContext {
-    Renderer &renderer;
+    Renderer& renderer;
     const Camera& camera;
     const Window& window;
     const float deltaTime = 0;
