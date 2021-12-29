@@ -4,7 +4,6 @@ Player::Player(const UpdateContext& ctx, Vec2f pos)
     : GameObject(ctx, "Player", ctx.commonRes.getModel("test_model"), ctx.commonRes.getSprite("noah"), pos){
     jumpTimer = new Timer(0, .25f);
     ctx.camera.setCameraTarget(body);
-    ctx.window.setClearColor(Color{1, 0, 0, 1});
 }
 
 void Player::update(const UpdateContext& ctx) {

@@ -4,7 +4,7 @@ bool Chunk::isInside(const GameObject &g, Vec2i chunkSize) {
     Vec2f worldPosition;
     worldPosition.x = matrixPosition.x * chunkSize.x - chunkSize.x/2.0;
     worldPosition.y = matrixPosition.y * chunkSize.y - chunkSize.y/2.0;
-    std::cout << matrixPosition << worldPosition << std::endl;
+    std::cout << worldPosition << std::endl;
     return (
         g.getPos().x >= worldPosition.x &&
         g.getPos().x < worldPosition.x + chunkSize.x &&
@@ -14,8 +14,9 @@ bool Chunk::isInside(const GameObject &g, Vec2i chunkSize) {
 }
 
 Chunk::~Chunk() {
-    for (auto g : gameObjects)
+    for (auto g : gameObjects) {
         delete g;
+    }
 }
 
 void Chunk::add(GameObject* gameObject) {

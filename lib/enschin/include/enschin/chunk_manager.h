@@ -33,6 +33,4 @@ public:
 
     Vec2i getChunkSize() const { return chunksSize; }
     float getTotalChunks() const { return totalChunks; }
-
-    bool isInChunk(Vec2f* vertices) const;
 };
