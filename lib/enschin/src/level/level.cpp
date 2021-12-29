@@ -15,10 +15,9 @@ void Level::addGameObject(GameObject *gameObject) const {
     chunkManager->addGameObject(gameObject);
 }
 
-unsigned int Level::addTerrain(const UpdateContext& ctx, const TerrainDefinition* terrainDef, const Color* color, Vec2f positionOffSet) {
+void Level::addTerrain(const UpdateContext& ctx, const TerrainDefinition* terrainDef, const Color* color, Vec2f positionOffSet) {
     Terrain* terrain = new Terrain(ctx, terrainDef, positionOffSet);
     terrains.push_back(terrain);
-    return 1;
 }
 
 void Level::removeTerrain(unsigned int id) {

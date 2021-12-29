@@ -8,7 +8,8 @@
 struct Vec2i {
     int x, y;
 
-    Vec2i(int x = 0, int y = 0) : x(x), y(y) {};
+    Vec2i() = default;
+    Vec2i(int x, int y) : x(x), y(y) {};
     //Vec2i(b2Vec2 v) : x(v.x), y(v.y) {}
 
     //Arithmetic
@@ -18,6 +19,7 @@ struct Vec2i {
     Vec2i operator/(const Vec2i& v) const;
 
     Vec2i operator*(int i) const;
+    Vec2i operator/(int i) const;
 
     //Assignment
     Vec2i& operator+=(const Vec2i& v);
@@ -26,6 +28,7 @@ struct Vec2i {
     Vec2i& operator/=(const Vec2i& v);
 
     Vec2i& operator*=(int i);
+    Vec2i& operator/=(int i);
 
     //other
     bool operator==(const Vec2i& v) const;

@@ -11,7 +11,7 @@ struct VertexBufferElement {
     unsigned char normalized;
 };
 
-class VertexBufferLayout {
+struct VertexBufferLayout {
 private:
     unsigned int stride;
     std::vector<VertexBufferElement> elements;

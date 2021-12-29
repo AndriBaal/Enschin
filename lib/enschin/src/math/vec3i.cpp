@@ -21,6 +21,10 @@ Vec3i Vec3i::operator*(int i) const {
     return {x * i, y * i, z * i};
 }
 
+Vec3i Vec3i::operator/(int i) const {
+    return {x / i, y / i, z / i};
+}
+
 
 //Assignment
 Vec3i& Vec3i::operator+=(const Vec3i& v) {
@@ -55,6 +59,13 @@ Vec3i& Vec3i::operator*=(int i) {
     x *= i;
     y *= i;
     z *= i;
+    return *this;
+}
+
+Vec3i& Vec3i::operator/=(int i) {
+    x /= i;
+    y /= i;
+    z /= i;
     return *this;
 }
 

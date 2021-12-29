@@ -23,6 +23,10 @@ Vec2f Vec2f::operator*(float f) const {
     return {x * f, y * f};
 }
 
+Vec2f Vec2f::operator/(float f) const {
+    return {x / f, y / f};
+}
+
 
 //Assignment
 Vec2f& Vec2f::operator+=(const Vec2f& v) {
@@ -50,8 +54,14 @@ Vec2f& Vec2f::operator/=(const Vec2f& v) {
 }
 
 Vec2f& Vec2f::operator*=(float f) {
-    x *= 2;
+    x *= f;
     y *= f;
+    return *this;
+}
+
+Vec2f& Vec2f::operator/=(float f) {
+    x /= f;
+    y /= f;
     return *this;
 }
 

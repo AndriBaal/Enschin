@@ -1,6 +1,6 @@
 #pragma once
 
-#include <math.h>
+#include <string.h>
 #include <algorithm>
 #include <iterator>
 #include <iostream>

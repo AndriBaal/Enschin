@@ -9,8 +9,8 @@
 struct Vec3i {
     float x, y, z;
 
-    const static Vec3i nullVec3i;
-    Vec3i(float x = 0, float y = 0, float z = 0) : x(x), y(y), z(z) {}
+    Vec3i() = default;
+    Vec3i(float x, float y, float z) : x(x), y(y), z(z) {}
     Vec3i(b2Vec3 v) : x(v.x), y(v.y), z(v.z) {}
 
     //Arithmetic
@@ -20,6 +20,7 @@ struct Vec3i {
     Vec3i operator/(const Vec3i& v) const;
 
     Vec3i operator*(int i) const;
+    Vec3i operator/(int i) const;
 
     //Assignment
     Vec3i& operator+=(const Vec3i& v);
@@ -28,6 +29,7 @@ struct Vec3i {
     Vec3i& operator/=(const Vec3i& v);
 
     Vec3i& operator*=(int i);
+    Vec3i& operator/=(int i);
 
     //other
     bool operator==(const Vec3i& v) const;

@@ -40,9 +40,7 @@ namespace Matrix {
      * @param size Size of the arrays
      */
     void copyMatrix(float dest[16], float src[16], int size) {
-        for (int i = 0; i < size; i++) {
-            dest[i] = src[i];
-        }
+        memcpy(dest, src, size*4);
     }
 
     /**

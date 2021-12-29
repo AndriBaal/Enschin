@@ -71,7 +71,7 @@ public:
     bool isAlive() const { return alive; }
     void kill() { alive = false; }
 
-    Vec2f getPos() const { return body->GetPosition(); }
+    Vec2f getPos() const { return Vec2f(body->GetPosition()); }
     void setPos(Vec2f pos) { body->SetTransform({pos.x, pos.y}, body->GetAngle()); }
     float getRotation() { return body->GetAngle(); }
     void setRotation(float rotation) { body->SetTransform(body->GetPosition(), rotation); }

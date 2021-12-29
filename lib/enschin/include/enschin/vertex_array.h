@@ -3,7 +3,7 @@
 #include "vertex_buffer.h"
 #include "vertex_buffer_layout.h"
 
-class VertexArray {
+struct VertexArray {
 private:
     unsigned int vertexArrayId;
 public:

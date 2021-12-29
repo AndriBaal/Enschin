@@ -10,6 +10,11 @@ bool Chunk::isInside(const GameObject &g, Vec2i chunkSize) {
     );
 }
 
+Chunk::~Chunk() {
+    for (auto g : gameObjects)
+        delete g;
+}
+
 void Chunk::add(GameObject* gameObject) {
     gameObjects.push_back(gameObject);
 }
@@ -18,9 +23,11 @@ void Chunk::update(const UpdateContext &ctx) {
     auto it = gameObjects.begin();
     while(it != gameObjects.end()) {
         (*it)->update(ctx);
-        if (!isInside(*(*it), ctx.level.getChunkManager().getChunkSize())) {
+        if (!(*it)->isAlive()) {
+            it = gameObjects.erase(it);
+            delete *it;
+        } else if (!isInside(*(*it), ctx.level.getChunkManager().getChunkSize())) {
             ctx.level.addGameObject(*it);
-            std::cout << "JLJLhdsjfhkjsdfh" << std::endl;
             it = gameObjects.erase(it);
         } else {
             ++it;

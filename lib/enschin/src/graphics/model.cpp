@@ -26,12 +26,13 @@ Model::~Model() {
 
 Model::Model(const float vertices[], const bool chain, const unsigned short amountOfVertices,
              const unsigned int indices[], const unsigned short amountOfIndices)
-        : amountOfIndices(amountOfIndices), amountOfVertices(amountOfVertices),
+        : amountOfIndices(amountOfIndices), amountOfVertices(amountOfVertices), vertices(new Vec2f[amountOfVertices]),
           vb(vertices, 4 * amountOfVertices * sizeof(float)),
           ib(indices, amountOfIndices), va(1) {
 
     b2Vec2 b2vertices[amountOfVertices];
     for (int i = 0; i < amountOfVertices*4; i+=4) {
+        this->vertices[i/4] = {vertices[i], vertices[i+1]};
         b2vertices[i/4].Set(vertices[i], vertices[i+1]);
     }
 
@@ -63,11 +64,14 @@ Model::Model(const float vertices[], const bool chain, const unsigned short amou
  * @param amountOfIndices Amount of Indices of the model (default=6)
  */
 Model::Model(Vec2f size)
-        : amountOfIndices(6), amountOfVertices(6),
+        : amountOfIndices(6), amountOfVertices(4), vertices(new Vec2f[amountOfVertices]),
           localBuffer(generateVerticesTex(size)),
           vb(localBuffer, 4 * amountOfVertices * sizeof(float)),
           ib(defaultIndices, amountOfIndices), va(1) {
 
+    for (int i = 0; i < amountOfVertices*4; i+=4) {
+        this->vertices[i/4] = {localBuffer[i], localBuffer[i+1]};
+    }
 
     b2PolygonShape* polygonShape = new b2PolygonShape;
     polygonShape->SetAsBox(size.x / 2, size.y / 2);

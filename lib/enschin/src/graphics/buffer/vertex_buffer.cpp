@@ -1,7 +1,5 @@
 #include <enschin/vertex_buffer.h>
 
-unsigned int VertexBuffer::boundVertexBuffer = 1231132;
-
 VertexBuffer::VertexBuffer(const void* data, unsigned int size) {
     glGenBuffers(1, &vertexBufferId);
     glBindBuffer(GL_ARRAY_BUFFER, vertexBufferId);

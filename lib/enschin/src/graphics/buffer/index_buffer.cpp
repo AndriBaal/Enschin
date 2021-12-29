@@ -1,5 +1,4 @@
 #include <enschin/index_buffer.h>
-#include <iostream>
 
 /**
  * @brief Construct a new Index Buffer by the given Indices.

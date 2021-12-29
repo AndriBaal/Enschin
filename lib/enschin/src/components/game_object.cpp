@@ -7,7 +7,7 @@ void GameObject::createBody(const UpdateContext& ctx, Vec2f pos,
     b2BodyDef bodyDef;
     bodyDef.type = (isStatic) ? b2_staticBody : b2_dynamicBody;
     bodyDef.position.Set(pos.x, pos.y);
-    bodyDef.userData.pointer = reinterpret_cast<uintptr_t>(this);
+    bodyDef.userData.pointer = (uintptr_t) this;
     body = ctx.level.getWorld().CreateBody(&bodyDef);
 
     b2FixtureDef fixtureDef;
@@ -19,7 +19,6 @@ void GameObject::createBody(const UpdateContext& ctx, Vec2f pos,
     body->CreateFixture(&fixtureDef);
     body->SetFixedRotation(fixedRotation);
     body->SetGravityScale(gravity);
-
 }
 
 GameObject::GameObject(const UpdateContext &ctx, const std::string name, const Model* model, const SpriteSheet* sprite, Vec2f pos,

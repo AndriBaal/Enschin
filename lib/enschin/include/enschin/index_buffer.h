@@ -10,17 +10,13 @@
  * @brief IndeBuffer for storing indices (triangle draw order)
  * 
  */
-class IndexBuffer {
+struct IndexBuffer {
 private:
     unsigned int indexBufferId;
 public:
     IndexBuffer() = default;
-
     IndexBuffer(const unsigned int *indices, unsigned int count);
-
     ~IndexBuffer();
-
     void bind() const;
-
     static void unbind();
 };

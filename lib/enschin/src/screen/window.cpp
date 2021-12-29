@@ -41,7 +41,7 @@ Window::Window(std::string windowTitle, Vec2i windowSize, bool fullScreen) {
     if (glewInit() != GLEW_OK)
         exit(1);
 
-    glfwSwapInterval(1);
+    glfwSwapInterval(0);
     glEnable(GL_TEXTURE_2D);
     glEnable(GL_BLEND);
     glEnable(GL_TRIANGLES);

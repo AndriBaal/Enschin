@@ -25,8 +25,8 @@ protected:
     const VertexArray va;
     const IndexBuffer ib;
     const VertexBuffer vb;
-
-    b2Shape *shape;
+    Vec2f* vertices = nullptr;
+    b2Shape* shape;
 public:
     Model(float radius);
     Model(Vec2f size);
@@ -39,6 +39,7 @@ public:
     ~Model();
     static float *generateVerticesTex(Vec2f size);
     void bind() const;
+    Vec2f* getVertices(){ return vertices; }
     int getAmountOfVertices() const { return amountOfVertices; }
     unsigned int getAmountOfIndices() const { return amountOfIndices; }
     const b2Shape *getCollisionShape() const { return shape; };

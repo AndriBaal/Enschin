@@ -1,7 +1,5 @@
 #include <include/enschin/vec3f.h>
 
-const Vec3f Vec3f::nullVec3 = {0, 0, 0};
-
 //Arithmetic 
 Vec3f Vec3f::operator+(const Vec3f& v) const {
 	return {x + v.x, y + v.y, z + v.z};
@@ -21,6 +19,10 @@ Vec3f Vec3f::operator/(const Vec3f& v) const {
 
 Vec3f Vec3f::operator*(float f) const {
     return {x * f, y * f, z * f};
+}
+
+Vec3f Vec3f::operator/(float f) const {
+    return {x / f, y / f, z / f};
 }
 
 
@@ -57,6 +59,13 @@ Vec3f& Vec3f::operator*=(float f) {
     x *= f;
     y *= f;
     z *= f;
+    return *this;
+}
+
+Vec3f& Vec3f::operator/=(float f) {
+    x /= f;
+    y /= f;
+    z /= f;
     return *this;
 }
 

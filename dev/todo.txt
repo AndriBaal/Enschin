@@ -19,6 +19,8 @@ Enschin:
 	!!! Update radius for Entity
 	!!! Fade function for camera
 	!!! Chunk system
+	!!! multiple terrain parts in on terrain
+	!!! Custom data storage (load / deload)
 	/ Make world inheritable
 	/ Update function for world
 	/ standyby / not render / not update field for entity / gameObject

@@ -4,7 +4,6 @@
 class VertexBuffer {
 private:
     unsigned int vertexBufferId;
-    static unsigned int boundVertexBuffer;
 public:
     VertexBuffer() = default;
     ~VertexBuffer();

@@ -10,7 +10,8 @@ struct Vec2f {
     float x, y;
     static Vec2f nullVec2;
 
-    Vec2f(float x = 0, float y = 0) : x(x), y(y) {};
+    Vec2f() = default;
+    Vec2f(float x, float y) : x(x), y(y) {};
     Vec2f(b2Vec2 v) : x(v.x), y(v.y) {}
 
     //Arithmetic
@@ -20,6 +21,7 @@ struct Vec2f {
     Vec2f operator/(const Vec2f &v) const;
 
     Vec2f operator*(float f) const;
+    Vec2f operator/(float f) const;
 
     //Assignment
     Vec2f& operator+=(const Vec2f& v);
@@ -28,6 +30,7 @@ struct Vec2f {
     Vec2f& operator/=(const Vec2f& v);
 
     Vec2f& operator*=(float f);
+    Vec2f& operator/=(float f);
 
     //other
     bool operator==(const Vec2f &v) const;

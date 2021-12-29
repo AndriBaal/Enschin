@@ -27,7 +27,7 @@ public:
     Level(Vec2i amountOfChunks, Vec2i chunkSizes = {10, 10}, Vec2f gravity = {0, -12.0f});
     ~Level();
     void addGameObject(GameObject* gameObject) const;
-    unsigned int addTerrain(const UpdateContext& ctx, const TerrainDefinition* terrainDef, const Color* color, Vec2f positionOffSet = {0, 0});
+    void addTerrain(const UpdateContext& ctx, const TerrainDefinition* terrainDef, const Color* color, Vec2f positionOffSet = {0, 0});
     void removeTerrain(unsigned int id);
 
     void setGravity(Vec2f newGravity) { world.SetGravity({newGravity.x, newGravity.y}); }
