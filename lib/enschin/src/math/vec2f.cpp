@@ -53,6 +53,7 @@ Vec2f& Vec2f::operator/=(const Vec2f& v) {
 	return *this;
 }
 
+
 Vec2f& Vec2f::operator*=(float f) {
     x *= f;
     y *= f;

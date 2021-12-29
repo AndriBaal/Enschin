@@ -24,7 +24,7 @@ private:
     std::vector<Terrain*> terrains;
     ChunkManager* chunkManager;
 public:
-    Level(Vec2i amountOfChunks, Vec2i chunkSizes = {10, 10}, Vec2f gravity = {0, -12.0f});
+    Level(int left, int right, int bottom, int top, Vec2i chunkSizes = {10, 10}, Vec2f gravity = {0, -12.0f});
     ~Level();
     void addGameObject(GameObject* gameObject) const;
     void addTerrain(const UpdateContext& ctx, const TerrainDefinition* terrainDef, const Color* color, Vec2f positionOffSet = {0, 0});

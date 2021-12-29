@@ -2,7 +2,7 @@
 
 GameScene::GameScene(CommonResources* res, Input* input, const GameContext& ctx)
     : Scene(ctx, res, input, 5) {
-    level = new Level({513, 21}, {10, 1500});
+    level = new Level(1, 3, 2, 5, {10, 1500});
     UpdateContext updateContext = Scene::getUpdateContext(ctx);
 
     updateContext.window.setClearColor(Color{.7, 0.3,.8, 1});

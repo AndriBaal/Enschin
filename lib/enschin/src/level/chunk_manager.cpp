@@ -1,25 +1,23 @@
 #include <enschin/chunk_manager.h>
 
 
-ChunkManager::ChunkManager(Vec2i amountOfChunks, Vec2i chunksSize, Vec2i updates)
-    : amountOfChunks(amountOfChunks), chunksSize(chunksSize),
-      updates(updates), totalChunks(amountOfChunks.x * amountOfChunks.y) {
+ChunkManager::ChunkManager(int left, int right, int bottom, int top, Vec2i chunkSize, Vec2i updates)
+    : left(left), right(right), bottom(bottom), top(top),
+    chunksSize(chunksSize), updates(updates),
+    amountOfChunks({1 + left + right, 1 + bottom + top}), totalChunks(amountOfChunks.x * amountOfChunks.y) {
     chunks = new Chunk[totalChunks];
-    outsideChunk = new Chunk();
-    for (int i = 0; i < totalChunks; i++) {
-        Vec2i indexPosition = {
-                i % amountOfChunks.x,
-                i / amountOfChunks.x
-        };
+    outside = new Chunk();
 
-        Vec2i matrixPosition = {
-                indexPosition.x - amountOfChunks.x / 2,
-                indexPosition.y - amountOfChunks.y / 2,
-        };
-//        if (amountOfChunks.x % 2 == 1) matrixPosition.x++;
-        std::cout << matrixPosition << std::endl;
-        chunks[i] = Chunk(matrixPosition, chunksSize);
+    for (int y = 0; y < amountOfChunks.x; y++) {
+        for (int x = 0; x < amountOfChunks.y; x++) {
+            Vec2i matrixPosition = {
+                x - left,
+                y - bottom
+            };
+            chunks[y * amountOfChunks.x + x] = Chunk(matrixPosition, chunksSize);
+        }
     }
+    exit(0);
 }
 
 ChunkManager::~ChunkManager() {
@@ -30,14 +28,16 @@ ChunkManager::~ChunkManager() {
 
 
 Chunk* ChunkManager::getChunk(Vec2f coords) const {
-    int x = coords.x / chunksSize.x + amountOfChunks.x / 2;
-    int y = coords.y / chunksSize.y + amountOfChunks.y / 2;
-    int index = y * amountOfChunks.x + x;
-//    if (index >= totalChunks || index < 0) {
-//        std::cout << "kjldshfkljsdhflkjsdhf" << std::endl;
-//        return outsideChunk;
-//    }
-    return &chunks[index];
+
+////    if (index >= totalChunks || index < 0) {
+////        std::cout << "kjldshfkljsdhflkjsdhf" << std::endl;
+////        return outsideChunk;
+////    }
+    Vec2i matrixPosition =  {
+            (int) coords.x / chunksSize.x,
+        (int) coords.y / chunksSize.y
+    };
+    return &chunks[1];
 }
 
 Chunk* ChunkManager::getChunk(Vec2i matrixPosition) const {
@@ -65,7 +65,7 @@ void ChunkManager::addGameObject(GameObject* gameObject) const {
 
 void ChunkManager::update(const UpdateContext& ctx) const {
     Chunk* mainChunk = getMainChunk(ctx.camera);
-    if (mainChunk != outsideChunk) {
+    if (mainChunk != outside) {
         for (int y = -updates.y; y <= updates.y; y++) {
             for (int x = -updates.x; x <= updates.x; x++) {
                 getChunk(mainChunk->getMatrixPosition() + Vec2i{x, y})->update(ctx);
@@ -77,7 +77,7 @@ void ChunkManager::update(const UpdateContext& ctx) const {
 void ChunkManager::render(const RenderContext& ctx) const {
     short renders = 2;
     Chunk* mainChunk = getMainChunk(ctx.camera);
-    if (mainChunk != outsideChunk) {
+    if (mainChunk != outside) {
         for (int y = -updates.y; y <= updates.y; y++) {
             for (int x = -updates.x; x <= updates.x; x++) {
                 getChunk(mainChunk->getMatrixPosition() + Vec2i{x, y})->render(ctx);

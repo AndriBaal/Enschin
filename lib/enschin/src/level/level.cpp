@@ -1,10 +1,10 @@
 #include <enschin/level.h>
 
-Level::Level(Vec2i amountOfChunks, Vec2i chunkSizes, Vec2f gravity) {
+Level::Level(int left, int right, int bottom, int top, Vec2i chunkSizes, Vec2f gravity) {
     world.SetGravity({gravity.x, gravity.y});
     world.SetContactListener(this->contactListener);
 
-    chunkManager = new ChunkManager(amountOfChunks, chunkSizes);
+    chunkManager = new ChunkManager(left, right, bottom, top, chunkSizes);
 }
 
 Level::~Level() {
